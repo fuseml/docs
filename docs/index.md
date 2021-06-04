@@ -16,12 +16,11 @@ We follow 5 simple principles
 
 - **GitOps for Machine Learning** - extend what traditional GitOps does with code to all other types of artifacts specific to machine learning - models and datasets, as well as other byproducts of a DevOps workflow (e.g. packages, container images) to provide features such a end-to-end versioning, tracking and reproducibility
 
-
 ## Where to proceed from here
 
 Well, it depends on what you would you like to do:
 
-- if you are looking to learn about FuseML capabilites we suggest to click on the [Quick Start](quickstart.md) menu on the left
+- if you are looking to learn about FuseML capabilites we suggest to click on the [Quick Start](../quickstart.md) menu on the left
 - if you are looking to evaluate if this project worth the effort to contribute to it go straight away to [About](about.md) section.
 
 ## Demo video
