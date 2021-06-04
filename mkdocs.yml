@@ -1,4 +1,12 @@
-site_name: FuseML docs
+site_name: FuseML Documentation
+nav:
+    - Home: index.md
+    - About: about.md
+    - Quick Start: quickstart.md
+    - Tutorials: tutorials.md
+    - Architecture: architecture.md
+    - Api Reference: api.md
+    - Cli Reference: cli.md
 theme:
   name: material
   palette:
