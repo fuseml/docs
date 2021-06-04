@@ -7,6 +7,7 @@ nav:
     - Architecture: architecture.md
     - Api Reference: api.md
     - Cli Reference: cli.md
+    - Contributing: contributing.md
 theme:
   name: material
   palette:
@@ -14,6 +15,9 @@ theme:
     accent: cyan
 repo_url: https://github.com/fuseml/fuseml
 edit_uri: https://github.com/fuseml/docs/edit/main/docs/
+
+plugins:
+  - render_swagger
 
 # TODO: Validate with our legal team.
 copyright: "Copyright &copy; 2021 FuseML Author(s)"

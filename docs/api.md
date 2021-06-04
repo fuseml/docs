@@ -1,3 +1,3 @@
 # FuseML API Reference
 
-TBD
+!!swagger openapi3.yaml!!
