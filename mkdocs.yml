@@ -13,7 +13,7 @@ theme:
     primary: green
     accent: cyan
 repo_url: https://github.com/fuseml/fuseml
-# edit_uri: edit/main/docs/
+edit_uri: https://github.com/fuseml/docs/edit/main/docs/
 
 # TODO: Validate with our legal team.
 copyright: "Copyright &copy; 2021 FuseML Author(s)"
