@@ -1,7 +1,7 @@
 # FuseML Command-Line Reference
 
-Use FuseML Command-Line is a frictionless experience. Let's deep dive into the various option you may use with it.
-Let's start looking at the whole capabilites. Simply type:
+Using the FuseML CLI is a frictionless experience. Let's deep dive into the various options you may use with it.
+Let's start looking at the global capabilites. Simply type:
 
 ```bash
 fuseml
@@ -32,38 +32,19 @@ Flags:
 Use "fuseml [command] --help" for more information about a command.
 ```
 
-## Application
-
-FuseML application represent the various applications currently deployed over an instance of FuseML. Keep in mind that FuseML leverage the configuration file of your local kubeconfig so currently doesn't (yet) show an omni-comprensive view of all your instances.
-
-The application sub-command has the following capabilites:
+Most CLI commands require you to supply the URL where the FuseML instance is running, either as a command line argument,
+or as the FUSEML_SERVER_URL environment variable. The URL is printed out by the installer during the installation process.
+If you missed it, you can retrieve it at any time with the following command:
 
 ```bash
-Perform operations on applications
-
-Usage:
-  fuseml application [command]
-
-Available Commands:
-  delete      Delete an application.
-  get         Get an application.
-  list        List applications.
-
-Flags:
-  -h, --help   help for application
-
-Global Flags:
-      --timeout int   (FUSEML_HTTP_TIMEOUT) maximum number of seconds to wait for response (default 30)
-  -u, --url string    (FUSEML_SERVER_URL) URL where the FuseML service is running
-  -v, --verbose       (FUSEML_VERBOSE) print verbose information, such as HTTP request and response details
-
-Use "fuseml application [command] --help" for more information about a command.
+export FUSEML_SERVER_URL=http://$(kubectl get VirtualService -n fuseml-core fuseml-core -o jsonpath="{.spec.hosts[0]}")
 ```
 
 ## Codesets
 
-FuseML Codeset represent the "link" between your local environment and the Git-a-like repository where you and your team is working
-The application sub-command has the following capabilites:
+A FuseML Codeset represents a versioned collection of files - code files, scripts, configuration files, generally all the sources needed to implement, build and execute the machine learning logic. The codeset is the "link" between your local environment and the Git-a-like repository where you and your team are working. Use the CLI to publish your ML code to the remote FuseML orchestrator instance and later on assign it to compatible automation workflows.
+
+The codeset sub-command has the following capabilites:
 
 ```bash
 Perform operations on codesets
@@ -90,12 +71,21 @@ Use "fuseml codeset [command] --help" for more information about a command.
 
 ## Workflow
 
-FuseML Workflow are the core of the client. Those are the link between your code (i.e.: the model prototyped) and the rest of your end-to-end pipeline. A workflow is made basically by two different components:
+Workflows are the most important feature of FuseML. Configuring workflows is a declarative way of instructing FuseML
+to run automated operations using codesets and other types of artifacts as input and deploying applications as output.
+A workflow can be represented by something as simple as a single operation (step), or it can describe a complex, end-to-end
+ML pipeline that builds your code, runs it to train a machine learning model and ultimately serves the model
+using a prediction service.
 
-- the command line that register and later assign the workflow
-- a workflow definition based on a "generic" yaml file
+Getting a workflow to execute is basically a two step process:
 
-the workflow sub-command has the following capabilites:
+- first, configure a workflow definition from a yaml or json file. Consult the [API Refefence](api.md) section for a
+full description of the workflow format.
+- then, use the command line to assign a codeset to the workflow. The workflow is automatically triggered as a result of the
+assignment, as well as every time a new version of the assigned codeset is published. The status, as well as the results(s)
+of a workflow run can be displayed with the CLI.
+
+The workflow sub-command has the following capabilites:
 
 ```bash
 Perform operations on workflows
@@ -124,7 +114,7 @@ Global Flags:
 Use "fuseml workflow [command] --help" for more information about a command.
 ```
 
-The YAML file is:
+Following is an example of workflow definition in YAML format describing an end-to-end ML pipeline:
 
 ```yml
 name: < INSERT YOUR WORKFLOW NAME>
@@ -210,3 +200,34 @@ sed -i -e "/AWS_SECRET_ACCESS_KEY/{N;s/value: [^ \t]*/value: $SECRET/}" pipeline
 ```
 
 ---
+
+## Application
+
+A FuseML Application is represented by a web service usually deployed automatically by FuseML as a result
+of a workflow running to completion and can be accessed via its exposed URL. The most common type of FuseML
+application is a prediction service. Use the CLI to display running applications, retrieve their URLs and
+delete them when no longer needed.
+
+The application sub-command has the following capabilites:
+
+```bash
+Perform operations on applications
+
+Usage:
+  fuseml application [command]
+
+Available Commands:
+  delete      Delete an application.
+  get         Get an application.
+  list        List applications.
+
+Flags:
+  -h, --help   help for application
+
+Global Flags:
+      --timeout int   (FUSEML_HTTP_TIMEOUT) maximum number of seconds to wait for response (default 30)
+  -u, --url string    (FUSEML_SERVER_URL) URL where the FuseML service is running
+  -v, --verbose       (FUSEML_VERBOSE) print verbose information, such as HTTP request and response details
+
+Use "fuseml application [command] --help" for more information about a command.
+```

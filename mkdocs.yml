@@ -5,8 +5,8 @@ nav:
     - Quick Start: quickstart.md
     - Tutorials: tutorials.md
     - Architecture: architecture.md
-    - Api Reference: api.md
-    - Cli Reference: cli.md
+    - API Reference: api.md
+    - CLI Reference: cli.md
     - Contributing: CONTRIBUTING.md
 theme:
   name: material
