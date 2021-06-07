@@ -11,7 +11,7 @@ To make your life easier there are a couple of variables that will help you to f
 ### 1. Set the value of FUSEML_SERVER_URL, to point to the server URL:
 
 ```bash
-export FUSEML_SERVER_URL=http//$(kubectl get VirtualService -n fuseml-core fuseml-core -o jsonpath="{.spec.hosts[0]}")
+export FUSEML_SERVER_URL=http://$(kubectl get VirtualService -n fuseml-core fuseml-core -o jsonpath="{.spec.hosts[0]}")
 ```
 
 Set the GITEA URL's:
