@@ -1,3 +1,5 @@
+../contribute.md
+
 # How to Contribute to FuseML Project
 
 ## Our processes
