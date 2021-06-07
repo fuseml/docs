@@ -61,8 +61,7 @@ sed -i -e "/AWS_SECRET_ACCESS_KEY/{N;s/value: [^ \t]*/value: $SECRET/}" pipeline
 Use the modified example workflow definition:
 
 ```bash
-workflow=$(cat pipelines/pipeline-01.yaml)
-fuseml workflow register --body "$(cat pipelines/pipeline-01.yaml)"
+fuseml --url $FUSEML_SERVER_URL workflow create pipelines/pipeline-01.yaml
 ```
 
 ### 8. Assign the codeset to workflow
