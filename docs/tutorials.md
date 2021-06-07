@@ -1,46 +1,38 @@
 # FuseML Tutorials
 
-Test FuseML is simpler than one may think. Let's showcase some use cases.
+Testing FuseML is simpler than one may think. Let's showcase some use cases.
 
 ## Example 1 - A simple logistic regression
 
 Let's look at the example for MLflow model, being trained by MLflow and served with KFServing.
 We assume both FuseML infrastructure and FuseML command-line are already installed, if not please check first the [quick start](quickstart.md) section.
-To make your life easier there are a couple of variables that will help you to follow this tutorial.
 
-### 1. Set the value of FUSEML_SERVER_URL, to point to the server URL:
+**1.** Set the FUSEML_SERVER_URL environment variable to point to the server URL:
+
+The fuseml server URL is printed out by the installer during the FuseML installation. If you missed it, you can retrieve it at any time with the following command:
 
 ```bash
 export FUSEML_SERVER_URL=http://$(kubectl get VirtualService -n fuseml-core fuseml-core -o jsonpath="{.spec.hosts[0]}")
 ```
 
-Set the GITEA URL's:
-
-```bash
-export GITEA_URL=http://$(kubectl get VirtualService -n gitea gitea -o jsonpath="{.spec.hosts[0]}")
-export GITEA_ADMIN_USERNAME=$(kubectl get Secret -n fuseml-workloads gitea-creds -o jsonpath="{.data.username}" | base64 -d)
-export GITEA_ADMIN_PASSWORD=$(kubectl get Secret -n fuseml-workloads gitea-creds -o jsonpath="{.data.password}" | base64 -d)
-```
-
-### 2. Get the example code
+**2.** Get the example code
 
 ```bash
 git clone https://github.com:fuseml/examples.git
 cd fuseml-examples
 ```
 
-### 3. Under models/mlflow-wines directory there is the example MLflow project. It's only slightly modified example based on the upstream MLflow public example [here](https://mlflow.org/docs/latest/tutorials-and-examples/tutorial.html).
+**3.** Under models/mlflow-wines directory there is the example MLflow project. It's only slightly modified example based on the upstream MLflow public example [here](https://mlflow.org/docs/latest/tutorials-and-examples/tutorial.html).
 
-### 4. Register the codeset
+**4.** Register the codeset
 
 ```bash
-fuseml --url $FUSEML_SERVER_URL codeset register --name "mlflow-test" --project "mlflow-project-01" "models/mlflow-wines"
+fuseml codeset register --name "mlflow-test" --project "mlflow-project-01" codesets/mlflow-wines
 ```
 
-### 5. Check the result directly on the GITEA website. Login on `http://gitea.<YOUR FUSEML URL>` using username `dev` and password `changeme`. You should find
-   a new organization named `mlflow-project-01` and a repo named `mlflow-test`.
+**5.** Check the result directly on the GITEA website. Login on `http://gitea.<YOUR FUSEML URL>` using username `dev` and password `changeme`. You should find a new organization named `mlflow-project-01` and a repo named `mlflow-test`.
 
-### 6. Update the example to fit your setup
+**6.** Update the example to fit your setup
 
 The workflow definition example has some hardcoded values that need to be changed for your specific environment. Namely, see the AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY values: these are the credentials to the S3 based minio store that was installed to your cluster by fuseml-installer.
 
@@ -49,45 +41,45 @@ To get these values from your cluster setup, run
 ```bash
 export ACCESS=$(kubectl get secret -n fuseml-workloads mlflow-minio -o json| jq -r '.["data"]["accesskey"]' | base64 -d)
 export SECRET=$(kubectl get secret -n fuseml-workloads mlflow-minio -o json| jq -r '.["data"]["secretkey"]' | base64 -d)
+```
 
 Now replace the original values in the pipeline-01.yaml example. You can do it by editing the file manually or by running following command:
 
+```
 sed -i -e "/AWS_ACCESS_KEY_ID/{N;s/value: [^ \t]*/value: $ACCESS/}" pipelines/pipeline-01.yaml
 sed -i -e "/AWS_SECRET_ACCESS_KEY/{N;s/value: [^ \t]*/value: $SECRET/}" pipelines/pipeline-01.yaml
 ```
 
-### 7. Create a workflow
+**7.** Create a workflow
 
 Use the modified example workflow definition:
 
 ```bash
-fuseml --url $FUSEML_SERVER_URL workflow create pipelines/pipeline-01.yaml
+fuseml workflow create pipelines/pipeline-01.yaml
 ```
 
-### 8. Assign the codeset to workflow
+**8.** Assign the codeset to workflow
 
 ```bash
-fuseml --url $FUSEML_SERVER_URL workflow assign --name mlflow-sklearn-e2e --codeset-name mlflow-test --codeset-project mlflow-project-01
+fuseml workflow assign --name mlflow-sklearn-e2e --codeset-name mlflow-test --codeset-project mlflow-project-01
 ``` 
 
-### Monitoring the workflow from the command-line
+**9.** Monitor the workflow from the command-line
 
 Now that the Workflow is assigned to the Codeset, a new workflow run was created. To watch the workflow progress, check "workflow run" with:
 
 ```bash
-fuseml --url $FUSEML_SERVER_URL workflow list-runs --workflow-name mlflow-sklearn-e2e
+fuseml workflow list-runs --name mlflow-sklearn-e2e
 ```
 
-This command shows you detailed information about running workflow. Follow the url value under output section to see relevant Tekton PipelineRun which implements the workflow run.
+This command shows you detailed information about running workflow. You may also follow the URL value under output section to see relevant information about the underlying Tekton PipelineRun which implements the workflow run. Once the run is succeeded, a new FuseML application will be created.
 
-Or browse to TEKTON_DASHBOARD_URL (http://tekton.<YOUR FUSEML INSTANCE URL>) to check all available PipelineRuns. Once the run is succeeded, new FuseML application will be created.
-
-### 9. Use the prediction service
+**10.** Access the prediction service
 
 Once the application is created, check the applications list with:
 
 ```bash
-fuseml --url $FUSEML_SERVER_URL application list
+fuseml application list
 ```
 
 This should produce output similar to this one (notice the fake "example.io" domain here):
@@ -140,7 +132,7 @@ The output should look like
 }
 ```
 
-### 10. (Optional) Use the webapp example
+**10.** (Optional) Use the webapp example
 
 Alternatively one may use a simple app we developed using [streamlit](https://streamlit.io/).
 
