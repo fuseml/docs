@@ -7,7 +7,7 @@ nav:
     - Architecture: architecture.md
     - Api Reference: api.md
     - Cli Reference: cli.md
-    - Contributing: contributing.md
+    - Contributing: contribute.md
 theme:
   name: material
   palette:
