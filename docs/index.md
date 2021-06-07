@@ -36,7 +36,7 @@ No time for reading? Here's a sneak preview of the installation process of FuseM
 The team behind FuseML is reachable through:
 
 - [Github](https://github.com/fuseml)
-- Slack channel: Coming...
+- Slack channel: [Join](https://join.slack.com/t/fuseml/shared_invite/zt-rcs6kepe-rGrMzlj0hrRlalcahWzoWg)
 - [YouTube](https://www.youtube.com/channel/UCQLoLTikJDDMXvywWd27FBg)
 
 ## Sponsor FuseML
