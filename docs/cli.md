@@ -34,19 +34,10 @@ Use "fuseml [command] --help" for more information about a command.
 
 Most CLI commands require you to supply the URL where the FuseML instance is running, either as a command line argument,
 or as the FUSEML_SERVER_URL environment variable. The URL is printed out by the installer during the installation process.
-If you missed it, you can retrieve it at  any time with one of the following commands, depending on which type of ingress
-was used during installation (Traefik or Istio):
-
-* for Istio:
+If you missed it, you can retrieve it at  any time with the following command:
 
 ```bash
 export FUSEML_SERVER_URL=http://$(kubectl get VirtualService -n fuseml-core fuseml-core -o jsonpath="{.spec.hosts[0]}")
-```
-
-* for Traefik:
-
-```bash
-export FUSEML_SERVER_URL=http://$(kubectl get ingress -n fuseml-core fuseml-core -o jsonpath="{.spec.rules[0].host}")
 ```
 
 ## Codesets

@@ -7,6 +7,8 @@ In order to use FuseML one may simply do the following:
 We assume that a Kubernetes cluster is already up and running. If not a good way to start with a local cluster is to use [KinD](https://kind.sigs.k8s.io/docs/user/quick-start/) or [Rancher K3s](https://k3s.io/).
 
 
+**IMPORTANT**: if you're installing a Rancher K3s cluster, it's recommended to skip installing the default Traefik ingress controller. The FuseML installer deploys Istio as a component and Istio is also required by some of the 3rd party tools that FuseML is integrated with (e.g. KNative, KFServing).
+
 Additional software requirements:
 
 * helm: install the package provided by your OS, or check upstream installation guide at https://helm.sh/docs/intro/install/
@@ -76,11 +78,6 @@ Configuration...
 🚢 Downloading command line client...
 🚢 FuseML command line client saved as /home/user/fuseml/fuseml.
 Copy it to the location within your PATH (e.g. /usr/local/bin).
-
-🚢 
-To use the FuseML CLI, you must point it to the FuseML server URL, e.g.:
-
-    export FUSEML_SERVER_URL=http://fuseml-core.10.162.66.101.omg.howdoi.website
 
 ✔️  FuseML installed.
 System domain: 10.162.66.101.omg.howdoi.website

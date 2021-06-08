@@ -32,18 +32,10 @@ and install KFServing manually.
 **2.** Set the FUSEML_SERVER_URL environment variable to point to the server URL
 
 The fuseml server URL is printed out by the installer during the FuseML installation. If you missed it, you can retrieve it at 
-any time with one of the following commands, depending on which type of ingress was used during installation (Traefik or Istio):
-
-* for Istio:
+any time with the following command:
 
 ```bash
 export FUSEML_SERVER_URL=http://$(kubectl get VirtualService -n fuseml-core fuseml-core -o jsonpath="{.spec.hosts[0]}")
-```
-
-* for Traefik:
-
-```bash
-export FUSEML_SERVER_URL=http://$(kubectl get ingress -n fuseml-core fuseml-core -o jsonpath="{.spec.rules[0].host}")
 ```
 
 **3.** Get the example code
