@@ -34,7 +34,7 @@ Use "fuseml [command] --help" for more information about a command.
 
 Most CLI commands require you to supply the URL where the FuseML instance is running, either as a command line argument,
 or as the FUSEML_SERVER_URL environment variable. The URL is printed out by the installer during the installation process.
-If you missed it, you can retrieve it at any time with the following command:
+If you missed it, you can retrieve it at  any time with the following command:
 
 ```bash
 export FUSEML_SERVER_URL=http://$(kubectl get VirtualService -n fuseml-core fuseml-core -o jsonpath="{.spec.hosts[0]}")
