@@ -14,7 +14,10 @@ We follow 5 simple principles
 
 - **Collaboration** - use MLOps automation and tool integration recipes created in collaboration by all AI/ML team roles - Data Scientists, Data Engineers, and DevOps Engineers
 
-- **GitOps for Machine Learning** - apply the key principles that GitOps is based on, such as versioning and the declarative paradigm to concepts specific to machine learning - e.g. models, datasets, workflows - to provide features such as end-to-end artifact versioning and lineage, tracking, reproducibility and reactive automation  
+- **GitOps for Machine Learning** - apply the key principles that GitOps is based on, such as versioning and the declarative paradigm to concepts specific to machine learning - e.g. models, datasets, workflows - to provide features such as end-to-end artifact versioning and lineage, tracking, reproducibility and reactive automation
+
+<img src="fuseml-mlops-anim-fade.gif" style="text-align:center;">
+<a href="https://cloud.google.com/solutions/machine-learning/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning#top_of_page">Figure adopted from “MLOps: Continuous delivery and automation pipelines in machine learning”</a>
 
 ## Where to proceed from here
 
