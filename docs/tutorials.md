@@ -45,20 +45,20 @@ git clone --depth 1 https://github.com/fuseml/examples.git
 cd examples
 ```
 
-Under the `codesets/mlflow-wines` directory, there is the example MLflow project. It's a slightly modified version of the upstream MLflow public example [here](https://mlflow.org/docs/latest/tutorials-and-examples/tutorial.html).
+Under the `codesets/mlflow` directory, there are some example MLflow projects. The `sklearn` one is a slightly modified version of the upstream MLflow public example [here](https://mlflow.org/docs/latest/tutorials-and-examples/tutorial.html).
 
 **4.** Register the codeset
 
 Register the example code as a FuseML versioned codeset artifact:
 
 ```bash
-fuseml codeset register --name "mlflow-test" --project "mlflow-project-01" codesets/mlflow-wines
+fuseml codeset register --name "mlflow-test" --project "mlflow-project-01" codesets/mlflow/sklearn
 ```
 
 Example output:
 
 ```bash
-> fuseml codeset register --name "mlflow-test" --project "mlflow-project-01" codesets/mlflow-wines
+> fuseml codeset register --name "mlflow-test" --project "mlflow-project-01" codesets/mlflow/sklearn
 2021/06/07 18:30:08 Pushing the code to the git repository...
 Codeset http://gitea.10.162.66.101.omg.howdoi.website/mlflow-project-01/mlflow-test.git successfully registered
 Username for accessing the project: <username>
@@ -78,20 +78,20 @@ To get these values from your cluster setup and replace them in the workflow def
 ```bash
 export ACCESS=$(kubectl get secret -n fuseml-workloads mlflow-minio -o json| jq -r '.["data"]["accesskey"]' | base64 -d)
 export SECRET=$(kubectl get secret -n fuseml-workloads mlflow-minio -o json| jq -r '.["data"]["secretkey"]' | base64 -d)
-sed -i -e "/AWS_ACCESS_KEY_ID/{N;s/value: [^ \t]*/value: $ACCESS/}" workflows/mlflow-sklearn-e2e.yaml
-sed -i -e "/AWS_SECRET_ACCESS_KEY/{N;s/value: [^ \t]*/value: $SECRET/}" workflows/mlflow-sklearn-e2e.yaml
+sed -i -e "/AWS_ACCESS_KEY_ID/{N;s/value: [^ \t]*/value: $ACCESS/}" workflows/mlflow-e2e.yaml
+sed -i -e "/AWS_SECRET_ACCESS_KEY/{N;s/value: [^ \t]*/value: $SECRET/}" workflows/mlflow-e2e.yaml
 ```
 
 Use the modified example workflow definition to create a workflow in FuseML:
 
 ```bash
-fuseml workflow create workflows/mlflow-sklearn-e2e.yaml
+fuseml workflow create workflows/mlflow-e2e.yaml
 ```
 
 **6.** Assign the codeset to the workflow
 
 ```bash
-fuseml workflow assign --name mlflow-sklearn-e2e --codeset-name mlflow-test --codeset-project mlflow-project-01
+fuseml workflow assign --name mlflow-e2e --codeset-name mlflow-test --codeset-project mlflow-project-01
 ``` 
 
 **7.** Monitor the workflow from the command-line
@@ -99,28 +99,28 @@ fuseml workflow assign --name mlflow-sklearn-e2e --codeset-name mlflow-test --co
 Now that the Workflow is assigned to the Codeset, a new workflow run was created. To watch the workflow progress, check "workflow run" with:
 
 ```bash
-fuseml workflow list-runs --name mlflow-sklearn-e2e
+fuseml workflow list-runs --name mlflow-e2e
 ```
 
 Example output:
 
 ```
-> fuseml workflow list-runs --name mlflow-sklearn-e2e
-+--------------------------------------------+--------------------+--------------+----------+---------+
-| NAME                                       | WORKFLOW           | STARTED      | DURATION | STATUS  |
-+--------------------------------------------+--------------------+--------------+----------+---------+
-| fuseml-mlflow-project-01-mlflow-test-mlprp | mlflow-sklearn-e2e | 1 minute ago | ---      | Running |
-+--------------------------------------------+--------------------+--------------+----------+---------+
+> fuseml workflow list-runs --name mlflow-e2e
++--------------------------------------------+------------+--------------+----------+---------+
+| NAME                                       | WORKFLOW   | STARTED      | DURATION | STATUS  |
++--------------------------------------------+------------+--------------+----------+---------+
+| fuseml-mlflow-project-01-mlflow-test-mlprp | mlflow-e2e | 1 minute ago | ---      | Running |
++--------------------------------------------+------------+--------------+----------+---------+
 ```
 
 This command shows you detailed information about running workflow. You may also follow the Tekton URL value under the expanded output section to see relevant information about the underlying Tekton PipelineRun which implements the workflow run:
 
 
 ```
-> fuseml workflow list-runs --name mlflow-sklearn-e2e --format yaml
+> fuseml workflow list-runs --name mlflow-e2e --format yaml
 ---
 - name: fuseml-mlflow-project-01-mlflow-test-hr67k
-  workflowref: mlflow-sklearn-e2e
+  workflowref: mlflow-e2e
   inputs:
   - input:
       name: mlflow-codeset
@@ -148,15 +148,15 @@ This command shows you detailed information about running workflow. You may also
   url: "http://tekton.10.162.66.101.omg.howdoi.website/#/namespaces/fuseml-workloads/pipelineruns/fuseml-mlflow-project-01-mlflow-test-hr67k"
 ```
 
-Once the run is succeeded, the status value changes to `Succeeded` in the CLI:
+Once the run succeeds, the status value changes to `Succeeded` in the CLI:
 
 ```
-> fuseml workflow list-runs --name mlflow-sklearn-e2e
-+--------------------------------------------+--------------------+----------------+------------+-----------+
-| NAME                                       | WORKFLOW           | STARTED        | DURATION   | STATUS    |
-+--------------------------------------------+--------------------+----------------+------------+-----------+
-| fuseml-mlflow-project-01-mlflow-test-mlprp | mlflow-sklearn-e2e | 22 minutes ago | 22 minutes | Succeeded |
-+--------------------------------------------+--------------------+----------------+------------+-----------+
+> fuseml workflow list-runs --name mlflow-e2e
++--------------------------------------------+------------+----------------+------------+-----------+
+| NAME                                       | WORKFLOW   | STARTED        | DURATION   | STATUS    |
++--------------------------------------------+------------+----------------+------------+-----------+
+| fuseml-mlflow-project-01-mlflow-test-mlprp | mlflow-e2e | 22 minutes ago | 22 minutes | Succeeded |
++--------------------------------------------+------------+----------------+------------+-----------+
 ```
 
 **8.** Access the prediction service
@@ -171,17 +171,17 @@ This should produce output similar to this one:
 
 ```
 > fuseml application list
-+-------------------------------+-----------+------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------+--------------------+
-| NAME                          | TYPE      | DESCRIPTION                                          | URL                                                                                                             | WORKFLOW           |
-+-------------------------------+-----------+------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------+--------------------+
-| mlflow-project-01-mlflow-test | predictor | Application generated by mlflow-sklearn-e2e workflow | http://mlflow-project-01-mlflow-test.fuseml-workloads.10.162.66.101.omg.howdoi.website/v2/models/mlflow-project-01-mlflow-test/infer | mlflow-sklearn-e2e |
-+-------------------------------+-----------+------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------+--------------------+
++-------------------------------+-----------+----------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+------------+
+| NAME                          | TYPE      | DESCRIPTION                                  | URL                                                                                                                                  | WORKFLOW   |
++-------------------------------+-----------+----------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+------------+
+| mlflow-project-01-mlflow-test | predictor | Application generated by mlflow-e2e workflow | http://mlflow-project-01-mlflow-test.fuseml-workloads.10.162.66.101.omg.howdoi.website/v2/models/mlflow-project-01-mlflow-test/infer | mlflow-e2e |
++-------------------------------+-----------+----------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+------------+
 ```
 
 Use the URL from the new application to run the prediction. The example already includes a prediction data example:
 
 ```bash
-cat prediction/data-wines-kfserving.json
+cat prediction/data-sklearn.json
 {
     "inputs": [
     {
@@ -201,7 +201,7 @@ which you can pass to the prediction service:
 ```bash
 export PREDICTOR_URL=http://mlflow-project-01-mlflow-test.fuseml-workloads.10.162.66.101.omg.howdoi.website/v2/models/mlflow-project-01-mlflow-test/infer
 
-curl -d @data.json http://$PREDICTOR_URL
+curl -d @prediction/data-sklearn.json $PREDICTOR_URL
 
 The output should look like
 
