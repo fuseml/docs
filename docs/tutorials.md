@@ -13,18 +13,23 @@ check first the [quick start](quickstart.md) section.
 
 **1.** Install 3rd party ML tools
 
-Running this example requires MLflow and KFServing to be installed in the same cluster as FuseML. For your
-convenience, an MLflow tracking server is already deployed as part of the main FuseML installation.
+Running this example requires MLflow and KFServing to be installed in the same cluster as FuseML.
 
-For a quick KFServing installation, you can use the scripts already hosted in the fuseml GitHub repository.
-Running the following will install KFServing on your cluster, along with all its prerequisites (cert-manager,
-istio and knative): 
+For a quick MLFlow and KFServing installation, run the installer with the appropriate values for `--extensions`
+option.
+
 
 ```bash
-git clone --depth 1 -b release-0.1 https://github.com/fuseml/fuseml.git fuseml-scripts
-cd fuseml-scripts
-make kfserving-install
+fuseml-installer install --extensions mlflow,kfserving
 ```
+
+To find out about installed extensions, install new or remove installed ones, use
+
+```bash
+fuseml-installer extensions --help
+```
+
+command.
 
 Alternatively, you can follow [the KFServing official instructions](https://github.com/kubeflow/kfserving/blob/master/README.md)
 and install KFServing manually.

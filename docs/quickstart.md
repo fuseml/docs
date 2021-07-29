@@ -45,42 +45,39 @@ You should get an output similar to this:
 🚢 FuseML installing...
 
 Configuration...
-  🧭  system_domain: 
+  🧭  system_domain:
+  🧭  extension_repository: https://raw.githubusercontent.com/fuseml/extensions/main/installer/
 
 🚢 Deploying Istio.....
 ✔️  Istio deployed
 .
-✔️  Created system_domain: 10.162.66.101.omg.howdoi.website
-
-🚢 Deploying Quarks.......
-✔️  Quarks deployed
+✔️  Created system_domain: 172.18.0.2.nip.io
 
 🚢 Deploying Workloads...
 ✔️  Workloads deployed
 
-🚢 Deploying MLflow.......................................................
-✔️  Minio deployed (http://minio.10.162.66.101.omg.howdoi.website).
+🚢 Deploying Gitea.................................
+✔️  Gitea deployed (http://gitea.172.18.0.2.nip.io).
 
-✔️  MLflow deployed (http://mlflow.10.162.66.101.omg.howdoi.website).
-
-🚢 Deploying Gitea..........................................................
-✔️  Gitea deployed (http://gitea.10.162.66.101.omg.howdoi.website).
-
-🚢 Deploying Registry.............
+🚢 Deploying Registry..........
 ✔️  Registry deployed
 
-🚢 Deploying Tekton................................
-✔️  Tekton deployed (http://tekton.10.162.66.101.omg.howdoi.website).
+🚢 Deploying Tekton.............................................................................
+✔️  Tekton deployed (http://tekton.172.18.0.2.nip.io).
 
-🚢 Deploying Core.........
-✔️  FuseML core component deployed (http://fuseml-core.10.162.66.101.omg.howdoi.website).
+🚢 Deploying Core...........
+✔️  FuseML core component deployed (http://fuseml-core.172.18.0.2.nip.io).
 
 🚢 Downloading command line client...
-🚢 FuseML command line client saved as /home/user/fuseml/fuseml.
+🚢 FuseML command line client saved as /home/jsuchome/kubernetes/fuseml/fuseml.
 Copy it to the location within your PATH (e.g. /usr/local/bin).
 
+🚢 To use the FuseML CLI, you must point it to the FuseML server URL, e.g.:
+
+    export FUSEML_SERVER_URL=http://fuseml-core.172.18.0.2.nip.io
+
 ✔️  FuseML installed.
-System domain: 10.162.66.101.omg.howdoi.website
+System domain: 172.18.0.2.nip.io
 ```
 
 The FuseML installer prints out URLs for mlflow, gitea, tekton and fuseml-core. You can access those sub-services directly at any given time. The fuseml core URL is especially important, as you'll need that to use the FuseML CLI.
