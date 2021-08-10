@@ -6,15 +6,15 @@ Testing FuseML is simpler than one may think. Let's showcase some use cases.
 
 This example shows how FuseML can be used to automate and end-to-end machine learning workflow using
 a combination of different tools. In this case, we have a scikit-learn ML model that is being trained
-with MLflow and then served with KFServing.
+using [MLflow](https://mlflow.org/) and then served with [KFServing](https://github.com/kubeflow/kfserving).
 
-We assume that both the FuseML infrastructure and the FuseML CLI are already installed, if not please
+We assume that both FuseML infrastructure and the FuseML CLI are already installed, if not please
 check first the [quick start](quickstart.md) section.
 
 **1.** Install 3rd party ML tools
 
-Running this example requires MLFlow and KFServing to be installed in the same cluster as FuseML. For your
-convenience, an MLFlow tracking server is already deployed as part of the main FuseML installation. 
+Running this example requires MLflow and KFServing to be installed in the same cluster as FuseML. For your
+convenience, an MLflow tracking server is already deployed as part of the main FuseML installation.
 
 For a quick KFServing installation, you can use the scripts already hosted in the fuseml GitHub repository.
 Running the following will install KFServing on your cluster, along with all its prerequisites (cert-manager,
@@ -29,23 +29,24 @@ make kfserving-install
 Alternatively, you can follow [the KFServing official instructions](https://github.com/kubeflow/kfserving/blob/master/README.md)
 and install KFServing manually.
 
-**2.** Set the FUSEML_SERVER_URL environment variable to point to the server URL
+**2.** Set `FUSEML_SERVER_URL` environment variable to point to fuseml-core
 
-The fuseml server URL is printed out by the installer during the FuseML installation. If you missed it, you can retrieve it at 
-any time with the following command:
+The fuseml-core URL was printed out by the installer during the FuseML installation.Alternatively, you can run the following
+command to retrieve the fuseml-core URL and set the `FUSEML_SERVER_URL` environment variable:
 
 ```bash
 export FUSEML_SERVER_URL=http://$(kubectl get VirtualService -n fuseml-core fuseml-core -o jsonpath="{.spec.hosts[0]}")
 ```
 
-**3.** Get the example code
+**3.** Fetch the FuseML examples code
 
 ```bash
 git clone --depth 1 -b release-0.1 https://github.com/fuseml/examples.git
 cd examples
 ```
 
-Under the `codesets/mlflow` directory, there are some example MLflow projects. The `sklearn` one is a slightly modified version of the upstream MLflow public example [here](https://mlflow.org/docs/latest/tutorials-and-examples/tutorial.html).
+Under the `codesets/mlflow` directory, there are some example MLflow projects. For this tutorial we will be using the
+`sklearn` project.
 
 **4.** Register the codeset
 
@@ -69,11 +70,11 @@ You may optionally log into the Gitea UI using the URL, username and password pr
 
 **5.** Create a workflow
 
-The example FuseML workflow included in the examples repository represents a complete, end-to-end ML pipeline "compatible" with any codeset that contains an MLProject. It includes all the steps necessary to train a model with MLFlow, save the model and then create a KFServing prediction service for it. 
+The example FuseML workflow included in the examples repository represents a complete, end-to-end ML pipeline "compatible" with any codeset that contains an MLProject. It includes all the steps necessary to train a model with MLflow, save the model and then creates a KFServing prediction service for it.
 
-The workflow definition example has some hardcoded values that need to be changed for your specific environment. Namely, see the AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY values: these are the credentials to the S3 based minio store that was installed to your cluster by fuseml-installer.
+The workflow definition example has some hardcoded values that need to be changed for your specific environment. Namely, the AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY values: these are the credentials to the S3 based minio store that was installed on your cluster by fuseml-installer.
 
-To get these values from your cluster setup and replace them in the workflow definition, run:
+To retrieve these values from your cluster setup and replace them in the workflow definition, run:
 
 ```bash
 export ACCESS=$(kubectl get secret -n fuseml-workloads mlflow-minio -o json| jq -r '.["data"]["accesskey"]' | base64 -d)
@@ -159,9 +160,10 @@ Once the run succeeds, the status value changes to `Succeeded` in the CLI:
 +--------------------------------------------+------------+----------------+------------+-----------+
 ```
 
-**8.** Access the prediction service
+**8.** Test the deployed model
 
-When the workflow run is complete, a new prediction service is created and registered as a FuseML application entry. You can check the applications list with:
+When the workflow run is complete, a new inference service is created and registered as a FuseML application. You can list the applications deployed
+by FuseML by running the following command:
 
 ```bash
 fuseml application list
@@ -178,7 +180,8 @@ This should produce output similar to this one:
 +-------------------------------+-----------+----------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+------------+
 ```
 
-Use the URL from the new application to run the prediction. The example already includes a prediction data example:
+The application URL is used to submit a request to the inference service. The examples repository includes a prediction data sample at
+`prediction/data-sklearn.json`:
 
 ```bash
 cat prediction/data-sklearn.json
@@ -196,15 +199,16 @@ cat prediction/data-sklearn.json
 }
 ```
 
-which you can pass to the prediction service:
+Run the following commands to send a inference request to the deployed model:
 
 ```bash
-export PREDICTOR_URL=http://mlflow-project-01-mlflow-test.fuseml-workloads.10.162.66.101.omg.howdoi.website/v2/models/mlflow-project-01-mlflow-test/infer
+export PREDICTOR_URL=$(fuseml application list --format json | jq -r ".[0].url")
+curl -d @prediction/data-sklearn.json $PREDICTOR_URL | jq
+```
 
-curl -d @prediction/data-sklearn.json $PREDICTOR_URL
+The output will be something similar to:
 
-The output should look like
-
+```json
 {
     "model_name":"mlflow-project-01-mlflow-test",
     "model_version":null,
@@ -222,22 +226,27 @@ The output should look like
 }
 ```
 
-**9.** (Optional) Use the webapp example
+**9.** (Optional) Use the webapp example to test the deployed model
 
-Rather than using curl to exercise the prediction service, you may use a simple app we developed using [streamlit](https://streamlit.io/).
+Rather than using curl to exercise the inference service, you may use a simple app we developed using [streamlit](https://streamlit.io/).
 
-First, you need to install streamlit as covered [in the official documentation](https://docs.streamlit.io/en/stable/troubleshooting/clean-install.html). The short version using `pip` is this:
-
-```bash
-python3 -m venv env
-source env/bin/activate
-pip install streamlit
-```
-
-To start the application, then just run:
+First, deploy the application into your kubernetes cluster by running the following command:
 
 ```bash
-streamlit run webapps/wineapp.py
+kubectl apply -f webapps/winery/service.yaml
 ```
 
-Follow the instructions presented in the webpage to make your own prediction with the FuseML application you just deployed.
+Run the following command to check the application deployment status:
+```bash
+kubectl get ksvc -n fuseml-workloads winery
+```
+
+At some point it should reach the `READY` status and a URL is provided to access the application.
+For example:
+```bash
+❯ kubectl get ksvc -n fuseml-workloads winery
+NAME     URL                                                                                LATESTCREATED   LATESTREADY    READY   REASON
+winery   http://winery.fuseml-workloads.fuseml-workloads.10.162.66.101.omg.howdoi.website   winery-00001    winery-00001   True
+```
+
+Open the application URL and follow the instructions presented on the webpage to make your own predictions with the FuseML application you just deployed.
