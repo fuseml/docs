@@ -21,7 +21,7 @@ Running the following will install KFServing on your cluster, along with all its
 istio and knative): 
 
 ```bash
-git clone --depth 1 https://github.com/fuseml/fuseml.git fuseml-scripts
+git clone --depth 1 -b release-0.1 https://github.com/fuseml/fuseml.git fuseml-scripts
 cd fuseml-scripts
 make kfserving-install
 ```
