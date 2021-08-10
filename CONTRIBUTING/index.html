@@ -1,0 +1,653 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.3">
+    
+    
+      
+        <title>Contributing - FuseML Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.f7f47774.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4cae4f">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="green" data-md-color-accent="cyan">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#how-to-contribute-to-fuseml-project" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="FuseML Documentation" class="md-header__button md-logo" aria-label="FuseML Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FuseML Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Contributing
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/fuseml/fuseml/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="FuseML Documentation" class="md-nav__button md-logo" aria-label="FuseML Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    FuseML Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/fuseml/fuseml/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        Quick Start
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/" class="md-nav__link">
+        Tutorials
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        Architecture
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        API Reference
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli/" class="md-nav__link">
+        CLI Reference
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Contributing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Contributing
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#our-processes" class="md-nav__link">
+    Our processes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-contribute" class="md-nav__link">
+    How to contribute
+  </a>
+  
+    <nav class="md-nav" aria-label="How to contribute">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#process" class="md-nav__link">
+    Process
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commits-requirements" class="md-nav__link">
+    Commits requirements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#committing-large-changes" class="md-nav__link">
+    Committing large changes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pull-requests-requirements" class="md-nav__link">
+    Pull requests requirements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentation-and-language" class="md-nav__link">
+    Documentation and language
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#review-expectations" class="md-nav__link">
+    Review expectations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maintainer-duties" class="md-nav__link">
+    Maintainer duties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#community-member-behavior" class="md-nav__link">
+    Community member behavior
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#our-processes" class="md-nav__link">
+    Our processes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-contribute" class="md-nav__link">
+    How to contribute
+  </a>
+  
+    <nav class="md-nav" aria-label="How to contribute">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#process" class="md-nav__link">
+    Process
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commits-requirements" class="md-nav__link">
+    Commits requirements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#committing-large-changes" class="md-nav__link">
+    Committing large changes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pull-requests-requirements" class="md-nav__link">
+    Pull requests requirements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentation-and-language" class="md-nav__link">
+    Documentation and language
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#review-expectations" class="md-nav__link">
+    Review expectations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maintainer-duties" class="md-nav__link">
+    Maintainer duties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#community-member-behavior" class="md-nav__link">
+    Community member behavior
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/fuseml/docs/edit/main/docs/CONTRIBUTING.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="how-to-contribute-to-fuseml-project">How to Contribute to FuseML Project</h1>
+<h2 id="our-processes">Our processes</h2>
+<p>This repository is used through the entired development process. All the code is publicly available, and the code reviews are public. <strong>Anyone</strong> is welcome to contribute to those.</p>
+<p>In terms of design, <strong>anyone</strong> is welcomed to propose requirements. Do not hesitate to share any design requirements or improvements. We will discuss them publicly in this repository. This means that any user, developer, or contributor of an eventual fork is welcomed to propose code or design changes.</p>
+<p>We aim to maintain a healthy community where decisions are made using lazy consensus. All our processes should be described in this document.</p>
+<p>We aim to have simple, lightweight processes. Any suggestion is welcome.</p>
+<h2 id="how-to-contribute">How to contribute</h2>
+<h3 id="process">Process</h3>
+<p>Our process to contribute is the usual github workflow.</p>
+<p>If you didn't set up git yet, have a look <a href="https://docs.github.com/en/github/getting-started-with-github/set-up-git">here</a></p>
+<p>The next step is to fork our project: <a href="https://docs.github.com/en/github/getting-started-with-github/fork-a-repo">here</a></p>
+<p>Then create your own branch for your bug/feature, edit the code/documentation, commit, and push your changes in your repository</p>
+<pre><code class="language-bash">$ git checkout -b &lt;branchname&gt;
+$ ...
+$ git commit
+$ git push origin HEAD
+</code></pre>
+<p>Finally, create a pull request (using the web interface or using your favorite github client tool).</p>
+<p>Expectations for commit and pull requests are expressed below.</p>
+<p>If your contribution doesn't land immediately, you might need to rebase your change based on the branch you are targetting with your PR (e.g. <code>main</code>):</p>
+<pre><code class="language-bash">## Go back to the target branch (e.g. main) branch
+$ git checkout &lt;origin target branch name&gt;
+## Update your local repo with the latest origin data
+$ git pull origin &lt;local target branch name &gt;
+## Go back into your development branch
+$ git checkout &lt;branchname&gt;
+## Update your development branch
+$ git rebase &lt;targetbranch&gt;
+## Resolve any conflicts here
+$ git commit --amend
+## Now force push to replace your PR's content
+$ git push origin HEAD -f
+</code></pre>
+<h3 id="commits-requirements">Commits requirements</h3>
+<ul>
+<li>Don't mix whitespace changes with functional code changes</li>
+<li>Don't mix two unrelated functional changes</li>
+<li>Don't send large new features in a giant commit.</li>
+<li>Do not assume the reviewer understands what the original problem was, provide all the necessary tools for reviewers to do their job</li>
+<li>Describe why a change is made, not how a change is made. It is encouraged to mention any limitations or problems of the current code, and how the commit is fixing those pains.</li>
+<li>We are following conventional commits (https://www.conventionalcommits.org/en/v1.0.0/). Please write your commit messages appropriately.</li>
+</ul>
+<p>See also: https://wiki.openstack.org/wiki/GitCommitMessages</p>
+<p>Next to this, it is recommended to sign your commits.</p>
+<h3 id="committing-large-changes">Committing large changes</h3>
+<p>A large change must always come with the following:</p>
+<ul>
+<li>An issue clearly explaining the problem</li>
+<li>An principle approval by the maintainers in the issue or a merged (=approved) design document.</li>
+<li>A PR that contain multiple single unit of changes, each separately reviewable</li>
+</ul>
+<h3 id="pull-requests-requirements">Pull requests requirements</h3>
+<p>If you are sending a PR, the team expects you to monitor it at least until it merges. You should not expect the community to finish the work for you.
+Upon merging, you are considered an owner of the code. Please make yourself available for any questions regarding your code. By being available, you will help others to understand your code, and will strengthen the community.</p>
+<p>PRs can contain one or more commits. Ideally PRs should contain only one commit (one logical change). Please squash your commits into units of logical change.</p>
+<p>PRs must include documentation.</p>
+<h3 id="documentation-and-language">Documentation and language</h3>
+<p>Sadly, there isn't one single language. We want to be welcoming of all languages in the future. Currently, the language for contributions and conversations is English.</p>
+<h3 id="review-expectations">Review expectations</h3>
+<p>Anyone is welcomed to review code.
+Reviewers must ensure the rules for commits and PR are applied (including the presence of documentation).</p>
+<p>If you are regularly reviewing code, you will be invited to the maintainer group.</p>
+<h3 id="maintainer-duties">Maintainer duties</h3>
+<p>Maintainers are people with more access to the repository.
+We expect the maintainers to be the heralds of the good practices of this document.</p>
+<p>A few extra rules apply to them:</p>
+<ul>
+<li>Maintainers must NOT push to existing branches without going through a PR.</li>
+<li>Maintainers must NOT force merge patches. An exception can be made to unbreak tests.</li>
+<li>A maintainer must regularily triage issues and review PRs</li>
+<li>A maintainer is responsible to enforce the code of conduct.</li>
+</ul>
+<h3 id="community-member-behavior">Community member behavior</h3>
+<p>Everyone must follow our code of conduct</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../cli/" class="md-footer__link md-footer__link--prev" aria-label="Previous: CLI Reference" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              CLI Reference
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 FuseML Author(s)
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.29db7785.min.js"></script>
+      
+    
+  </body>
+</html>
