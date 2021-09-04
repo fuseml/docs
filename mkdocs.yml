@@ -21,3 +21,7 @@ plugins:
 
 # TODO: Validate with our legal team.
 copyright: "Copyright &copy; 2021 FuseML Author(s)"
+
+extra:
+  version:
+    provider: mike
