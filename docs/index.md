@@ -1,8 +1,8 @@
 # Welcome to FuseML [fju:zɛmɛl]
 
-### **F**lexible **U**niversal **SE**rvice orchestration for **M**achine **L**earning
+## Open Source Orchestration for Machine Learning
 
-Our goal is to to build a coherent stack of community shared AI/ML tools to run your ML operations. FuseML is an MLOps orchestrator powered by a flexible framework designed for consistent operations and a rich collection of integration formulas (recipes) reflecting real world use cases that help you reduce technical debt and avoid vendor lock-in.
+FuseML is an MLOps orchestrator powered by a flexible framework designed for consistent operations and a rich collection of integration formulas (recipes) reflecting real world use cases that help you reduce technical debt and avoid vendor lock-in.
 
 We follow 5 simple principles
 
