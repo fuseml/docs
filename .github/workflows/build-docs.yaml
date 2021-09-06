@@ -9,10 +9,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v2
         with:
           python-version: 3.x
       - run: pip install mike
       - run: pip install mkdocs-material
       - run: pip install mkdocs-render-swagger-plugin
+      - name: setup doc deploy
+        run: |
+          git config --global user.name FuseML
+          git config --global user.email docs@fuseml
       - run: mike deploy --push --rebase --update-aliases dev
