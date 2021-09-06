@@ -13,6 +13,11 @@ theme:
   palette:
     primary: green
     accent: cyan
+extra_css:
+  - stylesheets/extra.css
+extra_javascript:
+  - javascripts/extra.js
+
 repo_url: https://github.com/fuseml/fuseml
 edit_uri: https://github.com/fuseml/docs/edit/main/docs/
 
