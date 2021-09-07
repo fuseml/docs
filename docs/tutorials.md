@@ -55,7 +55,7 @@ Under the `codesets/mlflow` directory, there are some example MLflow projects. F
 
 **4.** Register the codeset
 
-Register the example code as a FuseML versioned codeset artifact:
+From now on, you start using *fuseml* command line tool. Register the example code as a FuseML versioned codeset artifact:
 
 ```bash
 fuseml codeset register --name "mlflow-test" --project "mlflow-project-01" codesets/mlflow/sklearn
@@ -77,18 +77,7 @@ You may optionally log into the Gitea UI using the URL, username and password pr
 
 The example FuseML workflow included in the examples repository represents a complete, end-to-end ML pipeline "compatible" with any codeset that contains an MLProject. It includes all the steps necessary to train a model with MLflow, save the model and then creates a KFServing prediction service for it.
 
-The workflow definition example has some hardcoded values that need to be changed for your specific environment. Namely, the AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY values: these are the credentials to the S3 based minio store that was installed on your cluster by fuseml-installer.
-
-To retrieve these values from your cluster setup and replace them in the workflow definition, run:
-
-```bash
-export ACCESS=$(kubectl get secret -n fuseml-workloads mlflow-minio -o json| jq -r '.["data"]["accesskey"]' | base64 -d)
-export SECRET=$(kubectl get secret -n fuseml-workloads mlflow-minio -o json| jq -r '.["data"]["secretkey"]' | base64 -d)
-sed -i -e "/AWS_ACCESS_KEY_ID/{N;s/value: [^ \t]*/value: $ACCESS/}" workflows/mlflow-e2e.yaml
-sed -i -e "/AWS_SECRET_ACCESS_KEY/{N;s/value: [^ \t]*/value: $SECRET/}" workflows/mlflow-e2e.yaml
-```
-
-Use the modified example workflow definition to create a workflow in FuseML:
+Use the example workflow definition to create a workflow in FuseML:
 
 ```bash
 fuseml workflow create workflows/mlflow-e2e.yaml
