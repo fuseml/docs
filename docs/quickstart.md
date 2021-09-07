@@ -46,7 +46,7 @@ You should get an output similar to this:
 
 Configuration...
   🧭  system_domain:
-  🧭  extension_repository: https://raw.githubusercontent.com/fuseml/extensions/main/installer/
+  🧭  extension_repository: https://raw.githubusercontent.com/fuseml/extensions/release-0.2/installer/
 
 🚢 Deploying Istio.....
 ✔️  Istio deployed
