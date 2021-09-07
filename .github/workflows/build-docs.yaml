@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - release-*
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -21,4 +22,5 @@ jobs:
         run: |
           git config --global user.name FuseML
           git config --global user.email docs@fuseml
-      - run: mike deploy --push --rebase --update-aliases dev
+      - run: mike deploy --push --rebase --update-aliases v0.2 latest
+      - run: mike set-default --push --rebase latest
