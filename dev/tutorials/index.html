@@ -383,15 +383,15 @@ using <a href="https://mlflow.org/">MLflow</a> and then served with <a href="htt
 <p>We assume that both FuseML infrastructure and the FuseML CLI are already installed, if not please
 check first the <a href="../quickstart/">quick start</a> section.</p>
 <p><strong>1.</strong> Install 3rd party ML tools</p>
-<p>Running this example requires MLflow and KFServing to be installed in the same cluster as FuseML. For your
-convenience, an MLflow tracking server is already deployed as part of the main FuseML installation.</p>
-<p>For a quick KFServing installation, you can use the scripts already hosted in the fuseml GitHub repository.
-Running the following will install KFServing on your cluster, along with all its prerequisites (cert-manager,
-istio and knative): </p>
-<pre><code class="language-bash">git clone --depth 1 -b release-0.1 https://github.com/fuseml/fuseml.git fuseml-scripts
-cd fuseml-scripts
-make kfserving-install
+<p>Running this example requires MLflow and KFServing to be installed in the same cluster as FuseML.</p>
+<p>For a quick MLFlow and KFServing installation, run the installer with the appropriate values for <code>--extensions</code>
+option.</p>
+<pre><code class="language-bash">fuseml-installer install --extensions mlflow,kfserving
 </code></pre>
+<p>To find out about installed extensions, install new or remove installed ones, use</p>
+<pre><code class="language-bash">fuseml-installer extensions --help
+</code></pre>
+<p>command.</p>
 <p>Alternatively, you can follow <a href="https://github.com/kubeflow/kfserving/blob/master/README.md">the KFServing official instructions</a>
 and install KFServing manually.</p>
 <p><strong>2.</strong> Set <code>FUSEML_SERVER_URL</code> environment variable to point to fuseml-core</p>
@@ -406,7 +406,7 @@ cd examples
 <p>Under the <code>codesets/mlflow</code> directory, there are some example MLflow projects. For this tutorial we will be using the
 <code>sklearn</code> project.</p>
 <p><strong>4.</strong> Register the codeset</p>
-<p>Register the example code as a FuseML versioned codeset artifact:</p>
+<p>From now on, you start using <em>fuseml</em> command line tool. Register the example code as a FuseML versioned codeset artifact:</p>
 <pre><code class="language-bash">fuseml codeset register --name &quot;mlflow-test&quot; --project &quot;mlflow-project-01&quot; codesets/mlflow/sklearn
 </code></pre>
 <p>Example output:</p>
@@ -419,14 +419,7 @@ Password for accessing the project: &lt;password&gt;
 <p>You may optionally log into the Gitea UI using the URL, username and password printed out by the <code>codeset register</code> command. You should find a new organization named <code>mlflow-project-01</code> and a repo named <code>mlflow-test</code>.</p>
 <p><strong>5.</strong> Create a workflow</p>
 <p>The example FuseML workflow included in the examples repository represents a complete, end-to-end ML pipeline "compatible" with any codeset that contains an MLProject. It includes all the steps necessary to train a model with MLflow, save the model and then creates a KFServing prediction service for it.</p>
-<p>The workflow definition example has some hardcoded values that need to be changed for your specific environment. Namely, the AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY values: these are the credentials to the S3 based minio store that was installed on your cluster by fuseml-installer.</p>
-<p>To retrieve these values from your cluster setup and replace them in the workflow definition, run:</p>
-<pre><code class="language-bash">export ACCESS=$(kubectl get secret -n fuseml-workloads mlflow-minio -o json| jq -r '.[&quot;data&quot;][&quot;accesskey&quot;]' | base64 -d)
-export SECRET=$(kubectl get secret -n fuseml-workloads mlflow-minio -o json| jq -r '.[&quot;data&quot;][&quot;secretkey&quot;]' | base64 -d)
-sed -i -e &quot;/AWS_ACCESS_KEY_ID/{N;s/value: [^ \t]*/value: $ACCESS/}&quot; workflows/mlflow-e2e.yaml
-sed -i -e &quot;/AWS_SECRET_ACCESS_KEY/{N;s/value: [^ \t]*/value: $SECRET/}&quot; workflows/mlflow-e2e.yaml
-</code></pre>
-<p>Use the modified example workflow definition to create a workflow in FuseML:</p>
+<p>Use the example workflow definition to create a workflow in FuseML:</p>
 <pre><code class="language-bash">fuseml workflow create workflows/mlflow-e2e.yaml
 </code></pre>
 <p><strong>6.</strong> Assign the codeset to the workflow</p>
