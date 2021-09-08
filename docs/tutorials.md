@@ -15,12 +15,10 @@ check first the [quick start](quickstart.md) section.
 
 Running this example requires MLflow and KFServing to be installed in the same cluster as FuseML.
 
-For a quick MLFlow and KFServing installation, run the installer with the appropriate values for `--extensions`
-option.
-
+The FuseML installer can be used for a quick MLFlow and KFServing installation:
 
 ```bash
-fuseml-installer install --extensions mlflow,kfserving
+fuseml-installer extensions --add mlflow,kfserving
 ```
 
 To find out about installed extensions, install new or remove installed ones, use
@@ -65,10 +63,13 @@ Example output:
 
 ```bash
 > fuseml codeset register --name "mlflow-test" --project "mlflow-project-01" codesets/mlflow/sklearn
-2021/06/07 18:30:08 Pushing the code to the git repository...
-Codeset http://gitea.10.162.66.101.omg.howdoi.website/mlflow-project-01/mlflow-test.git successfully registered
-Username for accessing the project: <username>
-Password for accessing the project: <password>
+2021/09/08 12:27:40 Pushing the code to the git repository...
+Codeset http://gitea.172.18.0.2.nip.io/mlflow-project-01/mlflow-test.git successfully registered
+Saving new username into config file as current username.
+Saving new password into config file as current password.
+Setting mlflow-test as current codeset.
+Setting mlflow-project-01 as current project.
+FuseML configuration file created at /home/snica/.config/fuseml/config.yaml
 ```
 
 You may optionally log into the Gitea UI using the URL, username and password printed out by the `codeset register` command. You should find a new organization named `mlflow-project-01` and a repo named `mlflow-test`.
