@@ -384,9 +384,8 @@ using <a href="https://mlflow.org/">MLflow</a> and then served with <a href="htt
 check first the <a href="../quickstart/">quick start</a> section.</p>
 <p><strong>1.</strong> Install 3rd party ML tools</p>
 <p>Running this example requires MLflow and KFServing to be installed in the same cluster as FuseML.</p>
-<p>For a quick MLFlow and KFServing installation, run the installer with the appropriate values for <code>--extensions</code>
-option.</p>
-<pre><code class="language-bash">fuseml-installer install --extensions mlflow,kfserving
+<p>The FuseML installer can be used for a quick MLFlow and KFServing installation:</p>
+<pre><code class="language-bash">fuseml-installer extensions --add mlflow,kfserving
 </code></pre>
 <p>To find out about installed extensions, install new or remove installed ones, use</p>
 <pre><code class="language-bash">fuseml-installer extensions --help
@@ -411,10 +410,13 @@ cd examples
 </code></pre>
 <p>Example output:</p>
 <pre><code class="language-bash">&gt; fuseml codeset register --name &quot;mlflow-test&quot; --project &quot;mlflow-project-01&quot; codesets/mlflow/sklearn
-2021/06/07 18:30:08 Pushing the code to the git repository...
-Codeset http://gitea.10.162.66.101.omg.howdoi.website/mlflow-project-01/mlflow-test.git successfully registered
-Username for accessing the project: &lt;username&gt;
-Password for accessing the project: &lt;password&gt;
+2021/09/08 12:27:40 Pushing the code to the git repository...
+Codeset http://gitea.172.18.0.2.nip.io/mlflow-project-01/mlflow-test.git successfully registered
+Saving new username into config file as current username.
+Saving new password into config file as current password.
+Setting mlflow-test as current codeset.
+Setting mlflow-project-01 as current project.
+FuseML configuration file created at /home/snica/.config/fuseml/config.yaml
 </code></pre>
 <p>You may optionally log into the Gitea UI using the URL, username and password printed out by the <code>codeset register</code> command. You should find a new organization named <code>mlflow-project-01</code> and a repo named <code>mlflow-test</code>.</p>
 <p><strong>5.</strong> Create a workflow</p>
