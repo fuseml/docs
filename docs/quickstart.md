@@ -6,6 +6,7 @@ In order to use FuseML one may simply do the following:
 
 We assume that a Kubernetes cluster is already up and running. If not a good way to start with a local cluster is to use [KinD](https://kind.sigs.k8s.io/docs/user/quick-start/), [Rancher K3s](https://k3s.io/) or [k3d](https://k3d.io/).
 
+It is also necessary that your cluster setup includes a storage class marked as default.
 
 **IMPORTANT**: if you're installing a Rancher K3s cluster, it's recommended to skip installing the default Traefik ingress controller. The FuseML installer deploys Istio as a component and Istio is also required by some of the 3rd party tools that FuseML is integrated with (e.g. KNative, KFServing).
 
