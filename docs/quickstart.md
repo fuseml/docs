@@ -20,7 +20,7 @@ Additional software requirements:
 
 ```bash
 # On Linux
-curl -sfL https://fuseml.github.io/in/installer.ps1 | sh -
+curl -sfL https://raw.githubusercontent.com/fuseml/fuseml/main/install.sh | sh -
 ```
 
 You should get an output similar to this:
