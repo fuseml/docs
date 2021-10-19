@@ -3,7 +3,9 @@ nav:
     - Home: index.md
     - About: about.md
     - Quick Start: quickstart.md
-    - Tutorials: tutorials.md
+    - Tutorials:
+        - Logistic Regression with MLFlow & KFServing: tutorials/kfserving-basic.md
+        - Training & Serving ML Models on GPU with NVIDIA Triton: tutorials/kfserving-triton-gpu.md
     - Architecture: architecture.md
     - API Reference: api.md
     - CLI Reference: cli.md
@@ -23,6 +25,18 @@ edit_uri: https://github.com/fuseml/docs/edit/main/docs/
 
 plugins:
   - render_swagger
+
+
+markdown_extensions:
+  # Allows rendering images using HTML (see: https://squidfunk.github.io/mkdocs-material/reference/images/)
+  - md_in_html
+  - attr_list
+  # Allows code blocks under lists (see: https://github.com/mkdocs/mkdocs/issues/282)
+  - pymdownx.superfences:
+      custom_fences:
+        - name: flow
+          class: uml-flowchart
+          format: !!python/name:pymdownx.superfences.fence_code_format
 
 # TODO: Validate with our legal team.
 copyright: "Copyright &copy; 2021 FuseML Author(s)"
