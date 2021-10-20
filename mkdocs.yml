@@ -28,6 +28,7 @@ plugins:
 
 
 markdown_extensions:
+  - admonition
   # Allows rendering images using HTML (see: https://squidfunk.github.io/mkdocs-material/reference/images/)
   - md_in_html
   - attr_list

@@ -44,7 +44,7 @@ started, ensure that the following requirements are met by your system:
 
 * GNU/Linux x86_64 with kernel version > 3.10
 * Docker >= 19.03 (recommended, but some distributions may include older versions of Docker. The minimum supported version is 1.12)
-* NVIDIA GPU with Architecture >= Kepler (or compute capability 3.0)
+* NVIDIA GPU with Architecture >= Kepler (or compute capability 3.0). You can check you GPU architecture at [CUDA Wikipedia](https://en.wikipedia.org/wiki/CUDA#GPUs_supported)
 * NVIDIA Linux drivers >= 418.81.07 (Note that older driver releases or branches are unsupported.)
 
 ##### Installing NVIDIA Docker
@@ -123,8 +123,8 @@ The instructions provided here are for OpenSUSE Leap 15.3. For other supported d
 
 5. Install nvidia-docker:
 
-    The nvidia-docker package is available through a nvidia repository.
-    Add the repository and install it by running the following commands:
+    The nvidia-docker package is available through a nvidia repository provided for for OpenSUSE Leap 15.1, however
+    it also works for OpenSUSE Leap 15.3. Add the repository and install it by running the following commands:
 
     ```bash
     sudo zypper ar -f https://nvidia.github.io/nvidia-docker/opensuse-leap15.1/nvidia-docker.repo
@@ -184,11 +184,11 @@ the image using a supported base image. The following instructions are based on 
 
     ```Dockerfile
     ARG K3S_TAG="v1.21.5-k3s1"
-    ARG CUDA_VERSION="11.4.2"
+    ARG CUDA_VERSION="11.4"
 
     FROM rancher/k3s:$K3S_TAG as k3s
 
-    FROM nvidia/cuda:${CUDA_VERSION}-base-ubuntu20.04
+    FROM nvidia/cuda:${CUDA_VERSION}.0-base-ubuntu20.04
 
     RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
@@ -235,7 +235,7 @@ the image using a supported base image. The following instructions are based on 
     for containerd setting it to use the NVIDIA container runtime and adds the NVIDIA device plugin daemonset so it can start
     automatically when creating the cluster.
 
-2. On the same directory, create the containerd configuration file, named `config.toml.tmpl` with the following content:
+2. In the same directory, create the containerd configuration file, named `config.toml.tmpl` with the following content:
 
     ```toml
     [plugins.opt]
@@ -348,12 +348,17 @@ the image using a supported base image. The following instructions are based on 
 4. With all those files on the same directory, build the image running the following command:
 
     ```bash
-    docker build . -t k3s:v1.21.5-k3s1-cuda --build-arg CUDA_VERSION=X.X.X
+    docker build . -t k3s:v1.21.5-k3s1-cuda --build-arg CUDA_VERSION=X.X
     ```
 
-    Replace `X.X.X` with the latest cuda version supported by your GPU.
+    Replace `X.X` with the latest cuda version supported by your GPU which can be found by running the following
+    command:
 
-5. Test the built image by running the following commands to create a cluster and deploy a test pod:
+    ```bash
+    nvidia-smi | awk '/CUDA/ { print $9 }'
+    ```
+
+5. Test the image built by running the following commands to create a cluster and deploy a test pod:
 
     ```bash
     k3d cluster create gputest --image=k3s:v1.21.5-k3s1-cuda --gpus=1 --k3s-node-label "accelerator=gpu@server:0"
@@ -395,9 +400,9 @@ the image using a supported base image. The following instructions are based on 
 
 #### Create the Kubernetes cluster
 
-Run the following command to create a cluster with 2 nodes one of them labeled with `accelerator=gpu`,
-we also disable traefik and expose the http port to allow accessing the dashboards from FuseML
-extensions:
+Run the following command to create a cluster with 2 nodes where one of them is labeled with
+`accelerator=gpu`,we also disable traefik and expose the http port to allow accessing the
+dashboards from FuseML extensions:
 
 ```bash
 k3d cluster create fuseml --image=k3s:v1.21.5-k3s1-cuda --gpus=1 --agents 2 --k3s-node-label 'accelerator=gpu@agent:0'  --k3s-arg '--disable=traefik@server:0' -p '80:80@loadbalancer'
@@ -416,18 +421,22 @@ k3d cluster create fuseml --image=k3s:v1.21.5-k3s1-cuda --gpus=1 --agents 2 --k3
     ```
 
     Make sure you have `kubectl` and `helm` installed. If not, refer to the following links to install them:
+
     * kubectl: https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
     * helm: https://helm.sh/docs/intro/install/
 
 2. To install FuseML run the following command, note that we are also installing the mlflow and kfserving
-extensions which will be used for model tracking and serving:
+extensions which will be used for model tracking and serving respectively:
 
     ```bash
-    fuseml-installer install --system-domain <LOCAL_IP>.nip.io --extensions mlflow,kfserving
+    fuseml-installer install --extensions mlflow,kfserving
     ```
 
-    Replace `LOCAL_IP` with the IP address of the machine where the kubernetes cluster is running.
-    In this tutorial `LOCAL_IP` is set to `192.168.86.74`.
+    !!! note
+        FuseML will automatically assign a domain based on the cluster load balancer IP address in the format
+        `<LB_IP>.nip.io`. If you want to use a different domain, you can use the `--system-domain` flag. In the
+        rest of this tutorial we will use `192.168.86.74.nip.io` as the domain. Any reference to `<FUSEML_DOMAIN>`
+        should be replaced by your domain.
 
 ## Training & Serving the model
 
@@ -436,7 +445,7 @@ make sense to validate the model first on CPU with a minimum training configurat
 of epochs, batch size, etc). To do that we will run a FuseML workflow that will train the model and serve it on
 CPU. This will also enable us to compare CPU and GPU performance during the training.
 
-For that experiment we will be training a 
+For that experiment we will be training a
 [Convolutional Neural Network (CNN)](https://developers.google.com/machine-learning/glossary/#convolutional_neural_network)
 to classify [CIFAR images](https://www.cs.toronto.edu/~kriz/cifar.html) using the Keras Sequential API.
 The complete code for model training is available [here](https://github.com/fuseml/examples/tree/main/codesets/mlflow/keras).
@@ -445,7 +454,7 @@ The complete code for model training is available [here](https://github.com/fuse
 
 The following steps describe how to use FuseML to train the model and serve it.
 
-1. Clone the fuseml/examples repository and register the `keras` example code as a FuseML codeset:
+1. Clone the `fuseml/examples` repository and register the `keras` example code as a FuseML codeset:
 
     ```bash
     $ git clone https://github.com/fuseml/examples.git
@@ -455,13 +464,16 @@ The following steps describe how to use FuseML to train the model and serve it.
     Codeset http://gitea.192.168.86.74.nip.io/demo/cifar10.git successfully registered
     ```
 
-2. Create a FuseML workflow, note that the workflow includes steps for training and serving the trained
-model:
+2. Create a FuseML workflow:
 
     ```bash
     $ fuseml workflow create examples/workflows/mlflow-e2e.yaml
     Workflow "mlflow-e2e" successfully created
     ```
+
+    This workflow includes steps for training and serving the model. When serving `Keras` models, unless
+    `predictor` is set to a specific value instead of `auto` on the workflow, FuseML will automatically
+    serve the model using NVIDIA Triton Inference Server.
 
 3. Assign the `mlflow-e2e` workflow to the `cifar10` codeset:
 
@@ -469,10 +481,6 @@ model:
     $ fuseml workflow assign -c cifar10 -p demo -n mlflow-e2e
     Workflow "mlflow-e2e" assigned to codeset "demo/cifar10"
     ```
-
-    This workflow includes steps for training and serving the model. When serving `Keras` models, unless
-    `predictor` is set to a specific value instead of `auto` on the workflow, FuseML will automatically
-    serve the model using NVIDIA Triton Inference Server.
 
 4. Wait for the workflow run to finish running:
 
@@ -489,7 +497,7 @@ model:
     ```
 
     You can also see a more detailed view of the workflow run through the tekton dashboard, which should
-    be available at: `http://tekton.<LOCAL_IP>.nip.io`
+    be available at: `http://tekton.<FUSEML_DOMAIN>`
 
     Note that since this is the first time the workflow is running, it will build a docker image including
     the dependencies for training the model which may take a while. However, consecutive runs will skip that
@@ -500,7 +508,7 @@ model:
 Before querying the served model for predictions, lets take a look at MLflow for detailed information about
 the model, such as its accuracy, loss, training parameters, etc.
 
-MLflow should be available at `http://mlflow.<LOCAL_IP>.nip.io`.
+MLflow should be available at `http://mlflow.<FUSEML_DOMAIN>`.
 
 For example:
 
@@ -525,7 +533,7 @@ $ fuseml application list
 
 The list of FuseML applications include a URL to query the model for predictions. As FuseML is using the
 KFServing extension for serving the model, you can check the deployed models through the KFServing
-dashboard (`http://kfserving-models-web-app.<LOCAL_IP>.nip.io/`) which also includes more detailed
+dashboard (`http://kfserving-models-web-app.<FUSEML_DOMAIN>/`) which also includes more detailed
 information such as the status of the deployment, logs, etc.
 
 For example:
@@ -596,7 +604,33 @@ is how the classes are indexed:
 With that information, we can see that the model correctly predicted that the image is a deer
 (higher number on index 4).
 
-## Training and Serving on GPU
+### Benchmark the Inference Service
+
+To be able to compare the performance of the model serving on CPU, we can benchmark the inference service.
+
+Run the following command to create a Job workload that will benchmark the inference service:
+
+```bash
+kubectl create -f https://raw.githubusercontent.com/fuseml/docs/main/docs/tutorials/img/kfserving-triton-gpu/perf.yaml
+```
+
+Wait for the Job to complete and check the logs for the results:
+
+```bash
+$ kubectl wait --for=condition=complete --timeout 70s job -l app=triton-load-test && kubectl logs -l app=triton-load-test
+Requests      [total, rate, throughput]         36000, 600.02, 599.83
+Duration      [total, attack, wait]             1m0s, 59.998s, 18.336ms
+Latencies     [min, mean, 50, 90, 95, 99, max]  3.328ms, 15.91ms, 7.209ms, 26.135ms, 54.551ms, 205.604ms, 307.993ms
+Bytes In      [total, mean]                     11088000, 308.00
+Bytes Out     [total, mean]                     5208264000, 144674.00
+Success       [ratio]                           100.00%
+Status Codes  [code:count]                      200:36000
+Error Set:
+```
+
+With the benchmark results we can then continue to deploy the model to the GPU, and compare its performance.
+
+## Training & Serving on GPU
 
 Now that the model is validated, we can proceed to train and serve the model with higher accuracy on GPU.
 
@@ -674,7 +708,7 @@ Now that the model is validated, we can proceed to train and serve the model wit
     +---------------------------+----------------+----------------+------------+-----------+
     ```
 
-    If you head to the tekton dashboard (`http://tekton.<LOCAL_IP>.nip.io`) and look at the logs for the
+    If you head to the tekton dashboard (`http://tekton.<FUSEML_DOMAIN>`) and look at the logs for the
     `trainer` step, you should be able to see a log confirming that the training is being performed on GPU,
     such as:
 
@@ -685,7 +719,7 @@ Now that the model is validated, we can proceed to train and serve the model wit
 
 ### Validating the Deployed model on GPU
 
-Now that we have the model trained, head over to MLflow (`http://mlflow.<LOCAL_IP>.nip.io`) to compare the
+Now that we have the model trained, head over to MLflow (`http://mlflow.<FUSEML_DOMAIN>`) to compare the
 training metrics.
 
 For example:
@@ -695,9 +729,8 @@ For example:
   <figcaption>Training metrics on GPU</figcaption>
 </figure>
 
-We can see that now we have a model with accuracy of 96%!
-
-Although we have increased the number of epochs by 6x, training the model took the same amount of time.
+With the increased number of epochs, we can see that the trained model have reached an accuracy of 96% while
+spending the same amount of time on training!
 
 MLflow also allows comparing other metrics by selecting both runs and clicking on the `Compare` button.
 
@@ -718,8 +751,8 @@ $ fuseml application list
 ```
 
 Note that we have the same application, but now it is using the new model and is also using the GPU.
-To confirm that, check the inference service logs at 
-`http://kfserving-models-web-app.<LOCAL_IP>.nip.io/details/fuseml-workloads/demo-cifar10`,
+To confirm that, check the inference service logs at
+`http://kfserving-models-web-app.<FUSEML_DOMAIN>/details/fuseml-workloads/demo-cifar10`,
 it should have something like:
 
 ```bash
@@ -760,6 +793,44 @@ $ curl -sX POST http://demo-cifar10.fuseml-workloads.192.168.86.74.nip.io/v2/mod
 
 Once again we can confirm that the model correctly predicted that the image is a deer
 (higher number on index 4).
+
+### Benchmark the Inference Service on GPU
+
+We can now benchmark the inference service running which uses the GPU to compute predictions.
+
+Run the following command again to benchmark the inference service, you can ignore the (`AlreadyExists` error):
+
+```bash
+kubectl create -f https://raw.githubusercontent.com/fuseml/docs/main/docs/tutorials/img/kfserving-triton-gpu/perf.yaml
+```
+
+Wait for the Job to complete and check the logs for the results:
+
+``` bash hl_lines="4 12"
+$ kubectl wait --for=condition=complete --timeout 70s job -l app=triton-load-test && kubectl logs -l app=triton-load-test
+Requests      [total, rate, throughput]         36000, 600.02, 599.99
+Duration      [total, attack, wait]             1m0s, 59.998s, 2.35ms
+Latencies     [min, mean, 50, 90, 95, 99, max]  1.974ms, 3.086ms, 2.697ms, 3.542ms, 4.762ms, 10.532ms, 72.138ms (1)
+Bytes In      [total, mean]                     11052000, 307.00
+Bytes Out     [total, mean]                     5208264000, 144674.00
+Success       [ratio]                           100.00%
+Status Codes  [code:count]                      200:36000
+Error Set:
+Requests      [total, rate, throughput]         36000, 600.02, 599.83
+Duration      [total, attack, wait]             1m0s, 59.998s, 18.336ms
+Latencies     [min, mean, 50, 90, 95, 99, max]  3.328ms, 15.91ms, 7.209ms, 26.135ms, 54.551ms, 205.604ms, 307.993ms (2)
+Bytes In      [total, mean]                     11088000, 308.00
+Bytes Out     [total, mean]                     5208264000, 144674.00
+Success       [ratio]                           100.00%
+Status Codes  [code:count]                      200:36000
+Error Set:
+```
+
+The output from the above command shows the benchmark results for the inference service running on GPU (1).
+And also the results from the previous run when the model was being served using only the CPU (2).
+
+The interesting results are displayed by the `Latency` metrics. The latency results for the inference service
+running on GPU (1) are much lower than the latency results for the inference service running on CPU (2).
 
 ## Cleanup
 
