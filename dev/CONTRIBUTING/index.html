@@ -10,7 +10,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.4">
     
     
       
@@ -18,7 +18,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.802231af.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.db9e7362.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
@@ -76,7 +76,9 @@
       
     </div>
     
-      <header class="md-header" data-md-component="header">
+      
+
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="FuseML Documentation" class="md-header__button md-logo" aria-label="FuseML Documentation" data-md-component="logo">
       
@@ -121,11 +123,14 @@
       </div>
     
   </nav>
+  
 </header>
     
     <div class="md-container" data-md-component="container">
       
       
+        
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -217,10 +222,57 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Tutorials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tutorials" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../tutorials/" class="md-nav__link">
-        Tutorials
+      <a href="../tutorials/kfserving-basic/" class="md-nav__link">
+        Logistic Regression with MLFlow & KFServing
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/kfserving-triton-gpu/" class="md-nav__link">
+        Training & Serving ML Models on GPU with NVIDIA Triton
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -524,27 +576,27 @@
 <p>If you didn't set up git yet, have a look <a href="https://docs.github.com/en/github/getting-started-with-github/set-up-git">here</a></p>
 <p>The next step is to fork our project: <a href="https://docs.github.com/en/github/getting-started-with-github/fork-a-repo">here</a></p>
 <p>Then create your own branch for your bug/feature, edit the code/documentation, commit, and push your changes in your repository</p>
-<pre><code class="language-bash">$ git checkout -b &lt;branchname&gt;
+<div class="highlight"><pre><span></span><code>$ git checkout -b &lt;branchname&gt;
 $ ...
 $ git commit
 $ git push origin HEAD
-</code></pre>
+</code></pre></div>
 <p>Finally, create a pull request (using the web interface or using your favorite github client tool).</p>
 <p>Expectations for commit and pull requests are expressed below.</p>
 <p>If your contribution doesn't land immediately, you might need to rebase your change based on the branch you are targetting with your PR (e.g. <code>main</code>):</p>
-<pre><code class="language-bash">## Go back to the target branch (e.g. main) branch
+<div class="highlight"><pre><span></span><code><span class="c1">## Go back to the target branch (e.g. main) branch</span>
 $ git checkout &lt;origin target branch name&gt;
-## Update your local repo with the latest origin data
-$ git pull origin &lt;local target branch name &gt;
-## Go back into your development branch
+<span class="c1">## Update your local repo with the latest origin data</span>
+$ git pull origin &lt;<span class="nb">local</span> target branch name &gt;
+<span class="c1">## Go back into your development branch</span>
 $ git checkout &lt;branchname&gt;
-## Update your development branch
+<span class="c1">## Update your development branch</span>
 $ git rebase &lt;targetbranch&gt;
-## Resolve any conflicts here
+<span class="c1">## Resolve any conflicts here</span>
 $ git commit --amend
-## Now force push to replace your PR's content
+<span class="c1">## Now force push to replace your PR&#39;s content</span>
 $ git push origin HEAD -f
-</code></pre>
+</code></pre></div>
 <h3 id="commits-requirements">Commits requirements</h3>
 <ul>
 <li>Don't mix whitespace changes with functional code changes</li>
@@ -630,10 +682,12 @@ We expect the maintainers to be the heralds of the good practices of this docume
             Copyright &copy; 2021 FuseML Author(s)
           </div>
         
-        Made with
-        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs
-        </a>
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
         
       </div>
       
@@ -645,10 +699,10 @@ We expect the maintainers to be the heralds of the good practices of this docume
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.409db549.min.js", "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.8397ff9e.min.js", "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.756773cc.min.js"></script>
+      <script src="../assets/javascripts/bundle.1e84347e.min.js"></script>
       
         <script src="../javascripts/extra.js"></script>
       

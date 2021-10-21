@@ -10,7 +10,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.4">
     
     
       
@@ -18,7 +18,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.802231af.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.db9e7362.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
@@ -76,7 +76,9 @@
       
     </div>
     
-      <header class="md-header" data-md-component="header">
+      
+
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="FuseML Documentation" class="md-header__button md-logo" aria-label="FuseML Documentation" data-md-component="logo">
       
@@ -121,11 +123,14 @@
       </div>
     
   </nav>
+  
 </header>
     
     <div class="md-container" data-md-component="container">
       
       
+        
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -278,10 +283,57 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Tutorials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tutorials" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../tutorials/" class="md-nav__link">
-        Tutorials
+      <a href="../tutorials/kfserving-basic/" class="md-nav__link">
+        Logistic Regression with MLFlow & KFServing
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/kfserving-triton-gpu/" class="md-nav__link">
+        Training & Serving ML Models on GPU with NVIDIA Triton
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -432,20 +484,20 @@
 </li>
 </ul>
 <h3 id="2-download-and-install-the-fuseml-installer">2. Download and install the fuseml-installer</h3>
-<pre><code class="language-bash"># On Linux
-curl -sfL https://raw.githubusercontent.com/fuseml/fuseml/main/install.sh | sh -
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># On Linux</span>
+curl -sfL https://raw.githubusercontent.com/fuseml/fuseml/main/install.sh <span class="p">|</span> sh -
+</code></pre></div>
 <p>You should get an output similar to this:</p>
-<pre><code class="language-bash">********* SUCCESS **********
+<div class="highlight"><pre><span></span><code>********* SUCCESS **********
 FuseML Installer is ready!
 To start using it just run fuseml-installer --help and enjoy!
 ****************************
-</code></pre>
+</code></pre></div>
 <h3 id="3-fuseml-installer-is-ready-to-go-so-lets-install-the-components-on-the-cluster">3. Fuseml Installer is ready to go so let's install the components on the cluster:</h3>
-<pre><code class="language-bash">fuseml-installer install
-</code></pre>
+<div class="highlight"><pre><span></span><code>fuseml-installer install
+</code></pre></div>
 <p>You should get an output similar to this:</p>
-<pre><code class="language-bash">&gt; fuseml-installer install
+<div class="highlight"><pre><span></span><code>&gt; fuseml-installer install
 
 🚢 FuseML installing...
 
@@ -456,49 +508,49 @@ Configuration...
 🚢 Deploying Istio.....
 ✔️  Istio deployed
 .
-✔️  Created system_domain: 172.18.0.2.nip.io
+✔️  Created system_domain: <span class="m">172</span>.18.0.2.nip.io
 
 🚢 Deploying Workloads...
 ✔️  Workloads deployed
 
 🚢 Deploying Gitea.................................
-✔️  Gitea deployed (http://gitea.172.18.0.2.nip.io).
+✔️  Gitea deployed <span class="o">(</span>http://gitea.172.18.0.2.nip.io<span class="o">)</span>.
 
 🚢 Deploying Registry..........
 ✔️  Registry deployed
 
 🚢 Deploying Tekton.............................................................................
-✔️  Tekton deployed (http://tekton.172.18.0.2.nip.io).
+✔️  Tekton deployed <span class="o">(</span>http://tekton.172.18.0.2.nip.io<span class="o">)</span>.
 
 🚢 Deploying Core...........
-✔️  FuseML core component deployed (http://fuseml-core.172.18.0.2.nip.io).
+✔️  FuseML core component deployed <span class="o">(</span>http://fuseml-core.172.18.0.2.nip.io<span class="o">)</span>.
 
-🚢 Downloading command line client...
-🚢 FuseML command line client saved as /home/jsuchome/kubernetes/fuseml/fuseml.
-Copy it to the location within your PATH (e.g. /usr/local/bin).
+🚢 Downloading <span class="nb">command</span> line client...
+🚢 FuseML <span class="nb">command</span> line client saved as /home/jsuchome/kubernetes/fuseml/fuseml.
+Copy it to the location within your PATH <span class="o">(</span>e.g. /usr/local/bin<span class="o">)</span>.
 
 🚢 To use the FuseML CLI, you must point it to the FuseML server URL, e.g.:
 
-    export FUSEML_SERVER_URL=http://fuseml-core.172.18.0.2.nip.io
+    <span class="nb">export</span> <span class="nv">FUSEML_SERVER_URL</span><span class="o">=</span>http://fuseml-core.172.18.0.2.nip.io
 
 ✔️  FuseML installed.
-System domain: 172.18.0.2.nip.io
-</code></pre>
+System domain: <span class="m">172</span>.18.0.2.nip.io
+</code></pre></div>
 <p>The FuseML installer prints out URLs for <em>gitea</em>, <em>tekton</em> and <em>fuseml-core</em> components. You can access those sub-services directly at any given time. The fuseml core URL is especially important, as you'll need that to use the FuseML CLI.</p>
 <p>You can also see that the installer downloaded <em>fuseml</em> command line client which you will use for actual FuseML operations. You can use the latest version which was downloaded automatically or manually choose one of <a href="https://github.com/fuseml/fuseml-core/releases">released versions</a> from github.</p>
 <p>Use</p>
-<pre><code class="language-bash">fuseml-installer install --help
-</code></pre>
+<div class="highlight"><pre><span></span><code>fuseml-installer install --help
+</code></pre></div>
 <p>to get full information about the options the installer provides.</p>
 <h3 id="4-check-if-the-components-are-up-and-running">4. Check if the components are up and running:</h3>
-<pre><code class="language-bash"># Let's check the fuseml-core component
+<div class="highlight"><pre><span></span><code><span class="c1"># Let&#39;s check the fuseml-core component</span>
 kubectl get pods -n fuseml-core -o wide
-# Now let's check gitea
+<span class="c1"># Now let&#39;s check gitea</span>
 kubectl get pods -n gitea -o wide
-# Let's check tekton
+<span class="c1"># Let&#39;s check tekton</span>
 kubectl get pods -n tekton-pipelines -o wide
-</code></pre>
-<p>If everything is in running or completed status, you are good to go. Continue on to the <a href="../tutorials/">tutorial</a> section and start to have fun with FuseML.</p>
+</code></pre></div>
+<p>If everything is in running or completed status, you are good to go. Continue on to the <a href="../tutorials/kfserving-basic/">tutorial</a> section and start to have fun with FuseML.</p>
                 
               
               
@@ -534,13 +586,13 @@ kubectl get pods -n tekton-pipelines -o wide
       
       
         
-        <a href="../tutorials/" class="md-footer__link md-footer__link--next" aria-label="Next: Tutorials" rel="next">
+        <a href="../tutorials/kfserving-basic/" class="md-footer__link md-footer__link--next" aria-label="Next: Logistic Regression with MLFlow &amp; KFServing" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Tutorials
+              Logistic Regression with MLFlow & KFServing
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -558,10 +610,12 @@ kubectl get pods -n tekton-pipelines -o wide
             Copyright &copy; 2021 FuseML Author(s)
           </div>
         
-        Made with
-        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs
-        </a>
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
         
       </div>
       
@@ -573,10 +627,10 @@ kubectl get pods -n tekton-pipelines -o wide
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.409db549.min.js", "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.8397ff9e.min.js", "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.756773cc.min.js"></script>
+      <script src="../assets/javascripts/bundle.1e84347e.min.js"></script>
       
         <script src="../javascripts/extra.js"></script>
       

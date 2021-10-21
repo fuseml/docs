@@ -1,0 +1,1536 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.4">
+    
+    
+      
+        <title>Training & Serving ML Models on GPU with NVIDIA Triton - FuseML Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.db9e7362.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4cae4f">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="green" data-md-color-accent="cyan">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#training-and-serving-ml-models-on-gpu-with-nvidia-triton" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="FuseML Documentation" class="md-header__button md-logo" aria-label="FuseML Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FuseML Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Training & Serving ML Models on GPU with NVIDIA Triton
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/fuseml/fuseml/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="FuseML Documentation" class="md-nav__button md-logo" aria-label="FuseML Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    FuseML Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/fuseml/fuseml/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/" class="md-nav__link">
+        Quick Start
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Tutorials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tutorials" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kfserving-basic/" class="md-nav__link">
+        Logistic Regression with MLFlow & KFServing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Training & Serving ML Models on GPU with NVIDIA Triton
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Training & Serving ML Models on GPU with NVIDIA Triton
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    Setup
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-the-kubernetes-cluster" class="md-nav__link">
+    Create the Kubernetes Cluster
+  </a>
+  
+    <nav class="md-nav" aria-label="Create the Kubernetes Cluster">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-gpu-accelerated-docker-containers" class="md-nav__link">
+    Running GPU accelerated Docker containers
+  </a>
+  
+    <nav class="md-nav" aria-label="Running GPU accelerated Docker containers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-nvidia-docker" class="md-nav__link">
+    Installing NVIDIA Docker
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-a-custom-k3s-image" class="md-nav__link">
+    Build a custom K3s image
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-the-kubernetes-cluster_1" class="md-nav__link">
+    Create the Kubernetes cluster
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-fuseml" class="md-nav__link">
+    Install FuseML
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#training-serving-the-model" class="md-nav__link">
+    Training &amp; Serving the model
+  </a>
+  
+    <nav class="md-nav" aria-label="Training &amp; Serving the model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#training-serving-using-fuseml" class="md-nav__link">
+    Training &amp; Serving using FuseML
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validating-the-deployed-model" class="md-nav__link">
+    Validating the Deployed Model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#benchmark-the-inference-service" class="md-nav__link">
+    Benchmark the Inference Service
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#training-serving-on-gpu" class="md-nav__link">
+    Training &amp; Serving on GPU
+  </a>
+  
+    <nav class="md-nav" aria-label="Training &amp; Serving on GPU">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#training-serving-on-gpu-with-fuseml" class="md-nav__link">
+    Training &amp; Serving on GPU with FuseML
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validating-the-deployed-model-on-gpu" class="md-nav__link">
+    Validating the Deployed model on GPU
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#benchmark-the-inference-service-on-gpu" class="md-nav__link">
+    Benchmark the Inference Service on GPU
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cleanup" class="md-nav__link">
+    Cleanup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/" class="md-nav__link">
+        Architecture
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/" class="md-nav__link">
+        API Reference
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/" class="md-nav__link">
+        CLI Reference
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CONTRIBUTING/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    Setup
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-the-kubernetes-cluster" class="md-nav__link">
+    Create the Kubernetes Cluster
+  </a>
+  
+    <nav class="md-nav" aria-label="Create the Kubernetes Cluster">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-gpu-accelerated-docker-containers" class="md-nav__link">
+    Running GPU accelerated Docker containers
+  </a>
+  
+    <nav class="md-nav" aria-label="Running GPU accelerated Docker containers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-nvidia-docker" class="md-nav__link">
+    Installing NVIDIA Docker
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-a-custom-k3s-image" class="md-nav__link">
+    Build a custom K3s image
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-the-kubernetes-cluster_1" class="md-nav__link">
+    Create the Kubernetes cluster
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-fuseml" class="md-nav__link">
+    Install FuseML
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#training-serving-the-model" class="md-nav__link">
+    Training &amp; Serving the model
+  </a>
+  
+    <nav class="md-nav" aria-label="Training &amp; Serving the model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#training-serving-using-fuseml" class="md-nav__link">
+    Training &amp; Serving using FuseML
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validating-the-deployed-model" class="md-nav__link">
+    Validating the Deployed Model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#benchmark-the-inference-service" class="md-nav__link">
+    Benchmark the Inference Service
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#training-serving-on-gpu" class="md-nav__link">
+    Training &amp; Serving on GPU
+  </a>
+  
+    <nav class="md-nav" aria-label="Training &amp; Serving on GPU">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#training-serving-on-gpu-with-fuseml" class="md-nav__link">
+    Training &amp; Serving on GPU with FuseML
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validating-the-deployed-model-on-gpu" class="md-nav__link">
+    Validating the Deployed model on GPU
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#benchmark-the-inference-service-on-gpu" class="md-nav__link">
+    Benchmark the Inference Service on GPU
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cleanup" class="md-nav__link">
+    Cleanup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/fuseml/docs/edit/main/docs/tutorials/kfserving-triton-gpu.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="training-and-serving-ml-models-on-gpu-with-nvidia-triton">Training and Serving ML Models on GPU with NVIDIA Triton</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Data scientists or machine learning engineers who looks to train models at scale with good performance eventually
+hit a point where they start to experience various degrees of slowness on the process. For example, tasks that
+usually were taking minutes to complete are now taking hours, or even days when datasets get larger. Such situation
+is particularly common when training Deep Learning models, for neural networks the training phase is the most
+resource-intensive task. While training, a neural network takes in inputs which are then processed in hidden
+layers using weights that are adjusted during training and the model then outputs a prediction. Weights are adjusted to
+find patterns in order to make better predictions. Both operations are essentially composed by matrix multiplications.</p>
+<p>Taking in consideration a neural network with around 10, 100 or even 100,000 parameters, a computer would still be able
+to handle this in a matter of minutes, or even hours at the most. However a neural network with more than 10 billion
+parameter would probably take years to train on the same system.</p>
+<p>To overcome that problem GPUs (Graphics Processing Units) are usually used for training neural networks. GPUs are optimized
+for training artificial intelligence and deep learning models as they can process multiple computations simultaneously.
+Additionally, GPUs have their own dedicated memory which allows it to compute huge amounts of data with higher bandwidth
+resulting in the training phase being much faster.</p>
+<p>In this tutorial, we will explore how to use FuseML together with
+<a href="https://developer.nvidia.com/nvidia-triton-inference-server">NVIDIA Triton Inference Server</a> to not only train a neural network,
+but also serve it in a timely manner by taking advantage of the GPU. We will start by using k3d to create a local kubernetes
+cluster with two nodes exposing the the GPU to one of them. After that, we will install FuseML then create and execute a workflow
+that trains the model and then serves it, as a validation step we will not be using the GPU yet. Once the model is validated, we
+will improve its accuracy by increasing number of epochs used when training the model, by doing that it is expected that the training
+time would increase considerably, however as the training will be performed on GPU it will be rather quick.</p>
+<h2 id="setup">Setup</h2>
+<h3 id="create-the-kubernetes-cluster">Create the Kubernetes Cluster</h3>
+<p>In order to run FuseML locally, we will be using <a href="https://k3d.io/">k3d</a>. K3d is a lightweight wrapper to run k3s (Rancher Lab’s minimal
+Kubernetes distribution) in docker making it very easy to create single and multi-node k3s clusters. The Kubernetes nodes created by k3d
+are docker containers running k3s with containerd, in that way, we need to be able to run GPU accelerated Docker containers so that it can
+expose the GPU to containerd. Besides, we also need to build a custom k3s image that also contains the NVIDIA Container Runtime and
+configures containerd to use that runtime.</p>
+<h4 id="running-gpu-accelerated-docker-containers">Running GPU accelerated Docker containers</h4>
+<p>We need to install <a href="https://github.com/NVIDIA/nvidia-docker">nvidia-docker</a> be able to run GPU accelerated docker containers. Before getting
+started, ensure that the following requirements are met by your system:</p>
+<ul>
+<li>GNU/Linux x86_64 with kernel version &gt; 3.10</li>
+<li>Docker &gt;= 19.03 (recommended, but some distributions may include older versions of Docker. The minimum supported version is 1.12)</li>
+<li>NVIDIA GPU with Architecture &gt;= Kepler (or compute capability 3.0). You can check you GPU architecture at <a href="https://en.wikipedia.org/wiki/CUDA#GPUs_supported">CUDA Wikipedia</a></li>
+<li>NVIDIA Linux drivers &gt;= 418.81.07 (Note that older driver releases or branches are unsupported.)</li>
+</ul>
+<h5 id="installing-nvidia-docker">Installing NVIDIA Docker</h5>
+<p>The instructions provided here are for OpenSUSE Leap 15.3. For other supported distributions please refer to the
+<a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html">nvidia-docker official documentation</a>.</p>
+<ol>
+<li>
+<p>Install the NVIDIA driver:</p>
+<p>The recommended way to install drivers is to use the package manager for your distribution, however as the driver from the package
+manager did not work properly for OpenSUSE, we will be using the driver from the
+<a href="https://www.nvidia.com/Download/index.aspx?lang=en-us">NVIDIA website</a>. We will be installing the NVIDIA driver version 470.74,
+you might need to check for the latest available driver compatible with your GPU.</p>
+<p>Installing the driver:</p>
+<div class="highlight"><pre><span></span><code>wget https://us.download.nvidia.com/XFree86/Linux-x86_64/470.74/NVIDIA-Linux-x86_64-470.74.run
+
+chmod +x NVIDIA-Linux-x86_64-470.74.run.
+
+./NVIDIA-Linux-x86_64-470.74.run
+</code></pre></div>
+<p>After installing the driver make sure to reboot your system.</p>
+</li>
+<li>
+<p>Install Docker:</p>
+<p>Run the following command to install Docker:</p>
+<div class="highlight"><pre><span></span><code>sudo zypper install -y docker
+</code></pre></div>
+</li>
+<li>
+<p>Add your user to the docker group.</p>
+<div class="highlight"><pre><span></span><code>sudo usermod -aG docker <span class="nv">$USER</span>
+</code></pre></div>
+<p>Log out and log back in so that your group membership is re-evaluated.</p>
+</li>
+<li>
+<p>Ensure Docker service is running and test your Docker installation by running the hello-world container and checking its output:</p>
+<div class="highlight"><pre><span></span><code>$ sudo systemctl --now <span class="nb">enable</span> docker
+
+$ docker run --rm hello-world
+Unable to find image <span class="s1">&#39;hello-world:latest&#39;</span> locally
+latest: Pulling from library/hello-world
+2db29710123e: Pull <span class="nb">complete</span>
+Digest: sha256:37a0b92b08d4919615c3ee023f7ddb068d12b8387475d64c622ac30f45c29c51
+Status: Downloaded newer image <span class="k">for</span> hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+<span class="m">1</span>. The Docker client contacted the Docker daemon.
+<span class="m">2</span>. The Docker daemon pulled the <span class="s2">&quot;hello-world&quot;</span> image from the Docker Hub.
+    <span class="o">(</span>amd64<span class="o">)</span>
+<span class="m">3</span>. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+<span class="m">4</span>. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+$ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+https://hub.docker.com/
+
+For more examples and ideas, visit:
+https://docs.docker.com/get-started/
+</code></pre></div>
+</li>
+<li>
+<p>Install nvidia-docker:</p>
+<p>The nvidia-docker package is available through a nvidia repository provided for for OpenSUSE Leap 15.1, however
+it also works for OpenSUSE Leap 15.3. Add the repository and install it by running the following commands:</p>
+<div class="highlight"><pre><span></span><code>sudo zypper ar -f https://nvidia.github.io/nvidia-docker/opensuse-leap15.1/nvidia-docker.repo
+sudo zypper install nvidia-docker2
+</code></pre></div>
+<p>When installing nvidia-docker it will overwrite the <code>/etc/docker/daemon.json</code> file by configuring docker to use the NVIDIA
+container runtime. Make sure that it has the following contents:</p>
+<div class="highlight"><pre><span></span><code>$ cat /etc/docker/daemon.json
+<span class="o">{</span>
+    <span class="s2">&quot;runtimes&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;nvidia&quot;</span>: <span class="o">{</span>
+            <span class="s2">&quot;path&quot;</span>: <span class="s2">&quot;nvidia-container-runtime&quot;</span>,
+            <span class="s2">&quot;runtimeArgs&quot;</span>: <span class="o">[]</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+</li>
+<li>
+<p>Restart the Docker daemon to complete the installation and test it by running a CUDA container:</p>
+<div class="highlight"><pre><span></span><code>$ sudo systemctl restart docker
+
+$ docker run --rm --gpus all nvidia/cuda:11.0-base nvidia-smi
+Fri Oct <span class="m">15</span> <span class="m">13</span>:13:50 <span class="m">2021</span>
++-----------------------------------------------------------------------------+
+<span class="p">|</span> NVIDIA-SMI <span class="m">470</span>.74       Driver Version: <span class="m">470</span>.74       CUDA Version: <span class="m">11</span>.4     <span class="p">|</span>
+<span class="p">|</span>-------------------------------+----------------------+----------------------+
+<span class="p">|</span> GPU  Name        Persistence-M<span class="p">|</span> Bus-Id        Disp.A <span class="p">|</span> Volatile Uncorr. ECC <span class="p">|</span>
+<span class="p">|</span> Fan  Temp  Perf  Pwr:Usage/Cap<span class="p">|</span>         Memory-Usage <span class="p">|</span> GPU-Util  Compute M. <span class="p">|</span>
+<span class="p">|</span>                               <span class="p">|</span>                      <span class="p">|</span>               MIG M. <span class="p">|</span>
+<span class="p">|</span><span class="o">===============================</span>+<span class="o">======================</span>+<span class="o">======================</span><span class="p">|</span>
+<span class="p">|</span>   <span class="m">0</span>  NVIDIA GeForce ...  Off  <span class="p">|</span> <span class="m">00000000</span>:01:00.0 Off <span class="p">|</span>                  N/A <span class="p">|</span>
+<span class="p">|</span>  <span class="m">0</span>%   43C    P5    24W / 280W <span class="p">|</span>      0MiB / 11175MiB <span class="p">|</span>      <span class="m">2</span>%      Default <span class="p">|</span>
+<span class="p">|</span>                               <span class="p">|</span>                      <span class="p">|</span>                  N/A <span class="p">|</span>
++-------------------------------+----------------------+----------------------+
+
++-----------------------------------------------------------------------------+
+<span class="p">|</span> Processes:                                                                  <span class="p">|</span>
+<span class="p">|</span>  GPU   GI   CI        PID   Type   Process name                  GPU Memory <span class="p">|</span>
+<span class="p">|</span>        ID   ID                                                   Usage      <span class="p">|</span>
+<span class="p">|</span><span class="o">=============================================================================</span><span class="p">|</span>
+<span class="p">|</span>  No running processes found                                                 <span class="p">|</span>
++-----------------------------------------------------------------------------+
+</code></pre></div>
+</li>
+</ol>
+<h4 id="build-a-custom-k3s-image">Build a custom K3s image</h4>
+<p>The native K3s image is based on Alpine which is not supported by the NVIDIA container runtime. To get around that we need to build
+the image using a supported base image. The following instructions are based on the
+<a href="https://k3d.io/v5.0.0/usage/advanced/cuda/">official k3d documentation</a></p>
+<ol>
+<li>
+<p>Create a Dockerfile with the content below:</p>
+<div class="highlight"><pre><span></span><code><span class="k">ARG</span> <span class="nv">K3S_TAG</span><span class="o">=</span><span class="s2">&quot;v1.21.5-k3s1&quot;</span>
+<span class="k">ARG</span> <span class="nv">CUDA_VERSION</span><span class="o">=</span><span class="s2">&quot;11.4&quot;</span>
+
+<span class="k">FROM</span> <span class="s">rancher/k3s:$K3S_TAG</span> <span class="k">as</span> <span class="s">k3s</span>
+
+<span class="k">FROM</span> <span class="s">nvidia/cuda:${CUDA_VERSION}.0-base-ubuntu20.04</span>
+
+<span class="k">RUN</span> <span class="nb">echo</span> <span class="s1">&#39;debconf debconf/frontend select Noninteractive&#39;</span> <span class="p">|</span> debconf-set-selections
+
+<span class="k">RUN</span> apt-get update <span class="o">&amp;&amp;</span> <span class="se">\</span>
+    apt-get -y install gnupg2 curl
+
+<span class="c"># Install NVIDIA Container Runtime</span>
+<span class="k">RUN</span> curl -s -L https://nvidia.github.io/nvidia-container-runtime/gpgkey <span class="p">|</span> apt-key add -
+
+<span class="k">RUN</span> curl -s -L https://nvidia.github.io/nvidia-container-runtime/ubuntu20.04/nvidia-container-runtime.list <span class="p">|</span> tee /etc/apt/sources.list.d/nvidia-container-runtime.list
+
+<span class="k">RUN</span> apt-get update <span class="o">&amp;&amp;</span> <span class="se">\</span>
+    apt-get -y install nvidia-container-runtime
+
+<span class="k">COPY</span> --from<span class="o">=</span>k3s /bin /bin/
+
+<span class="k">RUN</span> mkdir -p /etc <span class="o">&amp;&amp;</span> <span class="se">\</span>
+    <span class="nb">echo</span> <span class="s1">&#39;hosts: files dns&#39;</span> &gt; /etc/nsswitch.conf
+
+<span class="k">RUN</span> chmod <span class="m">1777</span> /tmp
+
+<span class="c"># Provide custom containerd configuration to configure the nvidia-container-runtime</span>
+<span class="k">RUN</span> mkdir -p /var/lib/rancher/k3s/agent/etc/containerd/
+
+<span class="k">COPY</span> config.toml.tmpl /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
+
+<span class="c"># Deploy the nvidia driver plugin on startup</span>
+<span class="k">RUN</span> mkdir -p /var/lib/rancher/k3s/server/manifests
+
+<span class="k">COPY</span> device-plugin-daemonset.yaml /var/lib/rancher/k3s/server/manifests/nvidia-device-plugin-daemonset.yaml
+
+<span class="k">VOLUME</span><span class="s"> /var/lib/kubelet</span>
+<span class="k">VOLUME</span><span class="s"> /var/lib/rancher/k3s</span>
+<span class="k">VOLUME</span><span class="s"> /var/lib/cni</span>
+<span class="k">VOLUME</span><span class="s"> /var/log</span>
+
+<span class="k">ENV</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PATH</span><span class="s2">:/bin/aux&quot;</span>
+
+<span class="k">ENTRYPOINT</span> <span class="p">[</span><span class="s2">&quot;/bin/k3s&quot;</span><span class="p">]</span>
+<span class="k">CMD</span> <span class="p">[</span><span class="s2">&quot;agent&quot;</span><span class="p">]</span>
+</code></pre></div>
+<p>This Dockerfile uses nvidia/cuda as base image and installs the NVIDIA container runtime on it, adds a configuration file
+for containerd setting it to use the NVIDIA container runtime and adds the NVIDIA device plugin daemonset so it can start
+automatically when creating the cluster.</p>
+</li>
+<li>
+<p>In the same directory, create the containerd configuration file, named <code>config.toml.tmpl</code> with the following content:</p>
+<div class="highlight"><pre><span></span><code><span class="k">[plugins.opt]</span>
+  <span class="n">path</span> <span class="o">=</span> <span class="s">&quot;{{ .NodeConfig.Containerd.Opt }}&quot;</span>
+
+<span class="k">[plugins.cri]</span>
+  <span class="n">stream_server_address</span> <span class="o">=</span> <span class="s">&quot;127.0.0.1&quot;</span>
+  <span class="n">stream_server_port</span> <span class="o">=</span> <span class="s">&quot;10010&quot;</span>
+
+<span class="p">{{</span><span class="err">-</span> <span class="n">if</span> <span class="p">.</span><span class="n">IsRunningInUserNS</span> <span class="p">}}</span>
+  <span class="n">disable_cgroup</span> <span class="o">=</span> <span class="kc">true</span>
+  <span class="n">disable_apparmor</span> <span class="o">=</span> <span class="kc">true</span>
+  <span class="n">restrict_oom_score_adj</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="p">{{</span><span class="n">end</span><span class="p">}}</span>
+
+<span class="p">{{</span><span class="err">-</span> <span class="n">if</span> <span class="p">.</span><span class="n">NodeConfig</span><span class="p">.</span><span class="n">AgentConfig</span><span class="p">.</span><span class="n">PauseImage</span> <span class="p">}}</span>
+  <span class="n">sandbox_image</span> <span class="o">=</span> <span class="s">&quot;{{ .NodeConfig.AgentConfig.PauseImage }}&quot;</span>
+<span class="p">{{</span><span class="n">end</span><span class="p">}}</span>
+
+<span class="p">{{</span><span class="err">-</span> <span class="n">if</span> <span class="n">not</span> <span class="p">.</span><span class="n">NodeConfig</span><span class="p">.</span><span class="n">NoFlannel</span> <span class="p">}}</span>
+<span class="k">[plugins.cri.cni]</span>
+  <span class="n">bin_dir</span> <span class="o">=</span> <span class="s">&quot;{{ .NodeConfig.AgentConfig.CNIBinDir }}&quot;</span>
+  <span class="n">conf_dir</span> <span class="o">=</span> <span class="s">&quot;{{ .NodeConfig.AgentConfig.CNIConfDir }}&quot;</span>
+<span class="p">{{</span><span class="n">end</span><span class="p">}}</span>
+
+<span class="k">[plugins.cri.containerd.runtimes.runc]</span>
+  <span class="c1"># ---- changed from &#39;io.containerd.runc.v2&#39; for GPU support</span>
+  <span class="n">runtime_type</span> <span class="o">=</span> <span class="s">&quot;io.containerd.runtime.v1.linux&quot;</span>
+
+<span class="c1"># ---- added for GPU support</span>
+<span class="k">[plugins.linux]</span>
+  <span class="n">runtime</span> <span class="o">=</span> <span class="s">&quot;nvidia-container-runtime&quot;</span>
+
+<span class="p">{{</span> <span class="n">if</span> <span class="p">.</span><span class="n">PrivateRegistryConfig</span> <span class="p">}}</span>
+<span class="p">{{</span> <span class="n">if</span> <span class="p">.</span><span class="n">PrivateRegistryConfig</span><span class="p">.</span><span class="n">Mirrors</span> <span class="p">}}</span>
+<span class="p">[</span><span class="n">plugins</span><span class="p">.</span><span class="n">cri</span><span class="p">.</span><span class="n">registry</span><span class="p">.</span><span class="n">mirrors</span><span class="p">]{{</span><span class="n">end</span><span class="p">}}</span>
+<span class="p">{{</span><span class="n">range</span> <span class="err">$</span><span class="n">k</span><span class="p">,</span> <span class="err">$</span><span class="n">v</span> <span class="p">:</span><span class="o">=</span> <span class="p">.</span><span class="n">PrivateRegistryConfig</span><span class="p">.</span><span class="n">Mirrors</span> <span class="p">}}</span>
+<span class="k">[plugins.cri.registry.mirrors.&quot;{{$k}}&quot;]</span>
+  <span class="n">endpoint</span> <span class="o">=</span> <span class="p">[{{</span><span class="n">range</span> <span class="err">$</span><span class="n">i</span><span class="p">,</span> <span class="err">$</span><span class="n">j</span> <span class="p">:</span><span class="o">=</span> <span class="err">$</span><span class="n">v</span><span class="p">.</span><span class="n">Endpoints</span><span class="p">}}{{</span><span class="n">if</span> <span class="err">$</span><span class="n">i</span><span class="p">}},</span> <span class="p">{{</span><span class="n">end</span><span class="p">}}{{</span><span class="n">printf</span> <span class="s">&quot;%q&quot;</span> <span class="p">.}}{{</span><span class="n">end</span><span class="p">}}]</span>
+<span class="p">{{</span><span class="n">end</span><span class="p">}}</span>
+
+<span class="p">{{</span><span class="n">range</span> <span class="err">$</span><span class="n">k</span><span class="p">,</span> <span class="err">$</span><span class="n">v</span> <span class="p">:</span><span class="o">=</span> <span class="p">.</span><span class="n">PrivateRegistryConfig</span><span class="p">.</span><span class="n">Configs</span> <span class="p">}}</span>
+<span class="p">{{</span> <span class="n">if</span> <span class="err">$</span><span class="n">v</span><span class="p">.</span><span class="n">Auth</span> <span class="p">}}</span>
+<span class="k">[plugins.cri.registry.configs.&quot;{{$k}}&quot;.auth]</span>
+  <span class="p">{{</span> <span class="n">if</span> <span class="err">$</span><span class="n">v</span><span class="p">.</span><span class="n">Auth</span><span class="p">.</span><span class="n">Username</span> <span class="p">}}</span><span class="n">username</span> <span class="o">=</span> <span class="s">&quot;{{ $v.Auth.Username }}&quot;</span><span class="p">{{</span><span class="n">end</span><span class="p">}}</span>
+  <span class="p">{{</span> <span class="n">if</span> <span class="err">$</span><span class="n">v</span><span class="p">.</span><span class="n">Auth</span><span class="p">.</span><span class="n">Password</span> <span class="p">}}</span><span class="n">password</span> <span class="o">=</span> <span class="s">&quot;{{ $v.Auth.Password }}&quot;</span><span class="p">{{</span><span class="n">end</span><span class="p">}}</span>
+  <span class="p">{{</span> <span class="n">if</span> <span class="err">$</span><span class="n">v</span><span class="p">.</span><span class="n">Auth</span><span class="p">.</span><span class="n">Auth</span> <span class="p">}}</span><span class="n">auth</span> <span class="o">=</span> <span class="s">&quot;{{ $v.Auth.Auth }}&quot;</span><span class="p">{{</span><span class="n">end</span><span class="p">}}</span>
+  <span class="p">{{</span> <span class="n">if</span> <span class="err">$</span><span class="n">v</span><span class="p">.</span><span class="n">Auth</span><span class="p">.</span><span class="n">IdentityToken</span> <span class="p">}}</span><span class="n">identitytoken</span> <span class="o">=</span> <span class="s">&quot;{{ $v.Auth.IdentityToken }}&quot;</span><span class="p">{{</span><span class="n">end</span><span class="p">}}</span>
+<span class="p">{{</span><span class="n">end</span><span class="p">}}</span>
+<span class="p">{{</span> <span class="n">if</span> <span class="err">$</span><span class="n">v</span><span class="p">.</span><span class="n">TLS</span> <span class="p">}}</span>
+<span class="k">[plugins.cri.registry.configs.&quot;{{$k}}&quot;.tls]</span>
+  <span class="p">{{</span> <span class="n">if</span> <span class="err">$</span><span class="n">v</span><span class="p">.</span><span class="n">TLS</span><span class="p">.</span><span class="n">CAFile</span> <span class="p">}}</span><span class="n">ca_file</span> <span class="o">=</span> <span class="s">&quot;{{ $v.TLS.CAFile }}&quot;</span><span class="p">{{</span><span class="n">end</span><span class="p">}}</span>
+  <span class="p">{{</span> <span class="n">if</span> <span class="err">$</span><span class="n">v</span><span class="p">.</span><span class="n">TLS</span><span class="p">.</span><span class="n">CertFile</span> <span class="p">}}</span><span class="n">cert_file</span> <span class="o">=</span> <span class="s">&quot;{{ $v.TLS.CertFile }}&quot;</span><span class="p">{{</span><span class="n">end</span><span class="p">}}</span>
+  <span class="p">{{</span> <span class="n">if</span> <span class="err">$</span><span class="n">v</span><span class="p">.</span><span class="n">TLS</span><span class="p">.</span><span class="n">KeyFile</span> <span class="p">}}</span><span class="n">key_file</span> <span class="o">=</span> <span class="s">&quot;{{ $v.TLS.KeyFile }}&quot;</span><span class="p">{{</span><span class="n">end</span><span class="p">}}</span>
+<span class="p">{{</span><span class="n">end</span><span class="p">}}</span>
+<span class="p">{{</span><span class="n">end</span><span class="p">}}</span>
+<span class="p">{{</span><span class="n">end</span><span class="p">}}</span>
+</code></pre></div>
+</li>
+<li>
+<p>Finally, create the <code>device-plugin-daemonset.yaml</code> file with the following content.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">DaemonSet</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nvidia-device-plugin-daemonset</span>
+  <span class="nt">namespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kube-system</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">selector</span><span class="p">:</span>
+    <span class="nt">matchLabels</span><span class="p">:</span>
+      <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nvidia-device-plugin-ds</span>
+  <span class="nt">updateStrategy</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">RollingUpdate</span>
+  <span class="nt">template</span><span class="p">:</span>
+    <span class="nt">metadata</span><span class="p">:</span>
+      <span class="nt">annotations</span><span class="p">:</span>
+        <span class="nt">scheduler.alpha.kubernetes.io/critical-pod</span><span class="p">:</span> <span class="s">&quot;&quot;</span>
+      <span class="nt">labels</span><span class="p">:</span>
+        <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nvidia-device-plugin-ds</span>
+    <span class="nt">spec</span><span class="p">:</span>
+      <span class="nt">tolerations</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">CriticalAddonsOnly</span>
+        <span class="nt">operator</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Exists</span>
+      <span class="p p-Indicator">-</span> <span class="nt">key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nvidia.com/gpu</span>
+        <span class="nt">operator</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Exists</span>
+        <span class="nt">effect</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">NoSchedule</span>
+      <span class="nt">nodeSelector</span><span class="p">:</span>
+        <span class="nt">accelerator</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gpu</span>
+      <span class="nt">priorityClassName</span><span class="p">:</span> <span class="s">&quot;system-node-critical&quot;</span>
+      <span class="nt">containers</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nvidia/k8s-device-plugin:1.0.0-beta4</span>
+        <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nvidia-device-plugin-ctr</span>
+        <span class="nt">securityContext</span><span class="p">:</span>
+          <span class="nt">allowPrivilegeEscalation</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+          <span class="nt">capabilities</span><span class="p">:</span>
+            <span class="nt">drop</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;ALL&quot;</span><span class="p p-Indicator">]</span>
+        <span class="nt">volumeMounts</span><span class="p">:</span>
+          <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">device-plugin</span>
+            <span class="nt">mountPath</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/var/lib/kubelet/device-plugins</span>
+      <span class="nt">volumes</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">device-plugin</span>
+          <span class="nt">hostPath</span><span class="p">:</span>
+            <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/var/lib/kubelet/device-plugins</span>
+</code></pre></div>
+<p>Note that the daemonset definition includes a <code>nodeSelector</code> to ensure that it is only scheduled on
+nodes with the <code>accelerator=gpu</code> label. The NVIDIA device plugin is a daemonset that exposes the number
+of GPUs available on the nodes, keep track of the GPUs health and enable running GPU enabled containers.</p>
+</li>
+<li>
+<p>With all those files on the same directory, build the image running the following command:</p>
+<div class="highlight"><pre><span></span><code>docker build . -t k3s:v1.21.5-k3s1-cuda --build-arg <span class="nv">CUDA_VERSION</span><span class="o">=</span>X.X
+</code></pre></div>
+<p>Replace <code>X.X</code> with the latest cuda version supported by your GPU which can be found by running the following
+command:</p>
+<div class="highlight"><pre><span></span><code>nvidia-smi <span class="p">|</span> awk <span class="s1">&#39;/CUDA/ { print $9 }&#39;</span>
+</code></pre></div>
+</li>
+<li>
+<p>Test the image built by running the following commands to create a cluster and deploy a test pod:</p>
+<div class="highlight"><pre><span></span><code>k3d cluster create gputest --image<span class="o">=</span>k3s:v1.21.5-k3s1-cuda --gpus<span class="o">=</span><span class="m">1</span> --k3s-node-label <span class="s2">&quot;accelerator=gpu@server:0&quot;</span>
+cat <span class="s">&lt;&lt;EOF | kubectl apply -f -</span>
+<span class="s">apiVersion: v1</span>
+<span class="s">kind: Pod</span>
+<span class="s">metadata:</span>
+<span class="s">  name: cuda-vector-add</span>
+<span class="s">spec:</span>
+<span class="s">  restartPolicy: OnFailure</span>
+<span class="s">  containers:</span>
+<span class="s">    - name: cuda-vector-add</span>
+<span class="s">      image: &quot;k8s.gcr.io/cuda-vector-add:v0.1&quot;</span>
+<span class="s">      resources:</span>
+<span class="s">        limits:</span>
+<span class="s">          nvidia.com/gpu: 1</span>
+<span class="s">EOF</span>
+</code></pre></div>
+<p>Wait for the pod to finish running and check its logs, it should output something like:</p>
+<div class="highlight"><pre><span></span><code>$ kubectl logs cuda-vector-add
+<span class="o">[</span>Vector addition of <span class="m">50000</span> elements<span class="o">]</span>
+Copy input data from the host memory to the CUDA device
+CUDA kernel launch with <span class="m">196</span> blocks of <span class="m">256</span> threads
+Copy output data from the CUDA device to the host memory
+Test PASSED
+Done
+</code></pre></div>
+<p>If the pod is stuck in <code>Pending</code> state, check the logs from the pod created by NVIDIA device
+plugin daemonset. If it succeeds you can delete the test cluster by running the following
+command:</p>
+<div class="highlight"><pre><span></span><code>k3d cluster delete gputest
+</code></pre></div>
+</li>
+</ol>
+<h4 id="create-the-kubernetes-cluster_1">Create the Kubernetes cluster</h4>
+<p>Run the following command to create a cluster with 2 nodes where one of them is labeled with
+<code>accelerator=gpu</code>,we also disable traefik and expose the http port to allow accessing the
+dashboards from FuseML extensions:</p>
+<div class="highlight"><pre><span></span><code>k3d cluster create fuseml --image<span class="o">=</span>k3s:v1.21.5-k3s1-cuda --gpus<span class="o">=</span><span class="m">1</span> --agents <span class="m">2</span> --k3s-node-label <span class="s1">&#39;accelerator=gpu@agent:0&#39;</span>  --k3s-arg <span class="s1">&#39;--disable=traefik@server:0&#39;</span> -p <span class="s1">&#39;80:80@loadbalancer&#39;</span>
+</code></pre></div>
+<h4 id="install-fuseml">Install FuseML</h4>
+<ol>
+<li>
+<p>Get the fuseml-installer:</p>
+<div class="highlight"><pre><span></span><code>$ curl -sfL https://raw.githubusercontent.com/fuseml/fuseml/main/install.sh <span class="p">|</span> bash
+Verifying checksum... Done.
+Preparing to install fuseml-installer into /usr/local/bin
+fuseml-installer installed into /usr/local/bin/fuseml-installer
+Run <span class="s1">&#39;fuseml-installer --help&#39;</span> to see what you can <span class="k">do</span> with it.
+</code></pre></div>
+<p>Make sure you have <code>kubectl</code> and <code>helm</code> installed. If not, refer to the following links to install them:</p>
+<ul>
+<li>kubectl: https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/</li>
+<li>helm: https://helm.sh/docs/intro/install/</li>
+</ul>
+</li>
+<li>
+<p>To install FuseML run the following command, note that we are also installing the mlflow and kfserving
+extensions which will be used for model tracking and serving respectively:</p>
+<div class="highlight"><pre><span></span><code>fuseml-installer install --extensions mlflow,kfserving
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>FuseML will automatically assign a domain based on the cluster load balancer IP address in the format
+<code>&lt;LB_IP&gt;.nip.io</code>. If you want to use a different domain, you can use the <code>--system-domain</code> flag. In the
+rest of this tutorial we will use <code>192.168.86.74.nip.io</code> as the domain. Any reference to <code>&lt;FUSEML_DOMAIN&gt;</code>
+should be replaced by your domain.</p>
+</div>
+</li>
+</ol>
+<h2 id="training-serving-the-model">Training &amp; Serving the model</h2>
+<p>As GPU is usually a limited and costly resource, instead of testing/developing the model using a GPU it might
+make sense to validate the model first on CPU with a minimum training configuration (small dataset, small number
+of epochs, batch size, etc). To do that we will run a FuseML workflow that will train the model and serve it on
+CPU. This will also enable us to compare CPU and GPU performance during the training.</p>
+<p>For that experiment we will be training a
+<a href="https://developers.google.com/machine-learning/glossary/#convolutional_neural_network">Convolutional Neural Network (CNN)</a>
+to classify <a href="https://www.cs.toronto.edu/~kriz/cifar.html">CIFAR images</a> using the Keras Sequential API.
+The complete code for model training is available <a href="https://github.com/fuseml/examples/tree/main/codesets/mlflow/keras">here</a>.</p>
+<h3 id="training-serving-using-fuseml">Training &amp; Serving using FuseML</h3>
+<p>The following steps describe how to use FuseML to train the model and serve it.</p>
+<ol>
+<li>
+<p>Clone the <code>fuseml/examples</code> repository and register the <code>keras</code> example code as a FuseML codeset:</p>
+<div class="highlight"><pre><span></span><code>$ git clone https://github.com/fuseml/examples.git
+
+$ fuseml codeset register -n cifar10 -p demo examples/codesets/mlflow/keras
+Pushing the code to the git repository...
+Codeset http://gitea.192.168.86.74.nip.io/demo/cifar10.git successfully registered
+</code></pre></div>
+</li>
+<li>
+<p>Create a FuseML workflow:</p>
+<div class="highlight"><pre><span></span><code>$ fuseml workflow create examples/workflows/mlflow-e2e.yaml
+Workflow <span class="s2">&quot;mlflow-e2e&quot;</span> successfully created
+</code></pre></div>
+<p>This workflow includes steps for training and serving the model. When serving <code>Keras</code> models, unless
+<code>predictor</code> is set to a specific value instead of <code>auto</code> on the workflow, FuseML will automatically
+serve the model using NVIDIA Triton Inference Server.</p>
+</li>
+<li>
+<p>Assign the <code>mlflow-e2e</code> workflow to the <code>cifar10</code> codeset:</p>
+<div class="highlight"><pre><span></span><code>$ fuseml workflow assign -c cifar10 -p demo -n mlflow-e2e
+Workflow <span class="s2">&quot;mlflow-e2e&quot;</span> assigned to codeset <span class="s2">&quot;demo/cifar10&quot;</span>
+</code></pre></div>
+</li>
+<li>
+<p>Wait for the workflow run to finish running:</p>
+<p>By assigning the workflow to the codeset, a workflow run will be created. You can check the status
+of the workflow run by running the following command:</p>
+<div class="highlight"><pre><span></span><code>$ fuseml workflow list-runs
++---------------------------+------------+----------------+----------+---------+
+<span class="p">|</span> NAME                      <span class="p">|</span> WORKFLOW   <span class="p">|</span> STARTED        <span class="p">|</span> DURATION <span class="p">|</span> STATUS  <span class="p">|</span>
++---------------------------+------------+----------------+----------+---------+
+<span class="p">|</span> fuseml-demo-cifar10-tkgls <span class="p">|</span> mlflow-e2e <span class="p">|</span> <span class="m">14</span> seconds ago <span class="p">|</span> ---      <span class="p">|</span> Running <span class="p">|</span>
++---------------------------+------------+----------------+----------+---------+
+</code></pre></div>
+<p>You can also see a more detailed view of the workflow run through the tekton dashboard, which should
+be available at: <code>http://tekton.&lt;FUSEML_DOMAIN&gt;</code></p>
+<p>Note that since this is the first time the workflow is running, it will build a docker image including
+the dependencies for training the model which may take a while. However, consecutive runs will skip that
+step as long as the dependencies are kept the same.</p>
+</li>
+</ol>
+<h3 id="validating-the-deployed-model">Validating the Deployed Model</h3>
+<p>Before querying the served model for predictions, lets take a look at MLflow for detailed information about
+the model, such as its accuracy, loss, training parameters, etc.</p>
+<p>MLflow should be available at <code>http://mlflow.&lt;FUSEML_DOMAIN&gt;</code>.</p>
+<p>For example:</p>
+<figure>
+<p><img alt="MLflow" src="../img/kfserving-triton-gpu/mlflow.png" />
+  </p>
+<figcaption>Training metrics on CPU</figcaption>
+</figure>
+<p>Note the accuracy (about 70%) and the training duration (about 4 minutes) for 10 epochs.</p>
+<p>With the successful execution of the workflow, a new FuseML application should have been created. List the
+FuseML applications:</p>
+<div class="highlight"><pre><span></span><code>$ fuseml application list
++--------------+-----------+----------------------------------------------+----------------------------------------------------------------------------------------+------------+
+<span class="p">|</span> NAME         <span class="p">|</span> TYPE      <span class="p">|</span> DESCRIPTION                                  <span class="p">|</span> URL                                                                                    <span class="p">|</span> WORKFLOW   <span class="p">|</span>
++--------------+-----------+----------------------------------------------+----------------------------------------------------------------------------------------+------------+
+<span class="p">|</span> demo-cifar10 <span class="p">|</span> predictor <span class="p">|</span> Application generated by mlflow-e2e workflow <span class="p">|</span> http://demo-cifar10.fuseml-workloads.192.168.86.74.nip.io/v2/models/demo-cifar10/infer <span class="p">|</span> mlflow-e2e <span class="p">|</span>
++--------------+-----------+----------------------------------------------+----------------------------------------------------------------------------------------+------------+
+</code></pre></div>
+<p>The list of FuseML applications include a URL to query the model for predictions. As FuseML is using the
+KFServing extension for serving the model, you can check the deployed models through the KFServing
+dashboard (<code>http://kfserving-models-web-app.&lt;FUSEML_DOMAIN&gt;/</code>) which also includes more detailed
+information such as the status of the deployment, logs, etc.</p>
+<p>For example:</p>
+<figure>
+<p><img alt="KSserve Dashboard" src="../img/kfserving-triton-gpu/kserve.png" />
+  </p>
+<figcaption>KFServing Dashboard</figcaption>
+</figure>
+<p>To validate the model, we need to send a request containing an image so the model can to predict its class.</p>
+<p>The json file included in the <code>fuseml/examples</code> repository contains a sample request that represents the
+following deer image:</p>
+<figure>
+<p><img alt="Deer" src="../img/kfserving-triton-gpu/deer.png" width="300" />
+  </p>
+<figcaption>Deer Sample Image</figcaption>
+</figure>
+<p>Run the following command to send the request to the application URL:</p>
+<div class="highlight"><pre><span></span><code>$ curl -sX POST http://demo-cifar10.fuseml-workloads.192.168.86.74.nip.io/v2/models/demo-cifar10/infer -d @examples/prediction/data-keras.json <span class="p">|</span> jq
+<span class="o">{</span>
+  <span class="s2">&quot;model_name&quot;</span>: <span class="s2">&quot;demo-cifar10&quot;</span>,
+  <span class="s2">&quot;model_version&quot;</span>: <span class="s2">&quot;1&quot;</span>,
+  <span class="s2">&quot;outputs&quot;</span>: <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;dense_1&quot;</span>,
+      <span class="s2">&quot;datatype&quot;</span>: <span class="s2">&quot;FP32&quot;</span>,
+      <span class="s2">&quot;shape&quot;</span>: <span class="o">[</span>
+         <span class="m">1</span>,
+         <span class="m">10</span>
+      <span class="o">]</span>,
+       <span class="s2">&quot;data&quot;</span>: <span class="o">[</span>
+        -2.26723575592041,
+        -7.539040565490723,
+        <span class="m">1</span>.4853938817977905,
+        <span class="m">1</span>.297321081161499,
+        <span class="m">4</span>.158736705780029,
+        <span class="m">2</span>.9821133613586426,
+        -2.7044689655303955,
+        <span class="m">3</span>.2879271507263184,
+        -5.1592817306518555,
+        -4.101395130157471
+      <span class="o">]</span>
+    <span class="o">}</span>
+  <span class="o">]</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>To be able to interpret the predictions, we need to know the classes indexes meaning. The following
+is how the classes are indexed:</p>
+<div class="highlight"><pre><span></span><code>0: &#39;airplane&#39;
+1: &#39;automobile&#39;
+2: &#39;bird&#39;
+3: &#39;cat&#39;
+4: &#39;deer&#39;
+5: &#39;dog&#39;
+6: &#39;frog&#39;
+7: &#39;horse&#39;
+8: &#39;ship&#39;
+9: &#39;truck&#39;
+</code></pre></div>
+<p>With that information, we can see that the model correctly predicted that the image is a deer
+(higher number on index 4).</p>
+<h3 id="benchmark-the-inference-service">Benchmark the Inference Service</h3>
+<p>To be able to compare the performance of the model serving on CPU, we can benchmark the inference service.</p>
+<p>Run the following command to create a Job workload that will benchmark the inference service:</p>
+<div class="highlight"><pre><span></span><code>kubectl create -f https://raw.githubusercontent.com/fuseml/docs/main/docs/tutorials/img/kfserving-triton-gpu/perf.yaml
+</code></pre></div>
+<p>Wait for the Job to complete and check the logs for the results:</p>
+<div class="highlight"><pre><span></span><code>$ kubectl <span class="nb">wait</span> --for<span class="o">=</span><span class="nv">condition</span><span class="o">=</span><span class="nb">complete</span> --timeout 70s job -l <span class="nv">app</span><span class="o">=</span>triton-load-test <span class="o">&amp;&amp;</span> kubectl logs -l <span class="nv">app</span><span class="o">=</span>triton-load-test
+Requests      <span class="o">[</span>total, rate, throughput<span class="o">]</span>         <span class="m">36000</span>, <span class="m">600</span>.02, <span class="m">599</span>.83
+Duration      <span class="o">[</span>total, attack, wait<span class="o">]</span>             1m0s, <span class="m">59</span>.998s, <span class="m">18</span>.336ms
+Latencies     <span class="o">[</span>min, mean, <span class="m">50</span>, <span class="m">90</span>, <span class="m">95</span>, <span class="m">99</span>, max<span class="o">]</span>  <span class="m">3</span>.328ms, <span class="m">15</span>.91ms, <span class="m">7</span>.209ms, <span class="m">26</span>.135ms, <span class="m">54</span>.551ms, <span class="m">205</span>.604ms, <span class="m">307</span>.993ms
+Bytes In      <span class="o">[</span>total, mean<span class="o">]</span>                     <span class="m">11088000</span>, <span class="m">308</span>.00
+Bytes Out     <span class="o">[</span>total, mean<span class="o">]</span>                     <span class="m">5208264000</span>, <span class="m">144674</span>.00
+Success       <span class="o">[</span>ratio<span class="o">]</span>                           <span class="m">100</span>.00%
+Status Codes  <span class="o">[</span>code:count<span class="o">]</span>                      <span class="m">200</span>:36000
+Error Set:
+</code></pre></div>
+<p>With the benchmark results we can then continue to deploy the model to the GPU, and compare its performance.</p>
+<h2 id="training-serving-on-gpu">Training &amp; Serving on GPU</h2>
+<p>Now that the model is validated, we can proceed to train and serve the model with higher accuracy on GPU.</p>
+<h3 id="training-serving-on-gpu-with-fuseml">Training &amp; Serving on GPU with FuseML</h3>
+<ol>
+<li>
+<p>Update the example workflow so that it will train and serve the model on GPU:</p>
+<p>Open the file <code>examples/workflows/mlflow-e2e.yaml</code> with your favorite text editor and make the
+following changes:</p>
+<ul>
+<li>Change the workflow name to <code>mlflow-e2e-gpu</code>.</li>
+<li>Add the following snippet under the <code>trainer</code> step:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="s">&quot;trainer&quot;</span>
+  <span class="l l-Scalar l-Scalar-Plain">...</span>
+  <span class="nt">resources</span><span class="p">:</span>
+    <span class="nt">limits</span><span class="p">:</span>
+      <span class="nt">nvidia.com/gpu</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+</code></pre></div>
+<p>This will ensure that the trainer pod will be scheduled to a node that has a GPU.
+* For the <code>predictor</code> step, we need to add the following input:</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">predictor</span>
+  <span class="l l-Scalar l-Scalar-Plain">...</span>
+  <span class="nt">inputs</span><span class="p">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">...</span>
+    <span class="l l-Scalar l-Scalar-Plain">- name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">resources_limits</span>
+      <span class="l l-Scalar l-Scalar-Plain">value</span><span class="p p-Indicator">:</span> <span class="s">&#39;{nvidia.com/gpu:</span><span class="nv"> </span><span class="s">1}&#39;</span>
+</code></pre></div>
+<p>This ensures that the workload (KFserving inference service) created by this step will be scheduled
+   to a node that has a GPU.</p>
+</li>
+<li>
+<p>Unassign the <code>mlflow-e2e</code> workflow from the <code>cifar10</code>, as we do not want to run the same workflow again:</p>
+<div class="highlight"><pre><span></span><code>$ fuseml workflow unassign -c cifar10 -p demo -n mlflow-e2e
+Workflow <span class="s2">&quot;mlflow-e2e&quot;</span> unassigned from codeset <span class="s2">&quot;demo/cifar10&quot;</span>
+</code></pre></div>
+</li>
+<li>
+<p>Increase the number of epochs on the <code>keras</code> example codeset to 60, so we get model with higher accuracy:</p>
+<div class="highlight"><pre><span></span><code>$ sed -i <span class="s1">&#39;s/10/60/&#39;</span> examples/codesets/mlflow/keras/MLproject
+
+$ fuseml codeset register -n cifar10 -p demo examples/codesets/mlflow/keras
+Pushing the code to the git repository...
+Codeset http://gitea.192.168.86.74.nip.io/demo/cifar10.git successfully registered
+</code></pre></div>
+</li>
+<li>
+<p>Create the <code>mlflow-e2e-gpu</code> workflow and assign it to the <code>cifar10</code> codeset:</p>
+<div class="highlight"><pre><span></span><code>$ fuseml workflow create examples/workflows/mlflow-e2e.yaml
+Workflow <span class="s2">&quot;mlflow-e2e-gpu&quot;</span> successfully created
+
+$ fuseml workflow assign -c cifar10 -p demo -n mlflow-e2e-gpu
+Workflow <span class="s2">&quot;mlflow-e2e-gpu&quot;</span> assigned to codeset <span class="s2">&quot;demo/cifar10&quot;</span>
+</code></pre></div>
+</li>
+<li>
+<p>Wait for the workflow run to finish running:</p>
+<p>You can check the status of the workflow run by running the following command:</p>
+<div class="highlight"><pre><span></span><code>$ fuseml workflow list-runs
++---------------------------+----------------+----------------+------------+-----------+
+<span class="p">|</span> NAME                      <span class="p">|</span> WORKFLOW       <span class="p">|</span> STARTED        <span class="p">|</span> DURATION   <span class="p">|</span> STATUS    <span class="p">|</span>
++---------------------------+----------------+----------------+------------+-----------+
+<span class="p">|</span> fuseml-demo-cifar10-pld47 <span class="p">|</span> mlflow-e2e-gpu <span class="p">|</span> <span class="m">8</span> seconds ago  <span class="p">|</span> ---        <span class="p">|</span> Running   <span class="p">|</span>
+<span class="p">|</span> fuseml-demo-cifar10-tkgls <span class="p">|</span> mlflow-e2e     <span class="p">|</span> <span class="m">23</span> minutes ago <span class="p">|</span> <span class="m">12</span> minutes <span class="p">|</span> Succeeded <span class="p">|</span>
++---------------------------+----------------+----------------+------------+-----------+
+</code></pre></div>
+<p>If you head to the tekton dashboard (<code>http://tekton.&lt;FUSEML_DOMAIN&gt;</code>) and look at the logs for the
+<code>trainer</code> step, you should be able to see a log confirming that the training is being performed on GPU,
+such as:</p>
+<div class="highlight"><pre><span></span><code>Num GPUs: <span class="m">1</span>
+<span class="m">1</span> Physical GPUs, <span class="m">1</span> Logical GPUs
+</code></pre></div>
+</li>
+</ol>
+<h3 id="validating-the-deployed-model-on-gpu">Validating the Deployed model on GPU</h3>
+<p>Now that we have the model trained, head over to MLflow (<code>http://mlflow.&lt;FUSEML_DOMAIN&gt;</code>) to compare the
+training metrics.</p>
+<p>For example:</p>
+<figure>
+<p><img alt="MLflow-GPU" src="../img/kfserving-triton-gpu/gpu-mlflow.png" />
+  </p>
+<figcaption>Training metrics on GPU</figcaption>
+</figure>
+<p>With the increased number of epochs, we can see that the trained model have reached an accuracy of 96% while
+spending the same amount of time on training!</p>
+<p>MLflow also allows comparing other metrics by selecting both runs and clicking on the <code>Compare</code> button.</p>
+<figure>
+<p><img alt="MLflow-Compare" src="../img/kfserving-triton-gpu/mlflow-compare.png" />
+  </p>
+<figcaption>Comparing metrics on MLflow</figcaption>
+</figure>
+<p>List the FuseML applications:</p>
+<div class="highlight"><pre><span></span><code>$ fuseml application list
++--------------+-----------+--------------------------------------------------+----------------------------------------------------------------------------------------+----------------+
+<span class="p">|</span> NAME         <span class="p">|</span> TYPE      <span class="p">|</span> DESCRIPTION                                      <span class="p">|</span> URL                                                                                    <span class="p">|</span> WORKFLOW       <span class="p">|</span>
++--------------+-----------+--------------------------------------------------+----------------------------------------------------------------------------------------+----------------+
+<span class="p">|</span> demo-cifar10 <span class="p">|</span> predictor <span class="p">|</span> Application generated by mlflow-e2e-gpu workflow <span class="p">|</span> http://demo-cifar10.fuseml-workloads.192.168.86.74.nip.io/v2/models/demo-cifar10/infer <span class="p">|</span> mlflow-e2e-gpu <span class="p">|</span>
++--------------+-----------+--------------------------------------------------+----------------------------------------------------------------------------------------+----------------+
+</code></pre></div>
+<p>Note that we have the same application, but now it is using the new model and is also using the GPU.
+To confirm that, check the inference service logs at
+<code>http://kfserving-models-web-app.&lt;FUSEML_DOMAIN&gt;/details/fuseml-workloads/demo-cifar10</code>,
+it should have something like:</p>
+<div class="highlight"><pre><span></span><code>I1019 <span class="m">12</span>:58:00.349814 <span class="m">1</span> metrics.cc:290<span class="o">]</span> Collecting metrics <span class="k">for</span> GPU <span class="m">0</span>: NVIDIA XXX
+</code></pre></div>
+<p>Now, just like before, send a request to the application URL.</p>
+<div class="highlight"><pre><span></span><code>$ curl -sX POST http://demo-cifar10.fuseml-workloads.192.168.86.74.nip.io/v2/models/demo-cifar10/infer -d @examples/prediction/data-keras.json <span class="p">|</span> jq
+<span class="o">{</span>
+  <span class="s2">&quot;model_name&quot;</span>: <span class="s2">&quot;demo-cifar10&quot;</span>,
+  <span class="s2">&quot;model_version&quot;</span>: <span class="s2">&quot;1&quot;</span>,
+  <span class="s2">&quot;outputs&quot;</span>: <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;dense_1&quot;</span>,
+      <span class="s2">&quot;datatype&quot;</span>: <span class="s2">&quot;FP32&quot;</span>,
+      <span class="s2">&quot;shape&quot;</span>: <span class="o">[</span>
+         <span class="m">1</span>,
+         <span class="m">10</span>
+      <span class="o">]</span>,
+      <span class="s2">&quot;data&quot;</span>: <span class="o">[</span>
+        -9.919892311096191,
+        -17.90753936767578,
+        <span class="m">4</span>.234504699707031,
+        <span class="m">2</span>.73684024810791,
+        <span class="m">15</span>.640728950500488,
+        <span class="m">4</span>.6014084815979,
+        -1.7354743480682373,
+        <span class="m">10</span>.520237922668457,
+        -6.34201717376709,
+        -10.711426734924316
+      <span class="o">]</span>
+    <span class="o">}</span>
+  <span class="o">]</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>Once again we can confirm that the model correctly predicted that the image is a deer
+(higher number on index 4).</p>
+<h3 id="benchmark-the-inference-service-on-gpu">Benchmark the Inference Service on GPU</h3>
+<p>We can now benchmark the inference service running which uses the GPU to compute predictions.</p>
+<p>Run the following command again to benchmark the inference service, you can ignore the (<code>AlreadyExists</code> error):</p>
+<div class="highlight"><pre><span></span><code>kubectl create -f https://raw.githubusercontent.com/fuseml/docs/main/docs/tutorials/img/kfserving-triton-gpu/perf.yaml
+</code></pre></div>
+<p>Wait for the Job to complete and check the logs for the results:</p>
+<div class="highlight"><pre><span></span><code>$ kubectl <span class="nb">wait</span> --for<span class="o">=</span><span class="nv">condition</span><span class="o">=</span><span class="nb">complete</span> --timeout 70s job -l <span class="nv">app</span><span class="o">=</span>triton-load-test <span class="o">&amp;&amp;</span> kubectl logs -l <span class="nv">app</span><span class="o">=</span>triton-load-test
+Requests      <span class="o">[</span>total, rate, throughput<span class="o">]</span>         <span class="m">36000</span>, <span class="m">600</span>.02, <span class="m">599</span>.99
+Duration      <span class="o">[</span>total, attack, wait<span class="o">]</span>             1m0s, <span class="m">59</span>.998s, <span class="m">2</span>.35ms
+<span class="hll">Latencies     <span class="o">[</span>min, mean, <span class="m">50</span>, <span class="m">90</span>, <span class="m">95</span>, <span class="m">99</span>, max<span class="o">]</span>  <span class="m">1</span>.974ms, <span class="m">3</span>.086ms, <span class="m">2</span>.697ms, <span class="m">3</span>.542ms, <span class="m">4</span>.762ms, <span class="m">10</span>.532ms, <span class="m">72</span>.138ms <span class="o">(</span><span class="m">1</span><span class="o">)</span>
+</span>Bytes In      <span class="o">[</span>total, mean<span class="o">]</span>                     <span class="m">11052000</span>, <span class="m">307</span>.00
+Bytes Out     <span class="o">[</span>total, mean<span class="o">]</span>                     <span class="m">5208264000</span>, <span class="m">144674</span>.00
+Success       <span class="o">[</span>ratio<span class="o">]</span>                           <span class="m">100</span>.00%
+Status Codes  <span class="o">[</span>code:count<span class="o">]</span>                      <span class="m">200</span>:36000
+Error Set:
+Requests      <span class="o">[</span>total, rate, throughput<span class="o">]</span>         <span class="m">36000</span>, <span class="m">600</span>.02, <span class="m">599</span>.83
+Duration      <span class="o">[</span>total, attack, wait<span class="o">]</span>             1m0s, <span class="m">59</span>.998s, <span class="m">18</span>.336ms
+<span class="hll">Latencies     <span class="o">[</span>min, mean, <span class="m">50</span>, <span class="m">90</span>, <span class="m">95</span>, <span class="m">99</span>, max<span class="o">]</span>  <span class="m">3</span>.328ms, <span class="m">15</span>.91ms, <span class="m">7</span>.209ms, <span class="m">26</span>.135ms, <span class="m">54</span>.551ms, <span class="m">205</span>.604ms, <span class="m">307</span>.993ms <span class="o">(</span><span class="m">2</span><span class="o">)</span>
+</span>Bytes In      <span class="o">[</span>total, mean<span class="o">]</span>                     <span class="m">11088000</span>, <span class="m">308</span>.00
+Bytes Out     <span class="o">[</span>total, mean<span class="o">]</span>                     <span class="m">5208264000</span>, <span class="m">144674</span>.00
+Success       <span class="o">[</span>ratio<span class="o">]</span>                           <span class="m">100</span>.00%
+Status Codes  <span class="o">[</span>code:count<span class="o">]</span>                      <span class="m">200</span>:36000
+Error Set:
+</code></pre></div>
+<p>The output from the above command shows the benchmark results for the inference service running on GPU (1).
+And also the results from the previous run when the model was being served using only the CPU (2).</p>
+<p>The interesting results are displayed by the <code>Latency</code> metrics. The latency results for the inference service
+running on GPU (1) are much lower than the latency results for the inference service running on CPU (2).</p>
+<h2 id="cleanup">Cleanup</h2>
+<p>Delete the cluster by running the following command:</p>
+<div class="highlight"><pre><span></span><code>k3d cluster delete fuseml
+</code></pre></div>
+<p>The docker containers created by k3d will be deleted together with all workloads.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In this tutorial we have demonstrated how FuseML can be used to validate, train and serve
+ML models on GPU. Additionally, we have demonstrated the use of GPU for inference and training
+models quicker. Although the model used in this tutorial is not complex, meaning that it
+could have been trained without GPU, it is a good example that enabled us to see how using a
+GPU can speed up the training process.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../kfserving-basic/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Logistic Regression with MLFlow &amp; KFServing" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Logistic Regression with MLFlow & KFServing
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../architecture/" class="md-footer__link md-footer__link--next" aria-label="Next: Architecture" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Architecture
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 FuseML Author(s)
+          </div>
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.8397ff9e.min.js", "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e84347e.min.js"></script>
+      
+        <script src="../../javascripts/extra.js"></script>
+      
+    
+  </body>
+</html>

@@ -10,7 +10,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.4">
     
     
       
@@ -18,7 +18,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.802231af.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.db9e7362.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
@@ -76,7 +76,9 @@
       
     </div>
     
-      <header class="md-header" data-md-component="header">
+      
+
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="FuseML Documentation" class="md-header__button md-logo" aria-label="FuseML Documentation" data-md-component="logo">
       
@@ -121,11 +123,14 @@
       </div>
     
   </nav>
+  
 </header>
     
     <div class="md-container" data-md-component="container">
       
       
+        
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -217,10 +222,57 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Tutorials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tutorials" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../tutorials/" class="md-nav__link">
-        Tutorials
+      <a href="../tutorials/kfserving-basic/" class="md-nav__link">
+        Logistic Regression with MLFlow & KFServing
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/kfserving-triton-gpu/" class="md-nav__link">
+        Training & Serving ML Models on GPU with NVIDIA Triton
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -418,64 +470,64 @@
                 
                 <h1 id="fuseml-command-line-reference">FuseML Command-Line Reference</h1>
 <p>Using the FuseML CLI is a frictionless experience. Let's deep dive into the various options you may use with it.
-Let's start looking at the global capabilites. Simply type:</p>
-<pre><code class="language-bash">fuseml
-</code></pre>
+Let's start looking at the global capabilities. Simply type:</p>
+<div class="highlight"><pre><span></span><code>fuseml
+</code></pre></div>
 <p>you should get a similar output</p>
-<pre><code class="language-bash">FuseML command line client
+<div class="highlight"><pre><span></span><code>FuseML <span class="nb">command</span> line client
 
 Usage:
-  fuseml [command]
+  fuseml <span class="o">[</span>command<span class="o">]</span>
 
 Available Commands:
   application application management
   codeset     codeset management
   extension   Extension management
-  help        Help about any command
+  <span class="nb">help</span>        Help about any <span class="nb">command</span>
   project     Project management
   runnable    runnable management
   version     display version information
   workflow    Workflow management
 
 Flags:
-  -h, --help          help for fuseml
-      --timeout int   (FUSEML_HTTP_TIMEOUT) maximum number of seconds to wait for response (default 30)
-  -u, --url string    (FUSEML_SERVER_URL) URL where the FuseML service is running
-  -v, --verbose       (FUSEML_VERBOSE) print verbose information, such as HTTP request and response details
+  -h, --help          <span class="nb">help</span> <span class="k">for</span> fuseml
+      --timeout int   <span class="o">(</span>FUSEML_HTTP_TIMEOUT<span class="o">)</span> maximum number of seconds to <span class="nb">wait</span> <span class="k">for</span> response <span class="o">(</span>default <span class="m">30</span><span class="o">)</span>
+  -u, --url string    <span class="o">(</span>FUSEML_SERVER_URL<span class="o">)</span> URL where the FuseML service is running
+  -v, --verbose       <span class="o">(</span>FUSEML_VERBOSE<span class="o">)</span> print verbose information, such as HTTP request and response details
 
-Use &quot;fuseml [command] --help&quot; for more information about a command.
-</code></pre>
+Use <span class="s2">&quot;fuseml [command] --help&quot;</span> <span class="k">for</span> more information about a command.
+</code></pre></div>
 <p>Most CLI commands require you to supply the URL where the FuseML instance is running, either as a command line argument,
 or as the FUSEML_SERVER_URL environment variable. The URL is printed out by the installer during the installation process.
 If you missed it, you can retrieve it at  any time with the following command:</p>
-<pre><code class="language-bash">export FUSEML_SERVER_URL=http://$(kubectl get VirtualService -n fuseml-core fuseml-core -o jsonpath=&quot;{.spec.hosts[0]}&quot;)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">FUSEML_SERVER_URL</span><span class="o">=</span>http://<span class="k">$(</span>kubectl get VirtualService -n fuseml-core fuseml-core -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.spec.hosts[0]}&quot;</span><span class="k">)</span>
+</code></pre></div>
 <h2 id="codesets">Codesets</h2>
 <p>A FuseML Codeset represents a versioned collection of files - code files, scripts, configuration files, generally all the sources needed to implement, build and execute the machine learning logic. The codeset is the "link" between your local environment and the Git-a-like repository where you and your team are working. Use the CLI to publish your ML code to the remote FuseML orchestrator instance and later on assign it to compatible automation workflows.</p>
-<p>The codeset sub-command has the following capabilites:</p>
-<pre><code class="language-bash">&gt; fuseml codeset --help
+<p>The codeset sub-command has the following capabilities:</p>
+<div class="highlight"><pre><span></span><code>&gt; fuseml codeset --help
 Perform operations on codesets
 
 Usage:
-  fuseml codeset [command]
+  fuseml codeset <span class="o">[</span>command<span class="o">]</span>
 
 Available Commands:
   delete      Delete codesets.
   get         Get codesets.
   list        List codesets.
   register    Register codesets.
-  set         Set current codeset.
+  <span class="nb">set</span>         Set current codeset.
 
 Flags:
-  -h, --help   help for codeset
+  -h, --help   <span class="nb">help</span> <span class="k">for</span> codeset
 
 Global Flags:
-      --timeout int   (FUSEML_HTTP_TIMEOUT) maximum number of seconds to wait for response (default 30)
-  -u, --url string    (FUSEML_SERVER_URL) URL where the FuseML service is running
-  -v, --verbose       (FUSEML_VERBOSE) print verbose information, such as HTTP request and response details
+      --timeout int   <span class="o">(</span>FUSEML_HTTP_TIMEOUT<span class="o">)</span> maximum number of seconds to <span class="nb">wait</span> <span class="k">for</span> response <span class="o">(</span>default <span class="m">30</span><span class="o">)</span>
+  -u, --url string    <span class="o">(</span>FUSEML_SERVER_URL<span class="o">)</span> URL where the FuseML service is running
+  -v, --verbose       <span class="o">(</span>FUSEML_VERBOSE<span class="o">)</span> print verbose information, such as HTTP request and response details
 
-Use &quot;fuseml codeset [command] --help&quot; for more information about a command.
-</code></pre>
+Use <span class="s2">&quot;fuseml codeset [command] --help&quot;</span> <span class="k">for</span> more information about a command.
+</code></pre></div>
 <h2 id="extensions">Extensions</h2>
 <p>The way FuseML integrates with 3rd party AI/ML tools is through extensions. External tools can be registered as
 FuseML extensions and then later on referenced in workflows. Extensions provide the means to manage how FuseML
@@ -485,12 +537,12 @@ allows users to configure reusable workflows and thus avoid being locked into a 
 <p>3rd party tools that can be installed through the FuseML installer, such as MLFlow and KFServing, are automatically
 registered as FuseML extensions. The FuseML CLI can be used to manage additional extensions, such as registering
 AI/ML tools that are not managed by FuseML as FuseML extensions.</p>
-<p>The extension sub-command has the following capabilites:</p>
-<pre><code class="language-bash">&gt; fuseml extension --help
+<p>The extension sub-command has the following capabilities:</p>
+<div class="highlight"><pre><span></span><code>&gt; fuseml extension --help
 Perform operations on extensions
 
 Usage:
-  fuseml extension [command]
+  fuseml extension <span class="o">[</span>command<span class="o">]</span>
 
 Available Commands:
   credentials Extension credentials management
@@ -503,60 +555,60 @@ Available Commands:
   update      Update the attributes of an existing FuseML extension
 
 Flags:
-  -h, --help   help for extension
+  -h, --help   <span class="nb">help</span> <span class="k">for</span> extension
 
 Global Flags:
-      --timeout int   (FUSEML_HTTP_TIMEOUT) maximum number of seconds to wait for response (default 30)
-  -u, --url string    (FUSEML_SERVER_URL) URL where the FuseML service is running
-  -v, --verbose       (FUSEML_VERBOSE) print verbose information, such as HTTP request and response details
+      --timeout int   <span class="o">(</span>FUSEML_HTTP_TIMEOUT<span class="o">)</span> maximum number of seconds to <span class="nb">wait</span> <span class="k">for</span> response <span class="o">(</span>default <span class="m">30</span><span class="o">)</span>
+  -u, --url string    <span class="o">(</span>FUSEML_SERVER_URL<span class="o">)</span> URL where the FuseML service is running
+  -v, --verbose       <span class="o">(</span>FUSEML_VERBOSE<span class="o">)</span> print verbose information, such as HTTP request and response details
 
-Use &quot;fuseml extension [command] --help&quot; for more information about a command.
-</code></pre>
+Use <span class="s2">&quot;fuseml extension [command] --help&quot;</span> <span class="k">for</span> more information about a command.
+</code></pre></div>
 <p>There are essentially two ways to register extensions with the FuseML CLI: either by supplying a YAML file with
 the complete extension descriptor using <code>fuseml extension register -f &lt;descriptor-file&gt;</code>, or by building the extension
 piece by piece using the <code>fuseml extension register</code>, <code>fuseml extension service add</code>, <code>fuseml extension endpoint add</code>
 and <code>fuseml extension credentials add</code> commands and their command-line arguments.</p>
 <p>The following example YAML file describes an external MLFlow tracking server instance that is
 registered as an experiment tracking and model store extension with FuseML:</p>
-<pre><code class="language-yaml">id: mymlflow
-product: mlflow
-version: &quot;1.19.0&quot;
-description: MLFlow experiment tracking service
-zone: dev-server
-services:
-  - id: mlflow-tracking
-    resource: mlflow-tracking
-    category: experiment-tracking
-    description: MLFlow experiment tracking service API and UI
-    auth_required: False
-    endpoints:
-      - url: http://10.20.30.40
-        type: external
-        configuration:
-          MLFLOW_TRACKING_URI: http://10.20.30.40
-  - id: mlflow-store
-    resource: s3
-    category: model-store
-    description: MLFlow minio S3 storage back-end
-    auth_required: True
-    credentials:
-      - id: default
-        scope: global
-        configuration:
-          AWS_ACCESS_KEY_ID: v4Us74XUtkuEGd10yS05
-          AWS_SECRET_ACCESS_KEY: MJtLeytp72bpnq2XtSqpRTlB3MXTV8Am5ASjED4x
-    endpoints:
-      - url: http://10.20.30.40:9000
-        type: external
-        configuration:
-          MLFLOW_S3_ENDPOINT_URL: http://10.20.30.40:9000
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mymlflow</span>
+<span class="nt">product</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow</span>
+<span class="nt">version</span><span class="p">:</span> <span class="s">&quot;1.19.0&quot;</span>
+<span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MLFlow experiment tracking service</span>
+<span class="nt">zone</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dev-server</span>
+<span class="nt">services</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-tracking</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-tracking</span>
+    <span class="nt">category</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">experiment-tracking</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MLFlow experiment tracking service API and UI</span>
+    <span class="nt">auth_required</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+    <span class="nt">endpoints</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://10.20.30.40</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">external</span>
+        <span class="nt">configuration</span><span class="p">:</span>
+          <span class="nt">MLFLOW_TRACKING_URI</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://10.20.30.40</span>
+  <span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-store</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">s3</span>
+    <span class="nt">category</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">model-store</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MLFlow minio S3 storage back-end</span>
+    <span class="nt">auth_required</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+    <span class="nt">credentials</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">default</span>
+        <span class="nt">scope</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">global</span>
+        <span class="nt">configuration</span><span class="p">:</span>
+          <span class="nt">AWS_ACCESS_KEY_ID</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v4Us74XUtkuEGd10yS05</span>
+          <span class="nt">AWS_SECRET_ACCESS_KEY</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MJtLeytp72bpnq2XtSqpRTlB3MXTV8Am5ASjED4x</span>
+    <span class="nt">endpoints</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://10.20.30.40:9000</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">external</span>
+        <span class="nt">configuration</span><span class="p">:</span>
+          <span class="nt">MLFLOW_S3_ENDPOINT_URL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://10.20.30.40:9000</span>
+</code></pre></div>
 <p>To register the extension as a YAML file with the FuseML CLI:</p>
-<pre><code>&gt; fuseml extension register -f mymlflow.yaml 
+<div class="highlight"><pre><span></span><code>&gt; fuseml extension register -f mymlflow.yaml 
 Extension &quot;mymlflow&quot; successfully registered
-</code></pre>
+</code></pre></div>
 <p>Alternatively, to build the same extension step by step:</p>
-<pre><code>&gt; fuseml extension register --id mymlflow -p mlflow --version 1.19.0 --zone dev-server --desc &quot;MLFlow experiment tracking service&quot;
+<div class="highlight"><pre><span></span><code>&gt; fuseml extension register --id mymlflow -p mlflow --version 1.19.0 --zone dev-server --desc &quot;MLFlow experiment tracking service&quot;
 Extension &quot;mymlflow&quot; successfully registered
 
 &gt; fuseml extension service add --id mlflow-tracking -r mlflow-tracking -c experiment-tracking --desc &quot;MLFlow experiment tracking service API and UI&quot; mymlflow
@@ -573,7 +625,7 @@ Endpoint &quot;http://10.20.30.40:9000&quot; successfully added to service mlflo
 
 &gt; fuseml extension credentials add --id default -c AWS_ACCESS_KEY_ID:v4Us74XUtkuEGd10yS05,AWS_SECRET_ACCESS_KEY:MJtLeytp72bpnq2XtSqpRTlB3MXTV8Am5ASjED4x mymlflow mlflow-store
 Credentials &quot;default&quot; successfully added to service mlflow-store from extension &quot;mymlflow&quot;
-</code></pre>
+</code></pre></div>
 <h2 id="workflows">Workflows</h2>
 <p>Workflows are the most important feature of FuseML. Configuring workflows is a declarative way of instructing FuseML
 to run automated operations using codesets and other types of artifacts as input and deploying applications as output.
@@ -588,12 +640,12 @@ full description of the workflow format.</li>
 assignment, as well as every time a new version of the assigned codeset is published. The status, as well as the results(s)
 of a workflow run can be displayed with the CLI.</li>
 </ul>
-<p>The workflow sub-command has the following capabilites:</p>
-<pre><code class="language-bash">&gt; fuseml workflow --help
+<p>The workflow sub-command has the following capabilities:</p>
+<div class="highlight"><pre><span></span><code>&gt; fuseml workflow --help
 Perform operations on workflows
 
 Usage:
-  fuseml workflow [command]
+  fuseml workflow <span class="o">[</span>command<span class="o">]</span>
 
 Available Commands:
   assign           Assigns a workflow to a codeset
@@ -606,19 +658,19 @@ Available Commands:
   unassign         Unassign a workflow from a codeset
 
 Flags:
-  -h, --help   help for workflow
+  -h, --help   <span class="nb">help</span> <span class="k">for</span> workflow
 
 Global Flags:
-      --timeout int   (FUSEML_HTTP_TIMEOUT) maximum number of seconds to wait for response (default 30)
-  -u, --url string    (FUSEML_SERVER_URL) URL where the FuseML service is running
-  -v, --verbose       (FUSEML_VERBOSE) print verbose information, such as HTTP request and response details
+      --timeout int   <span class="o">(</span>FUSEML_HTTP_TIMEOUT<span class="o">)</span> maximum number of seconds to <span class="nb">wait</span> <span class="k">for</span> response <span class="o">(</span>default <span class="m">30</span><span class="o">)</span>
+  -u, --url string    <span class="o">(</span>FUSEML_SERVER_URL<span class="o">)</span> URL where the FuseML service is running
+  -v, --verbose       <span class="o">(</span>FUSEML_VERBOSE<span class="o">)</span> print verbose information, such as HTTP request and response details
 
-Use &quot;fuseml workflow [command] --help&quot; for more information about a command.
-</code></pre>
+Use <span class="s2">&quot;fuseml workflow [command] --help&quot;</span> <span class="k">for</span> more information about a command.
+</code></pre></div>
 <p>Following is an example of workflow definition in YAML format describing an end-to-end ML pipeline.
 It assumes that both MLFlow and KFServing have already been installed and registered with FuseML as
-extensions, as covered in the <a href="../tutorials/">tutorial</a> section:</p>
-<pre><code class="language-yml">name: example
+extensions, as covered in the <a href="../tutorials/kfserving-basic/">tutorial</a> section:</p>
+<div class="highlight"><pre><span></span><code>name: example
 description: |
   End-to-end pipeline template that takes in an MLFlow compatible codeset,
   runs the MLFlow project to train a model, then creates a KFServing prediction
@@ -641,17 +693,17 @@ steps:
     inputs:
       - name: mlflow-codeset
         codeset:
-          name: '{{ inputs.mlflow-codeset }}'
+          name: &#39;{{ inputs.mlflow-codeset }}&#39;
           path: /project
     outputs:
       - name: image
   - name: trainer
-    image: '{{ steps.builder.outputs.image }}'
+    image: &#39;{{ steps.builder.outputs.image }}&#39;
     inputs:
       - name: mlflow-codeset
         codeset:
-          name: '{{ inputs.mlflow-codeset }}'
-          path: '/project'
+          name: &#39;{{ inputs.mlflow-codeset }}&#39;
+          path: &#39;/project&#39;
     outputs:
       - name: mlflow-model-url
     extensions:
@@ -665,13 +717,13 @@ steps:
     image: ghcr.io/fuseml/kfserving-predictor:dev
     inputs:
       - name: model
-        value: '{{ steps.trainer.outputs.mlflow-model-url }}'
+        value: &#39;{{ steps.trainer.outputs.mlflow-model-url }}&#39;
       - name: predictor
-        value: '{{ inputs.predictor }}'
+        value: &#39;{{ inputs.predictor }}&#39;
       - name: mlflow-codeset
         codeset:
-          name: '{{ inputs.mlflow-codeset }}'
-          path: '/project'
+          name: &#39;{{ inputs.mlflow-codeset }}&#39;
+          path: &#39;/project&#39;
     outputs:
       - name: prediction-url
     extensions:
@@ -679,22 +731,22 @@ steps:
         service_resource: s3
       - name: kfserving
         service_resource: kfserving-api
-</code></pre>
+</code></pre></div>
 <p>To create a workflow from the YAML file with the FuseML CLI:</p>
-<pre><code>&gt; fuseml workflow create example.yaml 
+<div class="highlight"><pre><span></span><code>&gt; fuseml workflow create example.yaml 
 Workflow &quot;example&quot; successfully created
-</code></pre>
+</code></pre></div>
 <h2 id="application">Application</h2>
 <p>A FuseML Application is represented by a web service usually deployed automatically by FuseML as a result
 of a workflow running to completion and can be accessed via its exposed URL. The most common type of FuseML
 application is a prediction service. Use the CLI to display running applications, retrieve their URLs and
 delete them when no longer needed.</p>
-<p>The application sub-command has the following capabilites:</p>
-<pre><code class="language-bash">&gt; fuseml application --help
+<p>The application sub-command has the following capabilities:</p>
+<div class="highlight"><pre><span></span><code>&gt; fuseml application --help
 Perform operations on applications
 
 Usage:
-  fuseml application [command]
+  fuseml application <span class="o">[</span>command<span class="o">]</span>
 
 Available Commands:
   delete      Delete an application.
@@ -702,15 +754,15 @@ Available Commands:
   list        List applications.
 
 Flags:
-  -h, --help   help for application
+  -h, --help   <span class="nb">help</span> <span class="k">for</span> application
 
 Global Flags:
-      --timeout int   (FUSEML_HTTP_TIMEOUT) maximum number of seconds to wait for response (default 30)
-  -u, --url string    (FUSEML_SERVER_URL) URL where the FuseML service is running
-  -v, --verbose       (FUSEML_VERBOSE) print verbose information, such as HTTP request and response details
+      --timeout int   <span class="o">(</span>FUSEML_HTTP_TIMEOUT<span class="o">)</span> maximum number of seconds to <span class="nb">wait</span> <span class="k">for</span> response <span class="o">(</span>default <span class="m">30</span><span class="o">)</span>
+  -u, --url string    <span class="o">(</span>FUSEML_SERVER_URL<span class="o">)</span> URL where the FuseML service is running
+  -v, --verbose       <span class="o">(</span>FUSEML_VERBOSE<span class="o">)</span> print verbose information, such as HTTP request and response details
 
-Use &quot;fuseml application [command] --help&quot; for more information about a command.
-</code></pre>
+Use <span class="s2">&quot;fuseml application [command] --help&quot;</span> <span class="k">for</span> more information about a command.
+</code></pre></div>
                 
               
               
@@ -770,10 +822,12 @@ Use &quot;fuseml application [command] --help&quot; for more information about a
             Copyright &copy; 2021 FuseML Author(s)
           </div>
         
-        Made with
-        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs
-        </a>
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
         
       </div>
       
@@ -785,10 +839,10 @@ Use &quot;fuseml application [command] --help&quot; for more information about a
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.409db549.min.js", "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.8397ff9e.min.js", "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.756773cc.min.js"></script>
+      <script src="../assets/javascripts/bundle.1e84347e.min.js"></script>
       
         <script src="../javascripts/extra.js"></script>
       

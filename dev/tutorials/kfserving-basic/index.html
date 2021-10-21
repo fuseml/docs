@@ -9,19 +9,19 @@
       
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.4">
     
     
       
-        <title>Tutorials - FuseML Documentation</title>
+        <title>Logistic Regression with MLFlow & KFServing - FuseML Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.802231af.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.db9e7362.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
         
           
           
@@ -40,7 +40,7 @@
     
     
     
-      <link rel="stylesheet" href="../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
     
       
@@ -59,7 +59,7 @@
     <body dir="ltr" data-md-color-scheme="" data-md-color-primary="green" data-md-color-accent="cyan">
   
     
-    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#fuseml-tutorials" class="md-skip">
+        <a href="#a-simple-logistic-regression-with-mlflow-and-kfserving" class="md-skip">
           Skip to content
         </a>
       
@@ -76,9 +76,11 @@
       
     </div>
     
-      <header class="md-header" data-md-component="header">
+      
+
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="FuseML Documentation" class="md-header__button md-logo" aria-label="FuseML Documentation" data-md-component="logo">
+    <a href="../.." title="FuseML Documentation" class="md-header__button md-logo" aria-label="FuseML Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -97,7 +99,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Tutorials
+              Logistic Regression with MLFlow & KFServing
             
           </span>
         </div>
@@ -121,11 +123,14 @@
       </div>
     
   </nav>
+  
 </header>
     
     <div class="md-container" data-md-component="container">
       
       
+        
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -141,7 +146,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="FuseML Documentation" class="md-nav__button md-logo" aria-label="FuseML Documentation" data-md-component="logo">
+    <a href="../.." title="FuseML Documentation" class="md-nav__button md-logo" aria-label="FuseML Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -173,7 +178,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         Home
       </a>
     </li>
@@ -188,7 +193,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../about/" class="md-nav__link">
+      <a href="../../about/" class="md-nav__link">
         About
       </a>
     </li>
@@ -203,7 +208,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../quickstart/" class="md-nav__link">
+      <a href="../../quickstart/" class="md-nav__link">
         Quick Start
       </a>
     </li>
@@ -219,6 +224,34 @@
     
   
   
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Tutorials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tutorials" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
@@ -227,40 +260,31 @@
         
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Tutorials
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="./" class="md-nav__link md-nav__link--active">
-        Tutorials
+        Logistic Regression with MLFlow & KFServing
       </a>
       
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+    </li>
+  
+
+            
+          
+            
+              
   
   
   
-    
+    <li class="md-nav__item">
+      <a href="../kfserving-triton-gpu/" class="md-nav__link">
+        Training & Serving ML Models on GPU with NVIDIA Triton
+      </a>
+    </li>
   
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#example-1-a-simple-logistic-regression-with-mlflow-and-kfserving" class="md-nav__link">
-    Example 1 - A simple logistic regression with MLFlow and KFServing
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -273,7 +297,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../architecture/" class="md-nav__link">
+      <a href="../../architecture/" class="md-nav__link">
         Architecture
       </a>
     </li>
@@ -288,7 +312,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../api/" class="md-nav__link">
+      <a href="../../api/" class="md-nav__link">
         API Reference
       </a>
     </li>
@@ -303,7 +327,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cli/" class="md-nav__link">
+      <a href="../../cli/" class="md-nav__link">
         CLI Reference
       </a>
     </li>
@@ -318,7 +342,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../CONTRIBUTING/" class="md-nav__link">
+      <a href="../../CONTRIBUTING/" class="md-nav__link">
         Contributing
       </a>
     </li>
@@ -344,21 +368,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#example-1-a-simple-logistic-regression-with-mlflow-and-kfserving" class="md-nav__link">
-    Example 1 - A simple logistic regression with MLFlow and KFServing
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -369,78 +378,76 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/fuseml/docs/edit/main/docs/tutorials.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/fuseml/docs/edit/main/docs/tutorials/kfserving-basic.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="fuseml-tutorials">FuseML Tutorials</h1>
-<p>Testing FuseML is simpler than one may think. Let's showcase some use cases.</p>
-<h2 id="example-1-a-simple-logistic-regression-with-mlflow-and-kfserving">Example 1 - A simple logistic regression with MLFlow and KFServing</h2>
+                <h1 id="a-simple-logistic-regression-with-mlflow-and-kfserving">A simple logistic regression with MLFlow and KFServing</h1>
 <p>This example shows how FuseML can be used to automate and end-to-end machine learning workflow using
 a combination of different tools. In this case, we have a scikit-learn ML model that is being trained
 using <a href="https://mlflow.org/">MLflow</a> and then served with <a href="https://github.com/kubeflow/kfserving">KFServing</a>.</p>
 <p>We assume that both FuseML infrastructure and the FuseML CLI are already installed, if not please
-check first the <a href="../quickstart/">quick start</a> section.</p>
+check first the <a href="../../quickstart/">quick start</a> section.</p>
 <p><strong>1.</strong> Install 3rd party ML tools</p>
 <p>Running this example requires MLflow and KFServing to be installed in the same cluster as FuseML.</p>
 <p>The FuseML installer can be used for a quick MLFlow and KFServing installation:</p>
-<pre><code class="language-bash">fuseml-installer extensions --add mlflow,kfserving
-</code></pre>
+<div class="highlight"><pre><span></span><code>fuseml-installer extensions --add mlflow,kfserving
+</code></pre></div>
 <p>To find out about installed extensions, install new or remove installed ones, use</p>
-<pre><code class="language-bash">fuseml-installer extensions --help
-</code></pre>
+<div class="highlight"><pre><span></span><code>fuseml-installer extensions --help
+</code></pre></div>
 <p>command.</p>
 <p>Alternatively, you can follow <a href="https://github.com/kubeflow/kfserving/blob/master/README.md">the KFServing official instructions</a>
 and install KFServing manually.</p>
 <p><strong>2.</strong> Set <code>FUSEML_SERVER_URL</code> environment variable to point to fuseml-core</p>
 <p>The fuseml-core URL was printed out by the installer during the FuseML installation.Alternatively, you can run the following
 command to retrieve the fuseml-core URL and set the <code>FUSEML_SERVER_URL</code> environment variable:</p>
-<pre><code class="language-bash">export FUSEML_SERVER_URL=http://$(kubectl get VirtualService -n fuseml-core fuseml-core -o jsonpath=&quot;{.spec.hosts[0]}&quot;)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">FUSEML_SERVER_URL</span><span class="o">=</span>http://<span class="k">$(</span>kubectl get VirtualService -n fuseml-core fuseml-core -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.spec.hosts[0]}&quot;</span><span class="k">)</span>
+</code></pre></div>
 <p><strong>3.</strong> Fetch the FuseML examples code</p>
-<pre><code class="language-bash">git clone --depth 1 -b release-0.1 https://github.com/fuseml/examples.git
-cd examples
-</code></pre>
+<div class="highlight"><pre><span></span><code>git clone --depth <span class="m">1</span> -b release-0.1 https://github.com/fuseml/examples.git
+<span class="nb">cd</span> examples
+</code></pre></div>
 <p>Under the <code>codesets/mlflow</code> directory, there are some example MLflow projects. For this tutorial we will be using the
 <code>sklearn</code> project.</p>
 <p><strong>4.</strong> Register the codeset</p>
 <p>From now on, you start using <em>fuseml</em> command line tool. Register the example code as a FuseML versioned codeset artifact:</p>
-<pre><code class="language-bash">fuseml codeset register --name &quot;mlflow-test&quot; --project &quot;mlflow-project-01&quot; codesets/mlflow/sklearn
-</code></pre>
+<div class="highlight"><pre><span></span><code>fuseml codeset register --name <span class="s2">&quot;mlflow-test&quot;</span> --project <span class="s2">&quot;mlflow-project-01&quot;</span> codesets/mlflow/sklearn
+</code></pre></div>
 <p>Example output:</p>
-<pre><code class="language-bash">&gt; fuseml codeset register --name &quot;mlflow-test&quot; --project &quot;mlflow-project-01&quot; codesets/mlflow/sklearn
-2021/09/08 12:27:40 Pushing the code to the git repository...
+<div class="highlight"><pre><span></span><code>&gt; fuseml codeset register --name <span class="s2">&quot;mlflow-test&quot;</span> --project <span class="s2">&quot;mlflow-project-01&quot;</span> codesets/mlflow/sklearn
+<span class="m">2021</span>/09/08 <span class="m">12</span>:27:40 Pushing the code to the git repository...
 Codeset http://gitea.172.18.0.2.nip.io/mlflow-project-01/mlflow-test.git successfully registered
 Saving new username into config file as current username.
 Saving new password into config file as current password.
 Setting mlflow-test as current codeset.
 Setting mlflow-project-01 as current project.
 FuseML configuration file created at /home/snica/.config/fuseml/config.yaml
-</code></pre>
+</code></pre></div>
 <p>You may optionally log into the Gitea UI using the URL, username and password printed out by the <code>codeset register</code> command. You should find a new organization named <code>mlflow-project-01</code> and a repo named <code>mlflow-test</code>.</p>
 <p><strong>5.</strong> Create a workflow</p>
 <p>The example FuseML workflow included in the examples repository represents a complete, end-to-end ML pipeline "compatible" with any codeset that contains an MLProject. It includes all the steps necessary to train a model with MLflow, save the model and then creates a KFServing prediction service for it.</p>
 <p>Use the example workflow definition to create a workflow in FuseML:</p>
-<pre><code class="language-bash">fuseml workflow create workflows/mlflow-e2e.yaml
-</code></pre>
+<div class="highlight"><pre><span></span><code>fuseml workflow create workflows/mlflow-e2e.yaml
+</code></pre></div>
 <p><strong>6.</strong> Assign the codeset to the workflow</p>
-<pre><code class="language-bash">fuseml workflow assign --name mlflow-e2e --codeset-name mlflow-test --codeset-project mlflow-project-01
-</code></pre>
+<div class="highlight"><pre><span></span><code>fuseml workflow assign --name mlflow-e2e --codeset-name mlflow-test --codeset-project mlflow-project-01
+</code></pre></div>
 <p><strong>7.</strong> Monitor the workflow from the command-line</p>
 <p>Now that the Workflow is assigned to the Codeset, a new workflow run was created. To watch the workflow progress, check "workflow run" with:</p>
-<pre><code class="language-bash">fuseml workflow list-runs --name mlflow-e2e
-</code></pre>
+<div class="highlight"><pre><span></span><code>fuseml workflow list-runs --name mlflow-e2e
+</code></pre></div>
 <p>Example output:</p>
-<pre><code>&gt; fuseml workflow list-runs --name mlflow-e2e
+<div class="highlight"><pre><span></span><code>&gt; fuseml workflow list-runs --name mlflow-e2e
 +--------------------------------------------+------------+--------------+----------+---------+
 | NAME                                       | WORKFLOW   | STARTED      | DURATION | STATUS  |
 +--------------------------------------------+------------+--------------+----------+---------+
 | fuseml-mlflow-project-01-mlflow-test-mlprp | mlflow-e2e | 1 minute ago | ---      | Running |
 +--------------------------------------------+------------+--------------+----------+---------+
-</code></pre>
+</code></pre></div>
 <p>This command shows you detailed information about running workflow. You may also follow the Tekton URL value under the expanded output section to see relevant information about the underlying Tekton PipelineRun which implements the workflow run:</p>
-<pre><code>&gt; fuseml workflow list-runs --name mlflow-e2e --format yaml
+<div class="highlight"><pre><span></span><code>&gt; fuseml workflow list-runs --name mlflow-e2e --format yaml
 ---
 - name: fuseml-mlflow-project-01-mlflow-test-hr67k
   workflowref: mlflow-e2e
@@ -469,79 +476,79 @@ FuseML configuration file created at /home/snica/.config/fuseml/config.yaml
   completiontime: null
   status: Running
   url: &quot;http://tekton.10.162.66.101.omg.howdoi.website/#/namespaces/fuseml-workloads/pipelineruns/fuseml-mlflow-project-01-mlflow-test-hr67k&quot;
-</code></pre>
+</code></pre></div>
 <p>Once the run succeeds, the status value changes to <code>Succeeded</code> in the CLI:</p>
-<pre><code>&gt; fuseml workflow list-runs --name mlflow-e2e
+<div class="highlight"><pre><span></span><code>&gt; fuseml workflow list-runs --name mlflow-e2e
 +--------------------------------------------+------------+----------------+------------+-----------+
 | NAME                                       | WORKFLOW   | STARTED        | DURATION   | STATUS    |
 +--------------------------------------------+------------+----------------+------------+-----------+
 | fuseml-mlflow-project-01-mlflow-test-mlprp | mlflow-e2e | 22 minutes ago | 22 minutes | Succeeded |
 +--------------------------------------------+------------+----------------+------------+-----------+
-</code></pre>
+</code></pre></div>
 <p><strong>8.</strong> Test the deployed model</p>
 <p>When the workflow run is complete, a new inference service is created and registered as a FuseML application. You can list the applications deployed
 by FuseML by running the following command:</p>
-<pre><code class="language-bash">fuseml application list
-</code></pre>
+<div class="highlight"><pre><span></span><code>fuseml application list
+</code></pre></div>
 <p>This should produce output similar to this one:</p>
-<pre><code>&gt; fuseml application list
+<div class="highlight"><pre><span></span><code>&gt; fuseml application list
 +-------------------------------+-----------+----------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+------------+
 | NAME                          | TYPE      | DESCRIPTION                                  | URL                                                                                                                                  | WORKFLOW   |
 +-------------------------------+-----------+----------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+------------+
 | mlflow-project-01-mlflow-test | predictor | Application generated by mlflow-e2e workflow | http://mlflow-project-01-mlflow-test.fuseml-workloads.10.162.66.101.omg.howdoi.website/v2/models/mlflow-project-01-mlflow-test/infer | mlflow-e2e |
 +-------------------------------+-----------+----------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+------------+
-</code></pre>
+</code></pre></div>
 <p>The application URL is used to submit a request to the inference service. The examples repository includes a prediction data sample at
 <code>prediction/data-sklearn.json</code>:</p>
-<pre><code class="language-bash">cat prediction/data-sklearn.json
-{
-    &quot;inputs&quot;: [
-    {
-        &quot;name&quot;: &quot;input-0&quot;,
-        &quot;shape&quot;: [1, 11],
-        &quot;datatype&quot;: &quot;FP32&quot;,
-        &quot;data&quot;: [
-        [12.8, 0.029, 0.48, 0.98, 6.2, 29, 7.33, 1.2, 0.39, 90, 0.86]
-        ]
-    }
-    ]
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code>cat prediction/data-sklearn.json
+<span class="o">{</span>
+    <span class="s2">&quot;inputs&quot;</span>: <span class="o">[</span>
+    <span class="o">{</span>
+        <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;input-0&quot;</span>,
+        <span class="s2">&quot;shape&quot;</span>: <span class="o">[</span><span class="m">1</span>, <span class="m">11</span><span class="o">]</span>,
+        <span class="s2">&quot;datatype&quot;</span>: <span class="s2">&quot;FP32&quot;</span>,
+        <span class="s2">&quot;data&quot;</span>: <span class="o">[</span>
+        <span class="o">[</span><span class="m">12</span>.8, <span class="m">0</span>.029, <span class="m">0</span>.48, <span class="m">0</span>.98, <span class="m">6</span>.2, <span class="m">29</span>, <span class="m">7</span>.33, <span class="m">1</span>.2, <span class="m">0</span>.39, <span class="m">90</span>, <span class="m">0</span>.86<span class="o">]</span>
+        <span class="o">]</span>
+    <span class="o">}</span>
+    <span class="o">]</span>
+<span class="o">}</span>
+</code></pre></div>
 <p>Run the following commands to send a inference request to the deployed model:</p>
-<pre><code class="language-bash">export PREDICTOR_URL=$(fuseml application list --format json | jq -r &quot;.[0].url&quot;)
-curl -d @prediction/data-sklearn.json $PREDICTOR_URL | jq
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">PREDICTOR_URL</span><span class="o">=</span><span class="k">$(</span>fuseml application list --format json <span class="p">|</span> jq -r <span class="s2">&quot;.[0].url&quot;</span><span class="k">)</span>
+curl -d @prediction/data-sklearn.json <span class="nv">$PREDICTOR_URL</span> <span class="p">|</span> jq
+</code></pre></div>
 <p>The output will be something similar to:</p>
-<pre><code class="language-json">{
-    &quot;model_name&quot;:&quot;mlflow-project-01-mlflow-test&quot;,
-    &quot;model_version&quot;:null,
-    &quot;id&quot;:&quot;44d5d037-052b-49b6-aace-1c5346a35004&quot;,
-    &quot;parameters&quot;:null,
-    &quot;outputs&quot;: [
-    {
-        &quot;name&quot;:&quot;predict&quot;,
-        &quot;shape&quot;:[1],
-        &quot;datatype&quot;:&quot;FP32&quot;,
-        &quot;parameters&quot;:null,
-        &quot;data&quot;: [ 6.486344809506676 ]
-    }
-    ]
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;model_name&quot;</span><span class="p">:</span><span class="s2">&quot;mlflow-project-01-mlflow-test&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;model_version&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;44d5d037-052b-49b6-aace-1c5346a35004&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span>
+    <span class="nt">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;predict&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;shape&quot;</span><span class="p">:[</span><span class="mi">1</span><span class="p">],</span>
+        <span class="nt">&quot;datatype&quot;</span><span class="p">:</span><span class="s2">&quot;FP32&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span>
+        <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="mf">6.486344809506676</span> <span class="p">]</span>
+    <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><strong>9.</strong> (Optional) Use the webapp example to test the deployed model</p>
 <p>Rather than using curl to exercise the inference service, you may use a simple app we developed using <a href="https://streamlit.io/">streamlit</a>.</p>
 <p>First, deploy the application into your kubernetes cluster by running the following command:</p>
-<pre><code class="language-bash">kubectl apply -f webapps/winery/service.yaml
-</code></pre>
-<p>Run the following command to check the application deployment status:</p>
-<pre><code class="language-bash">kubectl get ksvc -n fuseml-workloads winery
-</code></pre>
+<div class="highlight"><pre><span></span><code>kubectl apply -f webapps/winery/service.yaml
+</code></pre></div>
+<p>Run the following command to check the application deployment status:
+<div class="highlight"><pre><span></span><code>kubectl get ksvc -n fuseml-workloads winery
+</code></pre></div></p>
 <p>At some point it should reach the <code>READY</code> status and a URL is provided to access the application.
-For example:</p>
-<pre><code class="language-bash">❯ kubectl get ksvc -n fuseml-workloads winery
+For example:
+<div class="highlight"><pre><span></span><code>❯ kubectl get ksvc -n fuseml-workloads winery
 NAME     URL                                                                                LATESTCREATED   LATESTREADY    READY   REASON
 winery   http://winery.fuseml-workloads.fuseml-workloads.10.162.66.101.omg.howdoi.website   winery-00001    winery-00001   True
-</code></pre>
+</code></pre></div></p>
 <p>Open the application URL and follow the instructions presented on the webpage to make your own predictions with the FuseML application you just deployed.</p>
                 
               
@@ -562,7 +569,7 @@ winery   http://winery.fuseml-workloads.fuseml-workloads.10.162.66.101.omg.howdo
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../quickstart/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Quick Start" rel="prev">
+        <a href="../../quickstart/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Quick Start" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -578,13 +585,13 @@ winery   http://winery.fuseml-workloads.fuseml-workloads.10.162.66.101.omg.howdo
       
       
         
-        <a href="../architecture/" class="md-footer__link md-footer__link--next" aria-label="Next: Architecture" rel="next">
+        <a href="../kfserving-triton-gpu/" class="md-footer__link md-footer__link--next" aria-label="Next: Training &amp; Serving ML Models on GPU with NVIDIA Triton" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Architecture
+              Training & Serving ML Models on GPU with NVIDIA Triton
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -602,10 +609,12 @@ winery   http://winery.fuseml-workloads.fuseml-workloads.10.162.66.101.omg.howdo
             Copyright &copy; 2021 FuseML Author(s)
           </div>
         
-        Made with
-        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs
-        </a>
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
         
       </div>
       
@@ -617,12 +626,12 @@ winery   http://winery.fuseml-workloads.fuseml-workloads.10.162.66.101.omg.howdo
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.409db549.min.js", "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.8397ff9e.min.js", "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.756773cc.min.js"></script>
+      <script src="../../assets/javascripts/bundle.1e84347e.min.js"></script>
       
-        <script src="../javascripts/extra.js"></script>
+        <script src="../../javascripts/extra.js"></script>
       
     
   </body>
