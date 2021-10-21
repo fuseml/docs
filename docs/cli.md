@@ -1,7 +1,7 @@
 # FuseML Command-Line Reference
 
 Using the FuseML CLI is a frictionless experience. Let's deep dive into the various options you may use with it.
-Let's start looking at the global capabilites. Simply type:
+Let's start looking at the global capabilities. Simply type:
 
 ```bash
 fuseml
@@ -46,7 +46,7 @@ export FUSEML_SERVER_URL=http://$(kubectl get VirtualService -n fuseml-core fuse
 
 A FuseML Codeset represents a versioned collection of files - code files, scripts, configuration files, generally all the sources needed to implement, build and execute the machine learning logic. The codeset is the "link" between your local environment and the Git-a-like repository where you and your team are working. Use the CLI to publish your ML code to the remote FuseML orchestrator instance and later on assign it to compatible automation workflows.
 
-The codeset sub-command has the following capabilites:
+The codeset sub-command has the following capabilities:
 
 ```bash
 > fuseml codeset --help
@@ -85,7 +85,7 @@ allows users to configure reusable workflows and thus avoid being locked into a 
 registered as FuseML extensions. The FuseML CLI can be used to manage additional extensions, such as registering
 AI/ML tools that are not managed by FuseML as FuseML extensions.
 
-The extension sub-command has the following capabilites:
+The extension sub-command has the following capabilities:
 
 ```bash
 > fuseml extension --help
@@ -203,7 +203,7 @@ full description of the workflow format.
 assignment, as well as every time a new version of the assigned codeset is published. The status, as well as the results(s)
 of a workflow run can be displayed with the CLI.
 
-The workflow sub-command has the following capabilites:
+The workflow sub-command has the following capabilities:
 
 ```bash
 > fuseml workflow --help
@@ -235,7 +235,7 @@ Use "fuseml workflow [command] --help" for more information about a command.
 
 Following is an example of workflow definition in YAML format describing an end-to-end ML pipeline.
 It assumes that both MLFlow and KFServing have already been installed and registered with FuseML as
-extensions, as covered in the [tutorial](tutorials.md) section:
+extensions, as covered in the [tutorial](tutorials/kfserving-basic.md) section:
 
 ```yml
 name: example
@@ -315,7 +315,7 @@ of a workflow running to completion and can be accessed via its exposed URL. The
 application is a prediction service. Use the CLI to display running applications, retrieve their URLs and
 delete them when no longer needed.
 
-The application sub-command has the following capabilites:
+The application sub-command has the following capabilities:
 
 ```bash
 > fuseml application --help

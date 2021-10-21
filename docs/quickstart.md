@@ -105,4 +105,4 @@ kubectl get pods -n gitea -o wide
 kubectl get pods -n tekton-pipelines -o wide
 ```
 
-If everything is in running or completed status, you are good to go. Continue on to the [tutorial](tutorials.md) section and start to have fun with FuseML.
+If everything is in running or completed status, you are good to go. Continue on to the [tutorial](tutorials/kfserving-basic.md) section and start to have fun with FuseML.

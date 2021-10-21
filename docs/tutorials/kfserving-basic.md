@@ -1,15 +1,11 @@
-# FuseML Tutorials
-
-Testing FuseML is simpler than one may think. Let's showcase some use cases.
-
-## Example 1 - A simple logistic regression with MLFlow and KFServing
+# A simple logistic regression with MLFlow and KFServing
 
 This example shows how FuseML can be used to automate and end-to-end machine learning workflow using
 a combination of different tools. In this case, we have a scikit-learn ML model that is being trained
 using [MLflow](https://mlflow.org/) and then served with [KFServing](https://github.com/kubeflow/kfserving).
 
 We assume that both FuseML infrastructure and the FuseML CLI are already installed, if not please
-check first the [quick start](quickstart.md) section.
+check first the [quick start](../quickstart.md) section.
 
 **1.** Install 3rd party ML tools
 
