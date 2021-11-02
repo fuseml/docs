@@ -6,6 +6,7 @@ nav:
     - Tutorials:
         - Logistic Regression with MLFlow & KFServing: tutorials/kfserving-basic.md
         - Training & Serving ML Models on GPU with NVIDIA Triton: tutorials/kfserving-triton-gpu.md
+        - FuseML Extension Development Use-Case - OpenVINO: tutorials/openvino-extensions.md
     - Architecture: architecture.md
     - API Reference: api.md
     - CLI Reference: cli.md
