@@ -2327,10 +2327,10 @@ paths:
         schema:
           type: string
           description: Extension identifier
-          example: kfserving-001
+          example: kserve-001
           pattern: ^[A-Za-z0-9_][A-Za-z0-9-_]*$
           maxLength: 100
-        example: kfserving-001
+        example: kserve-001
       responses:
         "200":
           description: OK response.
@@ -3119,10 +3119,10 @@ paths:
         schema:
           type: string
           description: Extension identifier
-          example: kfserving-001
+          example: kserve-001
           pattern: ^[A-Za-z0-9_][A-Za-z0-9-_]*$
           maxLength: 100
-        example: kfserving-001
+        example: kserve-001
       - name: id
         in: path
         description: Uniquely identifies an extension service within the scope of
@@ -3173,10 +3173,10 @@ paths:
         schema:
           type: string
           description: Extension identifier
-          example: kfserving-001
+          example: kserve-001
           pattern: ^[A-Za-z0-9_][A-Za-z0-9-_]*$
           maxLength: 100
-        example: kfserving-001
+        example: kserve-001
       - name: id
         in: path
         description: Uniquely identifies an extension service within the scope of
@@ -3555,10 +3555,10 @@ paths:
         schema:
           type: string
           description: Extension identifier
-          example: kfserving-001
+          example: kserve-001
           pattern: ^[A-Za-z0-9_][A-Za-z0-9-_]*$
           maxLength: 100
-        example: kfserving-001
+        example: kserve-001
       - name: service_id
         in: path
         description: Extension service identifier
@@ -3807,10 +3807,10 @@ paths:
         schema:
           type: string
           description: Extension identifier
-          example: kfserving-001
+          example: kserve-001
           pattern: ^[A-Za-z0-9_][A-Za-z0-9-_]*$
           maxLength: 100
-        example: kfserving-001
+        example: kserve-001
       - name: service_id
         in: path
         description: Extension service identifier
@@ -3873,10 +3873,10 @@ paths:
         schema:
           type: string
           description: Extension identifier
-          example: kfserving-001
+          example: kserve-001
           pattern: ^[A-Za-z0-9_][A-Za-z0-9-_]*$
           maxLength: 100
-        example: kfserving-001
+        example: kserve-001
       - name: service_id
         in: path
         description: Extension service identifier
@@ -4062,10 +4062,10 @@ paths:
         schema:
           type: string
           description: Extension identifier
-          example: kfserving-001
+          example: kserve-001
           pattern: ^[A-Za-z0-9_][A-Za-z0-9-_]*$
           maxLength: 100
-        example: kfserving-001
+        example: kserve-001
       - name: service_id
         in: path
         description: Extension service identifier
@@ -4241,10 +4241,10 @@ paths:
         schema:
           type: string
           description: Extension identifier
-          example: kfserving-001
+          example: kserve-001
           pattern: ^[A-Za-z0-9_][A-Za-z0-9-_]*$
           maxLength: 100
-        example: kfserving-001
+        example: kserve-001
       - name: service_id
         in: path
         description: Extension service identifier
@@ -4303,10 +4303,10 @@ paths:
         schema:
           type: string
           description: Extension identifier
-          example: kfserving-001
+          example: kserve-001
           pattern: ^[A-Za-z0-9_][A-Za-z0-9-_]*$
           maxLength: 100
-        example: kfserving-001
+        example: kserve-001
       - name: service_id
         in: path
         description: Extension service identifier
@@ -4462,10 +4462,10 @@ paths:
         schema:
           type: string
           description: Extension identifier
-          example: kfserving-001
+          example: kserve-001
           pattern: ^[A-Za-z0-9_][A-Za-z0-9-_]*$
           maxLength: 100
-        example: kfserving-001
+        example: kserve-001
       responses:
         "204":
           description: No Content response.
@@ -4503,10 +4503,10 @@ paths:
         schema:
           type: string
           description: Extension identifier
-          example: kfserving-001
+          example: kserve-001
           pattern: ^[A-Za-z0-9_][A-Za-z0-9-_]*$
           maxLength: 100
-        example: kfserving-001
+        example: kserve-001
       responses:
         "200":
           description: OK response.
@@ -8072,7 +8072,7 @@ paths:
                         url: https://mlflow.10.120.130.140.nip.io
                       version: '>=v1.0,<v1.5'
                       zone: kube-cluster-dev-00126
-                    image: ghcr.io/fuseml/kfserving-predictor:1.0
+                    image: ghcr.io/fuseml/kserve-predictor:1.0
                     inputs:
                     - codeset:
                         name: mlflow-project
@@ -8136,7 +8136,7 @@ paths:
                         url: https://mlflow.10.120.130.140.nip.io
                       version: '>=v1.0,<v1.5'
                       zone: kube-cluster-dev-00126
-                    image: ghcr.io/fuseml/kfserving-predictor:1.0
+                    image: ghcr.io/fuseml/kserve-predictor:1.0
                     inputs:
                     - codeset:
                         name: mlflow-project
@@ -8200,225 +8200,7 @@ paths:
                         url: https://mlflow.10.120.130.140.nip.io
                       version: '>=v1.0,<v1.5'
                       zone: kube-cluster-dev-00126
-                    image: ghcr.io/fuseml/kfserving-predictor:1.0
-                    inputs:
-                    - codeset:
-                        name: mlflow-project
-                        path: /project
-                      name: model-uri
-                      value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
-                    - codeset:
-                        name: mlflow-project
-                        path: /project
-                      name: model-uri
-                      value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
-                    - codeset:
-                        name: mlflow-project
-                        path: /project
-                      name: model-uri
-                      value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
-                    - codeset:
-                        name: mlflow-project
-                        path: /project
-                      name: model-uri
-                      value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
-                    name: predictor
-                    outputs:
-                    - image:
-                        dockerfile: /project/.fuseml/Dockerfile
-                        name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
-                      name: model-uri
-                    - image:
-                        dockerfile: /project/.fuseml/Dockerfile
-                        name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
-                      name: model-uri
-                - created: "2021-04-09T06:17:25Z"
-                  description: This workflow is just trains a model and serve it
-                  inputs:
-                  - default: mlflow-example
-                    description: An MLFlow project codeset
-                    labels:
-                    - mlflow-project
-                    name: mlflow-codeset
-                    type: codeset
-                  - default: mlflow-example
-                    description: An MLFlow project codeset
-                    labels:
-                    - mlflow-project
-                    name: mlflow-codeset
-                    type: codeset
-                  name: TrainAndServe
-                  outputs:
-                  - description: The URL where the exposed prediction service endpoint
-                      can be contacted to run predictions.
-                    name: prediction-url
-                    type: string
-                  - description: The URL where the exposed prediction service endpoint
-                      can be contacted to run predictions.
-                    name: prediction-url
-                    type: string
-                  steps:
-                  - env:
-                    - name: PATH
-                      value: /project
-                    - name: PATH
-                      value: /project
-                    extensions:
-                    - extension_id: s3-storage-axW45s
-                      name: s3
-                      product: mlflow
-                      service_category: serving-platform
-                      service_id: s3
-                      service_resource: mlflow-tracker
-                      status:
-                        credentials_id: dev-token-1353411
-                        extension_id: s3-storage-axW45s
-                        service_id: s3
-                        url: https://mlflow.10.120.130.140.nip.io
-                      version: '>=v1.0,<v1.5'
-                      zone: kube-cluster-dev-00126
-                    - extension_id: s3-storage-axW45s
-                      name: s3
-                      product: mlflow
-                      service_category: serving-platform
-                      service_id: s3
-                      service_resource: mlflow-tracker
-                      status:
-                        credentials_id: dev-token-1353411
-                        extension_id: s3-storage-axW45s
-                        service_id: s3
-                        url: https://mlflow.10.120.130.140.nip.io
-                      version: '>=v1.0,<v1.5'
-                      zone: kube-cluster-dev-00126
-                    image: ghcr.io/fuseml/kfserving-predictor:1.0
-                    inputs:
-                    - codeset:
-                        name: mlflow-project
-                        path: /project
-                      name: model-uri
-                      value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
-                    - codeset:
-                        name: mlflow-project
-                        path: /project
-                      name: model-uri
-                      value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
-                    - codeset:
-                        name: mlflow-project
-                        path: /project
-                      name: model-uri
-                      value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
-                    - codeset:
-                        name: mlflow-project
-                        path: /project
-                      name: model-uri
-                      value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
-                    name: predictor
-                    outputs:
-                    - image:
-                        dockerfile: /project/.fuseml/Dockerfile
-                        name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
-                      name: model-uri
-                    - image:
-                        dockerfile: /project/.fuseml/Dockerfile
-                        name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
-                      name: model-uri
-                  - env:
-                    - name: PATH
-                      value: /project
-                    - name: PATH
-                      value: /project
-                    extensions:
-                    - extension_id: s3-storage-axW45s
-                      name: s3
-                      product: mlflow
-                      service_category: serving-platform
-                      service_id: s3
-                      service_resource: mlflow-tracker
-                      status:
-                        credentials_id: dev-token-1353411
-                        extension_id: s3-storage-axW45s
-                        service_id: s3
-                        url: https://mlflow.10.120.130.140.nip.io
-                      version: '>=v1.0,<v1.5'
-                      zone: kube-cluster-dev-00126
-                    - extension_id: s3-storage-axW45s
-                      name: s3
-                      product: mlflow
-                      service_category: serving-platform
-                      service_id: s3
-                      service_resource: mlflow-tracker
-                      status:
-                        credentials_id: dev-token-1353411
-                        extension_id: s3-storage-axW45s
-                        service_id: s3
-                        url: https://mlflow.10.120.130.140.nip.io
-                      version: '>=v1.0,<v1.5'
-                      zone: kube-cluster-dev-00126
-                    image: ghcr.io/fuseml/kfserving-predictor:1.0
-                    inputs:
-                    - codeset:
-                        name: mlflow-project
-                        path: /project
-                      name: model-uri
-                      value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
-                    - codeset:
-                        name: mlflow-project
-                        path: /project
-                      name: model-uri
-                      value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
-                    - codeset:
-                        name: mlflow-project
-                        path: /project
-                      name: model-uri
-                      value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
-                    - codeset:
-                        name: mlflow-project
-                        path: /project
-                      name: model-uri
-                      value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
-                    name: predictor
-                    outputs:
-                    - image:
-                        dockerfile: /project/.fuseml/Dockerfile
-                        name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
-                      name: model-uri
-                    - image:
-                        dockerfile: /project/.fuseml/Dockerfile
-                        name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
-                      name: model-uri
-                  - env:
-                    - name: PATH
-                      value: /project
-                    - name: PATH
-                      value: /project
-                    extensions:
-                    - extension_id: s3-storage-axW45s
-                      name: s3
-                      product: mlflow
-                      service_category: serving-platform
-                      service_id: s3
-                      service_resource: mlflow-tracker
-                      status:
-                        credentials_id: dev-token-1353411
-                        extension_id: s3-storage-axW45s
-                        service_id: s3
-                        url: https://mlflow.10.120.130.140.nip.io
-                      version: '>=v1.0,<v1.5'
-                      zone: kube-cluster-dev-00126
-                    - extension_id: s3-storage-axW45s
-                      name: s3
-                      product: mlflow
-                      service_category: serving-platform
-                      service_id: s3
-                      service_resource: mlflow-tracker
-                      status:
-                        credentials_id: dev-token-1353411
-                        extension_id: s3-storage-axW45s
-                        service_id: s3
-                        url: https://mlflow.10.120.130.140.nip.io
-                      version: '>=v1.0,<v1.5'
-                      zone: kube-cluster-dev-00126
-                    image: ghcr.io/fuseml/kfserving-predictor:1.0
+                    image: ghcr.io/fuseml/kserve-predictor:1.0
                     inputs:
                     - codeset:
                         name: mlflow-project
@@ -8508,7 +8290,7 @@ paths:
                         url: https://mlflow.10.120.130.140.nip.io
                       version: '>=v1.0,<v1.5'
                       zone: kube-cluster-dev-00126
-                    image: ghcr.io/fuseml/kfserving-predictor:1.0
+                    image: ghcr.io/fuseml/kserve-predictor:1.0
                     inputs:
                     - codeset:
                         name: mlflow-project
@@ -8572,7 +8354,7 @@ paths:
                         url: https://mlflow.10.120.130.140.nip.io
                       version: '>=v1.0,<v1.5'
                       zone: kube-cluster-dev-00126
-                    image: ghcr.io/fuseml/kfserving-predictor:1.0
+                    image: ghcr.io/fuseml/kserve-predictor:1.0
                     inputs:
                     - codeset:
                         name: mlflow-project
@@ -8636,7 +8418,225 @@ paths:
                         url: https://mlflow.10.120.130.140.nip.io
                       version: '>=v1.0,<v1.5'
                       zone: kube-cluster-dev-00126
-                    image: ghcr.io/fuseml/kfserving-predictor:1.0
+                    image: ghcr.io/fuseml/kserve-predictor:1.0
+                    inputs:
+                    - codeset:
+                        name: mlflow-project
+                        path: /project
+                      name: model-uri
+                      value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
+                    - codeset:
+                        name: mlflow-project
+                        path: /project
+                      name: model-uri
+                      value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
+                    - codeset:
+                        name: mlflow-project
+                        path: /project
+                      name: model-uri
+                      value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
+                    - codeset:
+                        name: mlflow-project
+                        path: /project
+                      name: model-uri
+                      value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
+                    name: predictor
+                    outputs:
+                    - image:
+                        dockerfile: /project/.fuseml/Dockerfile
+                        name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
+                      name: model-uri
+                    - image:
+                        dockerfile: /project/.fuseml/Dockerfile
+                        name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
+                      name: model-uri
+                - created: "2021-04-09T06:17:25Z"
+                  description: This workflow is just trains a model and serve it
+                  inputs:
+                  - default: mlflow-example
+                    description: An MLFlow project codeset
+                    labels:
+                    - mlflow-project
+                    name: mlflow-codeset
+                    type: codeset
+                  - default: mlflow-example
+                    description: An MLFlow project codeset
+                    labels:
+                    - mlflow-project
+                    name: mlflow-codeset
+                    type: codeset
+                  name: TrainAndServe
+                  outputs:
+                  - description: The URL where the exposed prediction service endpoint
+                      can be contacted to run predictions.
+                    name: prediction-url
+                    type: string
+                  - description: The URL where the exposed prediction service endpoint
+                      can be contacted to run predictions.
+                    name: prediction-url
+                    type: string
+                  steps:
+                  - env:
+                    - name: PATH
+                      value: /project
+                    - name: PATH
+                      value: /project
+                    extensions:
+                    - extension_id: s3-storage-axW45s
+                      name: s3
+                      product: mlflow
+                      service_category: serving-platform
+                      service_id: s3
+                      service_resource: mlflow-tracker
+                      status:
+                        credentials_id: dev-token-1353411
+                        extension_id: s3-storage-axW45s
+                        service_id: s3
+                        url: https://mlflow.10.120.130.140.nip.io
+                      version: '>=v1.0,<v1.5'
+                      zone: kube-cluster-dev-00126
+                    - extension_id: s3-storage-axW45s
+                      name: s3
+                      product: mlflow
+                      service_category: serving-platform
+                      service_id: s3
+                      service_resource: mlflow-tracker
+                      status:
+                        credentials_id: dev-token-1353411
+                        extension_id: s3-storage-axW45s
+                        service_id: s3
+                        url: https://mlflow.10.120.130.140.nip.io
+                      version: '>=v1.0,<v1.5'
+                      zone: kube-cluster-dev-00126
+                    image: ghcr.io/fuseml/kserve-predictor:1.0
+                    inputs:
+                    - codeset:
+                        name: mlflow-project
+                        path: /project
+                      name: model-uri
+                      value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
+                    - codeset:
+                        name: mlflow-project
+                        path: /project
+                      name: model-uri
+                      value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
+                    - codeset:
+                        name: mlflow-project
+                        path: /project
+                      name: model-uri
+                      value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
+                    - codeset:
+                        name: mlflow-project
+                        path: /project
+                      name: model-uri
+                      value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
+                    name: predictor
+                    outputs:
+                    - image:
+                        dockerfile: /project/.fuseml/Dockerfile
+                        name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
+                      name: model-uri
+                    - image:
+                        dockerfile: /project/.fuseml/Dockerfile
+                        name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
+                      name: model-uri
+                  - env:
+                    - name: PATH
+                      value: /project
+                    - name: PATH
+                      value: /project
+                    extensions:
+                    - extension_id: s3-storage-axW45s
+                      name: s3
+                      product: mlflow
+                      service_category: serving-platform
+                      service_id: s3
+                      service_resource: mlflow-tracker
+                      status:
+                        credentials_id: dev-token-1353411
+                        extension_id: s3-storage-axW45s
+                        service_id: s3
+                        url: https://mlflow.10.120.130.140.nip.io
+                      version: '>=v1.0,<v1.5'
+                      zone: kube-cluster-dev-00126
+                    - extension_id: s3-storage-axW45s
+                      name: s3
+                      product: mlflow
+                      service_category: serving-platform
+                      service_id: s3
+                      service_resource: mlflow-tracker
+                      status:
+                        credentials_id: dev-token-1353411
+                        extension_id: s3-storage-axW45s
+                        service_id: s3
+                        url: https://mlflow.10.120.130.140.nip.io
+                      version: '>=v1.0,<v1.5'
+                      zone: kube-cluster-dev-00126
+                    image: ghcr.io/fuseml/kserve-predictor:1.0
+                    inputs:
+                    - codeset:
+                        name: mlflow-project
+                        path: /project
+                      name: model-uri
+                      value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
+                    - codeset:
+                        name: mlflow-project
+                        path: /project
+                      name: model-uri
+                      value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
+                    - codeset:
+                        name: mlflow-project
+                        path: /project
+                      name: model-uri
+                      value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
+                    - codeset:
+                        name: mlflow-project
+                        path: /project
+                      name: model-uri
+                      value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
+                    name: predictor
+                    outputs:
+                    - image:
+                        dockerfile: /project/.fuseml/Dockerfile
+                        name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
+                      name: model-uri
+                    - image:
+                        dockerfile: /project/.fuseml/Dockerfile
+                        name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
+                      name: model-uri
+                  - env:
+                    - name: PATH
+                      value: /project
+                    - name: PATH
+                      value: /project
+                    extensions:
+                    - extension_id: s3-storage-axW45s
+                      name: s3
+                      product: mlflow
+                      service_category: serving-platform
+                      service_id: s3
+                      service_resource: mlflow-tracker
+                      status:
+                        credentials_id: dev-token-1353411
+                        extension_id: s3-storage-axW45s
+                        service_id: s3
+                        url: https://mlflow.10.120.130.140.nip.io
+                      version: '>=v1.0,<v1.5'
+                      zone: kube-cluster-dev-00126
+                    - extension_id: s3-storage-axW45s
+                      name: s3
+                      product: mlflow
+                      service_category: serving-platform
+                      service_id: s3
+                      service_resource: mlflow-tracker
+                      status:
+                        credentials_id: dev-token-1353411
+                        extension_id: s3-storage-axW45s
+                        service_id: s3
+                        url: https://mlflow.10.120.130.140.nip.io
+                      version: '>=v1.0,<v1.5'
+                      zone: kube-cluster-dev-00126
+                    image: ghcr.io/fuseml/kserve-predictor:1.0
                     inputs:
                     - codeset:
                         name: mlflow-project
@@ -8727,7 +8727,7 @@ paths:
                       url: https://mlflow.10.120.130.140.nip.io
                     version: '>=v1.0,<v1.5'
                     zone: kube-cluster-dev-00126
-                  image: ghcr.io/fuseml/kfserving-predictor:1.0
+                  image: ghcr.io/fuseml/kserve-predictor:1.0
                   inputs:
                   - codeset:
                       name: mlflow-project
@@ -8791,7 +8791,7 @@ paths:
                       url: https://mlflow.10.120.130.140.nip.io
                     version: '>=v1.0,<v1.5'
                     zone: kube-cluster-dev-00126
-                  image: ghcr.io/fuseml/kfserving-predictor:1.0
+                  image: ghcr.io/fuseml/kserve-predictor:1.0
                   inputs:
                   - codeset:
                       name: mlflow-project
@@ -8855,225 +8855,7 @@ paths:
                       url: https://mlflow.10.120.130.140.nip.io
                     version: '>=v1.0,<v1.5'
                     zone: kube-cluster-dev-00126
-                  image: ghcr.io/fuseml/kfserving-predictor:1.0
-                  inputs:
-                  - codeset:
-                      name: mlflow-project
-                      path: /project
-                    name: model-uri
-                    value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
-                  - codeset:
-                      name: mlflow-project
-                      path: /project
-                    name: model-uri
-                    value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
-                  - codeset:
-                      name: mlflow-project
-                      path: /project
-                    name: model-uri
-                    value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
-                  - codeset:
-                      name: mlflow-project
-                      path: /project
-                    name: model-uri
-                    value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
-                  name: predictor
-                  outputs:
-                  - image:
-                      dockerfile: /project/.fuseml/Dockerfile
-                      name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
-                    name: model-uri
-                  - image:
-                      dockerfile: /project/.fuseml/Dockerfile
-                      name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
-                    name: model-uri
-              - created: "2021-04-09T06:17:25Z"
-                description: This workflow is just trains a model and serve it
-                inputs:
-                - default: mlflow-example
-                  description: An MLFlow project codeset
-                  labels:
-                  - mlflow-project
-                  name: mlflow-codeset
-                  type: codeset
-                - default: mlflow-example
-                  description: An MLFlow project codeset
-                  labels:
-                  - mlflow-project
-                  name: mlflow-codeset
-                  type: codeset
-                name: TrainAndServe
-                outputs:
-                - description: The URL where the exposed prediction service endpoint
-                    can be contacted to run predictions.
-                  name: prediction-url
-                  type: string
-                - description: The URL where the exposed prediction service endpoint
-                    can be contacted to run predictions.
-                  name: prediction-url
-                  type: string
-                steps:
-                - env:
-                  - name: PATH
-                    value: /project
-                  - name: PATH
-                    value: /project
-                  extensions:
-                  - extension_id: s3-storage-axW45s
-                    name: s3
-                    product: mlflow
-                    service_category: serving-platform
-                    service_id: s3
-                    service_resource: mlflow-tracker
-                    status:
-                      credentials_id: dev-token-1353411
-                      extension_id: s3-storage-axW45s
-                      service_id: s3
-                      url: https://mlflow.10.120.130.140.nip.io
-                    version: '>=v1.0,<v1.5'
-                    zone: kube-cluster-dev-00126
-                  - extension_id: s3-storage-axW45s
-                    name: s3
-                    product: mlflow
-                    service_category: serving-platform
-                    service_id: s3
-                    service_resource: mlflow-tracker
-                    status:
-                      credentials_id: dev-token-1353411
-                      extension_id: s3-storage-axW45s
-                      service_id: s3
-                      url: https://mlflow.10.120.130.140.nip.io
-                    version: '>=v1.0,<v1.5'
-                    zone: kube-cluster-dev-00126
-                  image: ghcr.io/fuseml/kfserving-predictor:1.0
-                  inputs:
-                  - codeset:
-                      name: mlflow-project
-                      path: /project
-                    name: model-uri
-                    value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
-                  - codeset:
-                      name: mlflow-project
-                      path: /project
-                    name: model-uri
-                    value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
-                  - codeset:
-                      name: mlflow-project
-                      path: /project
-                    name: model-uri
-                    value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
-                  - codeset:
-                      name: mlflow-project
-                      path: /project
-                    name: model-uri
-                    value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
-                  name: predictor
-                  outputs:
-                  - image:
-                      dockerfile: /project/.fuseml/Dockerfile
-                      name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
-                    name: model-uri
-                  - image:
-                      dockerfile: /project/.fuseml/Dockerfile
-                      name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
-                    name: model-uri
-                - env:
-                  - name: PATH
-                    value: /project
-                  - name: PATH
-                    value: /project
-                  extensions:
-                  - extension_id: s3-storage-axW45s
-                    name: s3
-                    product: mlflow
-                    service_category: serving-platform
-                    service_id: s3
-                    service_resource: mlflow-tracker
-                    status:
-                      credentials_id: dev-token-1353411
-                      extension_id: s3-storage-axW45s
-                      service_id: s3
-                      url: https://mlflow.10.120.130.140.nip.io
-                    version: '>=v1.0,<v1.5'
-                    zone: kube-cluster-dev-00126
-                  - extension_id: s3-storage-axW45s
-                    name: s3
-                    product: mlflow
-                    service_category: serving-platform
-                    service_id: s3
-                    service_resource: mlflow-tracker
-                    status:
-                      credentials_id: dev-token-1353411
-                      extension_id: s3-storage-axW45s
-                      service_id: s3
-                      url: https://mlflow.10.120.130.140.nip.io
-                    version: '>=v1.0,<v1.5'
-                    zone: kube-cluster-dev-00126
-                  image: ghcr.io/fuseml/kfserving-predictor:1.0
-                  inputs:
-                  - codeset:
-                      name: mlflow-project
-                      path: /project
-                    name: model-uri
-                    value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
-                  - codeset:
-                      name: mlflow-project
-                      path: /project
-                    name: model-uri
-                    value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
-                  - codeset:
-                      name: mlflow-project
-                      path: /project
-                    name: model-uri
-                    value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
-                  - codeset:
-                      name: mlflow-project
-                      path: /project
-                    name: model-uri
-                    value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
-                  name: predictor
-                  outputs:
-                  - image:
-                      dockerfile: /project/.fuseml/Dockerfile
-                      name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
-                    name: model-uri
-                  - image:
-                      dockerfile: /project/.fuseml/Dockerfile
-                      name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
-                    name: model-uri
-                - env:
-                  - name: PATH
-                    value: /project
-                  - name: PATH
-                    value: /project
-                  extensions:
-                  - extension_id: s3-storage-axW45s
-                    name: s3
-                    product: mlflow
-                    service_category: serving-platform
-                    service_id: s3
-                    service_resource: mlflow-tracker
-                    status:
-                      credentials_id: dev-token-1353411
-                      extension_id: s3-storage-axW45s
-                      service_id: s3
-                      url: https://mlflow.10.120.130.140.nip.io
-                    version: '>=v1.0,<v1.5'
-                    zone: kube-cluster-dev-00126
-                  - extension_id: s3-storage-axW45s
-                    name: s3
-                    product: mlflow
-                    service_category: serving-platform
-                    service_id: s3
-                    service_resource: mlflow-tracker
-                    status:
-                      credentials_id: dev-token-1353411
-                      extension_id: s3-storage-axW45s
-                      service_id: s3
-                      url: https://mlflow.10.120.130.140.nip.io
-                    version: '>=v1.0,<v1.5'
-                    zone: kube-cluster-dev-00126
-                  image: ghcr.io/fuseml/kfserving-predictor:1.0
+                  image: ghcr.io/fuseml/kserve-predictor:1.0
                   inputs:
                   - codeset:
                       name: mlflow-project
@@ -9163,7 +8945,7 @@ paths:
                       url: https://mlflow.10.120.130.140.nip.io
                     version: '>=v1.0,<v1.5'
                     zone: kube-cluster-dev-00126
-                  image: ghcr.io/fuseml/kfserving-predictor:1.0
+                  image: ghcr.io/fuseml/kserve-predictor:1.0
                   inputs:
                   - codeset:
                       name: mlflow-project
@@ -9227,7 +9009,7 @@ paths:
                       url: https://mlflow.10.120.130.140.nip.io
                     version: '>=v1.0,<v1.5'
                     zone: kube-cluster-dev-00126
-                  image: ghcr.io/fuseml/kfserving-predictor:1.0
+                  image: ghcr.io/fuseml/kserve-predictor:1.0
                   inputs:
                   - codeset:
                       name: mlflow-project
@@ -9291,7 +9073,7 @@ paths:
                       url: https://mlflow.10.120.130.140.nip.io
                     version: '>=v1.0,<v1.5'
                     zone: kube-cluster-dev-00126
-                  image: ghcr.io/fuseml/kfserving-predictor:1.0
+                  image: ghcr.io/fuseml/kserve-predictor:1.0
                   inputs:
                   - codeset:
                       name: mlflow-project
@@ -9381,7 +9163,7 @@ paths:
                       url: https://mlflow.10.120.130.140.nip.io
                     version: '>=v1.0,<v1.5'
                     zone: kube-cluster-dev-00126
-                  image: ghcr.io/fuseml/kfserving-predictor:1.0
+                  image: ghcr.io/fuseml/kserve-predictor:1.0
                   inputs:
                   - codeset:
                       name: mlflow-project
@@ -9445,7 +9227,7 @@ paths:
                       url: https://mlflow.10.120.130.140.nip.io
                     version: '>=v1.0,<v1.5'
                     zone: kube-cluster-dev-00126
-                  image: ghcr.io/fuseml/kfserving-predictor:1.0
+                  image: ghcr.io/fuseml/kserve-predictor:1.0
                   inputs:
                   - codeset:
                       name: mlflow-project
@@ -9509,7 +9291,225 @@ paths:
                       url: https://mlflow.10.120.130.140.nip.io
                     version: '>=v1.0,<v1.5'
                     zone: kube-cluster-dev-00126
-                  image: ghcr.io/fuseml/kfserving-predictor:1.0
+                  image: ghcr.io/fuseml/kserve-predictor:1.0
+                  inputs:
+                  - codeset:
+                      name: mlflow-project
+                      path: /project
+                    name: model-uri
+                    value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
+                  - codeset:
+                      name: mlflow-project
+                      path: /project
+                    name: model-uri
+                    value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
+                  - codeset:
+                      name: mlflow-project
+                      path: /project
+                    name: model-uri
+                    value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
+                  - codeset:
+                      name: mlflow-project
+                      path: /project
+                    name: model-uri
+                    value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
+                  name: predictor
+                  outputs:
+                  - image:
+                      dockerfile: /project/.fuseml/Dockerfile
+                      name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
+                    name: model-uri
+                  - image:
+                      dockerfile: /project/.fuseml/Dockerfile
+                      name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
+                    name: model-uri
+              - created: "2021-04-09T06:17:25Z"
+                description: This workflow is just trains a model and serve it
+                inputs:
+                - default: mlflow-example
+                  description: An MLFlow project codeset
+                  labels:
+                  - mlflow-project
+                  name: mlflow-codeset
+                  type: codeset
+                - default: mlflow-example
+                  description: An MLFlow project codeset
+                  labels:
+                  - mlflow-project
+                  name: mlflow-codeset
+                  type: codeset
+                name: TrainAndServe
+                outputs:
+                - description: The URL where the exposed prediction service endpoint
+                    can be contacted to run predictions.
+                  name: prediction-url
+                  type: string
+                - description: The URL where the exposed prediction service endpoint
+                    can be contacted to run predictions.
+                  name: prediction-url
+                  type: string
+                steps:
+                - env:
+                  - name: PATH
+                    value: /project
+                  - name: PATH
+                    value: /project
+                  extensions:
+                  - extension_id: s3-storage-axW45s
+                    name: s3
+                    product: mlflow
+                    service_category: serving-platform
+                    service_id: s3
+                    service_resource: mlflow-tracker
+                    status:
+                      credentials_id: dev-token-1353411
+                      extension_id: s3-storage-axW45s
+                      service_id: s3
+                      url: https://mlflow.10.120.130.140.nip.io
+                    version: '>=v1.0,<v1.5'
+                    zone: kube-cluster-dev-00126
+                  - extension_id: s3-storage-axW45s
+                    name: s3
+                    product: mlflow
+                    service_category: serving-platform
+                    service_id: s3
+                    service_resource: mlflow-tracker
+                    status:
+                      credentials_id: dev-token-1353411
+                      extension_id: s3-storage-axW45s
+                      service_id: s3
+                      url: https://mlflow.10.120.130.140.nip.io
+                    version: '>=v1.0,<v1.5'
+                    zone: kube-cluster-dev-00126
+                  image: ghcr.io/fuseml/kserve-predictor:1.0
+                  inputs:
+                  - codeset:
+                      name: mlflow-project
+                      path: /project
+                    name: model-uri
+                    value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
+                  - codeset:
+                      name: mlflow-project
+                      path: /project
+                    name: model-uri
+                    value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
+                  - codeset:
+                      name: mlflow-project
+                      path: /project
+                    name: model-uri
+                    value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
+                  - codeset:
+                      name: mlflow-project
+                      path: /project
+                    name: model-uri
+                    value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
+                  name: predictor
+                  outputs:
+                  - image:
+                      dockerfile: /project/.fuseml/Dockerfile
+                      name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
+                    name: model-uri
+                  - image:
+                      dockerfile: /project/.fuseml/Dockerfile
+                      name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
+                    name: model-uri
+                - env:
+                  - name: PATH
+                    value: /project
+                  - name: PATH
+                    value: /project
+                  extensions:
+                  - extension_id: s3-storage-axW45s
+                    name: s3
+                    product: mlflow
+                    service_category: serving-platform
+                    service_id: s3
+                    service_resource: mlflow-tracker
+                    status:
+                      credentials_id: dev-token-1353411
+                      extension_id: s3-storage-axW45s
+                      service_id: s3
+                      url: https://mlflow.10.120.130.140.nip.io
+                    version: '>=v1.0,<v1.5'
+                    zone: kube-cluster-dev-00126
+                  - extension_id: s3-storage-axW45s
+                    name: s3
+                    product: mlflow
+                    service_category: serving-platform
+                    service_id: s3
+                    service_resource: mlflow-tracker
+                    status:
+                      credentials_id: dev-token-1353411
+                      extension_id: s3-storage-axW45s
+                      service_id: s3
+                      url: https://mlflow.10.120.130.140.nip.io
+                    version: '>=v1.0,<v1.5'
+                    zone: kube-cluster-dev-00126
+                  image: ghcr.io/fuseml/kserve-predictor:1.0
+                  inputs:
+                  - codeset:
+                      name: mlflow-project
+                      path: /project
+                    name: model-uri
+                    value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
+                  - codeset:
+                      name: mlflow-project
+                      path: /project
+                    name: model-uri
+                    value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
+                  - codeset:
+                      name: mlflow-project
+                      path: /project
+                    name: model-uri
+                    value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
+                  - codeset:
+                      name: mlflow-project
+                      path: /project
+                    name: model-uri
+                    value: s3://mlflow-artifacts/3/c7ae3b0e6fd44b4b96f7066c66672551/artifacts/model
+                  name: predictor
+                  outputs:
+                  - image:
+                      dockerfile: /project/.fuseml/Dockerfile
+                      name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
+                    name: model-uri
+                  - image:
+                      dockerfile: /project/.fuseml/Dockerfile
+                      name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
+                    name: model-uri
+                - env:
+                  - name: PATH
+                    value: /project
+                  - name: PATH
+                    value: /project
+                  extensions:
+                  - extension_id: s3-storage-axW45s
+                    name: s3
+                    product: mlflow
+                    service_category: serving-platform
+                    service_id: s3
+                    service_resource: mlflow-tracker
+                    status:
+                      credentials_id: dev-token-1353411
+                      extension_id: s3-storage-axW45s
+                      service_id: s3
+                      url: https://mlflow.10.120.130.140.nip.io
+                    version: '>=v1.0,<v1.5'
+                    zone: kube-cluster-dev-00126
+                  - extension_id: s3-storage-axW45s
+                    name: s3
+                    product: mlflow
+                    service_category: serving-platform
+                    service_id: s3
+                    service_resource: mlflow-tracker
+                    status:
+                      credentials_id: dev-token-1353411
+                      extension_id: s3-storage-axW45s
+                      service_id: s3
+                      url: https://mlflow.10.120.130.140.nip.io
+                    version: '>=v1.0,<v1.5'
+                    zone: kube-cluster-dev-00126
+                  image: ghcr.io/fuseml/kserve-predictor:1.0
                   inputs:
                   - codeset:
                       name: mlflow-project
@@ -9644,7 +9644,7 @@ paths:
                     url: https://mlflow.10.120.130.140.nip.io
                   version: '>=v1.0,<v1.5'
                   zone: kube-cluster-dev-00126
-                image: ghcr.io/fuseml/kfserving-predictor:1.0
+                image: ghcr.io/fuseml/kserve-predictor:1.0
                 inputs:
                 - codeset:
                     name: mlflow-project
@@ -9742,7 +9742,7 @@ paths:
                     url: https://mlflow.10.120.130.140.nip.io
                   version: '>=v1.0,<v1.5'
                   zone: kube-cluster-dev-00126
-                image: ghcr.io/fuseml/kfserving-predictor:1.0
+                image: ghcr.io/fuseml/kserve-predictor:1.0
                 inputs:
                 - codeset:
                     name: mlflow-project
@@ -9840,7 +9840,7 @@ paths:
                     url: https://mlflow.10.120.130.140.nip.io
                   version: '>=v1.0,<v1.5'
                   zone: kube-cluster-dev-00126
-                image: ghcr.io/fuseml/kfserving-predictor:1.0
+                image: ghcr.io/fuseml/kserve-predictor:1.0
                 inputs:
                 - codeset:
                     name: mlflow-project
@@ -9960,7 +9960,7 @@ paths:
                       url: https://mlflow.10.120.130.140.nip.io
                     version: '>=v1.0,<v1.5'
                     zone: kube-cluster-dev-00126
-                  image: ghcr.io/fuseml/kfserving-predictor:1.0
+                  image: ghcr.io/fuseml/kserve-predictor:1.0
                   inputs:
                   - codeset:
                       name: mlflow-project
@@ -10021,7 +10021,7 @@ paths:
                       url: https://mlflow.10.120.130.140.nip.io
                     version: '>=v1.0,<v1.5'
                     zone: kube-cluster-dev-00126
-                  image: ghcr.io/fuseml/kfserving-predictor:1.0
+                  image: ghcr.io/fuseml/kserve-predictor:1.0
                   inputs:
                   - codeset:
                       name: mlflow-project
@@ -10082,7 +10082,7 @@ paths:
                       url: https://mlflow.10.120.130.140.nip.io
                     version: '>=v1.0,<v1.5'
                     zone: kube-cluster-dev-00126
-                  image: ghcr.io/fuseml/kfserving-predictor:1.0
+                  image: ghcr.io/fuseml/kserve-predictor:1.0
                   inputs:
                   - codeset:
                       name: mlflow-project
@@ -10257,7 +10257,7 @@ paths:
                       url: https://mlflow.10.120.130.140.nip.io
                     version: '>=v1.0,<v1.5'
                     zone: kube-cluster-dev-00126
-                  image: ghcr.io/fuseml/kfserving-predictor:1.0
+                  image: ghcr.io/fuseml/kserve-predictor:1.0
                   inputs:
                   - codeset:
                       name: mlflow-project
@@ -10318,7 +10318,7 @@ paths:
                       url: https://mlflow.10.120.130.140.nip.io
                     version: '>=v1.0,<v1.5'
                     zone: kube-cluster-dev-00126
-                  image: ghcr.io/fuseml/kfserving-predictor:1.0
+                  image: ghcr.io/fuseml/kserve-predictor:1.0
                   inputs:
                   - codeset:
                       name: mlflow-project
@@ -10379,7 +10379,7 @@ paths:
                       url: https://mlflow.10.120.130.140.nip.io
                     version: '>=v1.0,<v1.5'
                     zone: kube-cluster-dev-00126
-                  image: ghcr.io/fuseml/kfserving-predictor:1.0
+                  image: ghcr.io/fuseml/kserve-predictor:1.0
                   inputs:
                   - codeset:
                       name: mlflow-project
@@ -10440,7 +10440,7 @@ paths:
                       url: https://mlflow.10.120.130.140.nip.io
                     version: '>=v1.0,<v1.5'
                     zone: kube-cluster-dev-00126
-                  image: ghcr.io/fuseml/kfserving-predictor:1.0
+                  image: ghcr.io/fuseml/kserve-predictor:1.0
                   inputs:
                   - codeset:
                       name: mlflow-project
@@ -14575,7 +14575,7 @@ components:
                 url: https://mlflow.10.120.130.140.nip.io
               version: '>=v1.0,<v1.5'
               zone: kube-cluster-dev-00126
-            image: ghcr.io/fuseml/kfserving-predictor:1.0
+            image: ghcr.io/fuseml/kserve-predictor:1.0
             inputs:
             - codeset:
                 name: mlflow-project
@@ -14639,7 +14639,7 @@ components:
                 url: https://mlflow.10.120.130.140.nip.io
               version: '>=v1.0,<v1.5'
               zone: kube-cluster-dev-00126
-            image: ghcr.io/fuseml/kfserving-predictor:1.0
+            image: ghcr.io/fuseml/kserve-predictor:1.0
             inputs:
             - codeset:
                 name: mlflow-project
@@ -14703,7 +14703,7 @@ components:
                 url: https://mlflow.10.120.130.140.nip.io
               version: '>=v1.0,<v1.5'
               zone: kube-cluster-dev-00126
-            image: ghcr.io/fuseml/kfserving-predictor:1.0
+            image: ghcr.io/fuseml/kserve-predictor:1.0
             inputs:
             - codeset:
                 name: mlflow-project
@@ -14806,7 +14806,7 @@ components:
               url: https://mlflow.10.120.130.140.nip.io
             version: '>=v1.0,<v1.5'
             zone: kube-cluster-dev-00126
-          image: ghcr.io/fuseml/kfserving-predictor:1.0
+          image: ghcr.io/fuseml/kserve-predictor:1.0
           inputs:
           - codeset:
               name: mlflow-project
@@ -14870,7 +14870,7 @@ components:
               url: https://mlflow.10.120.130.140.nip.io
             version: '>=v1.0,<v1.5'
             zone: kube-cluster-dev-00126
-          image: ghcr.io/fuseml/kfserving-predictor:1.0
+          image: ghcr.io/fuseml/kserve-predictor:1.0
           inputs:
           - codeset:
               name: mlflow-project
@@ -14934,7 +14934,7 @@ components:
               url: https://mlflow.10.120.130.140.nip.io
             version: '>=v1.0,<v1.5'
             zone: kube-cluster-dev-00126
-          image: ghcr.io/fuseml/kfserving-predictor:1.0
+          image: ghcr.io/fuseml/kserve-predictor:1.0
           inputs:
           - codeset:
               name: mlflow-project
@@ -15313,7 +15313,7 @@ components:
         image:
           type: string
           description: The image used to execute the step
-          example: ghcr.io/fuseml/kfserving-predictor:1.0
+          example: ghcr.io/fuseml/kserve-predictor:1.0
         inputs:
           type: array
           items:
@@ -15429,7 +15429,7 @@ components:
             url: https://mlflow.10.120.130.140.nip.io
           version: '>=v1.0,<v1.5'
           zone: kube-cluster-dev-00126
-        image: ghcr.io/fuseml/kfserving-predictor:1.0
+        image: ghcr.io/fuseml/kserve-predictor:1.0
         inputs:
         - codeset:
             name: mlflow-project
