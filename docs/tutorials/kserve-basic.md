@@ -1,20 +1,20 @@
-# A simple logistic regression with MLFlow and KFServing
+# A simple logistic regression with MLFlow and KServe
 
 This example shows how FuseML can be used to automate and end-to-end machine learning workflow using
 a combination of different tools. In this case, we have a scikit-learn ML model that is being trained
-using [MLflow](https://mlflow.org/) and then served with [KFServing](https://github.com/kubeflow/kfserving).
+using [MLflow](https://mlflow.org/) and then served with [KServe](https://github.com/kserve/kserve).
 
 We assume that both FuseML infrastructure and the FuseML CLI are already installed, if not please
 check first the [quick start](../quickstart.md) section.
 
 **1.** Install 3rd party ML tools
 
-Running this example requires MLflow and KFServing to be installed in the same cluster as FuseML.
+Running this example requires MLflow and KServe to be installed in the same cluster as FuseML.
 
-The FuseML installer can be used for a quick MLFlow and KFServing installation:
+The FuseML installer can be used for a quick MLFlow and KServe installation:
 
 ```bash
-fuseml-installer extensions --add mlflow,kfserving
+fuseml-installer extensions --add mlflow,kserve
 ```
 
 To find out about installed extensions, install new or remove installed ones, use
@@ -25,8 +25,8 @@ fuseml-installer extensions --help
 
 command.
 
-Alternatively, you can follow [the KFServing official instructions](https://github.com/kubeflow/kfserving/blob/master/README.md)
-and install KFServing manually.
+Alternatively, you can follow [the KServe official instructions](https://github.com/kserve/kserve#readme)
+and install KServe manually.
 
 **2.** Set `FUSEML_SERVER_URL` environment variable to point to fuseml-core
 
@@ -49,7 +49,7 @@ Under the `codesets/mlflow` directory, there are some example MLflow projects. F
 
 **4.** Register the codeset
 
-From now on, you start using *fuseml* command line tool. Register the example code as a FuseML versioned codeset artifact:
+From now on, you start using _fuseml_ command line tool. Register the example code as a FuseML versioned codeset artifact:
 
 ```bash
 fuseml codeset register --name "mlflow-test" --project "mlflow-project-01" codesets/mlflow/sklearn
@@ -72,7 +72,7 @@ You may optionally log into the Gitea UI using the URL, username and password pr
 
 **5.** Create a workflow
 
-The example FuseML workflow included in the examples repository represents a complete, end-to-end ML pipeline "compatible" with any codeset that contains an MLProject. It includes all the steps necessary to train a model with MLflow, save the model and then creates a KFServing prediction service for it.
+The example FuseML workflow included in the examples repository represents a complete, end-to-end ML pipeline "compatible" with any codeset that contains an MLProject. It includes all the steps necessary to train a model with MLflow, save the model and then creates a KServe prediction service for it.
 
 Use the example workflow definition to create a workflow in FuseML:
 
@@ -84,7 +84,7 @@ fuseml workflow create workflows/mlflow-e2e.yaml
 
 ```bash
 fuseml workflow assign --name mlflow-e2e --codeset-name mlflow-test --codeset-project mlflow-project-01
-``` 
+```
 
 **7.** Monitor the workflow from the command-line
 
@@ -106,7 +106,6 @@ Example output:
 ```
 
 This command shows you detailed information about running workflow. You may also follow the Tekton URL value under the expanded output section to see relevant information about the underlying Tekton PipelineRun which implements the workflow run:
-
 
 ```
 > fuseml workflow list-runs --name mlflow-e2e --format yaml
@@ -201,19 +200,19 @@ The output will be something similar to:
 
 ```json
 {
-    "model_name":"mlflow-project-01-mlflow-test",
-    "model_version":null,
-    "id":"44d5d037-052b-49b6-aace-1c5346a35004",
-    "parameters":null,
-    "outputs": [
+  "model_name": "mlflow-project-01-mlflow-test",
+  "model_version": null,
+  "id": "44d5d037-052b-49b6-aace-1c5346a35004",
+  "parameters": null,
+  "outputs": [
     {
-        "name":"predict",
-        "shape":[1],
-        "datatype":"FP32",
-        "parameters":null,
-        "data": [ 6.486344809506676 ]
+      "name": "predict",
+      "shape": [1],
+      "datatype": "FP32",
+      "parameters": null,
+      "data": [6.486344809506676]
     }
-    ]
+  ]
 }
 ```
 
@@ -228,12 +227,14 @@ kubectl apply -f webapps/winery/service.yaml
 ```
 
 Run the following command to check the application deployment status:
+
 ```bash
 kubectl get ksvc -n fuseml-workloads winery
 ```
 
 At some point it should reach the `READY` status and a URL is provided to access the application.
 For example:
+
 ```bash
 ❯ kubectl get ksvc -n fuseml-workloads winery
 NAME     URL                                                                                LATESTCREATED   LATESTREADY    READY   REASON

@@ -1,16 +1,16 @@
 site_name: FuseML Documentation
 nav:
-    - Home: index.md
-    - About: about.md
-    - Quick Start: quickstart.md
-    - Tutorials:
-        - Logistic Regression with MLFlow & KFServing: tutorials/kfserving-basic.md
-        - Training & Serving ML Models on GPU with NVIDIA Triton: tutorials/kfserving-triton-gpu.md
-        - FuseML Extension Development Use-Case - OpenVINO: tutorials/openvino-extensions.md
-    - Architecture: architecture.md
-    - API Reference: api.md
-    - CLI Reference: cli.md
-    - Contributing: CONTRIBUTING.md
+  - Home: index.md
+  - About: about.md
+  - Quick Start: quickstart.md
+  - Tutorials:
+      - Logistic Regression with MLFlow & KServe: tutorials/kserve-basic.md
+      - Training & Serving ML Models on GPU with NVIDIA Triton: tutorials/kserve-triton-gpu.md
+      - FuseML Extension Development Use-Case - OpenVINO: tutorials/openvino-extensions.md
+  - Architecture: architecture.md
+  - API Reference: api.md
+  - CLI Reference: cli.md
+  - Contributing: CONTRIBUTING.md
 theme:
   name: material
   palette:
@@ -27,7 +27,6 @@ edit_uri: https://github.com/fuseml/docs/edit/main/docs/
 plugins:
   - render_swagger
 
-
 markdown_extensions:
   - admonition
   # Allows rendering images using HTML (see: https://squidfunk.github.io/mkdocs-material/reference/images/)
@@ -38,9 +37,9 @@ markdown_extensions:
       custom_fences:
         - name: flow
           class: uml-flowchart
-          format: !!python/name:pymdownx.superfences.fence_code_format
+          format:
+            !!python/name:pymdownx.superfences.fence_code_format # TODO: Validate with our legal team.
 
-# TODO: Validate with our legal team.
 copyright: "Copyright &copy; 2021 FuseML Author(s)"
 
 extra:
