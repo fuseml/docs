@@ -251,8 +251,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../kfserving-basic/" class="md-nav__link">
-        Logistic Regression with MLFlow & KFServing
+      <a href="../kserve-basic/" class="md-nav__link">
+        Logistic Regression with MLFlow & KServe
       </a>
     </li>
   
@@ -739,7 +739,7 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/fuseml/docs/edit/main/docs/tutorials/kfserving-triton-gpu.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/fuseml/docs/edit/main/docs/tutorials/kserve-triton-gpu.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
@@ -787,12 +787,12 @@ started, ensure that the following requirements are met by your system:</p>
 <p>The instructions provided here are for OpenSUSE Leap 15.3. For other supported distributions please refer to the
 <a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html">nvidia-docker official documentation</a>.</p>
 <ol>
-<li>
-<p>Install the NVIDIA driver:</p>
+<li>Install the NVIDIA driver:</li>
+</ol>
 <p>The recommended way to install drivers is to use the package manager for your distribution, however as the driver from the package
-manager did not work properly for OpenSUSE, we will be using the driver from the
-<a href="https://www.nvidia.com/Download/index.aspx?lang=en-us">NVIDIA website</a>. We will be installing the NVIDIA driver version 470.74,
-you might need to check for the latest available driver compatible with your GPU.</p>
+   manager did not work properly for OpenSUSE, we will be using the driver from the
+   <a href="https://www.nvidia.com/Download/index.aspx?lang=en-us">NVIDIA website</a>. We will be installing the NVIDIA driver version 470.74,
+   you might need to check for the latest available driver compatible with your GPU.</p>
 <p>Installing the driver:</p>
 <div class="highlight"><pre><span></span><code>wget https://us.download.nvidia.com/XFree86/Linux-x86_64/470.74/NVIDIA-Linux-x86_64-470.74.run
 
@@ -801,21 +801,21 @@ chmod +x NVIDIA-Linux-x86_64-470.74.run.
 ./NVIDIA-Linux-x86_64-470.74.run
 </code></pre></div>
 <p>After installing the driver make sure to reboot your system.</p>
-</li>
-<li>
-<p>Install Docker:</p>
+<ol>
+<li>Install Docker:</li>
+</ol>
 <p>Run the following command to install Docker:</p>
 <div class="highlight"><pre><span></span><code>sudo zypper install -y docker
 </code></pre></div>
-</li>
-<li>
-<p>Add your user to the docker group.</p>
+<ol>
+<li>Add your user to the docker group.</li>
+</ol>
 <div class="highlight"><pre><span></span><code>sudo usermod -aG docker <span class="nv">$USER</span>
 </code></pre></div>
 <p>Log out and log back in so that your group membership is re-evaluated.</p>
-</li>
-<li>
-<p>Ensure Docker service is running and test your Docker installation by running the hello-world container and checking its output:</p>
+<ol>
+<li>Ensure Docker service is running and test your Docker installation by running the hello-world container and checking its output:</li>
+</ol>
 <div class="highlight"><pre><span></span><code>$ sudo systemctl --now <span class="nb">enable</span> docker
 
 $ docker run --rm hello-world
@@ -846,16 +846,16 @@ https://hub.docker.com/
 For more examples and ideas, visit:
 https://docs.docker.com/get-started/
 </code></pre></div>
-</li>
-<li>
-<p>Install nvidia-docker:</p>
+<ol>
+<li>Install nvidia-docker:</li>
+</ol>
 <p>The nvidia-docker package is available through a nvidia repository provided for for OpenSUSE Leap 15.1, however
-it also works for OpenSUSE Leap 15.3. Add the repository and install it by running the following commands:</p>
+   it also works for OpenSUSE Leap 15.3. Add the repository and install it by running the following commands:</p>
 <div class="highlight"><pre><span></span><code>sudo zypper ar -f https://nvidia.github.io/nvidia-docker/opensuse-leap15.1/nvidia-docker.repo
 sudo zypper install nvidia-docker2
 </code></pre></div>
 <p>When installing nvidia-docker it will overwrite the <code>/etc/docker/daemon.json</code> file by configuring docker to use the NVIDIA
-container runtime. Make sure that it has the following contents:</p>
+   container runtime. Make sure that it has the following contents:</p>
 <div class="highlight"><pre><span></span><code>$ cat /etc/docker/daemon.json
 <span class="o">{</span>
     <span class="s2">&quot;runtimes&quot;</span>: <span class="o">{</span>
@@ -866,9 +866,9 @@ container runtime. Make sure that it has the following contents:</p>
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
-</li>
-<li>
-<p>Restart the Docker daemon to complete the installation and test it by running a CUDA container:</p>
+<ol>
+<li>Restart the Docker daemon to complete the installation and test it by running a CUDA container:</li>
+</ol>
 <div class="highlight"><pre><span></span><code>$ sudo systemctl restart docker
 
 $ docker run --rm --gpus all nvidia/cuda:11.0-base nvidia-smi
@@ -893,15 +893,13 @@ Fri Oct <span class="m">15</span> <span class="m">13</span>:13:50 <span class="m
 <span class="p">|</span>  No running processes found                                                 <span class="p">|</span>
 +-----------------------------------------------------------------------------+
 </code></pre></div>
-</li>
-</ol>
 <h4 id="build-a-custom-k3s-image">Build a custom K3s image</h4>
 <p>The native K3s image is based on Alpine which is not supported by the NVIDIA container runtime. To get around that we need to build
 the image using a supported base image. The following instructions are based on the
 <a href="https://k3d.io/v5.0.0/usage/advanced/cuda/">official k3d documentation</a></p>
 <ol>
-<li>
-<p>Create a Dockerfile with the content below:</p>
+<li>Create a Dockerfile with the content below:</li>
+</ol>
 <div class="highlight"><pre><span></span><code><span class="k">ARG</span> <span class="nv">K3S_TAG</span><span class="o">=</span><span class="s2">&quot;v1.21.5-k3s1&quot;</span>
 <span class="k">ARG</span> <span class="nv">CUDA_VERSION</span><span class="o">=</span><span class="s2">&quot;11.4&quot;</span>
 
@@ -950,11 +948,11 @@ the image using a supported base image. The following instructions are based on 
 <span class="k">CMD</span> <span class="p">[</span><span class="s2">&quot;agent&quot;</span><span class="p">]</span>
 </code></pre></div>
 <p>This Dockerfile uses nvidia/cuda as base image and installs the NVIDIA container runtime on it, adds a configuration file
-for containerd setting it to use the NVIDIA container runtime and adds the NVIDIA device plugin daemonset so it can start
-automatically when creating the cluster.</p>
-</li>
-<li>
-<p>In the same directory, create the containerd configuration file, named <code>config.toml.tmpl</code> with the following content:</p>
+   for containerd setting it to use the NVIDIA container runtime and adds the NVIDIA device plugin daemonset so it can start
+   automatically when creating the cluster.</p>
+<ol>
+<li>In the same directory, create the containerd configuration file, named <code>config.toml.tmpl</code> with the following content:</li>
+</ol>
 <div class="highlight"><pre><span></span><code><span class="k">[plugins.opt]</span>
   <span class="n">path</span> <span class="o">=</span> <span class="s">&quot;{{ .NodeConfig.Containerd.Opt }}&quot;</span>
 
@@ -1011,9 +1009,9 @@ automatically when creating the cluster.</p>
 <span class="p">{{</span><span class="n">end</span><span class="p">}}</span>
 <span class="p">{{</span><span class="n">end</span><span class="p">}}</span>
 </code></pre></div>
-</li>
-<li>
-<p>Finally, create the <code>device-plugin-daemonset.yaml</code> file with the following content.</p>
+<ol>
+<li>Finally, create the <code>device-plugin-daemonset.yaml</code> file with the following content.</li>
+</ol>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">DaemonSet</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -1033,44 +1031,44 @@ automatically when creating the cluster.</p>
         <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nvidia-device-plugin-ds</span>
     <span class="nt">spec</span><span class="p">:</span>
       <span class="nt">tolerations</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="nt">key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">CriticalAddonsOnly</span>
-        <span class="nt">operator</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Exists</span>
-      <span class="p p-Indicator">-</span> <span class="nt">key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nvidia.com/gpu</span>
-        <span class="nt">operator</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Exists</span>
-        <span class="nt">effect</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">NoSchedule</span>
+        <span class="p p-Indicator">-</span> <span class="nt">key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">CriticalAddonsOnly</span>
+          <span class="nt">operator</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Exists</span>
+        <span class="p p-Indicator">-</span> <span class="nt">key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nvidia.com/gpu</span>
+          <span class="nt">operator</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Exists</span>
+          <span class="nt">effect</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">NoSchedule</span>
       <span class="nt">nodeSelector</span><span class="p">:</span>
         <span class="nt">accelerator</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gpu</span>
       <span class="nt">priorityClassName</span><span class="p">:</span> <span class="s">&quot;system-node-critical&quot;</span>
       <span class="nt">containers</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nvidia/k8s-device-plugin:1.0.0-beta4</span>
-        <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nvidia-device-plugin-ctr</span>
-        <span class="nt">securityContext</span><span class="p">:</span>
-          <span class="nt">allowPrivilegeEscalation</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-          <span class="nt">capabilities</span><span class="p">:</span>
-            <span class="nt">drop</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;ALL&quot;</span><span class="p p-Indicator">]</span>
-        <span class="nt">volumeMounts</span><span class="p">:</span>
-          <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">device-plugin</span>
-            <span class="nt">mountPath</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/var/lib/kubelet/device-plugins</span>
+        <span class="p p-Indicator">-</span> <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nvidia/k8s-device-plugin:1.0.0-beta4</span>
+          <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nvidia-device-plugin-ctr</span>
+          <span class="nt">securityContext</span><span class="p">:</span>
+            <span class="nt">allowPrivilegeEscalation</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+            <span class="nt">capabilities</span><span class="p">:</span>
+              <span class="nt">drop</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;ALL&quot;</span><span class="p p-Indicator">]</span>
+          <span class="nt">volumeMounts</span><span class="p">:</span>
+            <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">device-plugin</span>
+              <span class="nt">mountPath</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/var/lib/kubelet/device-plugins</span>
       <span class="nt">volumes</span><span class="p">:</span>
         <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">device-plugin</span>
           <span class="nt">hostPath</span><span class="p">:</span>
             <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/var/lib/kubelet/device-plugins</span>
 </code></pre></div>
 <p>Note that the daemonset definition includes a <code>nodeSelector</code> to ensure that it is only scheduled on
-nodes with the <code>accelerator=gpu</code> label. The NVIDIA device plugin is a daemonset that exposes the number
-of GPUs available on the nodes, keep track of the GPUs health and enable running GPU enabled containers.</p>
-</li>
-<li>
-<p>With all those files on the same directory, build the image running the following command:</p>
+   nodes with the <code>accelerator=gpu</code> label. The NVIDIA device plugin is a daemonset that exposes the number
+   of GPUs available on the nodes, keep track of the GPUs health and enable running GPU enabled containers.</p>
+<ol>
+<li>With all those files on the same directory, build the image running the following command:</li>
+</ol>
 <div class="highlight"><pre><span></span><code>docker build . -t k3s:v1.21.5-k3s1-cuda --build-arg <span class="nv">CUDA_VERSION</span><span class="o">=</span>X.X
 </code></pre></div>
 <p>Replace <code>X.X</code> with the latest cuda version supported by your GPU which can be found by running the following
-command:</p>
+   command:</p>
 <div class="highlight"><pre><span></span><code>nvidia-smi <span class="p">|</span> awk <span class="s1">&#39;/CUDA/ { print $9 }&#39;</span>
 </code></pre></div>
-</li>
-<li>
-<p>Test the image built by running the following commands to create a cluster and deploy a test pod:</p>
+<ol>
+<li>Test the image built by running the following commands to create a cluster and deploy a test pod:</li>
+</ol>
 <div class="highlight"><pre><span></span><code>k3d cluster create gputest --image<span class="o">=</span>k3s:v1.21.5-k3s1-cuda --gpus<span class="o">=</span><span class="m">1</span> --k3s-node-label <span class="s2">&quot;accelerator=gpu@server:0&quot;</span>
 cat <span class="s">&lt;&lt;EOF | kubectl apply -f -</span>
 <span class="s">apiVersion: v1</span>
@@ -1097,12 +1095,10 @@ Test PASSED
 Done
 </code></pre></div>
 <p>If the pod is stuck in <code>Pending</code> state, check the logs from the pod created by NVIDIA device
-plugin daemonset. If it succeeds you can delete the test cluster by running the following
-command:</p>
+   plugin daemonset. If it succeeds you can delete the test cluster by running the following
+   command:</p>
 <div class="highlight"><pre><span></span><code>k3d cluster delete gputest
 </code></pre></div>
-</li>
-</ol>
 <h4 id="create-the-kubernetes-cluster_1">Create the Kubernetes cluster</h4>
 <p>Run the following command to create a cluster with 2 nodes where one of them is labeled with
 <code>accelerator=gpu</code>,we also disable traefik and expose the http port to allow accessing the
@@ -1126,17 +1122,18 @@ Run <span class="s1">&#39;fuseml-installer --help&#39;</span> to see what you ca
 </ul>
 </li>
 <li>
-<p>To install FuseML run the following command, note that we are also installing the mlflow and kfserving
-extensions which will be used for model tracking and serving respectively:</p>
-<div class="highlight"><pre><span></span><code>fuseml-installer install --extensions mlflow,kfserving
-</code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>FuseML will automatically assign a domain based on the cluster load balancer IP address in the format
-<code>&lt;LB_IP&gt;.nip.io</code>. If you want to use a different domain, you can use the <code>--system-domain</code> flag. In the
-rest of this tutorial we will use <code>192.168.86.74.nip.io</code> as the domain. Any reference to <code>&lt;FUSEML_DOMAIN&gt;</code>
-should be replaced by your domain.</p>
-</div>
+<p>To install FuseML run the following command, note that we are also installing the mlflow and kserve
+    extensions which will be used for model tracking and serving respectively:</p>
+<pre><code>```bash
+fuseml-installer install --extensions mlflow,kserve
+```
+
+!!! note
+    FuseML will automatically assign a domain based on the cluster load balancer IP address in the format
+    `&lt;LB_IP&gt;.nip.io`. If you want to use a different domain, you can use the `--system-domain` flag. In the
+    rest of this tutorial we will use `192.168.86.74.nip.io` as the domain. Any reference to `&lt;FUSEML_DOMAIN&gt;`
+    should be replaced by your domain.
+</code></pre>
 </li>
 </ol>
 <h2 id="training-serving-the-model">Training &amp; Serving the model</h2>
@@ -1151,34 +1148,34 @@ The complete code for model training is available <a href="https://github.com/fu
 <h3 id="training-serving-using-fuseml">Training &amp; Serving using FuseML</h3>
 <p>The following steps describe how to use FuseML to train the model and serve it.</p>
 <ol>
-<li>
-<p>Clone the <code>fuseml/examples</code> repository and register the <code>keras</code> example code as a FuseML codeset:</p>
+<li>Clone the <code>fuseml/examples</code> repository and register the <code>keras</code> example code as a FuseML codeset:</li>
+</ol>
 <div class="highlight"><pre><span></span><code>$ git clone https://github.com/fuseml/examples.git
 
 $ fuseml codeset register -n cifar10 -p demo examples/codesets/mlflow/keras
 Pushing the code to the git repository...
 Codeset http://gitea.192.168.86.74.nip.io/demo/cifar10.git successfully registered
 </code></pre></div>
-</li>
-<li>
-<p>Create a FuseML workflow:</p>
+<ol>
+<li>Create a FuseML workflow:</li>
+</ol>
 <div class="highlight"><pre><span></span><code>$ fuseml workflow create examples/workflows/mlflow-e2e.yaml
 Workflow <span class="s2">&quot;mlflow-e2e&quot;</span> successfully created
 </code></pre></div>
 <p>This workflow includes steps for training and serving the model. When serving <code>Keras</code> models, unless
-<code>predictor</code> is set to a specific value instead of <code>auto</code> on the workflow, FuseML will automatically
-serve the model using NVIDIA Triton Inference Server.</p>
-</li>
-<li>
-<p>Assign the <code>mlflow-e2e</code> workflow to the <code>cifar10</code> codeset:</p>
+   <code>predictor</code> is set to a specific value instead of <code>auto</code> on the workflow, FuseML will automatically
+   serve the model using NVIDIA Triton Inference Server.</p>
+<ol>
+<li>Assign the <code>mlflow-e2e</code> workflow to the <code>cifar10</code> codeset:</li>
+</ol>
 <div class="highlight"><pre><span></span><code>$ fuseml workflow assign -c cifar10 -p demo -n mlflow-e2e
 Workflow <span class="s2">&quot;mlflow-e2e&quot;</span> assigned to codeset <span class="s2">&quot;demo/cifar10&quot;</span>
 </code></pre></div>
-</li>
-<li>
-<p>Wait for the workflow run to finish running:</p>
+<ol>
+<li>Wait for the workflow run to finish running:</li>
+</ol>
 <p>By assigning the workflow to the codeset, a workflow run will be created. You can check the status
-of the workflow run by running the following command:</p>
+   of the workflow run by running the following command:</p>
 <div class="highlight"><pre><span></span><code>$ fuseml workflow list-runs
 +---------------------------+------------+----------------+----------+---------+
 <span class="p">|</span> NAME                      <span class="p">|</span> WORKFLOW   <span class="p">|</span> STARTED        <span class="p">|</span> DURATION <span class="p">|</span> STATUS  <span class="p">|</span>
@@ -1187,19 +1184,17 @@ of the workflow run by running the following command:</p>
 +---------------------------+------------+----------------+----------+---------+
 </code></pre></div>
 <p>You can also see a more detailed view of the workflow run through the tekton dashboard, which should
-be available at: <code>http://tekton.&lt;FUSEML_DOMAIN&gt;</code></p>
+   be available at: <code>http://tekton.&lt;FUSEML_DOMAIN&gt;</code></p>
 <p>Note that since this is the first time the workflow is running, it will build a docker image including
-the dependencies for training the model which may take a while. However, consecutive runs will skip that
-step as long as the dependencies are kept the same.</p>
-</li>
-</ol>
+   the dependencies for training the model which may take a while. However, consecutive runs will skip that
+   step as long as the dependencies are kept the same.</p>
 <h3 id="validating-the-deployed-model">Validating the Deployed Model</h3>
 <p>Before querying the served model for predictions, lets take a look at MLflow for detailed information about
 the model, such as its accuracy, loss, training parameters, etc.</p>
 <p>MLflow should be available at <code>http://mlflow.&lt;FUSEML_DOMAIN&gt;</code>.</p>
 <p>For example:</p>
 <figure>
-<p><img alt="MLflow" src="../img/kfserving-triton-gpu/mlflow.png" />
+<p><img alt="MLflow" src="../img/kserve-triton-gpu/mlflow.png" />
   </p>
 <figcaption>Training metrics on CPU</figcaption>
 </figure>
@@ -1214,20 +1209,20 @@ FuseML applications:</p>
 +--------------+-----------+----------------------------------------------+----------------------------------------------------------------------------------------+------------+
 </code></pre></div>
 <p>The list of FuseML applications include a URL to query the model for predictions. As FuseML is using the
-KFServing extension for serving the model, you can check the deployed models through the KFServing
-dashboard (<code>http://kfserving-models-web-app.&lt;FUSEML_DOMAIN&gt;/</code>) which also includes more detailed
+KServe extension for serving the model, you can check the deployed models through the KServe
+dashboard (<code>http://kserve-web-app.&lt;FUSEML_DOMAIN&gt;/</code>) which also includes more detailed
 information such as the status of the deployment, logs, etc.</p>
 <p>For example:</p>
 <figure>
-<p><img alt="KSserve Dashboard" src="../img/kfserving-triton-gpu/kserve.png" />
+<p><img alt="KSserve Dashboard" src="../img/kserve-triton-gpu/kserve.png" />
   </p>
-<figcaption>KFServing Dashboard</figcaption>
+<figcaption>KServe Dashboard</figcaption>
 </figure>
 <p>To validate the model, we need to send a request containing an image so the model can to predict its class.</p>
 <p>The json file included in the <code>fuseml/examples</code> repository contains a sample request that represents the
 following deer image:</p>
 <figure>
-<p><img alt="Deer" src="../img/kfserving-triton-gpu/deer.png" width="300" />
+<p><img alt="Deer" src="../img/kserve-triton-gpu/deer.png" width="300" />
   </p>
 <figcaption>Deer Sample Image</figcaption>
 </figure>
@@ -1278,7 +1273,7 @@ is how the classes are indexed:</p>
 <h3 id="benchmark-the-inference-service">Benchmark the Inference Service</h3>
 <p>To be able to compare the performance of the model serving on CPU, we can benchmark the inference service.</p>
 <p>Run the following command to create a Job workload that will benchmark the inference service:</p>
-<div class="highlight"><pre><span></span><code>kubectl create -f https://raw.githubusercontent.com/fuseml/docs/main/docs/tutorials/img/kfserving-triton-gpu/perf.yaml
+<div class="highlight"><pre><span></span><code>kubectl create -f https://raw.githubusercontent.com/fuseml/docs/main/docs/tutorials/img/kserve-triton-gpu/perf.yaml
 </code></pre></div>
 <p>Wait for the Job to complete and check the logs for the results:</p>
 <div class="highlight"><pre><span></span><code>$ kubectl <span class="nb">wait</span> --for<span class="o">=</span><span class="nv">condition</span><span class="o">=</span><span class="nb">complete</span> --timeout 70s job -l <span class="nv">app</span><span class="o">=</span>triton-load-test <span class="o">&amp;&amp;</span> kubectl logs -l <span class="nv">app</span><span class="o">=</span>triton-load-test
@@ -1296,22 +1291,24 @@ Error Set:
 <p>Now that the model is validated, we can proceed to train and serve the model with higher accuracy on GPU.</p>
 <h3 id="training-serving-on-gpu-with-fuseml">Training &amp; Serving on GPU with FuseML</h3>
 <ol>
-<li>
-<p>Update the example workflow so that it will train and serve the model on GPU:</p>
+<li>Update the example workflow so that it will train and serve the model on GPU:</li>
+</ol>
 <p>Open the file <code>examples/workflows/mlflow-e2e.yaml</code> with your favorite text editor and make the
-following changes:</p>
+   following changes:</p>
 <ul>
 <li>Change the workflow name to <code>mlflow-e2e-gpu</code>.</li>
-<li>Add the following snippet under the <code>trainer</code> step:</li>
-</ul>
+<li>
+<p>Add the following snippet under the <code>trainer</code> step:</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="s">&quot;trainer&quot;</span>
   <span class="l l-Scalar l-Scalar-Plain">...</span>
   <span class="nt">resources</span><span class="p">:</span>
     <span class="nt">limits</span><span class="p">:</span>
       <span class="nt">nvidia.com/gpu</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
 </code></pre></div>
-<p>This will ensure that the trainer pod will be scheduled to a node that has a GPU.
-* For the <code>predictor</code> step, we need to add the following input:</p>
+<p>This will ensure that the trainer pod will be scheduled to a node that has a GPU.</p>
+</li>
+<li>
+<p>For the <code>predictor</code> step, we need to add the following input:</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">predictor</span>
   <span class="l l-Scalar l-Scalar-Plain">...</span>
   <span class="nt">inputs</span><span class="p">:</span>
@@ -1319,35 +1316,37 @@ following changes:</p>
     <span class="l l-Scalar l-Scalar-Plain">- name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">resources_limits</span>
       <span class="l l-Scalar l-Scalar-Plain">value</span><span class="p p-Indicator">:</span> <span class="s">&#39;{nvidia.com/gpu:</span><span class="nv"> </span><span class="s">1}&#39;</span>
 </code></pre></div>
-<p>This ensures that the workload (KFserving inference service) created by this step will be scheduled
-   to a node that has a GPU.</p>
+<p>This ensures that the workload (KServe inference service) created by this step will be scheduled
+ to a node that has a GPU.</p>
 </li>
 <li>
 <p>Unassign the <code>mlflow-e2e</code> workflow from the <code>cifar10</code>, as we do not want to run the same workflow again:</p>
+</li>
+</ul>
 <div class="highlight"><pre><span></span><code>$ fuseml workflow unassign -c cifar10 -p demo -n mlflow-e2e
 Workflow <span class="s2">&quot;mlflow-e2e&quot;</span> unassigned from codeset <span class="s2">&quot;demo/cifar10&quot;</span>
 </code></pre></div>
-</li>
-<li>
-<p>Increase the number of epochs on the <code>keras</code> example codeset to 60, so we get model with higher accuracy:</p>
+<ol>
+<li>Increase the number of epochs on the <code>keras</code> example codeset to 60, so we get model with higher accuracy:</li>
+</ol>
 <div class="highlight"><pre><span></span><code>$ sed -i <span class="s1">&#39;s/10/60/&#39;</span> examples/codesets/mlflow/keras/MLproject
 
 $ fuseml codeset register -n cifar10 -p demo examples/codesets/mlflow/keras
 Pushing the code to the git repository...
 Codeset http://gitea.192.168.86.74.nip.io/demo/cifar10.git successfully registered
 </code></pre></div>
-</li>
-<li>
-<p>Create the <code>mlflow-e2e-gpu</code> workflow and assign it to the <code>cifar10</code> codeset:</p>
+<ol>
+<li>Create the <code>mlflow-e2e-gpu</code> workflow and assign it to the <code>cifar10</code> codeset:</li>
+</ol>
 <div class="highlight"><pre><span></span><code>$ fuseml workflow create examples/workflows/mlflow-e2e.yaml
 Workflow <span class="s2">&quot;mlflow-e2e-gpu&quot;</span> successfully created
 
 $ fuseml workflow assign -c cifar10 -p demo -n mlflow-e2e-gpu
 Workflow <span class="s2">&quot;mlflow-e2e-gpu&quot;</span> assigned to codeset <span class="s2">&quot;demo/cifar10&quot;</span>
 </code></pre></div>
-</li>
-<li>
-<p>Wait for the workflow run to finish running:</p>
+<ol>
+<li>Wait for the workflow run to finish running:</li>
+</ol>
 <p>You can check the status of the workflow run by running the following command:</p>
 <div class="highlight"><pre><span></span><code>$ fuseml workflow list-runs
 +---------------------------+----------------+----------------+------------+-----------+
@@ -1358,19 +1357,17 @@ Workflow <span class="s2">&quot;mlflow-e2e-gpu&quot;</span> assigned to codeset 
 +---------------------------+----------------+----------------+------------+-----------+
 </code></pre></div>
 <p>If you head to the tekton dashboard (<code>http://tekton.&lt;FUSEML_DOMAIN&gt;</code>) and look at the logs for the
-<code>trainer</code> step, you should be able to see a log confirming that the training is being performed on GPU,
-such as:</p>
+   <code>trainer</code> step, you should be able to see a log confirming that the training is being performed on GPU,
+   such as:</p>
 <div class="highlight"><pre><span></span><code>Num GPUs: <span class="m">1</span>
 <span class="m">1</span> Physical GPUs, <span class="m">1</span> Logical GPUs
 </code></pre></div>
-</li>
-</ol>
 <h3 id="validating-the-deployed-model-on-gpu">Validating the Deployed model on GPU</h3>
 <p>Now that we have the model trained, head over to MLflow (<code>http://mlflow.&lt;FUSEML_DOMAIN&gt;</code>) to compare the
 training metrics.</p>
 <p>For example:</p>
 <figure>
-<p><img alt="MLflow-GPU" src="../img/kfserving-triton-gpu/gpu-mlflow.png" />
+<p><img alt="MLflow-GPU" src="../img/kserve-triton-gpu/gpu-mlflow.png" />
   </p>
 <figcaption>Training metrics on GPU</figcaption>
 </figure>
@@ -1378,7 +1375,7 @@ training metrics.</p>
 spending the same amount of time on training!</p>
 <p>MLflow also allows comparing other metrics by selecting both runs and clicking on the <code>Compare</code> button.</p>
 <figure>
-<p><img alt="MLflow-Compare" src="../img/kfserving-triton-gpu/mlflow-compare.png" />
+<p><img alt="MLflow-Compare" src="../img/kserve-triton-gpu/mlflow-compare.png" />
   </p>
 <figcaption>Comparing metrics on MLflow</figcaption>
 </figure>
@@ -1392,7 +1389,7 @@ spending the same amount of time on training!</p>
 </code></pre></div>
 <p>Note that we have the same application, but now it is using the new model and is also using the GPU.
 To confirm that, check the inference service logs at
-<code>http://kfserving-models-web-app.&lt;FUSEML_DOMAIN&gt;/details/fuseml-workloads/demo-cifar10</code>,
+<code>http://kserve-web-app.&lt;FUSEML_DOMAIN&gt;/details/fuseml-workloads/demo-cifar10</code>,
 it should have something like:</p>
 <div class="highlight"><pre><span></span><code>I1019 <span class="m">12</span>:58:00.349814 <span class="m">1</span> metrics.cc:290<span class="o">]</span> Collecting metrics <span class="k">for</span> GPU <span class="m">0</span>: NVIDIA XXX
 </code></pre></div>
@@ -1430,7 +1427,7 @@ it should have something like:</p>
 <h3 id="benchmark-the-inference-service-on-gpu">Benchmark the Inference Service on GPU</h3>
 <p>We can now benchmark the inference service running which uses the GPU to compute predictions.</p>
 <p>Run the following command again to benchmark the inference service, you can ignore the (<code>AlreadyExists</code> error):</p>
-<div class="highlight"><pre><span></span><code>kubectl create -f https://raw.githubusercontent.com/fuseml/docs/main/docs/tutorials/img/kfserving-triton-gpu/perf.yaml
+<div class="highlight"><pre><span></span><code>kubectl create -f https://raw.githubusercontent.com/fuseml/docs/main/docs/tutorials/img/kserve-triton-gpu/perf.yaml
 </code></pre></div>
 <p>Wait for the Job to complete and check the logs for the results:</p>
 <div class="highlight"><pre><span></span><code>$ kubectl <span class="nb">wait</span> --for<span class="o">=</span><span class="nv">condition</span><span class="o">=</span><span class="nb">complete</span> --timeout 70s job -l <span class="nv">app</span><span class="o">=</span>triton-load-test <span class="o">&amp;&amp;</span> kubectl logs -l <span class="nv">app</span><span class="o">=</span>triton-load-test
@@ -1485,7 +1482,7 @@ GPU can speed up the training process.</p>
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../kfserving-basic/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Logistic Regression with MLFlow &amp; KFServing" rel="prev">
+        <a href="../kserve-basic/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Logistic Regression with MLFlow &amp; KServe" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1494,7 +1491,7 @@ GPU can speed up the training process.</p>
               <span class="md-footer__direction">
                 Previous
               </span>
-              Logistic Regression with MLFlow & KFServing
+              Logistic Regression with MLFlow & KServe
             </div>
           </div>
         </a>

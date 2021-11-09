@@ -312,8 +312,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/kfserving-basic/" class="md-nav__link">
-        Logistic Regression with MLFlow & KFServing
+      <a href="../tutorials/kserve-basic/" class="md-nav__link">
+        Logistic Regression with MLFlow & KServe
       </a>
     </li>
   
@@ -326,7 +326,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/kfserving-triton-gpu/" class="md-nav__link">
+      <a href="../tutorials/kserve-triton-gpu/" class="md-nav__link">
         Training & Serving ML Models on GPU with NVIDIA Triton
       </a>
     </li>
@@ -491,7 +491,7 @@
 <h3 id="1-install-the-requirements">1. Install the requirements</h3>
 <p>We assume that a Kubernetes cluster is already up and running. If not a good way to start with a local cluster is to use <a href="https://kind.sigs.k8s.io/docs/user/quick-start/">KinD</a>, <a href="https://k3s.io/">Rancher K3s</a> or <a href="https://k3d.io/">k3d</a>.</p>
 <p>It is also necessary that your cluster setup includes a storage class marked as default.</p>
-<p><strong>IMPORTANT</strong>: if you're installing a Rancher K3s cluster, it's recommended to skip installing the default Traefik ingress controller. The FuseML installer deploys Istio as a component and Istio is also required by some of the 3rd party tools that FuseML is integrated with (e.g. KNative, KFServing).</p>
+<p><strong>IMPORTANT</strong>: if you're installing a Rancher K3s cluster, it's recommended to skip installing the default Traefik ingress controller. The FuseML installer deploys Istio as a component and Istio is also required by some of the 3rd party tools that FuseML is integrated with (e.g. Knative, KServe).</p>
 <p>Additional software requirements:</p>
 <ul>
 <li>
@@ -568,7 +568,7 @@ kubectl get pods -n gitea -o wide
 <span class="c1"># Let&#39;s check tekton</span>
 kubectl get pods -n tekton-pipelines -o wide
 </code></pre></div>
-<p>If everything is in running or completed status, you are good to go. Continue on to the <a href="../tutorials/kfserving-basic/">tutorial</a> section and start to have fun with FuseML.</p>
+<p>If everything is in running or completed status, you are good to go. Continue on to the <a href="../tutorials/kserve-basic/">tutorial</a> section and start to have fun with FuseML.</p>
                 
               
               
@@ -604,13 +604,13 @@ kubectl get pods -n tekton-pipelines -o wide
       
       
         
-        <a href="../tutorials/kfserving-basic/" class="md-footer__link md-footer__link--next" aria-label="Next: Logistic Regression with MLFlow &amp; KFServing" rel="next">
+        <a href="../tutorials/kserve-basic/" class="md-footer__link md-footer__link--next" aria-label="Next: Logistic Regression with MLFlow &amp; KServe" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Logistic Regression with MLFlow & KFServing
+              Logistic Regression with MLFlow & KServe
             </div>
           </div>
           <div class="md-footer__button md-icon">

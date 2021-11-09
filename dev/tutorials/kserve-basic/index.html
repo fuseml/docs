@@ -14,7 +14,7 @@
     
     
       
-        <title>Logistic Regression with MLFlow & KFServing - FuseML Documentation</title>
+        <title>Logistic Regression with MLFlow & KServe - FuseML Documentation</title>
       
     
     
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#a-simple-logistic-regression-with-mlflow-and-kfserving" class="md-skip">
+        <a href="#a-simple-logistic-regression-with-mlflow-and-kserve" class="md-skip">
           Skip to content
         </a>
       
@@ -99,7 +99,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Logistic Regression with MLFlow & KFServing
+              Logistic Regression with MLFlow & KServe
             
           </span>
         </div>
@@ -261,7 +261,7 @@
       
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Logistic Regression with MLFlow & KFServing
+        Logistic Regression with MLFlow & KServe
       </a>
       
     </li>
@@ -275,7 +275,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../kfserving-triton-gpu/" class="md-nav__link">
+      <a href="../kserve-triton-gpu/" class="md-nav__link">
         Training & Serving ML Models on GPU with NVIDIA Triton
       </a>
     </li>
@@ -394,28 +394,28 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/fuseml/docs/edit/main/docs/tutorials/kfserving-basic.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/fuseml/docs/edit/main/docs/tutorials/kserve-basic.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="a-simple-logistic-regression-with-mlflow-and-kfserving">A simple logistic regression with MLFlow and KFServing</h1>
+                <h1 id="a-simple-logistic-regression-with-mlflow-and-kserve">A simple logistic regression with MLFlow and KServe</h1>
 <p>This example shows how FuseML can be used to automate and end-to-end machine learning workflow using
 a combination of different tools. In this case, we have a scikit-learn ML model that is being trained
-using <a href="https://mlflow.org/">MLflow</a> and then served with <a href="https://github.com/kubeflow/kfserving">KFServing</a>.</p>
+using <a href="https://mlflow.org/">MLflow</a> and then served with <a href="https://github.com/kserve/kserve">KServe</a>.</p>
 <p>We assume that both FuseML infrastructure and the FuseML CLI are already installed, if not please
 check first the <a href="../../quickstart/">quick start</a> section.</p>
 <p><strong>1.</strong> Install 3rd party ML tools</p>
-<p>Running this example requires MLflow and KFServing to be installed in the same cluster as FuseML.</p>
-<p>The FuseML installer can be used for a quick MLFlow and KFServing installation:</p>
-<div class="highlight"><pre><span></span><code>fuseml-installer extensions --add mlflow,kfserving
+<p>Running this example requires MLflow and KServe to be installed in the same cluster as FuseML.</p>
+<p>The FuseML installer can be used for a quick MLFlow and KServe installation:</p>
+<div class="highlight"><pre><span></span><code>fuseml-installer extensions --add mlflow,kserve
 </code></pre></div>
 <p>To find out about installed extensions, install new or remove installed ones, use</p>
 <div class="highlight"><pre><span></span><code>fuseml-installer extensions --help
 </code></pre></div>
 <p>command.</p>
-<p>Alternatively, you can follow <a href="https://github.com/kubeflow/kfserving/blob/master/README.md">the KFServing official instructions</a>
-and install KFServing manually.</p>
+<p>Alternatively, you can follow <a href="https://github.com/kserve/kserve#readme">the KServe official instructions</a>
+and install KServe manually.</p>
 <p><strong>2.</strong> Set <code>FUSEML_SERVER_URL</code> environment variable to point to fuseml-core</p>
 <p>The fuseml-core URL was printed out by the installer during the FuseML installation.Alternatively, you can run the following
 command to retrieve the fuseml-core URL and set the <code>FUSEML_SERVER_URL</code> environment variable:</p>
@@ -443,7 +443,7 @@ FuseML configuration file created at /home/snica/.config/fuseml/config.yaml
 </code></pre></div>
 <p>You may optionally log into the Gitea UI using the URL, username and password printed out by the <code>codeset register</code> command. You should find a new organization named <code>mlflow-project-01</code> and a repo named <code>mlflow-test</code>.</p>
 <p><strong>5.</strong> Create a workflow</p>
-<p>The example FuseML workflow included in the examples repository represents a complete, end-to-end ML pipeline "compatible" with any codeset that contains an MLProject. It includes all the steps necessary to train a model with MLflow, save the model and then creates a KFServing prediction service for it.</p>
+<p>The example FuseML workflow included in the examples repository represents a complete, end-to-end ML pipeline "compatible" with any codeset that contains an MLProject. It includes all the steps necessary to train a model with MLflow, save the model and then creates a KServe prediction service for it.</p>
 <p>Use the example workflow definition to create a workflow in FuseML:</p>
 <div class="highlight"><pre><span></span><code>fuseml workflow create workflows/mlflow-e2e.yaml
 </code></pre></div>
@@ -536,19 +536,19 @@ curl -d @prediction/data-sklearn.json <span class="nv">$PREDICTOR_URL</span> <sp
 </code></pre></div>
 <p>The output will be something similar to:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;model_name&quot;</span><span class="p">:</span><span class="s2">&quot;mlflow-project-01-mlflow-test&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;model_version&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span>
-    <span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;44d5d037-052b-49b6-aace-1c5346a35004&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span>
-    <span class="nt">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+  <span class="nt">&quot;model_name&quot;</span><span class="p">:</span> <span class="s2">&quot;mlflow-project-01-mlflow-test&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;model_version&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;44d5d037-052b-49b6-aace-1c5346a35004&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="nt">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
     <span class="p">{</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;predict&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;shape&quot;</span><span class="p">:[</span><span class="mi">1</span><span class="p">],</span>
-        <span class="nt">&quot;datatype&quot;</span><span class="p">:</span><span class="s2">&quot;FP32&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span>
-        <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="mf">6.486344809506676</span> <span class="p">]</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;predict&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;shape&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+      <span class="nt">&quot;datatype&quot;</span><span class="p">:</span> <span class="s2">&quot;FP32&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+      <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">6.486344809506676</span><span class="p">]</span>
     <span class="p">}</span>
-    <span class="p">]</span>
+  <span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>9.</strong> (Optional) Use the webapp example to test the deployed model</p>
@@ -556,15 +556,15 @@ curl -d @prediction/data-sklearn.json <span class="nv">$PREDICTOR_URL</span> <sp
 <p>First, deploy the application into your kubernetes cluster by running the following command:</p>
 <div class="highlight"><pre><span></span><code>kubectl apply -f webapps/winery/service.yaml
 </code></pre></div>
-<p>Run the following command to check the application deployment status:
+<p>Run the following command to check the application deployment status:</p>
 <div class="highlight"><pre><span></span><code>kubectl get ksvc -n fuseml-workloads winery
-</code></pre></div></p>
+</code></pre></div>
 <p>At some point it should reach the <code>READY</code> status and a URL is provided to access the application.
-For example:
+For example:</p>
 <div class="highlight"><pre><span></span><code>❯ kubectl get ksvc -n fuseml-workloads winery
 NAME     URL                                                                                LATESTCREATED   LATESTREADY    READY   REASON
 winery   http://winery.fuseml-workloads.fuseml-workloads.10.162.66.101.omg.howdoi.website   winery-00001    winery-00001   True
-</code></pre></div></p>
+</code></pre></div>
 <p>Open the application URL and follow the instructions presented on the webpage to make your own predictions with the FuseML application you just deployed.</p>
                 
               
@@ -601,7 +601,7 @@ winery   http://winery.fuseml-workloads.fuseml-workloads.10.162.66.101.omg.howdo
       
       
         
-        <a href="../kfserving-triton-gpu/" class="md-footer__link md-footer__link--next" aria-label="Next: Training &amp; Serving ML Models on GPU with NVIDIA Triton" rel="next">
+        <a href="../kserve-triton-gpu/" class="md-footer__link md-footer__link--next" aria-label="Next: Training &amp; Serving ML Models on GPU with NVIDIA Triton" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">

@@ -251,8 +251,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../kfserving-basic/" class="md-nav__link">
-        Logistic Regression with MLFlow & KFServing
+      <a href="../kserve-basic/" class="md-nav__link">
+        Logistic Regression with MLFlow & KServe
       </a>
     </li>
   
@@ -265,7 +265,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../kfserving-triton-gpu/" class="md-nav__link">
+      <a href="../kserve-triton-gpu/" class="md-nav__link">
         Training & Serving ML Models on GPU with NVIDIA Triton
       </a>
     </li>
@@ -690,7 +690,7 @@
 <p>FuseML currently supports three major extension mechanisms that facilitate the integration of new AI/ML tools without the need to change the FuseML core code: <em>FuseML Installer Extensions</em>, the <em>FuseML Extension Registry</em> and <em>FuseML Workflows</em>.</p>
 <h3 id="fuseml-installer-extensions">FuseML Installer Extensions</h3>
 <p>The FuseML installer can be tasked with installing more than just the FuseML core components. It can also be used to simplify the deployment of 3rd party AI/ML services that support Kubernetes as a target platform. Writing a FuseML Installer Extension is as simple as creating a YAML file describing installation steps such as helm charts, kubernetes manifests, kustomize targets or even plain bash scripts.</p>
-<p>With FuseML Installer Extensions, users can build installation shortcuts to quickly deploy their own AI/ML tool stack, or reuse one or more of the AI/ML tools already featured in the default <a href="https://github.com/fuseml/extensions/tree/main/installer">FuseML Installer Extension Repository</a>, including but not limited to: MLFlow, KFServing and Seldon Core.</p>
+<p>With FuseML Installer Extensions, users can build installation shortcuts to quickly deploy their own AI/ML tool stack, or reuse one or more of the AI/ML tools already featured in the default <a href="https://github.com/fuseml/extensions/tree/main/installer">FuseML Installer Extension Repository</a>, including but not limited to: MLFlow, KServe and Seldon Core.</p>
 <p>The <a href="https://github.com/fuseml/fuseml/blob/main/docs/blueprints/001-installation-of-extensions.md">Installation of ML Extensions</a> blueprint has detailed information about this feature and how it can be used to extend the installer to cover additional AI/ML tools and services.</p>
 <h3 id="fuseml-extension-registry">FuseML Extension Registry</h3>
 <p>The FuseML Extension Registry is basically a database storing information about external AI/ML services and APIs that can be consumed in FuseML workflows. Specifically, each entry in the Extension Registry represents a particular instance of an external AI/ML service or API, and contains information about how it can be accessed (e.g. URLs, endpoints, client configuration and credentials) as well as what specialized roles it can play in the MLOps reference architecture (e.g. data store, model store, prediction platform, experiment tracking, distributed model training etc.).</p>
@@ -735,7 +735,7 @@
 <p>Given that OVMS only works with models that are in Intermediate Representation format and also require a particular folder structure, a conversion operation is required to support serving models that are trained and saved using other formats. This is where the Model Optimizer component comes in.</p>
 <p>To summarize, the following are needed for a minimal integration of OpenVINO as a FuseML model serving component:</p>
 <ul>
-<li>an <em>OVMS predictor</em> FuseML workflow step, similar to the other predictor steps already featured for KFServing and Seldon Core, that can deploy and serve a ML model inside an OVMS instance</li>
+<li>an <em>OVMS predictor</em> FuseML workflow step, similar to the other predictor steps already featured for KServe and Seldon Core, that can deploy and serve a ML model inside an OVMS instance</li>
 <li>an <em>OVMS converter</em> FuseML workflow step is also required to perform the conversion and optimization of ML models from other formats (e.g. TensorFlow saved_model or ONNX) to the IR representation required by OVMS. This conversion logic could be part of the predictor step, but a separation in two individual steps has more advantages, such as better reusability and observability</li>
 <li>a FuseML installer extension that creates the necessary Kubernetes set up required to run the OVMS and the Model Optimizer. These help reduce or even eliminate the effort required to install OpenVINO prerequisites.</li>
 </ul>
@@ -763,7 +763,7 @@
 </ol>
 <h4 id="ovms-as-a-fuseml-managed-application">OVMS as a FuseML Managed Application</h4>
 <p>In this scenario, the OVMS predictor workflow step itself is tasked with managing the entire lifecycle of a standalone OVMS instance that can serve one or more versions of the same model. OVMS instances created by predictor workflow steps are modeled and registered as FuseML Applications.</p>
-<p>The deployment of OVMS instances can be simplified somewhat by leveraging the OVMS kubernetes operator, which needs to be installed beforehand using a FuseML Installer Extension and registered with the Extension Registry. This approach is very similar to the one already used by other workflow predictor steps implemented for FuseML, such as KFServing and Seldon Core, with one notable difference: the OVMS operator does not cover setting up additional resources needed to expose the OVMS API outside the cluster, such as a Kubernetes ingress or Istio virtual service. These resources also need to be managed by the OVMS predictor step.</p>
+<p>The deployment of OVMS instances can be simplified somewhat by leveraging the OVMS kubernetes operator, which needs to be installed beforehand using a FuseML Installer Extension and registered with the Extension Registry. This approach is very similar to the one already used by other workflow predictor steps implemented for FuseML, such as KServe and Seldon Core, with one notable difference: the OVMS operator does not cover setting up additional resources needed to expose the OVMS API outside the cluster, such as a Kubernetes ingress or Istio virtual service. These resources also need to be managed by the OVMS predictor step.</p>
 <p>The OVMS FuseML Installer Extension only needs to install the OVMS operator in a Kubernetes cluster, whereas the OVMS predictor workflow step is responsible for deploying OVMS CRD instances.</p>
 <p>OVMS exposes two APIs: gRPC and RESTful API. They do not include authorization, authentication, or data encryption. These APIs are based on the <a href="https://www.tensorflow.org/tfx/serving/api_rest">TensorFlow Serving APIs</a>.</p>
 <h3 id="openvino-model-converter-fuseml-integration">OpenVINO Model Converter FuseML Integration</h3>
@@ -789,14 +789,14 @@
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">github.com/openvinotoolkit/model_server/extras/ovms-operator/config/default?ref=v2021.4.1</span>
 
 <span class="nt">images</span><span class="p">:</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">controller</span>
-  <span class="nt">newName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">quay.io/openvino/ovms-operator</span>
-  <span class="nt">newTag</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.1.0</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">controller</span>
+    <span class="nt">newName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">quay.io/openvino/ovms-operator</span>
+    <span class="nt">newTag</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.1.0</span>
 </code></pre></div>
 <p>Developing a FuseML Installer Extension is done by assembling together a <code>description.yaml</code> file with installation instructions and other useful information relevant from an integration perspective. Following are sections from the <code>description.yaml</code> descriptor created for the OVMS operator:</p>
 <ul>
-<li>
-<p>the main section describes the product/version and points to the above Kustomize file for installing/uninstalling the OVMS operator:</p>
+<li>the main section describes the product/version and points to the above Kustomize file for installing/uninstalling the OVMS operator:</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ovms</span>
 <span class="nt">product</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">openvino-model-server</span>
 <span class="nt">version</span><span class="p">:</span> <span class="s">&quot;0.1.0&quot;</span>
@@ -817,9 +817,9 @@
   <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kustomize</span>
     <span class="nt">location</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kustomize</span>
 </code></pre></div>
-</li>
-<li>
-<p>adding a <code>services</code> section informs FuseML to automatically register the OVMS operator with the FuseML Extension Registry as a service that can be accessed from workflow steps. FuseML workflow steps such as the OVMS predictor, that need the OVMS operator to be preinstalled, will need to reference this extension by specifying an extension requirement with a matching <code>service_resource</code> field. The <em>internal</em> endpoint URL indicates that the OVMS operator can only be used by workflow steps running in the same Kubernetes cluster (i.e. through a service account). As a side note, it is also be possible to create configurations to allow workflow steps like the OVMS predictor to deploy OVMS instances in remote Kubernetes clusters, provided that Kubernetes credentials are also supplied, but that is not covered here:</p>
+<ul>
+<li>adding a <code>services</code> section informs FuseML to automatically register the OVMS operator with the FuseML Extension Registry as a service that can be accessed from workflow steps. FuseML workflow steps such as the OVMS predictor, that need the OVMS operator to be preinstalled, will need to reference this extension by specifying an extension requirement with a matching <code>service_resource</code> field. The <em>internal</em> endpoint URL indicates that the OVMS operator can only be used by workflow steps running in the same Kubernetes cluster (i.e. through a service account). As a side note, it is also be possible to create configurations to allow workflow steps like the OVMS predictor to deploy OVMS instances in remote Kubernetes clusters, provided that Kubernetes credentials are also supplied, but that is not covered here:</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">API</span>
     <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ovms-operator</span>
@@ -829,18 +829,18 @@
       <span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://kubernetes.default.svc</span>
         <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">internal</span>
 </code></pre></div>
-</li>
-<li>
-<p>as previously mentioned, a global Istio gateway is required to expose OVMS services outside the Kubernetes cluster. This can be configured in the FuseML Installer Extensions descriptors in the form of a <code>gateways</code> element:</p>
+<ul>
+<li>as previously mentioned, a global Istio gateway is required to expose OVMS services outside the Kubernetes cluster. This can be configured in the FuseML Installer Extensions descriptors in the form of a <code>gateways</code> element:</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="nt">gateways</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ovms</span>
     <span class="nt">namespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">fuseml-workloads</span>
     <span class="nt">hostprefix</span><span class="p">:</span> <span class="s">&quot;*.ovms&quot;</span>
     <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">80</span>
 </code></pre></div>
-</li>
-<li>
-<p>the OVMS predictor workflow step needs to be granted permissions to manage OVMS CRD instances, as well as Istio virtual services. A <code>rolerules</code> element can be configured to instruct the FuseML installer to configure these permissions automatically:</p>
+<ul>
+<li>the OVMS predictor workflow step needs to be granted permissions to manage OVMS CRD instances, as well as Istio virtual services. A <code>rolerules</code> element can be configured to instruct the FuseML installer to configure these permissions automatically:</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="nt">rolerules</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="nt">apigroups</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">intel.com</span>
@@ -869,8 +869,6 @@
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">patch</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">watch</span>
 </code></pre></div>
-</li>
-</ul>
 <h3 id="fuseml-ovms-predictor-step">FuseML OVMS Predictor Step</h3>
 <p>Generally speaking, a simple predictor workflow step such as the one built for OVMS should take in as input the location of a ML model, deploy a prediction server (e.g. an OVMS instance) for that model and output the URL where the prediction server API can be accessed to perform inference requests. The input model can be generated, for example, from a training step that precedes the predictor step in a workflow.</p>
 <p>OVMS itself already has builtin support for <a href="https://github.com/openvinotoolkit/model_server/blob/main/deploy/README.md#model-repository">a range of remote ML model storage options</a> (GCS, S3, Azure), which means the OVMS predictor doesn't need to implement any additional logic to download models locally. Depending on the storage service provider (i.e. GCS), it may also need to configure additional secrets to store access credentials, but this particular use-case is left out of the current predictor implementation.</p>
@@ -883,7 +881,7 @@
 <li>plugin_config</li>
 <li>target_device</li>
 <li>log_level</li>
-<li>storage credentials attributes (S3/AWS, GCP, Azure). Note that the recommended way to pass credentials to workflow steps is  through the FuseML Extension Registry.</li>
+<li>storage credentials attributes (S3/AWS, GCP, Azure). Note that the recommended way to pass credentials to workflow steps is through the FuseML Extension Registry.</li>
 </ul>
 <p>Workflow step inputs are passed by FuseML to the containers implementing the workflow steps as environment variables that use the <code>FUSEML_</code> prefix.</p>
 <p>As is the case with all prediction services, the OVMS server needs to be exposed to allow its inference APIs to be consumed from outside the cluster. The OVMS predictor step needs to configure an ingress or an Istio virtual service to expose the OVMS server. Given that currently the only solution supported by FuseML is Istio, it is also the best choice for this task. Two individual parts are needed for this:</p>
@@ -894,8 +892,8 @@
 <p>An important aspect of implementing a container image for a FuseML workflow step is controlling what happens during consecutive step invocations, e.g. when the workflow is re-triggered automatically to account for changes in the input codeset(s). OVMS is capable of auto-detecting changes in the model repository and configuration. If an update means that a new model version is added to the model storage, or a new model is added to the model repository (in case of a multiple model scenario) nothing else needs to be done. All other changes require a re-deployment of the OVMS kubernetes resource which will trigger a rolling update or a scale-out/in (when the replica count parameter is changes). For our minimalist implementation, this simply means that the predictor step doesn't need to re-deploy the OVMS server if the contents of the input model change.</p>
 <p>The complete implementation of the container image for the OVMS predictor workflow step can be viewed <a href="https://github.com/fuseml/extensions/tree/main/images/inference-services/ovms">here</a>. Following are some snippets from the Dockerfile and associated scripts:</p>
 <ul>
-<li>
-<p>the Dockerfile layout of the environment variables accepted as input by the predictor step image, corresponding to FuseML workflow step inputs and S3/AWS credentials:</p>
+<li>the Dockerfile layout of the environment variables accepted as input by the predictor step image, corresponding to FuseML workflow step inputs and S3/AWS credentials:</li>
+</ul>
 <div class="highlight"><pre><span></span><code>ENV FUSEML_ENV_WORKFLOW_NAMESPACE fuseml-workloads
 ENV FUSEML_ENV_WORKFLOW_NAME &quot;&quot;
 ENV AWS_ACCESS_KEY_ID &quot;&quot;
@@ -906,9 +904,9 @@ ENV FUSEML_MODEL_NAME default
 ENV FUSEML_OVMS_IMAGE_TAG &quot;2021.4.1&quot;
 ENV FUSEML_PREDICTION_TYPE &quot;predict&quot;
 </code></pre></div>
-</li>
-<li>
-<p>the section of the container's entrypoint script that generates the OVMS CRD parameters from the step's inputs. Note how the hostname associated with the Istio virtual service is computed from the host wildcard configured in the global Istio gateway:</p>
+<ul>
+<li>the section of the container's entrypoint script that generates the OVMS CRD parameters from the step's inputs. Note how the hostname associated with the Istio virtual service is computed from the host wildcard configured in the global Istio gateway:</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="c1"># load org and project from repository if exists,</span>
 <span class="c1"># if not, set them as a random string</span>
 <span class="k">if</span> <span class="o">[</span> -e <span class="s2">&quot;.fuseml/_project&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
@@ -949,9 +947,9 @@ cat <span class="s">&lt;&lt; EOF &gt; /opt/openvino/templates/values.yaml</span>
 <span class="s">istio_gateway: &quot;${OVMS_ISTIO_GATEWAY}&quot;</span>
 <span class="s">EOF</span>
 </code></pre></div>
-</li>
-<li>
-<p>an example of how a FuseML workflow step registers a FuseML Application object, in this case corresponding to the created OVMS prediction server instance. <code>register_fuseml_app</code> is available as <a href="https://github.com/fuseml/extensions/blob/main/images/inference-services/base/scripts/helpers.sh#L15">a FuseML helper function</a> that can be imported and used in any container image:</p>
+<ul>
+<li>an example of how a FuseML workflow step registers a FuseML Application object, in this case corresponding to the created OVMS prediction server instance. <code>register_fuseml_app</code> is available as <a href="https://github.com/fuseml/extensions/blob/main/images/inference-services/base/scripts/helpers.sh#L15">a FuseML helper function</a> that can be imported and used in any container image:</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="c1"># Now, register the new application within fuseml; use kubectl only to format the output correctly</span>
 ytt -f /opt/openvino/templates/ <span class="p">|</span> kubectl apply -f - --dry-run<span class="o">=</span>client -o json <span class="p">|</span> register_fuseml_app <span class="se">\</span>
   --name <span class="s2">&quot;</span><span class="si">${</span><span class="nv">APP_NAME</span><span class="si">}</span><span class="s2">&quot;</span> <span class="se">\</span>
@@ -959,8 +957,6 @@ ytt -f /opt/openvino/templates/ <span class="p">|</span> kubectl apply -f - --dr
   --url <span class="s2">&quot;</span><span class="si">${</span><span class="nv">prediction_url</span><span class="si">}</span><span class="s2">&quot;</span> <span class="se">\</span>
   --type predictor
 </code></pre></div>
-</li>
-</ul>
 <h3 id="fuseml-openvino-model-converter-step">FuseML OpenVINO Model Converter Step</h3>
 <p>This workflow step leverages the OpenVINO Model Optimizer utilities and is required to convert models to the OpenVINO supported formats (IR) and model repository file structure.</p>
 <p>The container image required for this workflow step can be constructed using a prebuilt OpenVINO toolkit container image (~6GB in size, out of which 4GB are python packages for AI/ML) that provides all the necessary tools, or <a href="https://docs.openvinotoolkit.org/latest/openvino_docs_install_guides_installing_openvino_docker_linux.html">building a custom image</a>. For the sake of simplicity and to reduce technical debt, the former is used: the official OpenVINO toolkit container image is used as a base image and some additional software package requirements are installed on top.</p>
@@ -986,7 +982,7 @@ ytt -f /opt/openvino/templates/ <span class="p">|</span> kubectl apply -f - --dr
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../kfserving-triton-gpu/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Training &amp; Serving ML Models on GPU with NVIDIA Triton" rel="prev">
+        <a href="../kserve-triton-gpu/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Training &amp; Serving ML Models on GPU with NVIDIA Triton" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>

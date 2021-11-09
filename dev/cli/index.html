@@ -249,8 +249,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/kfserving-basic/" class="md-nav__link">
-        Logistic Regression with MLFlow & KFServing
+      <a href="../tutorials/kserve-basic/" class="md-nav__link">
+        Logistic Regression with MLFlow & KServe
       </a>
     </li>
   
@@ -263,7 +263,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/kfserving-triton-gpu/" class="md-nav__link">
+      <a href="../tutorials/kserve-triton-gpu/" class="md-nav__link">
         Training & Serving ML Models on GPU with NVIDIA Triton
       </a>
     </li>
@@ -517,7 +517,7 @@ Use <span class="s2">&quot;fuseml [command] --help&quot;</span> <span class="k">
 </code></pre></div>
 <p>Most CLI commands require you to supply the URL where the FuseML instance is running, either as a command line argument,
 or as the FUSEML_SERVER_URL environment variable. The URL is printed out by the installer during the installation process.
-If you missed it, you can retrieve it at  any time with the following command:</p>
+If you missed it, you can retrieve it at any time with the following command:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">FUSEML_SERVER_URL</span><span class="o">=</span>http://<span class="k">$(</span>kubectl get VirtualService -n fuseml-core fuseml-core -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.spec.hosts[0]}&quot;</span><span class="k">)</span>
 </code></pre></div>
 <h2 id="codesets">Codesets</h2>
@@ -552,7 +552,7 @@ FuseML extensions and then later on referenced in workflows. Extensions provide 
 has access to external AI/ML tools, such as data stores, model stores and generic storage services, as well as
 prediction serving services and other specialized AI/ML services. Decoupling external tools from workflows also
 allows users to configure reusable workflows and thus avoid being locked into a particular AI/ML tool stack.</p>
-<p>3rd party tools that can be installed through the FuseML installer, such as MLFlow and KFServing, are automatically
+<p>3rd party tools that can be installed through the FuseML installer, such as MLFlow and KServe, are automatically
 registered as FuseML extensions. The FuseML CLI can be used to manage additional extensions, such as registering
 AI/ML tools that are not managed by FuseML as FuseML extensions.</p>
 <p>The extension sub-command has the following capabilities:</p>
@@ -622,7 +622,7 @@ registered as an experiment tracking and model store extension with FuseML:</p>
           <span class="nt">MLFLOW_S3_ENDPOINT_URL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://10.20.30.40:9000</span>
 </code></pre></div>
 <p>To register the extension as a YAML file with the FuseML CLI:</p>
-<div class="highlight"><pre><span></span><code>&gt; fuseml extension register -f mymlflow.yaml 
+<div class="highlight"><pre><span></span><code>&gt; fuseml extension register -f mymlflow.yaml
 Extension &quot;mymlflow&quot; successfully registered
 </code></pre></div>
 <p>Alternatively, to build the same extension step by step:</p>
@@ -653,10 +653,10 @@ using a prediction service.</p>
 <p>Getting a workflow to execute is basically a two step process:</p>
 <ul>
 <li>first, configure a workflow definition from a yaml or json file. Consult the <a href="../api/">API Refefence</a> section for a
-full description of the workflow format.</li>
+  full description of the workflow format.</li>
 <li>then, use the command line to assign a codeset to the workflow. The workflow is automatically triggered as a result of the
-assignment, as well as every time a new version of the assigned codeset is published. The status, as well as the results(s)
-of a workflow run can be displayed with the CLI.</li>
+  assignment, as well as every time a new version of the assigned codeset is published. The status, as well as the results(s)
+  of a workflow run can be displayed with the CLI.</li>
 </ul>
 <p>The workflow sub-command has the following capabilities:</p>
 <div class="highlight"><pre><span></span><code>&gt; fuseml workflow --help
@@ -686,13 +686,13 @@ Global Flags:
 Use <span class="s2">&quot;fuseml workflow [command] --help&quot;</span> <span class="k">for</span> more information about a command.
 </code></pre></div>
 <p>Following is an example of workflow definition in YAML format describing an end-to-end ML pipeline.
-It assumes that both MLFlow and KFServing have already been installed and registered with FuseML as
-extensions, as covered in the <a href="../tutorials/kfserving-basic/">tutorial</a> section:</p>
+It assumes that both MLFlow and KServe have already been installed and registered with FuseML as
+extensions, as covered in the <a href="../tutorials/kserve-basic/">tutorial</a> section:</p>
 <div class="highlight"><pre><span></span><code>name: example
 description: |
   End-to-end pipeline template that takes in an MLFlow compatible codeset,
-  runs the MLFlow project to train a model, then creates a KFServing prediction
-  service that can be used to run predictions against the model.&quot;
+  runs the MLFlow project to train a model, then creates a KServe prediction
+  service that can be used to run predictions against the model.
 inputs:
   - name: mlflow-codeset
     description: an MLFlow compatible codeset
@@ -707,21 +707,21 @@ outputs:
     type: string
 steps:
   - name: builder
-    image: ghcr.io/fuseml/mlflow-builder:dev
+    image: ghcr.io/fuseml/mlflow-builder:latest
     inputs:
       - name: mlflow-codeset
         codeset:
-          name: &#39;{{ inputs.mlflow-codeset }}&#39;
+          name: &quot;{{ inputs.mlflow-codeset }}&quot;
           path: /project
     outputs:
       - name: image
   - name: trainer
-    image: &#39;{{ steps.builder.outputs.image }}&#39;
+    image: &quot;{{ steps.builder.outputs.image }}&quot;
     inputs:
       - name: mlflow-codeset
         codeset:
-          name: &#39;{{ inputs.mlflow-codeset }}&#39;
-          path: &#39;/project&#39;
+          name: &quot;{{ inputs.mlflow-codeset }}&quot;
+          path: &quot;/project&quot;
     outputs:
       - name: mlflow-model-url
     extensions:
@@ -732,26 +732,26 @@ steps:
         product: mlflow
         service_resource: s3
   - name: predictor
-    image: ghcr.io/fuseml/kfserving-predictor:dev
+    image: ghcr.io/fuseml/kserve-predictor:latest
     inputs:
       - name: model
-        value: &#39;{{ steps.trainer.outputs.mlflow-model-url }}&#39;
+        value: &quot;{{ steps.trainer.outputs.mlflow-model-url }}&quot;
       - name: predictor
-        value: &#39;{{ inputs.predictor }}&#39;
+        value: &quot;{{ inputs.predictor }}&quot;
       - name: mlflow-codeset
         codeset:
-          name: &#39;{{ inputs.mlflow-codeset }}&#39;
-          path: &#39;/project&#39;
+          name: &quot;{{ inputs.mlflow-codeset }}&quot;
+          path: &quot;/project&quot;
     outputs:
       - name: prediction-url
     extensions:
       - name: s3-storage
         service_resource: s3
-      - name: kfserving
-        service_resource: kfserving-api
+      - name: kserve
+        service_resource: kserve-api
 </code></pre></div>
 <p>To create a workflow from the YAML file with the FuseML CLI:</p>
-<div class="highlight"><pre><span></span><code>&gt; fuseml workflow create example.yaml 
+<div class="highlight"><pre><span></span><code>&gt; fuseml workflow create example.yaml
 Workflow &quot;example&quot; successfully created
 </code></pre></div>
 <h2 id="application">Application</h2>
