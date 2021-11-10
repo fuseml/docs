@@ -1,0 +1,599 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>A simple logistic regression with MLFlow and Seldon-Core - FuseML Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4cae4f">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="green" data-md-color-accent="cyan">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#a-simple-logistic-regression-with-mlflow-and-seldon-core" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="FuseML Documentation" class="md-header__button md-logo" aria-label="FuseML Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FuseML Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              A simple logistic regression with MLFlow and Seldon-Core
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/fuseml/fuseml/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="FuseML Documentation" class="md-nav__button md-logo" aria-label="FuseML Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    FuseML Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/fuseml/fuseml/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/" class="md-nav__link">
+        Quick Start
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Tutorials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tutorials" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kserve-basic/" class="md-nav__link">
+        Logistic Regression with MLFlow & KServe
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kserve-triton-gpu/" class="md-nav__link">
+        Training & Serving ML Models on GPU with NVIDIA Triton
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openvino-extensions/" class="md-nav__link">
+        FuseML Extension Development Use-Case - OpenVINO
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/" class="md-nav__link">
+        Architecture
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/" class="md-nav__link">
+        API Reference
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/" class="md-nav__link">
+        CLI Reference
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CONTRIBUTING/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/fuseml/docs/edit/main/docs/tutorials/seldon-core.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="a-simple-logistic-regression-with-mlflow-and-seldon-core">A simple logistic regression with MLFlow and Seldon-Core</h1>
+<p>This is another example that shows how FuseML can be used to automate and end-to-end machine learning workflow
+using a combination of different tools. In this case, we have a scikit-learn ML model that is being trained
+using <a href="https://mlflow.org/">MLflow</a> and then served with <a href="https://www.seldon.io/tech/products/core/">Seldon Core</a>.</p>
+<p>In fact, we're using the same MLFlow models like in the <a href="../kserve-basic/">kserve tutorial</a>.</p>
+<p>We assume that both FuseML infrastructure and the FuseML CLI are already installed, if not please
+check first the <a href="../../quickstart/">quick start</a> section.</p>
+<p><strong>1.</strong> Install 3rd party ML tools</p>
+<p>Running this example requires MLflow and SeldonCore to be installed in the same cluster as FuseML.</p>
+<p>The FuseML installer can be used for a quick MLFlow and KFServing installation:</p>
+<div class="highlight"><pre><span></span><code>fuseml-installer extensions --add mlflow,seldon-core
+</code></pre></div>
+<p>To find out about installed extensions, install new or remove installed ones, use</p>
+<div class="highlight"><pre><span></span><code>fuseml-installer extensions --help
+</code></pre></div>
+<p>command.</p>
+<p><strong>2.</strong> Set <code>FUSEML_SERVER_URL</code> environment variable to point to fuseml-core</p>
+<p>The fuseml-core URL was printed out by the installer during the FuseML installation. Alternatively, you can run the following
+command to retrieve the fuseml-core URL and set the <code>FUSEML_SERVER_URL</code> environment variable:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">FUSEML_SERVER_URL</span><span class="o">=</span>http://<span class="k">$(</span>kubectl get VirtualService -n fuseml-core fuseml-core -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.spec.hosts[0]}&quot;</span><span class="k">)</span>
+</code></pre></div>
+<p><strong>3.</strong> Fetch the FuseML examples code</p>
+<div class="highlight"><pre><span></span><code>git clone --depth <span class="m">1</span> https://github.com/fuseml/examples.git
+<span class="nb">cd</span> examples
+</code></pre></div>
+<p>Under the <code>codesets/mlflow</code> directory, there are some example MLflow projects. For this tutorial we will be using the
+<code>sklearn</code> project.</p>
+<p><strong>4.</strong> Register the codeset</p>
+<p>From now on, you start using <em>fuseml</em> command line tool. Register the example code as a FuseML versioned codeset artifact:</p>
+<div class="highlight"><pre><span></span><code>fuseml codeset register --name <span class="s2">&quot;mlflow-test&quot;</span> --project <span class="s2">&quot;mlflow-project-01&quot;</span> codesets/mlflow/sklearn
+</code></pre></div>
+<p>Example output:</p>
+<div class="highlight"><pre><span></span><code>&gt; fuseml codeset register --name <span class="s2">&quot;mlflow-test&quot;</span> --project <span class="s2">&quot;mlflow-project-01&quot;</span> codesets/mlflow/sklearn
+<span class="m">2021</span>/09/08 <span class="m">12</span>:27:40 Pushing the code to the git repository...
+Codeset http://gitea.172.18.0.2.nip.io/mlflow-project-01/mlflow-test.git successfully registered
+Saving new username into config file as current username.
+Saving new password into config file as current password.
+Setting mlflow-test as current codeset.
+Setting mlflow-project-01 as current project.
+FuseML configuration file created at /home/snica/.config/fuseml/config.yaml
+</code></pre></div>
+<p>You may optionally log into the Gitea UI using the URL, username and password printed out by the <code>codeset register</code> command. You should find a new organization named <code>mlflow-project-01</code> and a repo named <code>mlflow-test</code>.</p>
+<p><strong>5.</strong> Create a workflow</p>
+<p>The example FuseML workflow included in the examples repository represents a complete, end-to-end ML pipeline "compatible" with any codeset that contains an MLProject. It includes all the steps necessary to train a model with MLflow, save the model and then creates a KFServing prediction service for it.</p>
+<p>Use the example workflow definition to create a workflow in FuseML:</p>
+<div class="highlight"><pre><span></span><code>fuseml workflow create workflows/mlflow-seldon-e2e.yaml
+</code></pre></div>
+<p><strong>6.</strong> Assign the codeset to the workflow</p>
+<div class="highlight"><pre><span></span><code>fuseml workflow assign --name mlflow-seldon-e2e --codeset-name mlflow-test --codeset-project mlflow-project-01
+</code></pre></div>
+<p><strong>7.</strong> Monitor the workflow from the command-line</p>
+<p>Now that the Workflow is assigned to the Codeset, a new workflow run was created. To watch the workflow progress, check "workflow run" with:</p>
+<div class="highlight"><pre><span></span><code>fuseml workflow list-runs --name mlflow-seldon-e2e
+</code></pre></div>
+<p>Example output:</p>
+<div class="highlight"><pre><span></span><code>&gt; fuseml workflow list-runs --name mlflow-seldon-e2e
++--------------------------------------------+-------------------+---------------+----------+---------+
+| NAME                                       | WORKFLOW          | STARTED       | DURATION | STATUS  |
++--------------------------------------------+-------------------+---------------+----------+---------+
+| fuseml-mlflow-project-01-mlflow-test-n5xdq | mlflow-seldon-e2e | 6 seconds ago | ---      | Running |
++--------------------------------------------+-------------------+---------------+----------+---------+
+</code></pre></div>
+<p>This command shows you detailed information about running workflow. You may also follow the Tekton URL value under the expanded output section to see relevant information about the underlying Tekton PipelineRun which implements the workflow run:</p>
+<div class="highlight"><pre><span></span><code>&gt; fuseml workflow list-runs --name mlflow-seldon-e2e --format yaml
+---
+- name: fuseml-mlflow-project-01-mlflow-test-n5xdq
+  workflowref: mlflow-seldon-e2e
+  inputs:
+  - input:
+      name: mlflow-codeset
+      description: an MLFlow compatible codeset
+      type: codeset
+      default: null
+      labels: []
+    value: http://gitea.172.18.0.2.nip.io/mlflow-project-01/mlflow-test.git:main
+  - input:
+      name: predictor
+      description: type of predictor engine
+      type: string
+      default: auto
+      labels: []
+    value: auto
+  outputs:
+  - output:
+      name: prediction-url
+      description: The URL where the exposed prediction service endpoint can be contacted to run predictions.
+      type: string
+    value: &quot;&quot;
+  starttime: 2021-11-09T07:49:45Z
+  completiontime: 0001-01-01T00:00:00Z
+  status: Running
+  url: &quot;http://tekton.172.18.0.2.nip.io/#/namespaces/fuseml-workloads/pipelineruns/fuseml-mlflow-project-01-mlflow-test-n5xdq&quot;
+</code></pre></div>
+<p>Once the run succeeds, the status value changes to <code>Succeeded</code> in the CLI:</p>
+<div class="highlight"><pre><span></span><code>&gt; fuseml workflow list-runs --name mlflow-seldon-e2e
++--------------------------------------------+-------------------+----------------+------------+-----------+
+| NAME                                       | WORKFLOW          | STARTED        | DURATION   | STATUS    |
++--------------------------------------------+-------------------+----------------+------------+-----------+
+| fuseml-mlflow-project-01-mlflow-test-n5xdq | mlflow-seldon-e2e | 12 minutes ago | 10 minutes | Succeeded |
++--------------------------------------------+-------------------+----------------+------------+-----------+
+</code></pre></div>
+<p><strong>8.</strong> Test the deployed model</p>
+<p>When the workflow run is complete, a new inference service is created and registered as a FuseML application. You can list the applications deployed
+by FuseML by running the following command:</p>
+<div class="highlight"><pre><span></span><code>fuseml application list
+</code></pre></div>
+<p>This should produce output similar to this one:</p>
+<div class="highlight"><pre><span></span><code>&gt; fuseml application list
++-------------------------------------------------+-----------+-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+| NAME                                            | TYPE      | DESCRIPTION                                         | URL                                                                                                                                                                          | WORKFLOW          |
++-------------------------------------------------+-----------+-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+| mlflow-project-01-mlflow-test-mlflow-seldon-e2e | predictor | Application generated by mlflow-seldon-e2e workflow | http://mlflow-project-01-mlflow-test-mlflow-seldon-e2e.seldon.172.18.0.2.nip.io/seldon/fuseml-workloads/mlflow-project-01-mlflow-test-mlflow-seldon-e2e/api/v1.0/predictions | mlflow-seldon-e2e |
++-------------------------------------------------+-----------+-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+</code></pre></div>
+<p>The application URL is used to submit a request to the inference service. The examples repository includes a prediction data sample at
+<code>prediction/data-sklearn-seldon.json</code>:</p>
+<div class="highlight"><pre><span></span><code>cat prediction/data-sklearn-seldon.json
+<span class="o">{</span>
+    <span class="s2">&quot;data&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;ndarray&quot;</span>: <span class="o">[</span>
+            <span class="o">[</span>
+                <span class="m">12</span>.8,
+                <span class="m">0</span>.029,
+                <span class="m">0</span>.48,
+                <span class="m">0</span>.98,
+                <span class="m">6</span>.2,
+                <span class="m">29</span>,
+                <span class="m">7</span>.33,
+                <span class="m">1</span>.2,
+                <span class="m">0</span>.39,
+                <span class="m">90</span>,
+                <span class="m">0</span>.86
+            <span class="o">]</span>
+        <span class="o">]</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>See that the format of the data sample is different then the one we have used for <a href="../kserve-basic/">kserve example</a>.
+It's because with sklearn based example, inference server is set up to communicate with <a href="https://docs.seldon.io/projects/seldon-core/en/latest/graph/protocols.html#rest-and-grpc-seldon-protocol">Seldon Protocol</a>. Alternatively, 
+for codesets using tensorflow, seldon-core based inference server would be set up with <a href="https://docs.seldon.io/projects/seldon-core/en/latest/graph/protocols.html#rest-and-grpc-seldon-protocol">tensorflow protocol</a>.</p>
+<p>Run the following commands to send a inference request to the deployed model:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">PREDICTOR_URL</span><span class="o">=</span><span class="k">$(</span>fuseml application list --format json <span class="p">|</span> jq -r <span class="s2">&quot;.[0].url&quot;</span><span class="k">)</span>
+curl -d @prediction/data-sklearn-seldon.json <span class="nv">$PREDICTOR_URL</span> -H <span class="s2">&quot;Accept: application/json&quot;</span> -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="p">|</span> jq
+</code></pre></div>
+<p>The output will be something similar to:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;names&quot;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="nt">&quot;ndarray&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="mf">6.48634480912767</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;meta&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;requestPath&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;classifier&quot;</span><span class="p">:</span> <span class="s2">&quot;seldonio/sklearnserver:1.11.0&quot;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 FuseML Author(s)
+          </div>
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+        <script src="../../javascripts/extra.js"></script>
+      
+    
+  </body>
+</html>
