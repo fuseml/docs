@@ -79,6 +79,23 @@ Use the example workflow definition to create a workflow in FuseML:
 fuseml workflow create workflows/mlflow-seldon-e2e.yaml
 ```
 
+Note: you can modify the workflow to fit to your custom needs. Let's take a look at some parameters on the top of workflow description:
+
+```
+inputs:
+  - name: mlflow-codeset
+    description: an MLFlow compatible codeset
+    type: codeset
+  - name: predictor
+    description: type of predictor engine
+    type: string
+    default: auto
+```
+
+That `predictor` option is set to `auto` value - this means the predictor engine will be set automatically based on the properties 
+of the model. With the model we are using in this tutorial, the prediction value will be set to 'sklearn' value and Seldon Core will use
+SKLearn server. You could change the default value to `tensorflow` or `triton` to use different inference servers; that is, if your model supports it.
+
 **6.** Assign the codeset to the workflow
 
 ```bash
