@@ -434,6 +434,19 @@ FuseML configuration file created at /home/snica/.config/fuseml/config.yaml
 <p>Use the example workflow definition to create a workflow in FuseML:</p>
 <div class="highlight"><pre><span></span><code>fuseml workflow create workflows/mlflow-seldon-e2e.yaml
 </code></pre></div>
+<p>Note: you can modify the workflow to fit to your custom needs. Let's take a look at some parameters on the top of workflow description:</p>
+<div class="highlight"><pre><span></span><code>inputs:
+  - name: mlflow-codeset
+    description: an MLFlow compatible codeset
+    type: codeset
+  - name: predictor
+    description: type of predictor engine
+    type: string
+    default: auto
+</code></pre></div>
+<p>That <code>predictor</code> option is set to <code>auto</code> value - this means the predictor engine will be set automatically based on the properties 
+of the model. With the model we are using in this tutorial, the prediction value will be set to 'sklearn' value and Seldon Core will use
+SKLearn server. You could change the default value to <code>tensorflow</code> or <code>triton</code> to use different inference servers; that is, if your model supports it.</p>
 <p><strong>6.</strong> Assign the codeset to the workflow</p>
 <div class="highlight"><pre><span></span><code>fuseml workflow assign --name mlflow-seldon-e2e --codeset-name mlflow-test --codeset-project mlflow-project-01
 </code></pre></div>

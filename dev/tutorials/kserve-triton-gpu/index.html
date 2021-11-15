@@ -1165,6 +1165,8 @@ Workflow <span class="s2">&quot;mlflow-e2e&quot;</span> successfully created
 <p>This workflow includes steps for training and serving the model. When serving <code>Keras</code> models, unless
    <code>predictor</code> is set to a specific value instead of <code>auto</code> on the workflow, FuseML will automatically
    serve the model using NVIDIA Triton Inference Server.</p>
+<p>Note: Alternatively, you could use different example workflow, like <code>examples/workflows/mlflow-seldon-triton-e2e.yaml</code>.
+   This one also uses NVIDIA Triton Inference Server, but with the help of Seldon Core instead of Kserve.</p>
 <ol>
 <li>Assign the <code>mlflow-e2e</code> workflow to the <code>cifar10</code> codeset:</li>
 </ol>
