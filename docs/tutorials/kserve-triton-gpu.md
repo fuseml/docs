@@ -475,6 +475,9 @@ The following steps describe how to use FuseML to train the model and serve it.
    `predictor` is set to a specific value instead of `auto` on the workflow, FuseML will automatically
    serve the model using NVIDIA Triton Inference Server.
 
+   Note: Alternatively, you could use different example workflow, like `examples/workflows/mlflow-seldon-triton-e2e.yaml`.
+   This one also uses NVIDIA Triton Inference Server, but with the help of Seldon Core instead of Kserve.
+
 3. Assign the `mlflow-e2e` workflow to the `cifar10` codeset:
 
    ```bash
