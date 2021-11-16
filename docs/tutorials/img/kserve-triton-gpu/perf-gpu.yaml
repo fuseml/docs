@@ -37,7 +37,7 @@ spec:
 apiVersion: v1
 data:
   cfg: |
-    POST http://demo-cifar10-mlflow-e2e.fuseml-workloads.svc.cluster.local/v2/models/demo-cifar10-mlflow-e2e/infer
+    POST http://demo-cifar10-mlflow-e2e-gpu.fuseml-workloads.svc.cluster.local/v2/models/demo-cifar10-mlflow-e2e-gpu/infer
     @/var/vegeta/payload
   payload: |
     {

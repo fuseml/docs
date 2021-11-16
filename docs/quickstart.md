@@ -2,7 +2,7 @@
 
 In order to use FuseML one may simply do the following:
 
-### 1. Install the requirements
+## 1. Install Requirements
 
 We assume that a Kubernetes cluster is already up and running. If not a good way to start with a local cluster is to use [KinD](https://kind.sigs.k8s.io/docs/user/quick-start/), [Rancher K3s](https://k3s.io/) or [k3d](https://k3d.io/).
 
@@ -16,7 +16,7 @@ Additional software requirements:
 
 - _kubectl_: install the package provided by your OS, or check [upstream installation guide](https://kubernetes.io/docs/tasks/tools/#kubectl)
 
-### 2. Download and install the fuseml-installer
+## 2. Get `fuseml-installer`
 
 ```bash
 # On Linux
@@ -26,13 +26,13 @@ curl -sfL https://raw.githubusercontent.com/fuseml/fuseml/main/install.sh | sh -
 You should get an output similar to this:
 
 ```bash
-********* SUCCESS **********
-FuseML Installer is ready!
-To start using it just run fuseml-installer --help and enjoy!
-****************************
+Verifying checksum... Done.
+Preparing to install fuseml-installer into /usr/local/bin
+fuseml-installer installed into /usr/local/bin/fuseml-installer
+Run 'fuseml-installer --help' to see what you can do with it.
 ```
 
-### 3. Fuseml Installer is ready to go so let's install the components on the cluster:
+## 3. Install FuseML
 
 ```bash
 fuseml-installer install
@@ -47,61 +47,63 @@ You should get an output similar to this:
 
 Configuration...
   🧭  system_domain:
-  🧭  extension_repository: https://raw.githubusercontent.com/fuseml/extensions/main/installer/
+  🧭  extensions_repository: https://raw.githubusercontent.com/fuseml/extensions/main/installer/
+  🧭  force_reinstall: false
 
 🚢 Deploying Istio.....
 ✔️  Istio deployed
-.
-✔️  Created system_domain: 172.18.0.2.nip.io
+✔️  Created system_domain: 172.18.0.3.nip.io
 
 🚢 Deploying Workloads...
 ✔️  Workloads deployed
 
-🚢 Deploying Gitea.................................
-✔️  Gitea deployed (http://gitea.172.18.0.2.nip.io).
+🚢 Deploying Gitea......................................................
+✔️  Gitea deployed (http://gitea.172.18.0.3.nip.io).
 
-🚢 Deploying Registry..........
+🚢 Deploying Registry...............
 ✔️  Registry deployed
 
-🚢 Deploying Tekton.............................................................................
-✔️  Tekton deployed (http://tekton.172.18.0.2.nip.io).
+🚢 Deploying Tekton................................................................................
+✔️  Tekton deployed (http://tekton.172.18.0.3.nip.io).
 
-🚢 Deploying Core...........
-✔️  FuseML core component deployed (http://fuseml-core.172.18.0.2.nip.io).
+🚢 Deploying Core..............
+✔️  FuseML core component deployed (http://fuseml-core.172.18.0.3.nip.io).
 
 🚢 Downloading command line client...
-🚢 FuseML command line client saved as /home/jsuchome/kubernetes/fuseml/fuseml.
+🚢 FuseML command line client saved as /Users/flaviosr/workspace/fuseml/fuseml.
 Copy it to the location within your PATH (e.g. /usr/local/bin).
 
 🚢 To use the FuseML CLI, you must point it to the FuseML server URL, e.g.:
 
-    export FUSEML_SERVER_URL=http://fuseml-core.172.18.0.2.nip.io
+    export FUSEML_SERVER_URL=http://fuseml-core.172.18.0.3.nip.io
 
 ✔️  FuseML installed.
-System domain: 172.18.0.2.nip.io
+System domain: 172.18.0.3.nip.io
 ```
 
-The FuseML installer prints out URLs for _gitea_, _tekton_ and _fuseml-core_ components. You can access those sub-services directly at any given time. The fuseml core URL is especially important, as you'll need that to use the FuseML CLI.
+The FuseML installer prints out URLs for _gitea_, _tekton_ and _fuseml-core_ components. You can access those sub-services directly at any given time. The fuseml-core URL is especially important, as you'll need that to use the FuseML CLI.
 
 You can also see that the installer downloaded _fuseml_ command line client which you will use for actual FuseML operations. You can use the latest version which was downloaded automatically or manually choose one of [released versions](https://github.com/fuseml/fuseml-core/releases) from github.
 
-Use
+Run the following command to see the list of available commands:
 
 ```bash
 fuseml-installer install --help
 ```
 
-to get full information about the options the installer provides.
-
-### 4. Check if the components are up and running:
+## 4. Ensure FuseML components are up and running
 
 ```bash
-# Let's check the fuseml-core component
-kubectl get pods -n fuseml-core -o wide
-# Now let's check gitea
+# Check Istio
+kubectl get pods -n istio-system -o wide
+# Check Gitea
 kubectl get pods -n gitea -o wide
-# Let's check tekton
+# Check registry
+kubectl get pods -n fuseml-registry -o wide
+# Check tekton
 kubectl get pods -n tekton-pipelines -o wide
+# Check fuseml-core
+kubectl get pods -n fuseml-core -o wide
 ```
 
 If everything is in running or completed status, you are good to go. Continue on to the [tutorial](tutorials/kserve-basic.md) section and start to have fun with FuseML.

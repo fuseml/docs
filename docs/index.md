@@ -30,6 +30,7 @@ Well, it depends on what you would you like to do:
 ## Demo video
 
 No time for reading? Here's a sneak preview of the installation process of FuseML components.
+
 <div class="video-wrapper">
 <iframe width="760" height="515" src="https://www.youtube.com/embed/MAJhtJU8eCM?controls=0" title="FuseML Installation Experience" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
@@ -39,7 +40,7 @@ No time for reading? Here's a sneak preview of the installation process of FuseM
 The team behind FuseML is reachable through:
 
 - [Github](https://github.com/fuseml)
-- Slack channel: [Join](https://join.slack.com/t/fuseml/shared_invite/zt-rcs6kepe-rGrMzlj0hrRlalcahWzoWg)
+- [Slack](https://join.slack.com/t/fuseml/shared_invite/zt-rcs6kepe-rGrMzlj0hrRlalcahWzoWg)
 - [YouTube](https://www.youtube.com/channel/UCQLoLTikJDDMXvywWd27FBg)
 
 ## Sponsor FuseML
