@@ -5,7 +5,9 @@ nav:
   - Quick Start: quickstart.md
   - Tutorials:
       - Logistic Regression with MLFlow & KServe: tutorials/kserve-basic.md
+      - Logistic Regression with MLFlow & Seldon Core: tutorials/seldon-core.md
       - Training & Serving ML Models on GPU with NVIDIA Triton: tutorials/kserve-triton-gpu.md
+      - Benchmarking ML Models on Intel CPUs with Intel OpenVINO: tutorials/openvino-mlflow.md
       - FuseML Extension Development Use-Case - OpenVINO: tutorials/openvino-extensions.md
   - Architecture: architecture.md
   - API Reference: api.md
