@@ -448,7 +448,7 @@ CPU. This will also enable us to compare CPU and GPU performance during the trai
 For that experiment we will be training a
 [Convolutional Neural Network (CNN)](https://developers.google.com/machine-learning/glossary/#convolutional_neural_network)
 to classify [CIFAR images](https://www.cs.toronto.edu/~kriz/cifar.html) using the Keras Sequential API.
-The complete code for model training is available [here](https://github.com/fuseml/examples/tree/main/codesets/mlflow/keras).
+The complete original code for the model training is available [here](https://github.com/fuseml/examples/tree/main/codesets/mlflow/keras). The code we're using in this tutorial is a modified version of the original: the model architecture has been slightly changed, to make the model converge faster and to yield better results, based on recommendations from [this Machine Learning Mastery article](https://machinelearningmastery.com/how-to-develop-a-cnn-from-scratch-for-cifar-10-photo-classification/).
 
 ### Training & Serving using FuseML
 

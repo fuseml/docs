@@ -18,6 +18,7 @@ jobs:
       - run: pip install mike
       - run: pip install mkdocs-material
       - run: pip install mkdocs-render-swagger-plugin
+      - run: pip install git+https://github.com/it-novum/mkdocs-featherlight.git
       - name: setup doc deploy
         run: |
           git config --global user.name FuseML
