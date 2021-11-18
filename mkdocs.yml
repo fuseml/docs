@@ -20,8 +20,11 @@ theme:
     accent: cyan
 extra_css:
   - stylesheets/extra.css
+  - https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.css
 extra_javascript:
   - javascripts/extra.js
+  - https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js
+  - https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js
 
 repo_url: https://github.com/fuseml/fuseml
 edit_uri: https://github.com/fuseml/docs/edit/main/docs/
@@ -41,6 +44,7 @@ markdown_extensions:
           class: uml-flowchart
           format:
             !!python/name:pymdownx.superfences.fence_code_format # TODO: Validate with our legal team.
+  - featherlight
 
 copyright: "Copyright &copy; 2021 FuseML Author(s)"
 
