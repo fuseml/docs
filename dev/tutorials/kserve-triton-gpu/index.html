@@ -42,6 +42,8 @@
     
       <link rel="stylesheet" href="../../stylesheets/extra.css">
     
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.css">
+    
     
       
 
@@ -263,6 +265,20 @@
               
   
   
+  
+    <li class="md-nav__item">
+      <a href="../seldon-core/" class="md-nav__link">
+        Logistic Regression with MLFlow & Seldon Core
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
     
   
   
@@ -459,6 +475,20 @@
   
 </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openvino-mlflow/" class="md-nav__link">
+        Benchmarking ML Models on Intel CPUs with Intel OpenVINO
+      </a>
     </li>
   
 
@@ -1144,7 +1174,7 @@ CPU. This will also enable us to compare CPU and GPU performance during the trai
 <p>For that experiment we will be training a
 <a href="https://developers.google.com/machine-learning/glossary/#convolutional_neural_network">Convolutional Neural Network (CNN)</a>
 to classify <a href="https://www.cs.toronto.edu/~kriz/cifar.html">CIFAR images</a> using the Keras Sequential API.
-The complete code for model training is available <a href="https://github.com/fuseml/examples/tree/main/codesets/mlflow/keras">here</a>.</p>
+The complete original code for the model training is available <a href="https://github.com/fuseml/examples/tree/main/codesets/mlflow/keras">here</a>. The code we're using in this tutorial is a modified version of the original: the model architecture has been slightly changed, to make the model converge faster and to yield better results, based on recommendations from <a href="https://machinelearningmastery.com/how-to-develop-a-cnn-from-scratch-for-cifar-10-photo-classification/">this Machine Learning Mastery article</a>.</p>
 <h3 id="training-serving-using-fuseml">Training &amp; Serving using FuseML</h3>
 <p>The following steps describe how to use FuseML to train the model and serve it.</p>
 <ol>
@@ -1196,8 +1226,8 @@ the model, such as its accuracy, loss, training parameters, etc.</p>
 <p>MLflow should be available at <code>http://mlflow.&lt;FUSEML_DOMAIN&gt;</code>.</p>
 <p>For example:</p>
 <figure>
-<p><img alt="MLflow" src="../img/kserve-triton-gpu/mlflow.png" />
-  </p>
+<p><a data-featherlight="../img/kserve-triton-gpu/mlflow.png" href="#"><img alt="MLflow" src="../img/kserve-triton-gpu/mlflow.png" />
+  </a></p>
 <figcaption>Training metrics on CPU</figcaption>
 </figure>
 <p>Note the accuracy (about 70%) and the training duration (about 4 minutes) for 10 epochs.</p>
@@ -1216,16 +1246,16 @@ dashboard (<code>http://kserve-web-app.&lt;FUSEML_DOMAIN&gt;/</code>) which also
 information such as the status of the deployment, logs, etc.</p>
 <p>For example:</p>
 <figure>
-<p><img alt="KSserve Dashboard" src="../img/kserve-triton-gpu/kserve.png" />
-  </p>
+<p><a data-featherlight="../img/kserve-triton-gpu/kserve.png" href="#"><img alt="KSserve Dashboard" src="../img/kserve-triton-gpu/kserve.png" />
+  </a></p>
 <figcaption>KServe Dashboard</figcaption>
 </figure>
 <p>To validate the model, we need to send a request containing an image so the model can to predict its class.</p>
 <p>The json file included in the <code>fuseml/examples</code> repository contains a sample request that represents the
 following deer image:</p>
 <figure>
-<p><img alt="Deer" src="../img/kserve-triton-gpu/deer.png" width="300" />
-  </p>
+<p><a data-featherlight="../img/kserve-triton-gpu/deer.png" href="#"><img alt="Deer" src="../img/kserve-triton-gpu/deer.png" width="300" />
+  </a></p>
 <figcaption>Deer Sample Image</figcaption>
 </figure>
 <p>Run the following command to send the request to the application URL:</p>
@@ -1369,16 +1399,16 @@ Workflow <span class="s2">&quot;mlflow-e2e-gpu&quot;</span> assigned to codeset 
 training metrics.</p>
 <p>For example:</p>
 <figure>
-<p><img alt="MLflow-GPU" src="../img/kserve-triton-gpu/gpu-mlflow.png" />
-  </p>
+<p><a data-featherlight="../img/kserve-triton-gpu/gpu-mlflow.png" href="#"><img alt="MLflow-GPU" src="../img/kserve-triton-gpu/gpu-mlflow.png" />
+  </a></p>
 <figcaption>Training metrics on GPU</figcaption>
 </figure>
 <p>With the increased number of epochs, we can see that the trained model have reached an accuracy of 96% while
 spending the same amount of time on training!</p>
 <p>MLflow also allows comparing other metrics by selecting both runs and clicking on the <code>Compare</code> button.</p>
 <figure>
-<p><img alt="MLflow-Compare" src="../img/kserve-triton-gpu/mlflow-compare.png" />
-  </p>
+<p><a data-featherlight="../img/kserve-triton-gpu/mlflow-compare.png" href="#"><img alt="MLflow-Compare" src="../img/kserve-triton-gpu/mlflow-compare.png" />
+  </a></p>
 <figcaption>Comparing metrics on MLflow</figcaption>
 </figure>
 <p>List the FuseML applications:</p>
@@ -1484,7 +1514,7 @@ GPU can speed up the training process.</p>
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../kserve-basic/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Logistic Regression with MLFlow &amp; KServe" rel="prev">
+        <a href="../seldon-core/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Logistic Regression with MLFlow &amp; Seldon Core" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1493,20 +1523,20 @@ GPU can speed up the training process.</p>
               <span class="md-footer__direction">
                 Previous
               </span>
-              Logistic Regression with MLFlow & KServe
+              Logistic Regression with MLFlow & Seldon Core
             </div>
           </div>
         </a>
       
       
         
-        <a href="../openvino-extensions/" class="md-footer__link md-footer__link--next" aria-label="Next: FuseML Extension Development Use-Case - OpenVINO" rel="next">
+        <a href="../openvino-mlflow/" class="md-footer__link md-footer__link--next" aria-label="Next: Benchmarking ML Models on Intel CPUs with Intel OpenVINO" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              FuseML Extension Development Use-Case - OpenVINO
+              Benchmarking ML Models on Intel CPUs with Intel OpenVINO
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -1547,6 +1577,10 @@ GPU can speed up the training process.</p>
       <script src="../../assets/javascripts/bundle.b1047164.min.js"></script>
       
         <script src="../../javascripts/extra.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js"></script>
       
     
   </body>

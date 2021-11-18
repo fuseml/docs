@@ -14,7 +14,7 @@
     
     
       
-        <title>A simple logistic regression with MLFlow and Seldon-Core - FuseML Documentation</title>
+        <title>Logistic Regression with MLFlow & Seldon Core - FuseML Documentation</title>
       
     
     
@@ -41,6 +41,8 @@
     
     
       <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.css">
     
     
       
@@ -99,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              A simple logistic regression with MLFlow and Seldon-Core
+              Logistic Regression with MLFlow & Seldon Core
             
           </span>
         </div>
@@ -221,12 +223,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       
       
@@ -261,10 +265,48 @@
               
   
   
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Logistic Regression with MLFlow & Seldon Core
+      </a>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
   
     <li class="md-nav__item">
       <a href="../kserve-triton-gpu/" class="md-nav__link">
         Training & Serving ML Models on GPU with NVIDIA Triton
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openvino-mlflow/" class="md-nav__link">
+        Benchmarking ML Models on Intel CPUs with Intel OpenVINO
       </a>
     </li>
   
@@ -575,6 +617,41 @@ curl -d @prediction/data-sklearn-seldon.json <span class="nv">$PREDICTOR_URL</sp
         
 <footer class="md-footer">
   
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../kserve-basic/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Logistic Regression with MLFlow &amp; KServe" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Logistic Regression with MLFlow & KServe
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../kserve-triton-gpu/" class="md-footer__link md-footer__link--next" aria-label="Next: Training &amp; Serving ML Models on GPU with NVIDIA Triton" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Training & Serving ML Models on GPU with NVIDIA Triton
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
@@ -606,6 +683,10 @@ curl -d @prediction/data-sklearn-seldon.json <span class="nv">$PREDICTOR_URL</sp
       <script src="../../assets/javascripts/bundle.b1047164.min.js"></script>
       
         <script src="../../javascripts/extra.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js"></script>
       
     
   </body>
