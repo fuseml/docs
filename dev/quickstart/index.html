@@ -245,29 +245,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-install-the-requirements" class="md-nav__link">
-    1. Install the requirements
+  <a href="#1-install-requirements" class="md-nav__link">
+    1. Install Requirements
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-download-and-install-the-fuseml-installer" class="md-nav__link">
-    2. Download and install the fuseml-installer
+  <a href="#2-get-fuseml-installer" class="md-nav__link">
+    2. Get fuseml-installer
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-fuseml-installer-is-ready-to-go-so-lets-install-the-components-on-the-cluster" class="md-nav__link">
-    3. Fuseml Installer is ready to go so let's install the components on the cluster:
+  <a href="#3-install-fuseml" class="md-nav__link">
+    3. Install FuseML
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-check-if-the-components-are-up-and-running" class="md-nav__link">
-    4. Check if the components are up and running:
+  <a href="#4-ensure-fuseml-components-are-up-and-running" class="md-nav__link">
+    4. Ensure FuseML components are up and running
   </a>
   
 </li>
@@ -329,7 +329,7 @@
   
     <li class="md-nav__item">
       <a href="../tutorials/seldon-core/" class="md-nav__link">
-        Logistic Regression with MLFlow & Seldon Core
+        Logistic Regression with MLFlow & Seldon-Core
       </a>
     </li>
   
@@ -472,29 +472,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-install-the-requirements" class="md-nav__link">
-    1. Install the requirements
+  <a href="#1-install-requirements" class="md-nav__link">
+    1. Install Requirements
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-download-and-install-the-fuseml-installer" class="md-nav__link">
-    2. Download and install the fuseml-installer
+  <a href="#2-get-fuseml-installer" class="md-nav__link">
+    2. Get fuseml-installer
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-fuseml-installer-is-ready-to-go-so-lets-install-the-components-on-the-cluster" class="md-nav__link">
-    3. Fuseml Installer is ready to go so let's install the components on the cluster:
+  <a href="#3-install-fuseml" class="md-nav__link">
+    3. Install FuseML
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-check-if-the-components-are-up-and-running" class="md-nav__link">
-    4. Check if the components are up and running:
+  <a href="#4-ensure-fuseml-components-are-up-and-running" class="md-nav__link">
+    4. Ensure FuseML components are up and running
   </a>
   
 </li>
@@ -518,7 +518,7 @@
                 
                 <h1 id="quick-start">Quick Start</h1>
 <p>In order to use FuseML one may simply do the following:</p>
-<h3 id="1-install-the-requirements">1. Install the requirements</h3>
+<h2 id="1-install-requirements">1. Install Requirements</h2>
 <p>We assume that a Kubernetes cluster is already up and running. If not a good way to start with a local cluster is to use <a href="https://kind.sigs.k8s.io/docs/user/quick-start/">KinD</a>, <a href="https://k3s.io/">Rancher K3s</a> or <a href="https://k3d.io/">k3d</a>.</p>
 <p>It is also necessary that your cluster setup includes a storage class marked as default.</p>
 <p><strong>IMPORTANT</strong>: if you're installing a Rancher K3s cluster, it's recommended to skip installing the default Traefik ingress controller. The FuseML installer deploys Istio as a component and Istio is also required by some of the 3rd party tools that FuseML is integrated with (e.g. Knative, KServe).</p>
@@ -531,17 +531,17 @@
 <p><em>kubectl</em>: install the package provided by your OS, or check <a href="https://kubernetes.io/docs/tasks/tools/#kubectl">upstream installation guide</a></p>
 </li>
 </ul>
-<h3 id="2-download-and-install-the-fuseml-installer">2. Download and install the fuseml-installer</h3>
+<h2 id="2-get-fuseml-installer">2. Get <code>fuseml-installer</code></h2>
 <div class="highlight"><pre><span></span><code><span class="c1"># On Linux</span>
 curl -sfL https://raw.githubusercontent.com/fuseml/fuseml/main/install.sh <span class="p">|</span> sh -
 </code></pre></div>
 <p>You should get an output similar to this:</p>
-<div class="highlight"><pre><span></span><code>********* SUCCESS **********
-FuseML Installer is ready!
-To start using it just run fuseml-installer --help and enjoy!
-****************************
+<div class="highlight"><pre><span></span><code>Verifying checksum... Done.
+Preparing to install fuseml-installer into /usr/local/bin
+fuseml-installer installed into /usr/local/bin/fuseml-installer
+Run <span class="s1">&#39;fuseml-installer --help&#39;</span> to see what you can <span class="k">do</span> with it.
 </code></pre></div>
-<h3 id="3-fuseml-installer-is-ready-to-go-so-lets-install-the-components-on-the-cluster">3. Fuseml Installer is ready to go so let's install the components on the cluster:</h3>
+<h2 id="3-install-fuseml">3. Install FuseML</h2>
 <div class="highlight"><pre><span></span><code>fuseml-installer install
 </code></pre></div>
 <p>You should get an output similar to this:</p>
@@ -551,52 +551,55 @@ To start using it just run fuseml-installer --help and enjoy!
 
 Configuration...
   🧭  system_domain:
-  🧭  extension_repository: https://raw.githubusercontent.com/fuseml/extensions/main/installer/
+  🧭  extensions_repository: https://raw.githubusercontent.com/fuseml/extensions/main/installer/
+  🧭  force_reinstall: <span class="nb">false</span>
 
 🚢 Deploying Istio.....
 ✔️  Istio deployed
-.
-✔️  Created system_domain: <span class="m">172</span>.18.0.2.nip.io
+✔️  Created system_domain: <span class="m">172</span>.18.0.3.nip.io
 
 🚢 Deploying Workloads...
 ✔️  Workloads deployed
 
-🚢 Deploying Gitea.................................
-✔️  Gitea deployed <span class="o">(</span>http://gitea.172.18.0.2.nip.io<span class="o">)</span>.
+🚢 Deploying Gitea......................................................
+✔️  Gitea deployed <span class="o">(</span>http://gitea.172.18.0.3.nip.io<span class="o">)</span>.
 
-🚢 Deploying Registry..........
+🚢 Deploying Registry...............
 ✔️  Registry deployed
 
-🚢 Deploying Tekton.............................................................................
-✔️  Tekton deployed <span class="o">(</span>http://tekton.172.18.0.2.nip.io<span class="o">)</span>.
+🚢 Deploying Tekton................................................................................
+✔️  Tekton deployed <span class="o">(</span>http://tekton.172.18.0.3.nip.io<span class="o">)</span>.
 
-🚢 Deploying Core...........
-✔️  FuseML core component deployed <span class="o">(</span>http://fuseml-core.172.18.0.2.nip.io<span class="o">)</span>.
+🚢 Deploying Core..............
+✔️  FuseML core component deployed <span class="o">(</span>http://fuseml-core.172.18.0.3.nip.io<span class="o">)</span>.
 
 🚢 Downloading <span class="nb">command</span> line client...
-🚢 FuseML <span class="nb">command</span> line client saved as /home/jsuchome/kubernetes/fuseml/fuseml.
+🚢 FuseML <span class="nb">command</span> line client saved as /Users/flaviosr/workspace/fuseml/fuseml.
 Copy it to the location within your PATH <span class="o">(</span>e.g. /usr/local/bin<span class="o">)</span>.
 
 🚢 To use the FuseML CLI, you must point it to the FuseML server URL, e.g.:
 
-    <span class="nb">export</span> <span class="nv">FUSEML_SERVER_URL</span><span class="o">=</span>http://fuseml-core.172.18.0.2.nip.io
+    <span class="nb">export</span> <span class="nv">FUSEML_SERVER_URL</span><span class="o">=</span>http://fuseml-core.172.18.0.3.nip.io
 
 ✔️  FuseML installed.
-System domain: <span class="m">172</span>.18.0.2.nip.io
+System domain: <span class="m">172</span>.18.0.3.nip.io
 </code></pre></div>
-<p>The FuseML installer prints out URLs for <em>gitea</em>, <em>tekton</em> and <em>fuseml-core</em> components. You can access those sub-services directly at any given time. The fuseml core URL is especially important, as you'll need that to use the FuseML CLI.</p>
+<p>The FuseML installer prints out URLs for <em>gitea</em>, <em>tekton</em> and <em>fuseml-core</em> components. You can access those sub-services directly at any given time. The fuseml-core URL is especially important, as you'll need that to use the FuseML CLI.</p>
 <p>You can also see that the installer downloaded <em>fuseml</em> command line client which you will use for actual FuseML operations. You can use the latest version which was downloaded automatically or manually choose one of <a href="https://github.com/fuseml/fuseml-core/releases">released versions</a> from github.</p>
-<p>Use</p>
+<p>Run the following command to see the list of available commands:</p>
 <div class="highlight"><pre><span></span><code>fuseml-installer install --help
 </code></pre></div>
-<p>to get full information about the options the installer provides.</p>
-<h3 id="4-check-if-the-components-are-up-and-running">4. Check if the components are up and running:</h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># Let&#39;s check the fuseml-core component</span>
-kubectl get pods -n fuseml-core -o wide
-<span class="c1"># Now let&#39;s check gitea</span>
+<h2 id="4-ensure-fuseml-components-are-up-and-running">4. Ensure FuseML components are up and running</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check Istio</span>
+kubectl get pods -n istio-system -o wide
+<span class="c1"># Check Gitea</span>
 kubectl get pods -n gitea -o wide
-<span class="c1"># Let&#39;s check tekton</span>
+<span class="c1"># Check registry</span>
+kubectl get pods -n fuseml-registry -o wide
+<span class="c1"># Check tekton</span>
 kubectl get pods -n tekton-pipelines -o wide
+<span class="c1"># Check fuseml-core</span>
+kubectl get pods -n fuseml-core -o wide
 </code></pre></div>
 <p>If everything is in running or completed status, you are good to go. Continue on to the <a href="../tutorials/kserve-basic/">tutorial</a> section and start to have fun with FuseML.</p>
                 

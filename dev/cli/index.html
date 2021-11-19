@@ -266,7 +266,7 @@
   
     <li class="md-nav__item">
       <a href="../tutorials/seldon-core/" class="md-nav__link">
-        Logistic Regression with MLFlow & Seldon Core
+        Logistic Regression with MLFlow & Seldon-Core
       </a>
     </li>
   
@@ -653,26 +653,26 @@ registered as an experiment tracking and model store extension with FuseML:</p>
 </code></pre></div>
 <p>To register the extension as a YAML file with the FuseML CLI:</p>
 <div class="highlight"><pre><span></span><code>&gt; fuseml extension register -f mymlflow.yaml
-Extension &quot;mymlflow&quot; successfully registered
+Extension <span class="s2">&quot;mymlflow&quot;</span> successfully registered
 </code></pre></div>
 <p>Alternatively, to build the same extension step by step:</p>
-<div class="highlight"><pre><span></span><code>&gt; fuseml extension register --id mymlflow -p mlflow --version 1.19.0 --zone dev-server --desc &quot;MLFlow experiment tracking service&quot;
-Extension &quot;mymlflow&quot; successfully registered
+<div class="highlight"><pre><span></span><code>&gt; fuseml extension register --id mymlflow -p mlflow --version <span class="m">1</span>.19.0 --zone dev-server --desc <span class="s2">&quot;MLFlow experiment tracking service&quot;</span>
+Extension <span class="s2">&quot;mymlflow&quot;</span> successfully registered
 
-&gt; fuseml extension service add --id mlflow-tracking -r mlflow-tracking -c experiment-tracking --desc &quot;MLFlow experiment tracking service API and UI&quot; mymlflow
-Service &quot;mlflow-tracking&quot; successfully added to extension &quot;mymlflow&quot;
+&gt; fuseml extension service add --id mlflow-tracking -r mlflow-tracking -c experiment-tracking --desc <span class="s2">&quot;MLFlow experiment tracking service API and UI&quot;</span> mymlflow
+Service <span class="s2">&quot;mlflow-tracking&quot;</span> successfully added to extension <span class="s2">&quot;mymlflow&quot;</span>
 
-&gt; fuseml extension service add --id mlflow-store -r s3 -c model-store --auth-required --desc &quot;MLFlow minio S3 storage back-end&quot; mymlflow
-Service &quot;mlflow-store&quot; successfully added to extension &quot;mymlflow&quot;
+&gt; fuseml extension service add --id mlflow-store -r s3 -c model-store --auth-required --desc <span class="s2">&quot;MLFlow minio S3 storage back-end&quot;</span> mymlflow
+Service <span class="s2">&quot;mlflow-store&quot;</span> successfully added to extension <span class="s2">&quot;mymlflow&quot;</span>
 
 &gt; fuseml extension endpoint add -c MLFLOW_TRACKING_URI:http://10.20.30.40 mymlflow mlflow-tracking http://10.20.30.40
-Endpoint &quot;http://10.20.30.40&quot; successfully added to service mlflow-tracking from extension &quot;mymlflow&quot;
+Endpoint <span class="s2">&quot;http://10.20.30.40&quot;</span> successfully added to service mlflow-tracking from extension <span class="s2">&quot;mymlflow&quot;</span>
 
 &gt; fuseml extension endpoint add -c MLFLOW_S3_ENDPOINT_URL:http://10.20.30.40:9000 mymlflow mlflow-store http://10.20.30.40:9000
-Endpoint &quot;http://10.20.30.40:9000&quot; successfully added to service mlflow-store from extension &quot;mymlflow&quot;
+Endpoint <span class="s2">&quot;http://10.20.30.40:9000&quot;</span> successfully added to service mlflow-store from extension <span class="s2">&quot;mymlflow&quot;</span>
 
 &gt; fuseml extension credentials add --id default -c AWS_ACCESS_KEY_ID:v4Us74XUtkuEGd10yS05,AWS_SECRET_ACCESS_KEY:MJtLeytp72bpnq2XtSqpRTlB3MXTV8Am5ASjED4x mymlflow mlflow-store
-Credentials &quot;default&quot; successfully added to service mlflow-store from extension &quot;mymlflow&quot;
+Credentials <span class="s2">&quot;default&quot;</span> successfully added to service mlflow-store from extension <span class="s2">&quot;mymlflow&quot;</span>
 </code></pre></div>
 <h2 id="workflows">Workflows</h2>
 <p>Workflows are the most important feature of FuseML. Configuring workflows is a declarative way of instructing FuseML
@@ -682,7 +682,7 @@ ML pipeline that builds your code, runs it to train a machine learning model and
 using a prediction service.</p>
 <p>Getting a workflow to execute is basically a two step process:</p>
 <ul>
-<li>first, configure a workflow definition from a yaml or json file. Consult the <a href="../api/">API Refefence</a> section for a
+<li>first, configure a workflow definition from a yaml or json file. Consult the <a href="../api/">API Reference</a> section for a
   full description of the workflow format.</li>
 <li>then, use the command line to assign a codeset to the workflow. The workflow is automatically triggered as a result of the
   assignment, as well as every time a new version of the assigned codeset is published. The status, as well as the results(s)
@@ -782,7 +782,7 @@ steps:
 </code></pre></div>
 <p>To create a workflow from the YAML file with the FuseML CLI:</p>
 <div class="highlight"><pre><span></span><code>&gt; fuseml workflow create example.yaml
-Workflow &quot;example&quot; successfully created
+Workflow <span class="s2">&quot;example&quot;</span> successfully created
 </code></pre></div>
 <h2 id="application">Application</h2>
 <p>A FuseML Application is represented by a web service usually deployed automatically by FuseML as a result

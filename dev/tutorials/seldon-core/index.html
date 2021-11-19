@@ -14,7 +14,7 @@
     
     
       
-        <title>Logistic Regression with MLFlow & Seldon Core - FuseML Documentation</title>
+        <title>Logistic Regression with MLFlow & Seldon-Core - FuseML Documentation</title>
       
     
     
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Logistic Regression with MLFlow & Seldon Core
+              Logistic Regression with MLFlow & Seldon-Core
             
           </span>
         </div>
@@ -276,9 +276,83 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Logistic Regression with MLFlow & Seldon-Core
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
-        Logistic Regression with MLFlow & Seldon Core
+        Logistic Regression with MLFlow & Seldon-Core
       </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-install-3rd-party-ml-tools" class="md-nav__link">
+    1. Install 3rd party ML tools
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-set-fuseml_server_url-environment-variable" class="md-nav__link">
+    2. Set FUSEML_SERVER_URL environment variable
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-fetch-the-fuseml-examples-code" class="md-nav__link">
+    3. Fetch the FuseML examples code
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-create-a-workflow" class="md-nav__link">
+    5. Create a workflow
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-assign-the-workflow-to-the-codeset" class="md-nav__link">
+    6. Assign the workflow to the codeset
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-monitor-the-workflow-from-the-command-line" class="md-nav__link">
+    7. Monitor the workflow from the command-line
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-test-the-deployed-model" class="md-nav__link">
+    8. Test the deployed model
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -414,6 +488,63 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-install-3rd-party-ml-tools" class="md-nav__link">
+    1. Install 3rd party ML tools
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-set-fuseml_server_url-environment-variable" class="md-nav__link">
+    2. Set FUSEML_SERVER_URL environment variable
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-fetch-the-fuseml-examples-code" class="md-nav__link">
+    3. Fetch the FuseML examples code
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-create-a-workflow" class="md-nav__link">
+    5. Create a workflow
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-assign-the-workflow-to-the-codeset" class="md-nav__link">
+    6. Assign the workflow to the codeset
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-monitor-the-workflow-from-the-command-line" class="md-nav__link">
+    7. Monitor the workflow from the command-line
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-test-the-deployed-model" class="md-nav__link">
+    8. Test the deployed model
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -436,7 +567,7 @@ using <a href="https://mlflow.org/">MLflow</a> and then served with <a href="htt
 <p>In fact, we're using the same MLFlow models like in the <a href="../kserve-basic/">kserve tutorial</a>.</p>
 <p>We assume that both FuseML infrastructure and the FuseML CLI are already installed, if not please
 check first the <a href="../../quickstart/">quick start</a> section.</p>
-<p><strong>1.</strong> Install 3rd party ML tools</p>
+<h2 id="1-install-3rd-party-ml-tools">1. Install 3rd party ML tools</h2>
 <p>Running this example requires MLflow and SeldonCore to be installed in the same cluster as FuseML.</p>
 <p>The FuseML installer can be used for a quick MLFlow and KFServing installation:</p>
 <div class="highlight"><pre><span></span><code>fuseml-installer extensions --add mlflow,seldon-core
@@ -445,13 +576,13 @@ check first the <a href="../../quickstart/">quick start</a> section.</p>
 <div class="highlight"><pre><span></span><code>fuseml-installer extensions --help
 </code></pre></div>
 <p>command.</p>
-<p><strong>2.</strong> Set <code>FUSEML_SERVER_URL</code> environment variable to point to fuseml-core</p>
-<p>The fuseml-core URL was printed out by the installer during the FuseML installation. Alternatively, you can run the following
-command to retrieve the fuseml-core URL and set the <code>FUSEML_SERVER_URL</code> environment variable:</p>
+<h2 id="2-set-fuseml_server_url-environment-variable">2. Set <code>FUSEML_SERVER_URL</code> environment variable</h2>
+<p>The fuseml-core URL was printed out by the installer during the FuseML installation. Alternatively, the
+following command can be used to retrieve the fuseml-core URL and set the <code>FUSEML_SERVER_URL</code> environment variable:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">FUSEML_SERVER_URL</span><span class="o">=</span>http://<span class="k">$(</span>kubectl get VirtualService -n fuseml-core fuseml-core -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.spec.hosts[0]}&quot;</span><span class="k">)</span>
 </code></pre></div>
-<p><strong>3.</strong> Fetch the FuseML examples code</p>
-<div class="highlight"><pre><span></span><code>git clone --depth <span class="m">1</span> https://github.com/fuseml/examples.git
+<h2 id="3-fetch-the-fuseml-examples-code">3. Fetch the FuseML examples code</h2>
+<div class="highlight"><pre><span></span><code>git clone --depth <span class="m">1</span> -b release-0.3 https://github.com/fuseml/examples.git
 <span class="nb">cd</span> examples
 </code></pre></div>
 <p>Under the <code>codesets/mlflow</code> directory, there are some example MLflow projects. For this tutorial we will be using the
@@ -470,80 +601,80 @@ Setting mlflow-test as current codeset.
 Setting mlflow-project-01 as current project.
 FuseML configuration file created at /home/snica/.config/fuseml/config.yaml
 </code></pre></div>
-<p>You may optionally log into the Gitea UI using the URL, username and password printed out by the <code>codeset register</code> command. You should find a new organization named <code>mlflow-project-01</code> and a repo named <code>mlflow-test</code>.</p>
-<p><strong>5.</strong> Create a workflow</p>
+<p>You may optionally log into the Gitea UI using the URL, username and password printed out by the <code>codeset register</code> command. You should find a new organization named <code>mlflow-project-01</code> and a repository named <code>mlflow-test</code>.</p>
+<h2 id="5-create-a-workflow">5. Create a workflow</h2>
 <p>The example FuseML workflow included in the examples repository represents a complete, end-to-end ML pipeline "compatible" with any codeset that contains an MLProject. It includes all the steps necessary to train a model with MLflow, save the model and then creates a KFServing prediction service for it.</p>
 <p>Use the example workflow definition to create a workflow in FuseML:</p>
 <div class="highlight"><pre><span></span><code>fuseml workflow create workflows/mlflow-seldon-e2e.yaml
 </code></pre></div>
 <p>Note: you can modify the workflow to fit to your custom needs. Let's take a look at some parameters on the top of workflow description:</p>
-<div class="highlight"><pre><span></span><code>inputs:
-  - name: mlflow-codeset
-    description: an MLFlow compatible codeset
-    type: codeset
-  - name: predictor
-    description: type of predictor engine
-    type: string
-    default: auto
+<div class="highlight"><pre><span></span><code><span class="nt">inputs</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-codeset</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">an MLFlow compatible codeset</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">codeset</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">predictor</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">type of predictor engine</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+    <span class="nt">default</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">auto</span>
 </code></pre></div>
-<p>That <code>predictor</code> option is set to <code>auto</code> value - this means the predictor engine will be set automatically based on the properties 
+<p>That <code>predictor</code> option is set to <code>auto</code> value - this means the predictor engine will be set automatically based on the properties
 of the model. With the model we are using in this tutorial, the prediction value will be set to 'sklearn' value and Seldon Core will use
 SKLearn server. You could change the default value to <code>tensorflow</code> or <code>triton</code> to use different inference servers; that is, if your model supports it.</p>
-<p><strong>6.</strong> Assign the codeset to the workflow</p>
+<h2 id="6-assign-the-workflow-to-the-codeset">6. Assign the workflow to the codeset</h2>
 <div class="highlight"><pre><span></span><code>fuseml workflow assign --name mlflow-seldon-e2e --codeset-name mlflow-test --codeset-project mlflow-project-01
 </code></pre></div>
-<p><strong>7.</strong> Monitor the workflow from the command-line</p>
+<h2 id="7-monitor-the-workflow-from-the-command-line">7. Monitor the workflow from the command-line</h2>
 <p>Now that the Workflow is assigned to the Codeset, a new workflow run was created. To watch the workflow progress, check "workflow run" with:</p>
 <div class="highlight"><pre><span></span><code>fuseml workflow list-runs --name mlflow-seldon-e2e
 </code></pre></div>
 <p>Example output:</p>
 <div class="highlight"><pre><span></span><code>&gt; fuseml workflow list-runs --name mlflow-seldon-e2e
 +--------------------------------------------+-------------------+---------------+----------+---------+
-| NAME                                       | WORKFLOW          | STARTED       | DURATION | STATUS  |
+<span class="p">|</span> NAME                                       <span class="p">|</span> WORKFLOW          <span class="p">|</span> STARTED       <span class="p">|</span> DURATION <span class="p">|</span> STATUS  <span class="p">|</span>
 +--------------------------------------------+-------------------+---------------+----------+---------+
-| fuseml-mlflow-project-01-mlflow-test-n5xdq | mlflow-seldon-e2e | 6 seconds ago | ---      | Running |
+<span class="p">|</span> fuseml-mlflow-project-01-mlflow-test-n5xdq <span class="p">|</span> mlflow-seldon-e2e <span class="p">|</span> <span class="m">6</span> seconds ago <span class="p">|</span> ---      <span class="p">|</span> Running <span class="p">|</span>
 +--------------------------------------------+-------------------+---------------+----------+---------+
 </code></pre></div>
 <p>This command shows you detailed information about running workflow. You may also follow the Tekton URL value under the expanded output section to see relevant information about the underlying Tekton PipelineRun which implements the workflow run:</p>
-<div class="highlight"><pre><span></span><code>&gt; fuseml workflow list-runs --name mlflow-seldon-e2e --format yaml
----
-- name: fuseml-mlflow-project-01-mlflow-test-n5xdq
-  workflowref: mlflow-seldon-e2e
-  inputs:
-  - input:
-      name: mlflow-codeset
-      description: an MLFlow compatible codeset
-      type: codeset
-      default: null
-      labels: []
-    value: http://gitea.172.18.0.2.nip.io/mlflow-project-01/mlflow-test.git:main
-  - input:
-      name: predictor
-      description: type of predictor engine
-      type: string
-      default: auto
-      labels: []
-    value: auto
-  outputs:
-  - output:
-      name: prediction-url
-      description: The URL where the exposed prediction service endpoint can be contacted to run predictions.
-      type: string
-    value: &quot;&quot;
-  starttime: 2021-11-09T07:49:45Z
-  completiontime: 0001-01-01T00:00:00Z
-  status: Running
-  url: &quot;http://tekton.172.18.0.2.nip.io/#/namespaces/fuseml-workloads/pipelineruns/fuseml-mlflow-project-01-mlflow-test-n5xdq&quot;
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">&gt;</span><span class="err"> fuseml workflow list-runs --name mlflow-seldon-e2e --format yaml</span>
+<span class="nn">---</span>
+<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">fuseml-mlflow-project-01-mlflow-test-n5xdq</span>
+  <span class="nt">workflowref</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-seldon-e2e</span>
+  <span class="nt">inputs</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">input</span><span class="p">:</span>
+      <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-codeset</span>
+      <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">an MLFlow compatible codeset</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">codeset</span>
+      <span class="nt">default</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">null</span>
+      <span class="nt">labels</span><span class="p">:</span> <span class="p p-Indicator">[]</span>
+    <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://gitea.172.18.0.2.nip.io/mlflow-project-01/mlflow-test.git:main</span>
+  <span class="p p-Indicator">-</span> <span class="nt">input</span><span class="p">:</span>
+      <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">predictor</span>
+      <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">type of predictor engine</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+      <span class="nt">default</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">auto</span>
+      <span class="nt">labels</span><span class="p">:</span> <span class="p p-Indicator">[]</span>
+    <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">auto</span>
+  <span class="nt">outputs</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">output</span><span class="p">:</span>
+      <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">prediction-url</span>
+      <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">The URL where the exposed prediction service endpoint can be contacted to run predictions.</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+    <span class="nt">value</span><span class="p">:</span> <span class="s">&quot;&quot;</span>
+  <span class="nt">starttime</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2021-11-09T07:49:45Z</span>
+  <span class="nt">completiontime</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0001-01-01T00:00:00Z</span>
+  <span class="nt">status</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Running</span>
+  <span class="nt">url</span><span class="p">:</span> <span class="s">&quot;http://tekton.172.18.0.2.nip.io/#/namespaces/fuseml-workloads/pipelineruns/fuseml-mlflow-project-01-mlflow-test-n5xdq&quot;</span>
 </code></pre></div>
 <p>Once the run succeeds, the status value changes to <code>Succeeded</code> in the CLI:</p>
 <div class="highlight"><pre><span></span><code>&gt; fuseml workflow list-runs --name mlflow-seldon-e2e
 +--------------------------------------------+-------------------+----------------+------------+-----------+
-| NAME                                       | WORKFLOW          | STARTED        | DURATION   | STATUS    |
+<span class="p">|</span> NAME                                       <span class="p">|</span> WORKFLOW          <span class="p">|</span> STARTED        <span class="p">|</span> DURATION   <span class="p">|</span> STATUS    <span class="p">|</span>
 +--------------------------------------------+-------------------+----------------+------------+-----------+
-| fuseml-mlflow-project-01-mlflow-test-n5xdq | mlflow-seldon-e2e | 12 minutes ago | 10 minutes | Succeeded |
+<span class="p">|</span> fuseml-mlflow-project-01-mlflow-test-n5xdq <span class="p">|</span> mlflow-seldon-e2e <span class="p">|</span> <span class="m">12</span> minutes ago <span class="p">|</span> <span class="m">10</span> minutes <span class="p">|</span> Succeeded <span class="p">|</span>
 +--------------------------------------------+-------------------+----------------+------------+-----------+
 </code></pre></div>
-<p><strong>8.</strong> Test the deployed model</p>
+<h2 id="8-test-the-deployed-model">8. Test the deployed model</h2>
 <p>When the workflow run is complete, a new inference service is created and registered as a FuseML application. You can list the applications deployed
 by FuseML by running the following command:</p>
 <div class="highlight"><pre><span></span><code>fuseml application list
@@ -551,9 +682,9 @@ by FuseML by running the following command:</p>
 <p>This should produce output similar to this one:</p>
 <div class="highlight"><pre><span></span><code>&gt; fuseml application list
 +-------------------------------------------------+-----------+-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
-| NAME                                            | TYPE      | DESCRIPTION                                         | URL                                                                                                                                                                          | WORKFLOW          |
+<span class="p">|</span> NAME                                            <span class="p">|</span> TYPE      <span class="p">|</span> DESCRIPTION                                         <span class="p">|</span> URL                                                                                                                                                                          <span class="p">|</span> WORKFLOW          <span class="p">|</span>
 +-------------------------------------------------+-----------+-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
-| mlflow-project-01-mlflow-test-mlflow-seldon-e2e | predictor | Application generated by mlflow-seldon-e2e workflow | http://mlflow-project-01-mlflow-test-mlflow-seldon-e2e.seldon.172.18.0.2.nip.io/seldon/fuseml-workloads/mlflow-project-01-mlflow-test-mlflow-seldon-e2e/api/v1.0/predictions | mlflow-seldon-e2e |
+<span class="p">|</span> mlflow-project-01-mlflow-test-mlflow-seldon-e2e <span class="p">|</span> predictor <span class="p">|</span> Application generated by mlflow-seldon-e2e workflow <span class="p">|</span> http://mlflow-project-01-mlflow-test-mlflow-seldon-e2e.seldon.172.18.0.2.nip.io/seldon/fuseml-workloads/mlflow-project-01-mlflow-test-mlflow-seldon-e2e/api/v1.0/predictions <span class="p">|</span> mlflow-seldon-e2e <span class="p">|</span>
 +-------------------------------------------------+-----------+-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
 </code></pre></div>
 <p>The application URL is used to submit a request to the inference service. The examples repository includes a prediction data sample at
@@ -580,7 +711,7 @@ by FuseML by running the following command:</p>
 <span class="o">}</span>
 </code></pre></div>
 <p>See that the format of the data sample is different then the one we have used for <a href="../kserve-basic/">kserve example</a>.
-It's because with sklearn based example, inference server is set up to communicate with <a href="https://docs.seldon.io/projects/seldon-core/en/latest/graph/protocols.html#rest-and-grpc-seldon-protocol">Seldon Protocol</a>. Alternatively, 
+It's because with sklearn based example, inference server is set up to communicate with <a href="https://docs.seldon.io/projects/seldon-core/en/latest/graph/protocols.html#rest-and-grpc-seldon-protocol">Seldon Protocol</a>. Alternatively,
 for codesets using tensorflow, seldon-core based inference server would be set up with <a href="https://docs.seldon.io/projects/seldon-core/en/latest/graph/protocols.html#rest-and-grpc-seldon-protocol">tensorflow protocol</a>.</p>
 <p>Run the following commands to send a inference request to the deployed model:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">PREDICTOR_URL</span><span class="o">=</span><span class="k">$(</span>fuseml application list --format json <span class="p">|</span> jq -r <span class="s2">&quot;.[0].url&quot;</span><span class="k">)</span>
@@ -590,9 +721,7 @@ curl -d @prediction/data-sklearn-seldon.json <span class="nv">$PREDICTOR_URL</sp
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
   <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&quot;names&quot;</span><span class="p">:</span> <span class="p">[],</span>
-    <span class="nt">&quot;ndarray&quot;</span><span class="p">:</span> <span class="p">[</span>
-      <span class="mf">6.48634480912767</span>
-    <span class="p">]</span>
+    <span class="nt">&quot;ndarray&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">6.48634480912767</span><span class="p">]</span>
   <span class="p">},</span>
   <span class="nt">&quot;meta&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&quot;requestPath&quot;</span><span class="p">:</span> <span class="p">{</span>
