@@ -5,7 +5,7 @@ nav:
   - Quick Start: quickstart.md
   - Tutorials:
       - Logistic Regression with MLFlow & KServe: tutorials/kserve-basic.md
-      - Logistic Regression with MLFlow & Seldon Core: tutorials/seldon-core.md
+      - Logistic Regression with MLFlow & Seldon-Core: tutorials/seldon-core.md
       - Training & Serving ML Models on GPU with NVIDIA Triton: tutorials/kserve-triton-gpu.md
       - Benchmarking ML Models on Intel CPUs with Intel OpenVINO: tutorials/openvino-mlflow.md
       - FuseML Extension Development Use-Case - OpenVINO: tutorials/openvino-extensions.md
@@ -44,6 +44,8 @@ markdown_extensions:
           class: uml-flowchart
           format:
             !!python/name:pymdownx.superfences.fence_code_format # TODO: Validate with our legal team.
+
+
   - featherlight
 
 copyright: "Copyright &copy; 2021 FuseML Author(s)"

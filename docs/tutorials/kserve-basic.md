@@ -1,4 +1,4 @@
-# A simple logistic regression with MLFlow and KServe
+# A simple logistic regression with MLflow and KServe
 
 This example shows how FuseML can be used to automate and end-to-end machine learning workflow using
 a combination of different tools. In this case, we have a scikit-learn ML model that is being trained
@@ -7,47 +7,46 @@ using [MLflow](https://mlflow.org/) and then served with [KServe](https://github
 We assume that both FuseML infrastructure and the FuseML CLI are already installed, if not please
 check first the [quick start](../quickstart.md) section.
 
-**1.** Install 3rd party ML tools
+## 1. Install 3rd party ML tools
 
 Running this example requires MLflow and KServe to be installed in the same cluster as FuseML.
 
-The FuseML installer can be used for a quick MLFlow and KServe installation:
+The FuseML installer can be used for a quick MLflow and KServe installation:
 
 ```bash
 fuseml-installer extensions --add mlflow,kserve
 ```
 
-To find out about installed extensions, install new or remove installed ones, use
+Run the following command to see the list of available commands regarding extensions,
+such as listing/removing installed extensions:
 
 ```bash
 fuseml-installer extensions --help
 ```
 
-command.
-
 Alternatively, you can follow [the KServe official instructions](https://github.com/kserve/kserve#readme)
 and install KServe manually.
 
-**2.** Set `FUSEML_SERVER_URL` environment variable to point to fuseml-core
+## 2. Set `FUSEML_SERVER_URL` environment variable
 
-The fuseml-core URL was printed out by the installer during the FuseML installation.Alternatively, you can run the following
-command to retrieve the fuseml-core URL and set the `FUSEML_SERVER_URL` environment variable:
+The fuseml-core URL was printed out by the installer during the FuseML installation. Alternatively, the
+following command can be used to retrieve the fuseml-core URL and set the `FUSEML_SERVER_URL` environment variable:
 
 ```bash
 export FUSEML_SERVER_URL=http://$(kubectl get VirtualService -n fuseml-core fuseml-core -o jsonpath="{.spec.hosts[0]}")
 ```
 
-**3.** Fetch the FuseML examples code
+## 3. Fetch the FuseML examples code
 
 ```bash
-git clone --depth 1 -b release-0.1 https://github.com/fuseml/examples.git
+git clone --depth 1 -b release-0.3 https://github.com/fuseml/examples.git
 cd examples
 ```
 
 Under the `codesets/mlflow` directory, there are some example MLflow projects. For this tutorial we will be using the
 `sklearn` project.
 
-**4.** Register the codeset
+## 4. Register the codeset
 
 From now on, you start using _fuseml_ command line tool. Register the example code as a FuseML versioned codeset artifact:
 
@@ -68,9 +67,9 @@ Setting mlflow-project-01 as current project.
 FuseML configuration file created at /home/snica/.config/fuseml/config.yaml
 ```
 
-You may optionally log into the Gitea UI using the URL, username and password printed out by the `codeset register` command. You should find a new organization named `mlflow-project-01` and a repo named `mlflow-test`.
+You may optionally log into the Gitea UI using URL, username and password printed out by the `codeset register` command. You should find a new organization named `mlflow-project-01` and a repository named `mlflow-test`.
 
-**5.** Create a workflow
+## 5. Create a workflow
 
 The example FuseML workflow included in the examples repository represents a complete, end-to-end ML pipeline "compatible" with any codeset that contains an MLProject. It includes all the steps necessary to train a model with MLflow, save the model and then creates a KServe prediction service for it.
 
@@ -80,13 +79,13 @@ Use the example workflow definition to create a workflow in FuseML:
 fuseml workflow create workflows/mlflow-e2e.yaml
 ```
 
-**6.** Assign the codeset to the workflow
+## 6. Assign the workflow to the codeset
 
 ```bash
 fuseml workflow assign --name mlflow-e2e --codeset-name mlflow-test --codeset-project mlflow-project-01
 ```
 
-**7.** Monitor the workflow from the command-line
+## 7. Monitor the workflow from the command-line
 
 Now that the Workflow is assigned to the Codeset, a new workflow run was created. To watch the workflow progress, check "workflow run" with:
 
@@ -96,7 +95,7 @@ fuseml workflow list-runs --name mlflow-e2e
 
 Example output:
 
-```
+```bash
 > fuseml workflow list-runs --name mlflow-e2e
 +--------------------------------------------+------------+--------------+----------+---------+
 | NAME                                       | WORKFLOW   | STARTED      | DURATION | STATUS  |
@@ -107,10 +106,10 @@ Example output:
 
 This command shows you detailed information about running workflow. You may also follow the Tekton URL value under the expanded output section to see relevant information about the underlying Tekton PipelineRun which implements the workflow run:
 
-```
+```yaml
 > fuseml workflow list-runs --name mlflow-e2e --format yaml
 ---
-- name: fuseml-mlflow-project-01-mlflow-test-hr67k
+- name: fuseml-mlflow-project-01-mlflow-test-mlprp
   workflowref: mlflow-e2e
   inputs:
   - input:
@@ -119,7 +118,7 @@ This command shows you detailed information about running workflow. You may also
       type: codeset
       default: null
       labels: []
-    value: http://gitea.10.162.66.101.omg.howdoi.website/mlflow-project-01/mlflow-test.git:main
+    value: http://gitea.172.18.0.2.nip.io/mlflow-project-01/mlflow-test.git:main
   - input:
       name: predictor
       description: type of predictor engine
@@ -136,12 +135,12 @@ This command shows you detailed information about running workflow. You may also
   starttime: 2021-06-07T18:16:00Z
   completiontime: null
   status: Running
-  url: "http://tekton.10.162.66.101.omg.howdoi.website/#/namespaces/fuseml-workloads/pipelineruns/fuseml-mlflow-project-01-mlflow-test-hr67k"
+  url: "http://tekton.172.18.0.2.nip.io/#/namespaces/fuseml-workloads/pipelineruns/fuseml-mlflow-project-01-mlflow-test-mlprp"
 ```
 
 Once the run succeeds, the status value changes to `Succeeded` in the CLI:
 
-```
+```bash
 > fuseml workflow list-runs --name mlflow-e2e
 +--------------------------------------------+------------+----------------+------------+-----------+
 | NAME                                       | WORKFLOW   | STARTED        | DURATION   | STATUS    |
@@ -150,7 +149,7 @@ Once the run succeeds, the status value changes to `Succeeded` in the CLI:
 +--------------------------------------------+------------+----------------+------------+-----------+
 ```
 
-**8.** Test the deployed model
+## 9. Test the deployed model
 
 When the workflow run is complete, a new inference service is created and registered as a FuseML application. You can list the applications deployed
 by FuseML by running the following command:
@@ -161,16 +160,16 @@ fuseml application list
 
 This should produce output similar to this one:
 
-```
+```bash
 > fuseml application list
-+-------------------------------+-----------+----------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+------------+
-| NAME                          | TYPE      | DESCRIPTION                                  | URL                                                                                                                                  | WORKFLOW   |
-+-------------------------------+-----------+----------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+------------+
-| mlflow-project-01-mlflow-test | predictor | Application generated by mlflow-e2e workflow | http://mlflow-project-01-mlflow-test.fuseml-workloads.10.162.66.101.omg.howdoi.website/v2/models/mlflow-project-01-mlflow-test/infer | mlflow-e2e |
-+-------------------------------+-----------+----------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+------------+
++------------------------------------------+-----------+----------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------+------------+
+| NAME                                     | TYPE      | DESCRIPTION                                  | URL                                                                                                                                         | WORKFLOW   |
++------------------------------------------+-----------+----------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------+------------+
+| mlflow-project-01-mlflow-test-mlflow-e2e | predictor | Application generated by mlflow-e2e workflow | http://mlflow-project-01-mlflow-test-mlflow-e2e.fuseml-workloads.172.18.0.2.nip.io/v2/models/mlflow-project-01-mlflow-test-mlflow-e2e/infer | mlflow-e2e |
++------------------------------------------+-----------+----------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------+------------+
 ```
 
-The application URL is used to submit a request to the inference service. The examples repository includes a prediction data sample at
+The application URL can be used to submit a request to the inference service. The examples repository includes a prediction data sample at
 `prediction/data-sklearn.json`:
 
 ```bash
@@ -216,7 +215,7 @@ The output will be something similar to:
 }
 ```
 
-**9.** (Optional) Use the webapp example to test the deployed model
+## 10. (Optional) Use the webapp example to test the deployed model
 
 Rather than using curl to exercise the inference service, you may use a simple app we developed using [streamlit](https://streamlit.io/).
 
@@ -237,8 +236,8 @@ For example:
 
 ```bash
 ❯ kubectl get ksvc -n fuseml-workloads winery
-NAME     URL                                                                                LATESTCREATED   LATESTREADY    READY   REASON
-winery   http://winery.fuseml-workloads.fuseml-workloads.10.162.66.101.omg.howdoi.website   winery-00001    winery-00001   True
+NAME     URL                                                LATESTCREATED   LATESTREADY    READY   REASON
+winery   http://winery.fuseml-workloads.172.18.0.2.nip.io   winery-00001    winery-00001   True
 ```
 
 Open the application URL and follow the instructions presented on the webpage to make your own predictions with the FuseML application you just deployed.

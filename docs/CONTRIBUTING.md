@@ -2,8 +2,7 @@
 
 ## Our processes
 
-
-This repository is used through the entired development process. All the code is publicly available, and the code reviews are public. **Anyone** is welcome to contribute to those.
+This repository is used through the entire development process. All the code is publicly available, and the code reviews are public. **Anyone** is welcome to contribute to those.
 
 In terms of design, **anyone** is welcomed to propose requirements. Do not hesitate to share any design requirements or improvements. We will discuss them publicly in this repository. This means that any user, developer, or contributor of an eventual fork is welcomed to propose code or design changes.
 
@@ -24,17 +23,17 @@ The next step is to fork our project: [here](https://docs.github.com/en/github/g
 Then create your own branch for your bug/feature, edit the code/documentation, commit, and push your changes in your repository
 
 ```bash
-$ git checkout -b <branchname>
-$ ...
-$ git commit
-$ git push origin HEAD
+git checkout -b <branchname>
+...
+git commit
+git push origin HEAD
 ```
 
 Finally, create a pull request (using the web interface or using your favorite github client tool).
 
 Expectations for commit and pull requests are expressed below.
 
-If your contribution doesn't land immediately, you might need to rebase your change based on the branch you are targetting with your PR (e.g. `main`):
+If your contribution doesn't land immediately, you might need to rebase your change based on the branch you are targeting with your PR (e.g. `main`):
 
 ```bash
 ## Go back to the target branch (e.g. main) branch
@@ -58,7 +57,7 @@ $ git push origin HEAD -f
 - Don't send large new features in a giant commit.
 - Do not assume the reviewer understands what the original problem was, provide all the necessary tools for reviewers to do their job
 - Describe why a change is made, not how a change is made. It is encouraged to mention any limitations or problems of the current code, and how the commit is fixing those pains.
-- We are following conventional commits (https://www.conventionalcommits.org/en/v1.0.0/). Please write your commit messages appropriately.
+- We are following [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/). Please write your commit messages appropriately.
 
 See also: https://wiki.openstack.org/wiki/GitCommitMessages
 
@@ -100,11 +99,10 @@ We expect the maintainers to be the heralds of the good practices of this docume
 A few extra rules apply to them:
 
 - Maintainers must NOT push to existing branches without going through a PR.
-- Maintainers must NOT force merge patches. An exception can be made to unbreak tests.
-- A maintainer must regularily triage issues and review PRs
+- Maintainers must NOT force merge patches. An exception can be made to fix tests.
+- A maintainer must regularly triage issues and review PRs
 - A maintainer is responsible to enforce the code of conduct.
 
 ### Community member behavior
 
 Everyone must follow our code of conduct
-
