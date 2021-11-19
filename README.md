@@ -14,13 +14,13 @@ We are using the [material theme from squidfunk](https://squidfunk.github.io/mkd
 
 Simply run:
 
-```
+```bash
 docker run --rm -it -p 8000:8000 -v ${PWD}:/docs squidfunk/mkdocs-material
 ```
 
 ## How to build the final docs outside a docker container
 
-```
+```bash
 pip install --user mkdocs-material
 mkdocs build
 ```

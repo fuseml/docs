@@ -160,14 +160,14 @@ services:
 
 To register the extension as a YAML file with the FuseML CLI:
 
-```
+```bash
 > fuseml extension register -f mymlflow.yaml
 Extension "mymlflow" successfully registered
 ```
 
 Alternatively, to build the same extension step by step:
 
-```
+```bash
 > fuseml extension register --id mymlflow -p mlflow --version 1.19.0 --zone dev-server --desc "MLFlow experiment tracking service"
 Extension "mymlflow" successfully registered
 
@@ -197,7 +197,7 @@ using a prediction service.
 
 Getting a workflow to execute is basically a two step process:
 
-- first, configure a workflow definition from a yaml or json file. Consult the [API Refefence](api.md) section for a
+- first, configure a workflow definition from a yaml or json file. Consult the [API Reference](api.md) section for a
   full description of the workflow format.
 - then, use the command line to assign a codeset to the workflow. The workflow is automatically triggered as a result of the
   assignment, as well as every time a new version of the assigned codeset is published. The status, as well as the results(s)
@@ -303,7 +303,7 @@ steps:
 
 To create a workflow from the YAML file with the FuseML CLI:
 
-```
+```bash
 > fuseml workflow create example.yaml
 Workflow "example" successfully created
 ```
