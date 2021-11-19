@@ -1,0 +1,1221 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>Benchmarking ML Models on Intel CPUs with Intel OpenVINO - FuseML Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4cae4f">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="green" data-md-color-accent="cyan">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#image-classification-with-mlflow-and-intel-openvino" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="FuseML Documentation" class="md-header__button md-logo" aria-label="FuseML Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FuseML Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Benchmarking ML Models on Intel CPUs with Intel OpenVINO
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/fuseml/fuseml/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="FuseML Documentation" class="md-nav__button md-logo" aria-label="FuseML Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    FuseML Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/fuseml/fuseml/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/" class="md-nav__link">
+        Quick Start
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Tutorials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tutorials" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kserve-basic/" class="md-nav__link">
+        Logistic Regression with MLFlow & KServe
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seldon-core/" class="md-nav__link">
+        Logistic Regression with MLFlow & Seldon-Core
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kserve-triton-gpu/" class="md-nav__link">
+        Training & Serving ML Models on GPU with NVIDIA Triton
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Benchmarking ML Models on Intel CPUs with Intel OpenVINO
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Benchmarking ML Models on Intel CPUs with Intel OpenVINO
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    Setup
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#infrastructure" class="md-nav__link">
+    Infrastructure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fuseml" class="md-nav__link">
+    FuseML
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#training-serving-the-model" class="md-nav__link">
+    Training &amp; Serving the Model
+  </a>
+  
+    <nav class="md-nav" aria-label="Training &amp; Serving the Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#training-serving-using-fuseml" class="md-nav__link">
+    Training &amp; Serving using FuseML
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validating-the-deployed-model" class="md-nav__link">
+    Validating the Deployed Model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#benchmarking-the-inference-services" class="md-nav__link">
+    Benchmarking the Inference Services
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openvino-extensions/" class="md-nav__link">
+        FuseML Extension Development Use-Case - OpenVINO
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/" class="md-nav__link">
+        Architecture
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/" class="md-nav__link">
+        API Reference
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/" class="md-nav__link">
+        CLI Reference
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CONTRIBUTING/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    Setup
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#infrastructure" class="md-nav__link">
+    Infrastructure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fuseml" class="md-nav__link">
+    FuseML
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#training-serving-the-model" class="md-nav__link">
+    Training &amp; Serving the Model
+  </a>
+  
+    <nav class="md-nav" aria-label="Training &amp; Serving the Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#training-serving-using-fuseml" class="md-nav__link">
+    Training &amp; Serving using FuseML
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validating-the-deployed-model" class="md-nav__link">
+    Validating the Deployed Model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#benchmarking-the-inference-services" class="md-nav__link">
+    Benchmarking the Inference Services
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/fuseml/docs/edit/main/docs/tutorials/openvino-mlflow.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="image-classification-with-mlflow-and-intel-openvino">Image classification with MLFlow and Intel OpenVINO</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Analyzing the costs of deploying and operating ML models in production environments is a very important aspect of MLOps and Machine Learning projects. If not carefully considered, serving ML models can incur significant infrastructure and maintenance related costs, especially with bigger models. FuseML greatly simplifies the process of exploring various ML model serving platforms, as well as running inference performance testing, in order to identify a configuration that yields the ratio of cost vs. performance that best matches your ML model and business requirements.</p>
+<p>This tutorial will showcase FuseML extensions that can be used to integrate Intel OpenVINO technologies into your MLOps project pipeline, more specifically the <a href="https://docs.openvino.ai/latest/openvino_docs_MO_DG_Deep_Learning_Model_Optimizer_DevGuide.html">OpenVINO Model Optimizer</a> and the <a href="https://docs.openvino.ai/latest/openvino_docs_ovms.html">Model Server</a>.</p>
+<p>You'll deploy a FuseML workflow to train a CNN model on the CIFAR-10 dataset and then serve it using three different ML serving tools and configurations. Afterwards, you'll run some performance testing on the deployed inference servers and interpret the results.</p>
+<h2 id="setup">Setup</h2>
+<h3 id="infrastructure">Infrastructure</h3>
+<p>This tutorial uses a GKE cluster explicitly configured to have Cascade or Skylake generation Intel processors, which are better suited for Intel accelerated ML workloads, but it should work on any other Kubernetes cluster. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The FuseML workflow used in this tutorial includes some steps that make use of explicit CPU resource requests. For this reason, it is recommended that the Kubernetes nodes have at least 2 vCPUs each, preferably 4, otherwise the workflow steps might be stuck because they cannot be scheduled due to resource and placement constraints. The alternative, if an acceptable number of CPUs cannot be ensured for the Kubernetes nodes, is to edit the FuseML workflow to reduce or even eliminate the explicit CPU resource requirements. The cluster used in this tutorial has 2 nodes, each with 4 vCPUs.</p>
+</div>
+<p>Creating a GKE cluster using the <a href="https://console.cloud.google.com/kubernetes/">GCP console</a> is a straightforward process, captured in the following screenshots. Note that we explicitly selected the N2 node type in the machine configuration to get access to the class of Intel CPUs that is best suited for OpenVINO.</p>
+<figure>
+<p><a data-featherlight="../img/openvino-mlflow/gke1.png" href="#"><img alt="GKE Cluster Basics" src="../img/openvino-mlflow/gke1.png" />
+  </a></p>
+<figcaption>GKE Cluster Basic Configuration Settings</figcaption>
+</figure>
+<figure>
+<p><a data-featherlight="../img/openvino-mlflow/gke2.png" href="#"><img alt="GKE Node Pool" src="../img/openvino-mlflow/gke2.png" />
+  </a></p>
+<figcaption>GKE Cluster Node Pool Configuration Settings</figcaption>
+</figure>
+<figure>
+<p><a data-featherlight="../img/openvino-mlflow/gke3.png" href="#"><img alt="GKE Nodes" src="../img/openvino-mlflow/gke3.png" />
+  </a></p>
+<figcaption>GKE Cluster Node Configuration Settings</figcaption>
+</figure>
+<p>Once the GKE cluster is deployed, you'll need the GCP SDK installed on your workstation to access its credentials. The installation process is thoroughly covered in <a href="https://cloud.google.com/sdk/docs/install">the official docs</a>.</p>
+<p>To initialize the GCP SDK and authenticate with the same GCP credentials used to deploy the GKE cluster:</p>
+<div class="highlight"><pre><span></span><code>$ gcloud init
+</code></pre></div>
+<p>To retrieve the GKE kubernetes configuration (make sure you use the same project name and zone as the deployed cluster):</p>
+<div class="highlight"><pre><span></span><code>$ gcloud container clusters get-credentials fuseml --zone europe-central2-a --project fuseml
+Fetching cluster endpoint and auth data.
+kubeconfig entry generated <span class="k">for</span> fuseml.
+</code></pre></div>
+<p>With the kubernetes configuration properly configured, you should now be able to access the cluster:</p>
+<div class="highlight"><pre><span></span><code>$ kubectl get node
+NAME                              STATUS   ROLES    AGE     VERSION
+gke-fuseml-fuseml-7e908893-69wp   Ready    &lt;none&gt;   2m15s   v1.20.10-gke.1600
+gke-fuseml-fuseml-7e908893-cmjr   Ready    &lt;none&gt;   2m17s   v1.20.10-gke.1600
+</code></pre></div>
+<h3 id="fuseml">FuseML</h3>
+<p>With the Kubernetes cluster set up, FuseML can be installed as covered in the <a href="../../quickstart/">Quick Start</a> section:</p>
+<div class="highlight"><pre><span></span><code>$ fuseml-installer install
+
+🚢 FuseML installing...
+
+Configuration...
+  🧭  system_domain: 
+  🧭  extensions_repository: https://raw.githubusercontent.com/fuseml/extensions/main/installer/
+  🧭  force_reinstall: <span class="nb">false</span>
+
+🚢 Deploying Istio.....
+✔️  Istio deployed
+.....................................
+✔️  Created system_domain: <span class="m">34</span>.118.93.249.nip.io
+
+🚢 Deploying Workloads...
+✔️  Workloads deployed
+
+🚢 Deploying Gitea..............................................................
+✔️  Gitea deployed <span class="o">(</span>http://gitea.34.118.93.249.nip.io<span class="o">)</span>.
+
+🚢 Deploying Registry.............................
+✔️  Registry deployed
+
+🚢 Deploying Tekton.........................................................................................
+✔️  Tekton deployed <span class="o">(</span>http://tekton.34.118.93.249.nip.io<span class="o">)</span>.
+
+🚢 Deploying Core.....................
+✔️  FuseML core component deployed <span class="o">(</span>http://fuseml-core.34.118.93.249.nip.io<span class="o">)</span>.
+
+🚢 Downloading <span class="nb">command</span> line client...
+🚢 FuseML <span class="nb">command</span> line client saved as /home/snica/work/src/aiml/fuseml/fuseml.
+Copy it to the location within your PATH <span class="o">(</span>e.g. /usr/local/bin<span class="o">)</span>.
+
+🚢 To use the FuseML CLI, you must point it to the FuseML server URL, e.g.:
+
+    <span class="nb">export</span> <span class="nv">FUSEML_SERVER_URL</span><span class="o">=</span>http://fuseml-core.34.118.93.249.nip.io
+
+✔️  FuseML installed.
+System domain: <span class="m">34</span>.118.93.249.nip.io
+</code></pre></div>
+<p>Follow the instructions printed by the installer to copy the CLI binary and set the <code>FUSEML_SERVER_URL</code> environment variable to point to the FuseML installation. This is required to interact with the FuseML instance later through the FuseML CLI:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># alternatively, if you don&#39;t have sudo privileges and your PATH is set</span>
+<span class="c1"># to include the ~/bin location, you can run: cp fuseml ~/bin</span>
+$ sudo cp fuseml /usr/local/bin
+$ <span class="nb">export</span> <span class="nv">FUSEML_SERVER_URL</span><span class="o">=</span>http://fuseml-core.34.118.93.249.nip.io
+</code></pre></div>
+<p>Also take note of the URLs printed by the installer for the Gitea and Tekton built-in components. You can access these at any given time to get a detailed view of the underlying FuseML codesets and workflows, or to debug any problems that may appear.</p>
+<p>In addition to FuseML and its builtin components, we also need MLFlow, the OpenVINO Model Server operator and two other prediction serving platforms, KServe and Seldon Core, that we'll use to run performance benchmark and compare results. All these tools can be installed through the use of FuseML installer extensions:</p>
+<div class="highlight"><pre><span></span><code>$ fuseml-installer extensions --add mlflow,ovms,kserve,seldon-core
+
+🚢 FuseML handling the extensions...
+.
+🚢 Installing extension <span class="s1">&#39;mlflow&#39;</span>....
+✔️  mlflow accessible at http://mlflow.34.118.93.249.nip.io.
+✔️  minio accessible at http://minio.34.118.93.249.nip.io
+✔️  mlflow deployed.
+
+🚢 Registering extension <span class="s1">&#39;mlflow&#39;</span>...
+
+🚢 Installing extension <span class="s1">&#39;ovms&#39;</span>..................................
+✔️  ovms deployed.
+
+🚢 Registering extension <span class="s1">&#39;ovms&#39;</span>...
+
+🚢 Installing extension <span class="s1">&#39;knative&#39;</span>......................................................................................................................................................................
+✔️  knative deployed.
+
+🚢 Registering extension <span class="s1">&#39;knative&#39;</span>...
+
+🚢 Installing extension <span class="s1">&#39;cert-manager&#39;</span>...
+✔️  cert-manager deployed.
+
+🚢 Registering extension <span class="s1">&#39;cert-manager&#39;</span>...
+
+🚢 Installing extension <span class="s1">&#39;kserve&#39;</span>......................................
+✔️  kserve-web-app accessible at http://kserve-web-app.34.118.93.249.nip.io
+✔️  kserve deployed.
+
+🚢 Registering extension <span class="s1">&#39;kserve&#39;</span>...
+
+🚢 Installing extension <span class="s1">&#39;seldon-core&#39;</span>......
+✔️  seldon-core deployed.
+
+🚢 Registering extension <span class="s1">&#39;seldon-core&#39;</span>...
+</code></pre></div>
+<p>Some of the installed tools, like MLFlow and KServe, also feature dashboards that can be accessed to view detailed information about the ML artifacts and processes orchestrated by FuseML. Their URLs are also printed by the FuseML installer, as shown above.</p>
+<p>The following FuseML CLI command verifies that all the AI/ML tools required for this tutorial have been installed and registered with the FuseML Extension Registry:</p>
+<div class="highlight"><pre><span></span><code>$ fuseml extension list
++--------------+-----------------------+---------+------+-------------------------------+-------------------------------------------+----------------------------+
+<span class="p">|</span> ID           <span class="p">|</span> PRODUCT               <span class="p">|</span> VERSION <span class="p">|</span> ZONE <span class="p">|</span> SERVICES                      <span class="p">|</span> ENDPOINTS                                 <span class="p">|</span> CREDENTIALS                <span class="p">|</span>
++--------------+-----------------------+---------+------+-------------------------------+-------------------------------------------+----------------------------+
+<span class="p">|</span> cert-manager <span class="p">|</span> cert-manager          <span class="p">|</span> <span class="m">1</span>.5.4   <span class="p">|</span>      <span class="p">|</span>                               <span class="p">|</span>                                           <span class="p">|</span>                            <span class="p">|</span>
+<span class="p">|</span> knative      <span class="p">|</span> knative               <span class="p">|</span> <span class="m">1</span>.0.0   <span class="p">|</span>      <span class="p">|</span>                               <span class="p">|</span>                                           <span class="p">|</span>                            <span class="p">|</span>
+<span class="p">|</span> kserve       <span class="p">|</span> kserve                <span class="p">|</span> <span class="m">0</span>.7.0   <span class="p">|</span>      <span class="p">|</span> <span class="o">[</span> API <span class="o">]</span>                       <span class="p">|</span> <span class="o">[</span> API <span class="o">]</span>                                   <span class="p">|</span>                            <span class="p">|</span>
+<span class="p">|</span>              <span class="p">|</span>                       <span class="p">|</span>         <span class="p">|</span>      <span class="p">|</span> resource: kserve-api          <span class="p">|</span> internal: http://kubernetes.default.svc   <span class="p">|</span>                            <span class="p">|</span>
+<span class="p">|</span>              <span class="p">|</span>                       <span class="p">|</span>         <span class="p">|</span>      <span class="p">|</span> category: prediction-serving  <span class="p">|</span>                                           <span class="p">|</span>                            <span class="p">|</span>
+<span class="p">|</span>              <span class="p">|</span>                       <span class="p">|</span>         <span class="p">|</span>      <span class="p">|</span>                               <span class="p">|</span>                                           <span class="p">|</span>                            <span class="p">|</span>
+<span class="p">|</span>              <span class="p">|</span>                       <span class="p">|</span>         <span class="p">|</span>      <span class="p">|</span> <span class="o">[</span> UI <span class="o">]</span>                        <span class="p">|</span>                                           <span class="p">|</span>                            <span class="p">|</span>
+<span class="p">|</span>              <span class="p">|</span>                       <span class="p">|</span>         <span class="p">|</span>      <span class="p">|</span> resource: kserve-ui           <span class="p">|</span>                                           <span class="p">|</span>                            <span class="p">|</span>
+<span class="p">|</span>              <span class="p">|</span>                       <span class="p">|</span>         <span class="p">|</span>      <span class="p">|</span> category: UI                  <span class="p">|</span>                                           <span class="p">|</span>                            <span class="p">|</span>
+<span class="p">|</span>              <span class="p">|</span>                       <span class="p">|</span>         <span class="p">|</span>      <span class="p">|</span>                               <span class="p">|</span>                                           <span class="p">|</span>                            <span class="p">|</span>
+<span class="p">|</span>              <span class="p">|</span>                       <span class="p">|</span>         <span class="p">|</span>      <span class="p">|</span>                               <span class="p">|</span>                                           <span class="p">|</span>                            <span class="p">|</span>
+<span class="p">|</span> mlflow       <span class="p">|</span> mlflow                <span class="p">|</span> <span class="m">1</span>.20.2  <span class="p">|</span>      <span class="p">|</span> <span class="o">[</span> mlflow-tracking <span class="o">]</span>           <span class="p">|</span> <span class="o">[</span> mlflow-tracking <span class="o">]</span>                       <span class="p">|</span> <span class="o">[</span> mlflow-store <span class="o">]</span>           <span class="p">|</span>
+<span class="p">|</span>              <span class="p">|</span>                       <span class="p">|</span>         <span class="p">|</span>      <span class="p">|</span> resource: mlflow-tracking     <span class="p">|</span> internal: http://mlflow.mlflow            <span class="p">|</span> default-s3-account: global <span class="p">|</span>
+<span class="p">|</span>              <span class="p">|</span>                       <span class="p">|</span>         <span class="p">|</span>      <span class="p">|</span> category: experiment-tracking <span class="p">|</span>                                           <span class="p">|</span>                            <span class="p">|</span>
+<span class="p">|</span>              <span class="p">|</span>                       <span class="p">|</span>         <span class="p">|</span>      <span class="p">|</span>                               <span class="p">|</span> <span class="o">[</span> mlflow-store <span class="o">]</span>                          <span class="p">|</span>                            <span class="p">|</span>
+<span class="p">|</span>              <span class="p">|</span>                       <span class="p">|</span>         <span class="p">|</span>      <span class="p">|</span> <span class="o">[</span> mlflow-store <span class="o">]</span>              <span class="p">|</span> internal: http://mlflow-minio.mlflow:9000 <span class="p">|</span>                            <span class="p">|</span>
+<span class="p">|</span>              <span class="p">|</span>                       <span class="p">|</span>         <span class="p">|</span>      <span class="p">|</span> resource: s3                  <span class="p">|</span>                                           <span class="p">|</span>                            <span class="p">|</span>
+<span class="p">|</span>              <span class="p">|</span>                       <span class="p">|</span>         <span class="p">|</span>      <span class="p">|</span> category: model-store         <span class="p">|</span>                                           <span class="p">|</span>                            <span class="p">|</span>
+<span class="p">|</span>              <span class="p">|</span>                       <span class="p">|</span>         <span class="p">|</span>      <span class="p">|</span>                               <span class="p">|</span>                                           <span class="p">|</span>                            <span class="p">|</span>
+<span class="p">|</span>              <span class="p">|</span>                       <span class="p">|</span>         <span class="p">|</span>      <span class="p">|</span>                               <span class="p">|</span>                                           <span class="p">|</span>                            <span class="p">|</span>
+<span class="p">|</span> ovms         <span class="p">|</span> openvino-model-server <span class="p">|</span> <span class="m">0</span>.1.0   <span class="p">|</span>      <span class="p">|</span> <span class="o">[</span> API <span class="o">]</span>                       <span class="p">|</span> <span class="o">[</span> API <span class="o">]</span>                                   <span class="p">|</span>                            <span class="p">|</span>
+<span class="p">|</span>              <span class="p">|</span>                       <span class="p">|</span>         <span class="p">|</span>      <span class="p">|</span> resource: ovms-operator       <span class="p">|</span> internal: http://kubernetes.default.svc   <span class="p">|</span>                            <span class="p">|</span>
+<span class="p">|</span>              <span class="p">|</span>                       <span class="p">|</span>         <span class="p">|</span>      <span class="p">|</span> category: prediction-serving  <span class="p">|</span>                                           <span class="p">|</span>                            <span class="p">|</span>
+<span class="p">|</span>              <span class="p">|</span>                       <span class="p">|</span>         <span class="p">|</span>      <span class="p">|</span>                               <span class="p">|</span>                                           <span class="p">|</span>                            <span class="p">|</span>
+<span class="p">|</span>              <span class="p">|</span>                       <span class="p">|</span>         <span class="p">|</span>      <span class="p">|</span>                               <span class="p">|</span>                                           <span class="p">|</span>                            <span class="p">|</span>
+<span class="p">|</span> seldon-core  <span class="p">|</span> seldon-core           <span class="p">|</span> <span class="m">1</span>.11.0  <span class="p">|</span>      <span class="p">|</span> <span class="o">[</span> API <span class="o">]</span>                       <span class="p">|</span> <span class="o">[</span> API <span class="o">]</span>                                   <span class="p">|</span>                            <span class="p">|</span>
+<span class="p">|</span>              <span class="p">|</span>                       <span class="p">|</span>         <span class="p">|</span>      <span class="p">|</span> resource: seldon-core-api     <span class="p">|</span> internal: http://kubernetes.default.svc   <span class="p">|</span>                            <span class="p">|</span>
+<span class="p">|</span>              <span class="p">|</span>                       <span class="p">|</span>         <span class="p">|</span>      <span class="p">|</span> category: prediction-serving  <span class="p">|</span>                                           <span class="p">|</span>                            <span class="p">|</span>
+<span class="p">|</span>              <span class="p">|</span>                       <span class="p">|</span>         <span class="p">|</span>      <span class="p">|</span>                               <span class="p">|</span>                                           <span class="p">|</span>                            <span class="p">|</span>
+<span class="p">|</span>              <span class="p">|</span>                       <span class="p">|</span>         <span class="p">|</span>      <span class="p">|</span>                               <span class="p">|</span>                                           <span class="p">|</span>                            <span class="p">|</span>
++--------------+-----------------------+---------+------+-------------------------------+-------------------------------------------+----------------------------+
+</code></pre></div>
+<h2 id="training-serving-the-model">Training &amp; Serving the Model</h2>
+<p>We will be training a
+<a href="https://developers.google.com/machine-learning/glossary/#convolutional_neural_network">Convolutional Neural Network (CNN)</a>
+to classify <a href="https://www.cs.toronto.edu/~kriz/cifar.html">CIFAR-10 images</a> using the Keras Sequential API.
+The complete original code for the model training is available <a href="https://github.com/fuseml/examples/tree/main/codesets/mlflow/keras">here</a>. The code we're using in this tutorial is a modified version of the original: the model architecture has been slightly changed, to make the model converge faster and to yield better results, based on recommendations from <a href="https://machinelearningmastery.com/how-to-develop-a-cnn-from-scratch-for-cifar-10-photo-classification/">this Machine Learning Mastery article</a>.</p>
+<h3 id="training-serving-using-fuseml">Training &amp; Serving using FuseML</h3>
+<p>The following steps describe how to use FuseML to train the Keras CIFAR-10 model and serve it.</p>
+<ol>
+<li>
+<p>Clone the <code>fuseml/examples</code> repository and register the <code>keras</code> example code as a FuseML codeset:</p>
+<div class="highlight"><pre><span></span><code>$ git clone --depth <span class="m">1</span> https://github.com/fuseml/examples.git
+
+$ fuseml codeset register -n keras -p cifar10 examples/codesets/mlflow/keras
+<span class="m">2021</span>/11/16 <span class="m">19</span>:06:47 Pushing the code to the git repository...
+Codeset http://gitea.34.118.93.249.nip.io/cifar10/keras.git successfully registered
+Saving new username into config file as current username.
+</code></pre></div>
+<p>The codeset and its contents can be explored in the Gitea dashboard by following the printed URL, as shown below.</p>
+<p><figure markdown> 
+  <a data-featherlight="../img/openvino-mlflow/gitea.png" href="#"><img alt="Gitea Codeset" src="../img/openvino-mlflow/gitea.png" />
+  <figcaption>Codeset Details in the Gitea Dashboard</figcaption>
+</figure></a></p>
+<p>The Keras codeset includes a <code>MLproject</code> file. This is an MLFlow convention used to specify software dependencies, entrypoints and input parameters for the code present in the codeset. This vital piece of information is leveraged by the FuseML workflow that will be configured at the next step to determine automatically which software packages it needs to install and how to run the code in the codeset to train the Keras model.</p>
+</li>
+<li>
+<p>Create a FuseML workflow:</p>
+<p>Before configuring the FuseML workflow used in this tutorial, take some time to explore it by looking at its definition in the <code>examples/workflows/mlflow-multi-e2e.yaml</code> file. Observe the following:</p>
+<ul>
+<li>the workflow has 3 different predictor steps, each one targeting a different serving solution (OVMS, KServe and Seldon Core). They all take in the same model artifact that comes out of the training step.</li>
+<li>the <code>app_name</code> input parameter is explicitly set for all predictor steps to ensure reproducible application names for the prediction services deployed by the workflow. These are also reflected in the URLs where prediction services accept inference requests.</li>
+<li>the OVMS predictor needs the model to be converted to the Intel IR (Intermediate Representation) format. This is facilitated by a converter step.</li>
+<li>there are explicit CPU resource requests specified for the training and OVMS serving steps. They are meant to speed up the training process and to give the OVMS predictor access to an entire vCPU. Feel free to edit the workflow and change the resource requirements to fit your scenario. Note that the Kubernetes cluster needs to have these resources available, otherwise the workflow will fail because the step containers cannot be scheduled.</li>
+<li>the default values for the workflow input parameters specify training the model for 30 epochs. This will take approximately 40 minutes and yield an accuracy close to 0.8. You can modify these parameters to experiment with different values.</li>
+</ul>
+<p>To configure the FuseML workflow:</p>
+<div class="highlight"><pre><span></span><code>$ fuseml workflow create examples/workflows/mlflow-multi-e2e.yaml
+Workflow <span class="s2">&quot;mlflow-multi-e2e&quot;</span> successfully created
+</code></pre></div>
+</li>
+<li>
+<p>Assign the <code>mlflow-multi-e2e</code> workflow to the <code>keras</code> codeset:</p>
+<div class="highlight"><pre><span></span><code>$ fuseml workflow assign --codeset-name keras --codeset-project cifar10 --name mlflow-multi-e2e
+Workflow <span class="s2">&quot;mlflow-multi-e2e&quot;</span> assigned to codeset <span class="s2">&quot;cifar10/keras&quot;</span>
+</code></pre></div>
+</li>
+<li>
+<p>Wait for the workflow run to finish running:</p>
+<p>By assigning the workflow to the codeset, a workflow run will be created. You can check the status
+of the workflow run by running the following command:</p>
+<div class="highlight"><pre><span></span><code>$ fuseml workflow list-runs
++----------------------------+------------------+----------------+------------+------------------+
+<span class="p">|</span> NAME                       <span class="p">|</span> WORKFLOW         <span class="p">|</span> STARTED        <span class="p">|</span> DURATION   <span class="p">|</span> STATUS           <span class="p">|</span>
++----------------------------+------------------+----------------+------------+------------------+
+<span class="p">|</span> fuseml-cifar10-keras-lrshv <span class="p">|</span> mlflow-multi-e2e <span class="p">|</span> <span class="m">19</span> seconds ago <span class="p">|</span> ---        <span class="p">|</span> Running          <span class="p">|</span>
++----------------------------+------------------+----------------+------------+------------------+
+</code></pre></div>
+<p>You can also see a detailed view of the workflow run through the Tekton dashboard. The URL where
+the dashboard can be accessed was printed during the FuseML installation and has the form:
+<code>http://tekton.&lt;FUSEML_DOMAIN&gt;</code>, where <code>FUSEML_DOMAIN</code> is the common <em>.nip.io</em> domain name used for
+all services. In our case, this is <code>http://tekton.34.118.93.249.nip.io</code>.</p>
+<p><figure markdown> 
+  <a data-featherlight="../img/openvino-mlflow/tekton-wip.png" href="#"><img alt="Workflow WIP In Tekton" src="../img/openvino-mlflow/tekton-wip.png" />
+  <figcaption>View of the Workflow in Progress in the Tekton Dashboard</figcaption>
+</figure></a></p>
+<p>Aside from the long training time, note that since this is the first time the workflow is running, it will build a docker image including the software dependencies for training the model which may take a while. However, consecutive runs will skip that step as long as the dependencies are kept the same.</p>
+<p><figure markdown> 
+  <a data-featherlight="../img/openvino-mlflow/tekton-done.png" href="#"><img alt="Workflow Done In Tekton" src="../img/openvino-mlflow/tekton-done.png" />
+  <figcaption>View of the Completed Workflow in the Tekton Dashboard</figcaption>
+</figure></a></p>
+</li>
+</ol>
+<h3 id="validating-the-deployed-model">Validating the Deployed Model</h3>
+<p>Before querying the served model for predictions, let's take a look at MLflow for detailed information about
+the model, such as its accuracy, loss, training parameters, etc.</p>
+<p>The MLflow dashboard is available at the <code>http://mlflow.&lt;FUSEML_DOMAIN&gt;</code> URL printed during installation, more specifically at <code>http://mlflow.34.118.93.249.nip.io</code> in our particular case. The <code>keras-cifar10</code> MLFlow experiment contains all tracking information about the model being trained by our workflow. </p>
+<p>For example:</p>
+<figure>
+<p><a data-featherlight="../img/openvino-mlflow/mlflow1.png" href="#"><img alt="MLflow Time Graph" src="../img/openvino-mlflow/mlflow1.png" />
+  </a></p>
+<figcaption>Model Training Metrics Plotted Over Time</figcaption>
+</figure>
+<figure>
+<p><a data-featherlight="../img/openvino-mlflow/mlflow2.png" href="#"><img alt="MLflow Epochs Graph" src="../img/openvino-mlflow/mlflow2.png" />
+  </a></p>
+<figcaption>Model Training Metrics Plotted Over Number of Epochs</figcaption>
+</figure>
+<p>Note the accuracy (about 80%) and the training duration (about 40 minutes) for 30 epochs. Also note that the model is converging nicely, indicated by how the two curves, the training and evaluation accuracy, are almost fully aligned.</p>
+<p>With the successful execution of the workflow, three new FuseML applications should have been created, one for each available prediction serving platform. Listing the FuseML applications will show the URLs where the prediction servers can receive inference requests:</p>
+<div class="highlight"><pre><span></span><code>$ fuseml application list
++----------------+-----------+---------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+------------------+
+<span class="p">|</span> NAME           <span class="p">|</span> TYPE      <span class="p">|</span> DESCRIPTION                                                                                             <span class="p">|</span> URL                                                                                                                       <span class="p">|</span> WORKFLOW         <span class="p">|</span>
++----------------+-----------+---------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+------------------+
+<span class="p">|</span> cifar10-kserve <span class="p">|</span> predictor <span class="p">|</span> KServe service deployed <span class="k">for</span> s3://mlflow-artifacts/1/7b1549fc8c3a45189564c521f9313a66/artifacts/model    <span class="p">|</span> http://cifar10-kserve.fuseml-workloads.34.118.93.249.nip.io/v1/models/cifar10-kserve:predict                              <span class="p">|</span> mlflow-multi-e2e <span class="p">|</span>
+<span class="p">|</span> cifar10-ovms   <span class="p">|</span> predictor <span class="p">|</span> OVMS service deployed <span class="k">for</span> s3://mlflow-artifacts/1/7b1549fc8c3a45189564c521f9313a66/artifacts/model/ovms <span class="p">|</span> http://cifar10-ovms.ovms.34.118.93.249.nip.io/v1/models/default:predict                                                   <span class="p">|</span> mlflow-multi-e2e <span class="p">|</span>
+<span class="p">|</span> cifar10-seldon <span class="p">|</span> predictor <span class="p">|</span> Application generated by mlflow-multi-e2e workflow                                                      <span class="p">|</span> http://cifar10-seldon.seldon.34.118.93.249.nip.io/seldon/fuseml-workloads/cifar10-seldon/v1/models/cifar10-seldon:predict <span class="p">|</span> mlflow-multi-e2e <span class="p">|</span>
++----------------+-----------+---------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+------------------+
+</code></pre></div>
+<p>The list of FuseML applications include a URL to query the model for predictions. In addition to the URLs, since our workflow includes a KServe prediction service, you can also check the deployed models through the KServe
+dashboard (<code>http://kserve-web-app.&lt;FUSEML_DOMAIN&gt;/</code>, in our case <code>http://kserve-web-app.34.118.93.249.nip.io/</code>) which also includes more detailed information, such as the status of the deployment, logs, etc.</p>
+<p>For example:</p>
+<figure>
+<p><a data-featherlight="../img/openvino-mlflow/kserve.png" href="#"><img alt="KSserve Dashboard" src="../img/openvino-mlflow/kserve.png" />
+  </a></p>
+<figcaption>KFServing Dashboard</figcaption>
+</figure>
+<p>To validate the model, we need to send one or more requests containing images to the prediction service and check if the model classifies them correctly. Some sample images are included in <code>examples/prediction/images/cifar10</code> folder for this purpose. To simplify the process of converting them in the right format and constructing the prediction requests, we'll use some helper scripts available in the <code>examples/prediction/images</code> folder. First, we need to install some requirements:</p>
+<div class="highlight"><pre><span></span><code>$ cd examples/prediction/images
+$ python3 -m venv .venv
+$ source .venv/bin/activate
+$ pip install -r requirements.txt
+</code></pre></div>
+<p>Before we can run the actual prediction requests, we need to convert the images in the sample set to a numpy dataset format:</p>
+<div class="highlight"><pre><span></span><code>$ python img_to_npy.py --image_dir cifar10 --label_file cifar10/images.txt --input_height 32 --input_width 32 --resize --output_file dataset.npy --output_label_file labels.npy
+
+-------------------------------------
+3.6.13 (default, Mar 10 2021, 18:30:35) [GCC]
+-------------------------------------
+ Command line options:
+--image_dir           :  .
+--label_file          :  images.txt
+--classes             :  1000
+--input_height        :  32
+--input_width         :  32
+--input_chans         :  3
+--resize              :  True
+--normalize           :  False
+--one_hot             :  False
+--compress            :  False
+--output_file         :  dataset.npy
+--output_label_file   :  labels.npy
+-------------------------------------
+ x shape: (10, 32, 32, 3)
+ x data type: uint8
+ y shape: (10,)
+ y data type: uint16
+ Data saved to dataset.npy
+ Labels saved to labels.npy
+</code></pre></div>
+<p>The numpy datasets are required to run prediction queries with the OpenVINO Model Server client script. We'll do that separately for each of the deployed prediction servers:</p>
+<ul>
+<li>
+<p>for OVMS (note that we need to use a batch size of 1, due to a <a href="https://github.com/openvinotoolkit/openvino/issues/8607">current limitation in the OVMS operator 0.1 version</a>):</p>
+<div class="highlight"><pre><span></span><code>$ python rest_serving_client.py --rest_url http://cifar10-ovms.ovms.34.118.93.249.nip.io --model_name default --images_numpy_path dataset.npy --labels_numpy_path labels.npy --transpose_input False  --batchsize 1 --classes classes.json
+Image data range: 0 : 255
+Start processing:
+  Model name: default
+  Iterations: 10
+  Images numpy path: dataset.npy
+  Images in shape: (10, 32, 32, 3)
+
+output shape: (1, 10)
+Iteration 1; Processing time: 166.36 ms; speed 6.01 fps
+imagenet top results in a single batch:
+  0 Airplane 0 ; Correct match.
+output shape: (1, 10)
+Iteration 2; Processing time: 70.00 ms; speed 14.28 fps
+imagenet top results in a single batch:
+  0 Automobile 1 ; Correct match.
+output shape: (1, 10)
+Iteration 3; Processing time: 51.41 ms; speed 19.45 fps
+imagenet top results in a single batch:
+  0 Horse 7 ; Incorrect match. Should be Bird 2
+output shape: (1, 10)
+Iteration 4; Processing time: 53.72 ms; speed 18.62 fps
+imagenet top results in a single batch:
+  0 Cat 3 ; Correct match.
+output shape: (1, 10)
+Iteration 5; Processing time: 59.02 ms; speed 16.94 fps
+imagenet top results in a single batch:
+  0 Horse 7 ; Incorrect match. Should be Deer 4
+output shape: (1, 10)
+Iteration 6; Processing time: 59.73 ms; speed 16.74 fps
+imagenet top results in a single batch:
+  0 Truck 9 ; Incorrect match. Should be Dog 5
+output shape: (1, 10)
+Iteration 7; Processing time: 51.85 ms; speed 19.29 fps
+imagenet top results in a single batch:
+  0 Frog 6 ; Correct match.
+output shape: (1, 10)
+Iteration 8; Processing time: 64.12 ms; speed 15.59 fps
+imagenet top results in a single batch:
+  0 Horse 7 ; Correct match.
+output shape: (1, 10)
+Iteration 9; Processing time: 61.07 ms; speed 16.37 fps
+imagenet top results in a single batch:
+  0 Ship 8 ; Correct match.
+output shape: (1, 10)
+Iteration 10; Processing time: 51.91 ms; speed 19.27 fps
+imagenet top results in a single batch:
+  0 Truck 9 ; Correct match.
+
+processing time for all iterations
+average time: 68.50 ms; average speed: 14.60 fps
+median time: 59.00 ms; median speed: 16.95 fps
+max time: 166.00 ms; min speed: 6.02 fps
+min time: 51.00 ms; max speed: 19.61 fps
+time percentile 90: 79.60 ms; speed percentile 90: 12.56 fps
+time percentile 50: 59.00 ms; speed percentile 50: 16.95 fps
+time standard deviation: 33.05
+time variance: 1092.45
+Classification accuracy: 70.00
+</code></pre></div>
+</li>
+<li>
+<p>for KServe:</p>
+<div class="highlight"><pre><span></span><code>$ python rest_serving_client.py --rest_url http://cifar10-kserve.fuseml-workloads.34.118.93.249.nip.io --model_name cifar10-kserve --images_numpy_path dataset.npy --labels_numpy_path labels.npy --transpose_input False  --batchsize 10 --classes classes.json
+Image data range: 0 : 255
+Start processing:
+  Model name: cifar10-kserve
+  Iterations: 1
+  Images numpy path: dataset.npy
+  Images in shape: (10, 32, 32, 3)
+
+output shape: (10, 10)
+Iteration 1; Processing time: 411.55 ms; speed 24.30 fps
+imagenet top results in a single batch:
+  0 Airplane 0 ; Correct match.
+  1 Automobile 1 ; Correct match.
+  2 Horse 7 ; Incorrect match. Should be Bird 2
+  3 Cat 3 ; Correct match.
+  4 Horse 7 ; Incorrect match. Should be Deer 4
+  5 Truck 9 ; Incorrect match. Should be Dog 5
+  6 Frog 6 ; Correct match.
+  7 Horse 7 ; Correct match.
+  8 Ship 8 ; Correct match.
+  9 Truck 9 ; Correct match.
+
+processing time for all iterations
+average time: 411.00 ms; average speed: 24.33 fps
+median time: 411.00 ms; median speed: 24.33 fps
+max time: 411.00 ms; min speed: 24.33 fps
+min time: 411.00 ms; max speed: 24.33 fps
+time percentile 90: 411.00 ms; speed percentile 90: 24.33 fps
+time percentile 50: 411.00 ms; speed percentile 50: 24.33 fps
+time standard deviation: 0.00
+time variance: 0.00
+Classification accuracy: 70.00
+</code></pre></div>
+</li>
+<li>
+<p>finally, for Seldon Core:</p>
+<div class="highlight"><pre><span></span><code>$ python rest_serving_client.py --rest_url http://cifar10-seldon.seldon.34.118.93.249.nip.io/seldon/fuseml-workloads/cifar10-seldon --model_name cifar10-seldon --images_numpy_path dataset.npy --labels_numpy_path labels.npy --transpose_input False  --batchsize 10 --classes classes.json
+Image data range: 0 : 255
+Start processing:
+  Model name: cifar10-seldon
+  Iterations: 1
+  Images numpy path: dataset.npy
+  Images in shape: (10, 32, 32, 3)
+
+output shape: (10, 10)
+Iteration 1; Processing time: 424.69 ms; speed 23.55 fps
+imagenet top results in a single batch:
+  0 Airplane 0 ; Correct match.
+  1 Automobile 1 ; Correct match.
+  2 Horse 7 ; Incorrect match. Should be Bird 2
+  3 Cat 3 ; Correct match.
+  4 Horse 7 ; Incorrect match. Should be Deer 4
+  5 Truck 9 ; Incorrect match. Should be Dog 5
+  6 Frog 6 ; Correct match.
+  7 Horse 7 ; Correct match.
+  8 Ship 8 ; Correct match.
+  9 Truck 9 ; Correct match.
+
+processing time for all iterations
+average time: 424.00 ms; average speed: 23.58 fps
+median time: 424.00 ms; median speed: 23.58 fps
+max time: 424.00 ms; min speed: 23.58 fps
+min time: 424.00 ms; max speed: 23.58 fps
+time percentile 90: 424.00 ms; speed percentile 90: 23.58 fps
+time percentile 50: 424.00 ms; speed percentile 50: 23.58 fps
+time standard deviation: 0.00
+time variance: 0.00
+Classification accuracy: 70.00
+</code></pre></div>
+</li>
+</ul>
+<h3 id="benchmarking-the-inference-services">Benchmarking the Inference Services</h3>
+<p>To be able to compare the performance of the different model serving tools, we can benchmark the inference services.</p>
+<p>Run the following command to create a Job workload that will benchmark the OVMS inference service:</p>
+<div class="highlight"><pre><span></span><code>$ kubectl apply -f cifar10/perf.yaml
+job.batch/load-test created
+configmap/load-test-cfg created
+</code></pre></div>
+<p>Wait for the Job to complete and check the logs for the results:</p>
+<div class="highlight"><pre><span></span><code>$ kubectl <span class="nb">wait</span> --for<span class="o">=</span><span class="nv">condition</span><span class="o">=</span><span class="nb">complete</span> --timeout 120s job -l <span class="nv">app</span><span class="o">=</span>load-test <span class="o">&amp;&amp;</span> kubectl logs -l <span class="nv">app</span><span class="o">=</span>load-test
+job.batch/load-test condition met
+Requests      <span class="o">[</span>total, rate, throughput<span class="o">]</span>         <span class="m">3000</span>, <span class="m">50</span>.02, <span class="m">50</span>.01
+Duration      <span class="o">[</span>total, attack, wait<span class="o">]</span>             <span class="m">59</span>.982s, <span class="m">59</span>.98s, <span class="m">2</span>.471ms
+Latencies     <span class="o">[</span>min, mean, <span class="m">50</span>, <span class="m">90</span>, <span class="m">95</span>, <span class="m">99</span>, max<span class="o">]</span>  <span class="m">1</span>.89ms, <span class="m">2</span>.178ms, <span class="m">2</span>.093ms, <span class="m">2</span>.343ms, <span class="m">2</span>.525ms, <span class="m">3</span>.294ms, <span class="m">11</span>.482ms
+Bytes In      <span class="o">[</span>total, mean<span class="o">]</span>                     <span class="m">459000</span>, <span class="m">153</span>.00
+Bytes Out     <span class="o">[</span>total, mean<span class="o">]</span>                     <span class="m">340392000</span>, <span class="m">113464</span>.00
+Success       <span class="o">[</span>ratio<span class="o">]</span>                           <span class="m">100</span>.00%
+Status Codes  <span class="o">[</span>code:count<span class="o">]</span>                      <span class="m">200</span>:3000  
+Error Set:
+</code></pre></div>
+<p>To run the same load test against the KServe prediction service, we need to manually edit the <code>cifar10/perf.yaml</code> file and replace the OVMS URL with the KServe URL documented in the enclosed comments, e.g.:</p>
+<div class="highlight"><pre><span></span><code><span class="nn">...</span>
+<span class="nt">data</span><span class="p">:</span>
+  <span class="c1"># http://ovms-cifar10-ovms.fuseml-workloads:8081/v1/models/default:predict</span>
+  <span class="c1"># http://cifar10-kserve-predictor-default.fuseml-workloads/v1/models/cifar10-kserve:predict</span>
+  <span class="c1"># http://cifar10-seldon-predictor.fuseml-workloads:8000/v1/models/cifar10-seldon:predict</span>
+  <span class="nt">cfg</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+    <span class="no">POST http://cifar10-kserve-predictor-default.fuseml-workloads/v1/models/cifar10-kserve:predict</span>
+    <span class="no">@/var/vegeta/payload</span>
+<span class="nn">...</span>
+</code></pre></div>
+<p>Then, clean up the previous job and run it again:</p>
+<div class="highlight"><pre><span></span><code>$ kubectl delete job -l <span class="nv">app</span><span class="o">=</span>load-test
+job.batch <span class="s2">&quot;load-test&quot;</span> deleted
+$ kubectl delete cm load-test-cfg
+configmap <span class="s2">&quot;load-test-cfg&quot;</span> deleted
+$ kubectl apply -f cifar10/perf.yaml 
+job.batch/load-test created
+configmap/load-test-cfg configured
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$ kubectl <span class="nb">wait</span> --for<span class="o">=</span><span class="nv">condition</span><span class="o">=</span><span class="nb">complete</span> --timeout 120s job -l <span class="nv">app</span><span class="o">=</span>load-test <span class="o">&amp;&amp;</span> kubectl logs -l <span class="nv">app</span><span class="o">=</span>load-test
+job.batch/load-test condition met
+Requests      <span class="o">[</span>total, rate, throughput<span class="o">]</span>         <span class="m">3000</span>, <span class="m">50</span>.02, <span class="m">50</span>.01
+Duration      <span class="o">[</span>total, attack, wait<span class="o">]</span>             <span class="m">59</span>.984s, <span class="m">59</span>.98s, <span class="m">3</span>.826ms
+Latencies     <span class="o">[</span>min, mean, <span class="m">50</span>, <span class="m">90</span>, <span class="m">95</span>, <span class="m">99</span>, max<span class="o">]</span>  <span class="m">3</span>.359ms, <span class="m">4</span>.192ms, <span class="m">4</span>.067ms, <span class="m">4</span>.685ms, <span class="m">5</span>.023ms, <span class="m">6</span>.854ms, <span class="m">27</span>.131ms
+Bytes In      <span class="o">[</span>total, mean<span class="o">]</span>                     <span class="m">450000</span>, <span class="m">150</span>.00
+Bytes Out     <span class="o">[</span>total, mean<span class="o">]</span>                     <span class="m">340392000</span>, <span class="m">113464</span>.00
+Success       <span class="o">[</span>ratio<span class="o">]</span>                           <span class="m">100</span>.00%
+Status Codes  <span class="o">[</span>code:count<span class="o">]</span>                      <span class="m">200</span>:3000  
+Error Set:
+</code></pre></div>
+<p>Repeat the process to run the load test against the Seldon Core prediction service:</p>
+<div class="highlight"><pre><span></span><code>$ kubectl delete job -l <span class="nv">app</span><span class="o">=</span>load-test
+job.batch <span class="s2">&quot;load-test&quot;</span> deleted
+$ kubectl delete cm load-test-cfg
+configmap <span class="s2">&quot;load-test-cfg&quot;</span> deleted
+$ kubectl apply -f cifar10/perf.yaml 
+job.batch/load-test created
+configmap/load-test-cfg configured
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$ kubectl <span class="nb">wait</span> --for<span class="o">=</span><span class="nv">condition</span><span class="o">=</span><span class="nb">complete</span> --timeout 120s job -l <span class="nv">app</span><span class="o">=</span>load-test <span class="o">&amp;&amp;</span> kubectl logs -l <span class="nv">app</span><span class="o">=</span>load-test
+job.batch/load-test condition met
+Requests      <span class="o">[</span>total, rate, throughput<span class="o">]</span>         <span class="m">3000</span>, <span class="m">50</span>.02, <span class="m">50</span>.01
+Duration      <span class="o">[</span>total, attack, wait<span class="o">]</span>             <span class="m">59</span>.985s, <span class="m">59</span>.98s, <span class="m">5</span>.465ms
+Latencies     <span class="o">[</span>min, mean, <span class="m">50</span>, <span class="m">90</span>, <span class="m">95</span>, <span class="m">99</span>, max<span class="o">]</span>  <span class="m">4</span>.367ms, <span class="m">5</span>.843ms, <span class="m">5</span>.31ms, <span class="m">8</span>.374ms, <span class="m">9</span>.25ms, <span class="m">10</span>.835ms, <span class="m">18</span>.457ms
+Bytes In      <span class="o">[</span>total, mean<span class="o">]</span>                     <span class="m">450000</span>, <span class="m">150</span>.00
+Bytes Out     <span class="o">[</span>total, mean<span class="o">]</span>                     <span class="m">340392000</span>, <span class="m">113464</span>.00
+Success       <span class="o">[</span>ratio<span class="o">]</span>                           <span class="m">100</span>.00%
+Status Codes  <span class="o">[</span>code:count<span class="o">]</span>                      <span class="m">200</span>:3000  
+Error Set:
+</code></pre></div>
+<p>The results show that the OVMS prediction service yields better results with regards to latency, when compared to the other two. This is largely due to the fact that the OVMS prediction service is running an optimized version of the model and it's leveraging Intel CPU acceleration features.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>This tutorial demonstrates how FuseML can be used to train and serve the same model on different prediction platforms for the purpose of benchmarking. Benchmark results can be used to greatly reduce costs related to running models in production. In addition, the particular benchmarking results covered in the tutorial show that serving an optimized model using a prediction service such as the OpenVINO Model Server can yield better results, even if we're only using CPUs to run predictions.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../kserve-triton-gpu/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Training &amp; Serving ML Models on GPU with NVIDIA Triton" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Training & Serving ML Models on GPU with NVIDIA Triton
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../openvino-extensions/" class="md-footer__link md-footer__link--next" aria-label="Next: FuseML Extension Development Use-Case - OpenVINO" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              FuseML Extension Development Use-Case - OpenVINO
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 FuseML Author(s)
+          </div>
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+        <script src="../../javascripts/extra.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js"></script>
+      
+    
+  </body>
+</html>

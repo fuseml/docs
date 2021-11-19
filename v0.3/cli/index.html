@@ -1,0 +1,903 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>CLI Reference - FuseML Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4cae4f">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="green" data-md-color-accent="cyan">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#fuseml-command-line-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="FuseML Documentation" class="md-header__button md-logo" aria-label="FuseML Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FuseML Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CLI Reference
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/fuseml/fuseml/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="FuseML Documentation" class="md-nav__button md-logo" aria-label="FuseML Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    FuseML Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/fuseml/fuseml/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        Quick Start
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Tutorials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tutorials" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/kserve-basic/" class="md-nav__link">
+        Logistic Regression with MLFlow & KServe
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/seldon-core/" class="md-nav__link">
+        Logistic Regression with MLFlow & Seldon-Core
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/kserve-triton-gpu/" class="md-nav__link">
+        Training & Serving ML Models on GPU with NVIDIA Triton
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/openvino-mlflow/" class="md-nav__link">
+        Benchmarking ML Models on Intel CPUs with Intel OpenVINO
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/openvino-extensions/" class="md-nav__link">
+        FuseML Extension Development Use-Case - OpenVINO
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        Architecture
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        API Reference
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          CLI Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        CLI Reference
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#codesets" class="md-nav__link">
+    Codesets
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extensions" class="md-nav__link">
+    Extensions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflows" class="md-nav__link">
+    Workflows
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#application" class="md-nav__link">
+    Application
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONTRIBUTING/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#codesets" class="md-nav__link">
+    Codesets
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extensions" class="md-nav__link">
+    Extensions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflows" class="md-nav__link">
+    Workflows
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#application" class="md-nav__link">
+    Application
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/fuseml/docs/edit/main/docs/cli.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="fuseml-command-line-reference">FuseML Command-Line Reference</h1>
+<p>Using the FuseML CLI is a frictionless experience. Let's deep dive into the various options you may use with it.
+Let's start looking at the global capabilities. Simply type:</p>
+<div class="highlight"><pre><span></span><code>fuseml
+</code></pre></div>
+<p>you should get a similar output</p>
+<div class="highlight"><pre><span></span><code>FuseML <span class="nb">command</span> line client
+
+Usage:
+  fuseml <span class="o">[</span>command<span class="o">]</span>
+
+Available Commands:
+  application application management
+  codeset     codeset management
+  extension   Extension management
+  <span class="nb">help</span>        Help about any <span class="nb">command</span>
+  project     Project management
+  runnable    runnable management
+  version     display version information
+  workflow    Workflow management
+
+Flags:
+  -h, --help          <span class="nb">help</span> <span class="k">for</span> fuseml
+      --timeout int   <span class="o">(</span>FUSEML_HTTP_TIMEOUT<span class="o">)</span> maximum number of seconds to <span class="nb">wait</span> <span class="k">for</span> response <span class="o">(</span>default <span class="m">30</span><span class="o">)</span>
+  -u, --url string    <span class="o">(</span>FUSEML_SERVER_URL<span class="o">)</span> URL where the FuseML service is running
+  -v, --verbose       <span class="o">(</span>FUSEML_VERBOSE<span class="o">)</span> print verbose information, such as HTTP request and response details
+
+Use <span class="s2">&quot;fuseml [command] --help&quot;</span> <span class="k">for</span> more information about a command.
+</code></pre></div>
+<p>Most CLI commands require you to supply the URL where the FuseML instance is running, either as a command line argument,
+or as the FUSEML_SERVER_URL environment variable. The URL is printed out by the installer during the installation process.
+If you missed it, you can retrieve it at any time with the following command:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">FUSEML_SERVER_URL</span><span class="o">=</span>http://<span class="k">$(</span>kubectl get VirtualService -n fuseml-core fuseml-core -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.spec.hosts[0]}&quot;</span><span class="k">)</span>
+</code></pre></div>
+<h2 id="codesets">Codesets</h2>
+<p>A FuseML Codeset represents a versioned collection of files - code files, scripts, configuration files, generally all the sources needed to implement, build and execute the machine learning logic. The codeset is the "link" between your local environment and the Git-a-like repository where you and your team are working. Use the CLI to publish your ML code to the remote FuseML orchestrator instance and later on assign it to compatible automation workflows.</p>
+<p>The codeset sub-command has the following capabilities:</p>
+<div class="highlight"><pre><span></span><code>&gt; fuseml codeset --help
+Perform operations on codesets
+
+Usage:
+  fuseml codeset <span class="o">[</span>command<span class="o">]</span>
+
+Available Commands:
+  delete      Delete codesets.
+  get         Get codesets.
+  list        List codesets.
+  register    Register codesets.
+  <span class="nb">set</span>         Set current codeset.
+
+Flags:
+  -h, --help   <span class="nb">help</span> <span class="k">for</span> codeset
+
+Global Flags:
+      --timeout int   <span class="o">(</span>FUSEML_HTTP_TIMEOUT<span class="o">)</span> maximum number of seconds to <span class="nb">wait</span> <span class="k">for</span> response <span class="o">(</span>default <span class="m">30</span><span class="o">)</span>
+  -u, --url string    <span class="o">(</span>FUSEML_SERVER_URL<span class="o">)</span> URL where the FuseML service is running
+  -v, --verbose       <span class="o">(</span>FUSEML_VERBOSE<span class="o">)</span> print verbose information, such as HTTP request and response details
+
+Use <span class="s2">&quot;fuseml codeset [command] --help&quot;</span> <span class="k">for</span> more information about a command.
+</code></pre></div>
+<h2 id="extensions">Extensions</h2>
+<p>The way FuseML integrates with 3rd party AI/ML tools is through extensions. External tools can be registered as
+FuseML extensions and then later on referenced in workflows. Extensions provide the means to manage how FuseML
+has access to external AI/ML tools, such as data stores, model stores and generic storage services, as well as
+prediction serving services and other specialized AI/ML services. Decoupling external tools from workflows also
+allows users to configure reusable workflows and thus avoid being locked into a particular AI/ML tool stack.</p>
+<p>3rd party tools that can be installed through the FuseML installer, such as MLFlow and KServe, are automatically
+registered as FuseML extensions. The FuseML CLI can be used to manage additional extensions, such as registering
+AI/ML tools that are not managed by FuseML as FuseML extensions.</p>
+<p>The extension sub-command has the following capabilities:</p>
+<div class="highlight"><pre><span></span><code>&gt; fuseml extension --help
+Perform operations on extensions
+
+Usage:
+  fuseml extension <span class="o">[</span>command<span class="o">]</span>
+
+Available Commands:
+  credentials Extension credentials management
+  delete      Deletes an extension
+  endpoint    Extension endpoint management
+  get         Get an extension
+  list        Lists one or more extensions
+  register    Registers a FuseML extension
+  service     Extension service management
+  update      Update the attributes of an existing FuseML extension
+
+Flags:
+  -h, --help   <span class="nb">help</span> <span class="k">for</span> extension
+
+Global Flags:
+      --timeout int   <span class="o">(</span>FUSEML_HTTP_TIMEOUT<span class="o">)</span> maximum number of seconds to <span class="nb">wait</span> <span class="k">for</span> response <span class="o">(</span>default <span class="m">30</span><span class="o">)</span>
+  -u, --url string    <span class="o">(</span>FUSEML_SERVER_URL<span class="o">)</span> URL where the FuseML service is running
+  -v, --verbose       <span class="o">(</span>FUSEML_VERBOSE<span class="o">)</span> print verbose information, such as HTTP request and response details
+
+Use <span class="s2">&quot;fuseml extension [command] --help&quot;</span> <span class="k">for</span> more information about a command.
+</code></pre></div>
+<p>There are essentially two ways to register extensions with the FuseML CLI: either by supplying a YAML file with
+the complete extension descriptor using <code>fuseml extension register -f &lt;descriptor-file&gt;</code>, or by building the extension
+piece by piece using the <code>fuseml extension register</code>, <code>fuseml extension service add</code>, <code>fuseml extension endpoint add</code>
+and <code>fuseml extension credentials add</code> commands and their command-line arguments.</p>
+<p>The following example YAML file describes an external MLFlow tracking server instance that is
+registered as an experiment tracking and model store extension with FuseML:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mymlflow</span>
+<span class="nt">product</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow</span>
+<span class="nt">version</span><span class="p">:</span> <span class="s">&quot;1.19.0&quot;</span>
+<span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MLFlow experiment tracking service</span>
+<span class="nt">zone</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dev-server</span>
+<span class="nt">services</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-tracking</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-tracking</span>
+    <span class="nt">category</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">experiment-tracking</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MLFlow experiment tracking service API and UI</span>
+    <span class="nt">auth_required</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+    <span class="nt">endpoints</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://10.20.30.40</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">external</span>
+        <span class="nt">configuration</span><span class="p">:</span>
+          <span class="nt">MLFLOW_TRACKING_URI</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://10.20.30.40</span>
+  <span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-store</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">s3</span>
+    <span class="nt">category</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">model-store</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MLFlow minio S3 storage back-end</span>
+    <span class="nt">auth_required</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+    <span class="nt">credentials</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">default</span>
+        <span class="nt">scope</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">global</span>
+        <span class="nt">configuration</span><span class="p">:</span>
+          <span class="nt">AWS_ACCESS_KEY_ID</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v4Us74XUtkuEGd10yS05</span>
+          <span class="nt">AWS_SECRET_ACCESS_KEY</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MJtLeytp72bpnq2XtSqpRTlB3MXTV8Am5ASjED4x</span>
+    <span class="nt">endpoints</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://10.20.30.40:9000</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">external</span>
+        <span class="nt">configuration</span><span class="p">:</span>
+          <span class="nt">MLFLOW_S3_ENDPOINT_URL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://10.20.30.40:9000</span>
+</code></pre></div>
+<p>To register the extension as a YAML file with the FuseML CLI:</p>
+<div class="highlight"><pre><span></span><code>&gt; fuseml extension register -f mymlflow.yaml
+Extension <span class="s2">&quot;mymlflow&quot;</span> successfully registered
+</code></pre></div>
+<p>Alternatively, to build the same extension step by step:</p>
+<div class="highlight"><pre><span></span><code>&gt; fuseml extension register --id mymlflow -p mlflow --version <span class="m">1</span>.19.0 --zone dev-server --desc <span class="s2">&quot;MLFlow experiment tracking service&quot;</span>
+Extension <span class="s2">&quot;mymlflow&quot;</span> successfully registered
+
+&gt; fuseml extension service add --id mlflow-tracking -r mlflow-tracking -c experiment-tracking --desc <span class="s2">&quot;MLFlow experiment tracking service API and UI&quot;</span> mymlflow
+Service <span class="s2">&quot;mlflow-tracking&quot;</span> successfully added to extension <span class="s2">&quot;mymlflow&quot;</span>
+
+&gt; fuseml extension service add --id mlflow-store -r s3 -c model-store --auth-required --desc <span class="s2">&quot;MLFlow minio S3 storage back-end&quot;</span> mymlflow
+Service <span class="s2">&quot;mlflow-store&quot;</span> successfully added to extension <span class="s2">&quot;mymlflow&quot;</span>
+
+&gt; fuseml extension endpoint add -c MLFLOW_TRACKING_URI:http://10.20.30.40 mymlflow mlflow-tracking http://10.20.30.40
+Endpoint <span class="s2">&quot;http://10.20.30.40&quot;</span> successfully added to service mlflow-tracking from extension <span class="s2">&quot;mymlflow&quot;</span>
+
+&gt; fuseml extension endpoint add -c MLFLOW_S3_ENDPOINT_URL:http://10.20.30.40:9000 mymlflow mlflow-store http://10.20.30.40:9000
+Endpoint <span class="s2">&quot;http://10.20.30.40:9000&quot;</span> successfully added to service mlflow-store from extension <span class="s2">&quot;mymlflow&quot;</span>
+
+&gt; fuseml extension credentials add --id default -c AWS_ACCESS_KEY_ID:v4Us74XUtkuEGd10yS05,AWS_SECRET_ACCESS_KEY:MJtLeytp72bpnq2XtSqpRTlB3MXTV8Am5ASjED4x mymlflow mlflow-store
+Credentials <span class="s2">&quot;default&quot;</span> successfully added to service mlflow-store from extension <span class="s2">&quot;mymlflow&quot;</span>
+</code></pre></div>
+<h2 id="workflows">Workflows</h2>
+<p>Workflows are the most important feature of FuseML. Configuring workflows is a declarative way of instructing FuseML
+to run automated operations using codesets and other types of artifacts as input and deploying applications as output.
+A workflow can be represented by something as simple as a single operation (step), or it can describe a complex, end-to-end
+ML pipeline that builds your code, runs it to train a machine learning model and ultimately serves the model
+using a prediction service.</p>
+<p>Getting a workflow to execute is basically a two step process:</p>
+<ul>
+<li>first, configure a workflow definition from a yaml or json file. Consult the <a href="../api/">API Reference</a> section for a
+  full description of the workflow format.</li>
+<li>then, use the command line to assign a codeset to the workflow. The workflow is automatically triggered as a result of the
+  assignment, as well as every time a new version of the assigned codeset is published. The status, as well as the results(s)
+  of a workflow run can be displayed with the CLI.</li>
+</ul>
+<p>The workflow sub-command has the following capabilities:</p>
+<div class="highlight"><pre><span></span><code>&gt; fuseml workflow --help
+Perform operations on workflows
+
+Usage:
+  fuseml workflow <span class="o">[</span>command<span class="o">]</span>
+
+Available Commands:
+  assign           Assigns a workflow to a codeset
+  create           Creates a workflow
+  delete           Deletes a workflow
+  get              Get a workflow
+  list             Lists one or more workflows
+  list-assignments Lists one or more workflow assignments
+  list-runs        Lists one or more workflow runs
+  unassign         Unassign a workflow from a codeset
+
+Flags:
+  -h, --help   <span class="nb">help</span> <span class="k">for</span> workflow
+
+Global Flags:
+      --timeout int   <span class="o">(</span>FUSEML_HTTP_TIMEOUT<span class="o">)</span> maximum number of seconds to <span class="nb">wait</span> <span class="k">for</span> response <span class="o">(</span>default <span class="m">30</span><span class="o">)</span>
+  -u, --url string    <span class="o">(</span>FUSEML_SERVER_URL<span class="o">)</span> URL where the FuseML service is running
+  -v, --verbose       <span class="o">(</span>FUSEML_VERBOSE<span class="o">)</span> print verbose information, such as HTTP request and response details
+
+Use <span class="s2">&quot;fuseml workflow [command] --help&quot;</span> <span class="k">for</span> more information about a command.
+</code></pre></div>
+<p>Following is an example of workflow definition in YAML format describing an end-to-end ML pipeline.
+It assumes that both MLFlow and KServe have already been installed and registered with FuseML as
+extensions, as covered in the <a href="../tutorials/kserve-basic/">tutorial</a> section:</p>
+<div class="highlight"><pre><span></span><code>name: example
+description: |
+  End-to-end pipeline template that takes in an MLFlow compatible codeset,
+  runs the MLFlow project to train a model, then creates a KServe prediction
+  service that can be used to run predictions against the model.
+inputs:
+  - name: mlflow-codeset
+    description: an MLFlow compatible codeset
+    type: codeset
+  - name: predictor
+    description: type of predictor engine
+    type: string
+    default: auto
+outputs:
+  - name: prediction-url
+    description: &quot;The URL where the exposed prediction service endpoint can be contacted to run predictions.&quot;
+    type: string
+steps:
+  - name: builder
+    image: ghcr.io/fuseml/mlflow-builder:latest
+    inputs:
+      - name: mlflow-codeset
+        codeset:
+          name: &quot;{{ inputs.mlflow-codeset }}&quot;
+          path: /project
+    outputs:
+      - name: image
+  - name: trainer
+    image: &quot;{{ steps.builder.outputs.image }}&quot;
+    inputs:
+      - name: mlflow-codeset
+        codeset:
+          name: &quot;{{ inputs.mlflow-codeset }}&quot;
+          path: &quot;/project&quot;
+    outputs:
+      - name: mlflow-model-url
+    extensions:
+      - name: mlflow-tracking
+        product: mlflow
+        service_resource: mlflow-tracking
+      - name: mlflow-store
+        product: mlflow
+        service_resource: s3
+  - name: predictor
+    image: ghcr.io/fuseml/kserve-predictor:latest
+    inputs:
+      - name: model
+        value: &quot;{{ steps.trainer.outputs.mlflow-model-url }}&quot;
+      - name: predictor
+        value: &quot;{{ inputs.predictor }}&quot;
+      - name: mlflow-codeset
+        codeset:
+          name: &quot;{{ inputs.mlflow-codeset }}&quot;
+          path: &quot;/project&quot;
+    outputs:
+      - name: prediction-url
+    extensions:
+      - name: s3-storage
+        service_resource: s3
+      - name: kserve
+        service_resource: kserve-api
+</code></pre></div>
+<p>To create a workflow from the YAML file with the FuseML CLI:</p>
+<div class="highlight"><pre><span></span><code>&gt; fuseml workflow create example.yaml
+Workflow <span class="s2">&quot;example&quot;</span> successfully created
+</code></pre></div>
+<h2 id="application">Application</h2>
+<p>A FuseML Application is represented by a web service usually deployed automatically by FuseML as a result
+of a workflow running to completion and can be accessed via its exposed URL. The most common type of FuseML
+application is a prediction service. Use the CLI to display running applications, retrieve their URLs and
+delete them when no longer needed.</p>
+<p>The application sub-command has the following capabilities:</p>
+<div class="highlight"><pre><span></span><code>&gt; fuseml application --help
+Perform operations on applications
+
+Usage:
+  fuseml application <span class="o">[</span>command<span class="o">]</span>
+
+Available Commands:
+  delete      Delete an application.
+  get         Get an application.
+  list        List applications.
+
+Flags:
+  -h, --help   <span class="nb">help</span> <span class="k">for</span> application
+
+Global Flags:
+      --timeout int   <span class="o">(</span>FUSEML_HTTP_TIMEOUT<span class="o">)</span> maximum number of seconds to <span class="nb">wait</span> <span class="k">for</span> response <span class="o">(</span>default <span class="m">30</span><span class="o">)</span>
+  -u, --url string    <span class="o">(</span>FUSEML_SERVER_URL<span class="o">)</span> URL where the FuseML service is running
+  -v, --verbose       <span class="o">(</span>FUSEML_VERBOSE<span class="o">)</span> print verbose information, such as HTTP request and response details
+
+Use <span class="s2">&quot;fuseml application [command] --help&quot;</span> <span class="k">for</span> more information about a command.
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../api/" class="md-footer__link md-footer__link--prev" aria-label="Previous: API Reference" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              API Reference
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../CONTRIBUTING/" class="md-footer__link md-footer__link--next" aria-label="Next: Contributing" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Contributing
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 FuseML Author(s)
+          </div>
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+        <script src="../javascripts/extra.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js"></script>
+      
+    
+  </body>
+</html>
