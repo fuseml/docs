@@ -215,7 +215,7 @@ The following steps describe how to use FuseML to train the Keras CIFAR-10 model
 1. Clone the `fuseml/examples` repository and register the `keras` example code as a FuseML codeset:
 
     ```bash
-    $ git clone --depth 1 https://github.com/fuseml/examples.git
+    $ git clone --depth 1 -b release-0.3 https://github.com/fuseml/examples.git
 
     $ fuseml codeset register -n keras -p cifar10 examples/codesets/mlflow/keras
     2021/11/16 19:06:47 Pushing the code to the git repository...

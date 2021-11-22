@@ -122,10 +122,10 @@ Regardless of location, the model files need to follow a particular directory st
 
 This section contains some more details regarding the implementation of the OpenVINO FuseML extensions. The actual implementation is already available in the FuseML repositories:
 
-- [the FuseML Installer Extension for the OVMS Operator](https://github.com/fuseml/extensions/tree/main/installer/ovms)
-- [the container image implementing the OVMS predictor step](https://github.com/fuseml/extensions/tree/main/images/inference-services/ovms)
-- [the container image implementing the OpenVINO Model Converter step](https://github.com/fuseml/extensions/tree/main/images/converters/ovms)
-- [example end-to-end workflow definition](https://github.com/fuseml/examples/blob/main/workflows/mlflow-ovms-e2e.yaml) that trains a TensorFlow/Keras model with MLFlow, then converts and serves it with the workflow steps listed above
+- [the FuseML Installer Extension for the OVMS Operator](https://github.com/fuseml/extensions/tree/release-0.3/installer/ovms)
+- [the container image implementing the OVMS predictor step](https://github.com/fuseml/extensions/tree/release-0.3/images/inference-services/ovms)
+- [the container image implementing the OpenVINO Model Converter step](https://github.com/fuseml/extensions/tree/release-0.3/images/converters/ovms)
+- [example end-to-end workflow definition](https://github.com/fuseml/examples/blob/release-0.3/workflows/mlflow-ovms-e2e.yaml) that trains a TensorFlow/Keras model with MLFlow, then converts and serves it with the workflow steps listed above
 
 ### FuseML Installer Extension for OVMS Operator
 
@@ -253,7 +253,7 @@ As is the case with all prediction services, the OVMS server needs to be exposed
 
 An important aspect of implementing a container image for a FuseML workflow step is controlling what happens during consecutive step invocations, e.g. when the workflow is re-triggered automatically to account for changes in the input codeset(s). OVMS is capable of auto-detecting changes in the model repository and configuration. If an update means that a new model version is added to the model storage, or a new model is added to the model repository (in case of a multiple model scenario) nothing else needs to be done. All other changes require a re-deployment of the OVMS kubernetes resource which will trigger a rolling update or a scale-out/in (when the replica count parameter is changes). For our minimalist implementation, this simply means that the predictor step doesn't need to re-deploy the OVMS server if the contents of the input model change.
 
-The complete implementation of the container image for the OVMS predictor workflow step can be viewed [here](https://github.com/fuseml/extensions/tree/main/images/inference-services/ovms). Following are some snippets from the Dockerfile and associated scripts:
+The complete implementation of the container image for the OVMS predictor workflow step can be viewed [here](https://github.com/fuseml/extensions/tree/release-0.3/images/inference-services/ovms). Following are some snippets from the Dockerfile and associated scripts:
 
 - the Dockerfile layout of the environment variables accepted as input by the predictor step image, corresponding to FuseML workflow step inputs and S3/AWS credentials:
 
@@ -313,7 +313,7 @@ The complete implementation of the container image for the OVMS predictor workfl
   EOF
   ```
 
-- an example of how a FuseML workflow step registers a FuseML Application object, in this case corresponding to the created OVMS prediction server instance. `register_fuseml_app` is available as [a FuseML helper function](https://github.com/fuseml/extensions/blob/main/images/inference-services/base/scripts/helpers.sh#L15) that can be imported and used in any container image:
+- an example of how a FuseML workflow step registers a FuseML Application object, in this case corresponding to the created OVMS prediction server instance. `register_fuseml_app` is available as [a FuseML helper function](https://github.com/fuseml/extensions/blob/release-0.3/images/inference-services/base/scripts/helpers.sh#L15) that can be imported and used in any container image:
 
   ```bash
   # Now, register the new application within fuseml; use kubectl only to format the output correctly
