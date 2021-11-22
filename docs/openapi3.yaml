@@ -648,8 +648,8 @@ paths:
                       scope: project
                       service_id: s3
                       status:
-                        created: "2021-09-08T13:36:34+02:00"
-                        updated: "2021-09-08T13:36:34+02:00"
+                        created: "2021-11-22T11:19:46+01:00"
+                        updated: "2021-11-22T11:19:46+01:00"
                       users:
                       - bobthemagicpeanut
                       - core-admin
@@ -665,8 +665,8 @@ paths:
                       scope: project
                       service_id: s3
                       status:
-                        created: "2021-09-08T13:36:34+02:00"
-                        updated: "2021-09-08T13:36:34+02:00"
+                        created: "2021-11-22T11:19:46+01:00"
+                        updated: "2021-11-22T11:19:46+01:00"
                       users:
                       - bobthemagicpeanut
                       - core-admin
@@ -692,8 +692,8 @@ paths:
                     id: s3
                     resource: mlflow-tracker
                     status:
-                      registered: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      registered: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                   - auth_required: true
                     category: serving-platform
                     configuration:
@@ -712,8 +712,8 @@ paths:
                       scope: project
                       service_id: s3
                       status:
-                        created: "2021-09-08T13:36:34+02:00"
-                        updated: "2021-09-08T13:36:34+02:00"
+                        created: "2021-11-22T11:19:46+01:00"
+                        updated: "2021-11-22T11:19:46+01:00"
                       users:
                       - bobthemagicpeanut
                       - core-admin
@@ -729,8 +729,8 @@ paths:
                       scope: project
                       service_id: s3
                       status:
-                        created: "2021-09-08T13:36:34+02:00"
-                        updated: "2021-09-08T13:36:34+02:00"
+                        created: "2021-11-22T11:19:46+01:00"
+                        updated: "2021-11-22T11:19:46+01:00"
                       users:
                       - bobthemagicpeanut
                       - core-admin
@@ -756,8 +756,8 @@ paths:
                     id: s3
                     resource: mlflow-tracker
                     status:
-                      registered: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      registered: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                   - auth_required: true
                     category: serving-platform
                     configuration:
@@ -776,8 +776,8 @@ paths:
                       scope: project
                       service_id: s3
                       status:
-                        created: "2021-09-08T13:36:34+02:00"
-                        updated: "2021-09-08T13:36:34+02:00"
+                        created: "2021-11-22T11:19:46+01:00"
+                        updated: "2021-11-22T11:19:46+01:00"
                       users:
                       - bobthemagicpeanut
                       - core-admin
@@ -793,8 +793,8 @@ paths:
                       scope: project
                       service_id: s3
                       status:
-                        created: "2021-09-08T13:36:34+02:00"
-                        updated: "2021-09-08T13:36:34+02:00"
+                        created: "2021-11-22T11:19:46+01:00"
+                        updated: "2021-11-22T11:19:46+01:00"
                       users:
                       - bobthemagicpeanut
                       - core-admin
@@ -820,11 +820,11 @@ paths:
                     id: s3
                     resource: mlflow-tracker
                     status:
-                      registered: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      registered: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                   status:
-                    registered: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    registered: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   version: v10.3.1-prealpha+b10022020
                   zone: kube-cluster-dev-00126
                 - configuration:
@@ -852,8 +852,8 @@ paths:
                       scope: project
                       service_id: s3
                       status:
-                        created: "2021-09-08T13:36:34+02:00"
-                        updated: "2021-09-08T13:36:34+02:00"
+                        created: "2021-11-22T11:19:46+01:00"
+                        updated: "2021-11-22T11:19:46+01:00"
                       users:
                       - bobthemagicpeanut
                       - core-admin
@@ -869,8 +869,8 @@ paths:
                       scope: project
                       service_id: s3
                       status:
-                        created: "2021-09-08T13:36:34+02:00"
-                        updated: "2021-09-08T13:36:34+02:00"
+                        created: "2021-11-22T11:19:46+01:00"
+                        updated: "2021-11-22T11:19:46+01:00"
                       users:
                       - bobthemagicpeanut
                       - core-admin
@@ -896,8 +896,8 @@ paths:
                     id: s3
                     resource: mlflow-tracker
                     status:
-                      registered: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      registered: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                   - auth_required: true
                     category: serving-platform
                     configuration:
@@ -916,8 +916,8 @@ paths:
                       scope: project
                       service_id: s3
                       status:
-                        created: "2021-09-08T13:36:34+02:00"
-                        updated: "2021-09-08T13:36:34+02:00"
+                        created: "2021-11-22T11:19:46+01:00"
+                        updated: "2021-11-22T11:19:46+01:00"
                       users:
                       - bobthemagicpeanut
                       - core-admin
@@ -933,8 +933,8 @@ paths:
                       scope: project
                       service_id: s3
                       status:
-                        created: "2021-09-08T13:36:34+02:00"
-                        updated: "2021-09-08T13:36:34+02:00"
+                        created: "2021-11-22T11:19:46+01:00"
+                        updated: "2021-11-22T11:19:46+01:00"
                       users:
                       - bobthemagicpeanut
                       - core-admin
@@ -960,8 +960,8 @@ paths:
                     id: s3
                     resource: mlflow-tracker
                     status:
-                      registered: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      registered: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                   - auth_required: true
                     category: serving-platform
                     configuration:
@@ -980,8 +980,8 @@ paths:
                       scope: project
                       service_id: s3
                       status:
-                        created: "2021-09-08T13:36:34+02:00"
-                        updated: "2021-09-08T13:36:34+02:00"
+                        created: "2021-11-22T11:19:46+01:00"
+                        updated: "2021-11-22T11:19:46+01:00"
                       users:
                       - bobthemagicpeanut
                       - core-admin
@@ -997,8 +997,8 @@ paths:
                       scope: project
                       service_id: s3
                       status:
-                        created: "2021-09-08T13:36:34+02:00"
-                        updated: "2021-09-08T13:36:34+02:00"
+                        created: "2021-11-22T11:19:46+01:00"
+                        updated: "2021-11-22T11:19:46+01:00"
                       users:
                       - bobthemagicpeanut
                       - core-admin
@@ -1024,11 +1024,11 @@ paths:
                     id: s3
                     resource: mlflow-tracker
                     status:
-                      registered: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      registered: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                   status:
-                    registered: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    registered: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   version: v10.3.1-prealpha+b10022020
                   zone: kube-cluster-dev-00126
                 - configuration:
@@ -1056,8 +1056,8 @@ paths:
                       scope: project
                       service_id: s3
                       status:
-                        created: "2021-09-08T13:36:34+02:00"
-                        updated: "2021-09-08T13:36:34+02:00"
+                        created: "2021-11-22T11:19:46+01:00"
+                        updated: "2021-11-22T11:19:46+01:00"
                       users:
                       - bobthemagicpeanut
                       - core-admin
@@ -1073,8 +1073,8 @@ paths:
                       scope: project
                       service_id: s3
                       status:
-                        created: "2021-09-08T13:36:34+02:00"
-                        updated: "2021-09-08T13:36:34+02:00"
+                        created: "2021-11-22T11:19:46+01:00"
+                        updated: "2021-11-22T11:19:46+01:00"
                       users:
                       - bobthemagicpeanut
                       - core-admin
@@ -1100,8 +1100,8 @@ paths:
                     id: s3
                     resource: mlflow-tracker
                     status:
-                      registered: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      registered: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                   - auth_required: true
                     category: serving-platform
                     configuration:
@@ -1120,8 +1120,8 @@ paths:
                       scope: project
                       service_id: s3
                       status:
-                        created: "2021-09-08T13:36:34+02:00"
-                        updated: "2021-09-08T13:36:34+02:00"
+                        created: "2021-11-22T11:19:46+01:00"
+                        updated: "2021-11-22T11:19:46+01:00"
                       users:
                       - bobthemagicpeanut
                       - core-admin
@@ -1137,8 +1137,8 @@ paths:
                       scope: project
                       service_id: s3
                       status:
-                        created: "2021-09-08T13:36:34+02:00"
-                        updated: "2021-09-08T13:36:34+02:00"
+                        created: "2021-11-22T11:19:46+01:00"
+                        updated: "2021-11-22T11:19:46+01:00"
                       users:
                       - bobthemagicpeanut
                       - core-admin
@@ -1164,8 +1164,8 @@ paths:
                     id: s3
                     resource: mlflow-tracker
                     status:
-                      registered: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      registered: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                   - auth_required: true
                     category: serving-platform
                     configuration:
@@ -1184,8 +1184,8 @@ paths:
                       scope: project
                       service_id: s3
                       status:
-                        created: "2021-09-08T13:36:34+02:00"
-                        updated: "2021-09-08T13:36:34+02:00"
+                        created: "2021-11-22T11:19:46+01:00"
+                        updated: "2021-11-22T11:19:46+01:00"
                       users:
                       - bobthemagicpeanut
                       - core-admin
@@ -1201,8 +1201,8 @@ paths:
                       scope: project
                       service_id: s3
                       status:
-                        created: "2021-09-08T13:36:34+02:00"
-                        updated: "2021-09-08T13:36:34+02:00"
+                        created: "2021-11-22T11:19:46+01:00"
+                        updated: "2021-11-22T11:19:46+01:00"
                       users:
                       - bobthemagicpeanut
                       - core-admin
@@ -1228,11 +1228,11 @@ paths:
                     id: s3
                     resource: mlflow-tracker
                     status:
-                      registered: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      registered: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                   status:
-                    registered: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    registered: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   version: v10.3.1-prealpha+b10022020
                   zone: kube-cluster-dev-00126
               example:
@@ -1261,8 +1261,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -1278,8 +1278,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -1305,8 +1305,8 @@ paths:
                   id: s3
                   resource: mlflow-tracker
                   status:
-                    registered: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    registered: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                 - auth_required: true
                   category: serving-platform
                   configuration:
@@ -1325,8 +1325,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -1342,8 +1342,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -1369,8 +1369,8 @@ paths:
                   id: s3
                   resource: mlflow-tracker
                   status:
-                    registered: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    registered: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                 - auth_required: true
                   category: serving-platform
                   configuration:
@@ -1389,8 +1389,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -1406,8 +1406,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -1433,11 +1433,11 @@ paths:
                   id: s3
                   resource: mlflow-tracker
                   status:
-                    registered: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    registered: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                 status:
-                  registered: "2021-09-08T13:36:34+02:00"
-                  updated: "2021-09-08T13:36:34+02:00"
+                  registered: "2021-11-22T11:19:46+01:00"
+                  updated: "2021-11-22T11:19:46+01:00"
                 version: v10.3.1-prealpha+b10022020
                 zone: kube-cluster-dev-00126
               - configuration:
@@ -1465,8 +1465,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -1482,8 +1482,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -1509,8 +1509,8 @@ paths:
                   id: s3
                   resource: mlflow-tracker
                   status:
-                    registered: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    registered: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                 - auth_required: true
                   category: serving-platform
                   configuration:
@@ -1529,8 +1529,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -1546,8 +1546,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -1573,8 +1573,8 @@ paths:
                   id: s3
                   resource: mlflow-tracker
                   status:
-                    registered: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    registered: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                 - auth_required: true
                   category: serving-platform
                   configuration:
@@ -1593,8 +1593,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -1610,8 +1610,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -1637,11 +1637,11 @@ paths:
                   id: s3
                   resource: mlflow-tracker
                   status:
-                    registered: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    registered: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                 status:
-                  registered: "2021-09-08T13:36:34+02:00"
-                  updated: "2021-09-08T13:36:34+02:00"
+                  registered: "2021-11-22T11:19:46+01:00"
+                  updated: "2021-11-22T11:19:46+01:00"
                 version: v10.3.1-prealpha+b10022020
                 zone: kube-cluster-dev-00126
     post:
@@ -1683,8 +1683,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -1700,8 +1700,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -1717,8 +1717,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -1734,8 +1734,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -1769,8 +1769,8 @@ paths:
                 id: s3
                 resource: mlflow-tracker
                 status:
-                  registered: "2021-09-08T13:36:34+02:00"
-                  updated: "2021-09-08T13:36:34+02:00"
+                  registered: "2021-11-22T11:19:46+01:00"
+                  updated: "2021-11-22T11:19:46+01:00"
               - auth_required: true
                 category: serving-platform
                 configuration:
@@ -1789,8 +1789,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -1806,8 +1806,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -1823,8 +1823,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -1840,8 +1840,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -1875,8 +1875,8 @@ paths:
                 id: s3
                 resource: mlflow-tracker
                 status:
-                  registered: "2021-09-08T13:36:34+02:00"
-                  updated: "2021-09-08T13:36:34+02:00"
+                  registered: "2021-11-22T11:19:46+01:00"
+                  updated: "2021-11-22T11:19:46+01:00"
               - auth_required: true
                 category: serving-platform
                 configuration:
@@ -1895,8 +1895,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -1912,8 +1912,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -1929,8 +1929,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -1946,8 +1946,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -1981,8 +1981,8 @@ paths:
                 id: s3
                 resource: mlflow-tracker
                 status:
-                  registered: "2021-09-08T13:36:34+02:00"
-                  updated: "2021-09-08T13:36:34+02:00"
+                  registered: "2021-11-22T11:19:46+01:00"
+                  updated: "2021-11-22T11:19:46+01:00"
               - auth_required: true
                 category: serving-platform
                 configuration:
@@ -2001,8 +2001,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -2018,8 +2018,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -2035,8 +2035,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -2052,8 +2052,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -2087,11 +2087,11 @@ paths:
                 id: s3
                 resource: mlflow-tracker
                 status:
-                  registered: "2021-09-08T13:36:34+02:00"
-                  updated: "2021-09-08T13:36:34+02:00"
+                  registered: "2021-11-22T11:19:46+01:00"
+                  updated: "2021-11-22T11:19:46+01:00"
               status:
-                registered: "2021-09-08T13:36:34+02:00"
-                updated: "2021-09-08T13:36:34+02:00"
+                registered: "2021-11-22T11:19:46+01:00"
+                updated: "2021-11-22T11:19:46+01:00"
               version: v10.3.1-prealpha+b10022020
               zone: kube-cluster-dev-00126
       responses:
@@ -2127,8 +2127,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -2144,8 +2144,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -2161,8 +2161,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -2196,8 +2196,8 @@ paths:
                   id: s3
                   resource: mlflow-tracker
                   status:
-                    registered: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    registered: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                 - auth_required: true
                   category: serving-platform
                   configuration:
@@ -2216,8 +2216,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -2233,8 +2233,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -2250,8 +2250,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -2285,11 +2285,11 @@ paths:
                   id: s3
                   resource: mlflow-tracker
                   status:
-                    registered: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    registered: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                 status:
-                  registered: "2021-09-08T13:36:34+02:00"
-                  updated: "2021-09-08T13:36:34+02:00"
+                  registered: "2021-11-22T11:19:46+01:00"
+                  updated: "2021-11-22T11:19:46+01:00"
                 version: v10.3.1-prealpha+b10022020
                 zone: kube-cluster-dev-00126
         "400":
@@ -2360,8 +2360,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -2377,8 +2377,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -2404,8 +2404,8 @@ paths:
                   id: s3
                   resource: mlflow-tracker
                   status:
-                    registered: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    registered: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                 - auth_required: true
                   category: serving-platform
                   configuration:
@@ -2424,8 +2424,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -2441,8 +2441,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -2468,8 +2468,8 @@ paths:
                   id: s3
                   resource: mlflow-tracker
                   status:
-                    registered: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    registered: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                 - auth_required: true
                   category: serving-platform
                   configuration:
@@ -2488,8 +2488,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -2505,8 +2505,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -2532,8 +2532,8 @@ paths:
                   id: s3
                   resource: mlflow-tracker
                   status:
-                    registered: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    registered: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                 - auth_required: true
                   category: serving-platform
                   configuration:
@@ -2552,8 +2552,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -2569,8 +2569,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -2596,8 +2596,8 @@ paths:
                   id: s3
                   resource: mlflow-tracker
                   status:
-                    registered: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    registered: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
               example:
               - auth_required: true
                 category: serving-platform
@@ -2617,8 +2617,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -2634,8 +2634,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -2661,8 +2661,8 @@ paths:
                 id: s3
                 resource: mlflow-tracker
                 status:
-                  registered: "2021-09-08T13:36:34+02:00"
-                  updated: "2021-09-08T13:36:34+02:00"
+                  registered: "2021-11-22T11:19:46+01:00"
+                  updated: "2021-11-22T11:19:46+01:00"
               - auth_required: true
                 category: serving-platform
                 configuration:
@@ -2681,8 +2681,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -2698,8 +2698,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -2725,8 +2725,8 @@ paths:
                 id: s3
                 resource: mlflow-tracker
                 status:
-                  registered: "2021-09-08T13:36:34+02:00"
-                  updated: "2021-09-08T13:36:34+02:00"
+                  registered: "2021-11-22T11:19:46+01:00"
+                  updated: "2021-11-22T11:19:46+01:00"
               - auth_required: true
                 category: serving-platform
                 configuration:
@@ -2745,8 +2745,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -2762,8 +2762,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -2789,8 +2789,8 @@ paths:
                 id: s3
                 resource: mlflow-tracker
                 status:
-                  registered: "2021-09-08T13:36:34+02:00"
-                  updated: "2021-09-08T13:36:34+02:00"
+                  registered: "2021-11-22T11:19:46+01:00"
+                  updated: "2021-11-22T11:19:46+01:00"
               - auth_required: true
                 category: serving-platform
                 configuration:
@@ -2809,8 +2809,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -2826,8 +2826,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -2853,8 +2853,8 @@ paths:
                 id: s3
                 resource: mlflow-tracker
                 status:
-                  registered: "2021-09-08T13:36:34+02:00"
-                  updated: "2021-09-08T13:36:34+02:00"
+                  registered: "2021-11-22T11:19:46+01:00"
+                  updated: "2021-11-22T11:19:46+01:00"
     post:
       tags:
       - extension
@@ -2899,8 +2899,8 @@ paths:
                 scope: project
                 service_id: s3
                 status:
-                  created: "2021-09-08T13:36:34+02:00"
-                  updated: "2021-09-08T13:36:34+02:00"
+                  created: "2021-11-22T11:19:46+01:00"
+                  updated: "2021-11-22T11:19:46+01:00"
                 users:
                 - bobthemagicpeanut
                 - core-admin
@@ -2916,8 +2916,8 @@ paths:
                 scope: project
                 service_id: s3
                 status:
-                  created: "2021-09-08T13:36:34+02:00"
-                  updated: "2021-09-08T13:36:34+02:00"
+                  created: "2021-11-22T11:19:46+01:00"
+                  updated: "2021-11-22T11:19:46+01:00"
                 users:
                 - bobthemagicpeanut
                 - core-admin
@@ -2950,8 +2950,8 @@ paths:
               id: s3
               resource: mlflow-tracker
               status:
-                registered: "2021-09-08T13:36:34+02:00"
-                updated: "2021-09-08T13:36:34+02:00"
+                registered: "2021-11-22T11:19:46+01:00"
+                updated: "2021-11-22T11:19:46+01:00"
       responses:
         "201":
           description: Created response.
@@ -2978,8 +2978,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -2995,8 +2995,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -3012,8 +3012,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -3029,8 +3029,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -3072,8 +3072,8 @@ paths:
                 id: s3
                 resource: mlflow-tracker
                 status:
-                  registered: "2021-09-08T13:36:34+02:00"
-                  updated: "2021-09-08T13:36:34+02:00"
+                  registered: "2021-11-22T11:19:46+01:00"
+                  updated: "2021-11-22T11:19:46+01:00"
         "400":
           description: Bad Request response.
           content:
@@ -3216,8 +3216,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -3233,8 +3233,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -3250,8 +3250,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -3267,8 +3267,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -3294,8 +3294,8 @@ paths:
                 id: s3
                 resource: mlflow-tracker
                 status:
-                  registered: "2021-09-08T13:36:34+02:00"
-                  updated: "2021-09-08T13:36:34+02:00"
+                  registered: "2021-11-22T11:19:46+01:00"
+                  updated: "2021-11-22T11:19:46+01:00"
         "404":
           description: Not Found response.
           content:
@@ -3362,8 +3362,8 @@ paths:
                 scope: project
                 service_id: s3
                 status:
-                  created: "2021-09-08T13:36:34+02:00"
-                  updated: "2021-09-08T13:36:34+02:00"
+                  created: "2021-11-22T11:19:46+01:00"
+                  updated: "2021-11-22T11:19:46+01:00"
                 users:
                 - bobthemagicpeanut
                 - core-admin
@@ -3379,8 +3379,8 @@ paths:
                 scope: project
                 service_id: s3
                 status:
-                  created: "2021-09-08T13:36:34+02:00"
-                  updated: "2021-09-08T13:36:34+02:00"
+                  created: "2021-11-22T11:19:46+01:00"
+                  updated: "2021-11-22T11:19:46+01:00"
                 users:
                 - bobthemagicpeanut
                 - core-admin
@@ -3412,8 +3412,8 @@ paths:
                 url: https://mlflow.10.120.130.140.nip.io
               resource: mlflow-tracker
               status:
-                registered: "2021-09-08T13:36:34+02:00"
-                updated: "2021-09-08T13:36:34+02:00"
+                registered: "2021-11-22T11:19:46+01:00"
+                updated: "2021-11-22T11:19:46+01:00"
       responses:
         "200":
           description: OK response.
@@ -3440,8 +3440,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -3457,8 +3457,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -3474,8 +3474,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -3517,8 +3517,8 @@ paths:
                 id: s3
                 resource: mlflow-tracker
                 status:
-                  registered: "2021-09-08T13:36:34+02:00"
-                  updated: "2021-09-08T13:36:34+02:00"
+                  registered: "2021-11-22T11:19:46+01:00"
+                  updated: "2021-11-22T11:19:46+01:00"
         "400":
           description: Bad Request response.
           content:
@@ -3593,8 +3593,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -3610,8 +3610,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -3627,8 +3627,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -3644,8 +3644,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -3662,8 +3662,8 @@ paths:
                 scope: project
                 service_id: s3
                 status:
-                  created: "2021-09-08T13:36:34+02:00"
-                  updated: "2021-09-08T13:36:34+02:00"
+                  created: "2021-11-22T11:19:46+01:00"
+                  updated: "2021-11-22T11:19:46+01:00"
                 users:
                 - bobthemagicpeanut
                 - core-admin
@@ -3679,8 +3679,8 @@ paths:
                 scope: project
                 service_id: s3
                 status:
-                  created: "2021-09-08T13:36:34+02:00"
-                  updated: "2021-09-08T13:36:34+02:00"
+                  created: "2021-11-22T11:19:46+01:00"
+                  updated: "2021-11-22T11:19:46+01:00"
                 users:
                 - bobthemagicpeanut
                 - core-admin
@@ -3732,8 +3732,8 @@ paths:
               - prj-core
               scope: project
               status:
-                created: "2021-09-08T13:36:34+02:00"
-                updated: "2021-09-08T13:36:34+02:00"
+                created: "2021-11-22T11:19:46+01:00"
+                updated: "2021-11-22T11:19:46+01:00"
               users:
               - bobthemagicpeanut
               - core-admin
@@ -3757,8 +3757,8 @@ paths:
                 scope: project
                 service_id: s3
                 status:
-                  created: "2021-09-08T13:36:34+02:00"
-                  updated: "2021-09-08T13:36:34+02:00"
+                  created: "2021-11-22T11:19:46+01:00"
+                  updated: "2021-11-22T11:19:46+01:00"
                 users:
                 - bobthemagicpeanut
                 - core-admin
@@ -3921,8 +3921,8 @@ paths:
                 scope: project
                 service_id: s3
                 status:
-                  created: "2021-09-08T13:36:34+02:00"
-                  updated: "2021-09-08T13:36:34+02:00"
+                  created: "2021-11-22T11:19:46+01:00"
+                  updated: "2021-11-22T11:19:46+01:00"
                 users:
                 - bobthemagicpeanut
                 - core-admin
@@ -3996,8 +3996,8 @@ paths:
               - prj-core
               scope: project
               status:
-                created: "2021-09-08T13:36:34+02:00"
-                updated: "2021-09-08T13:36:34+02:00"
+                created: "2021-11-22T11:19:46+01:00"
+                updated: "2021-11-22T11:19:46+01:00"
               users:
               - bobthemagicpeanut
               - core-admin
@@ -4021,8 +4021,8 @@ paths:
                 scope: project
                 service_id: s3
                 status:
-                  created: "2021-09-08T13:36:34+02:00"
-                  updated: "2021-09-08T13:36:34+02:00"
+                  created: "2021-11-22T11:19:46+01:00"
+                  updated: "2021-11-22T11:19:46+01:00"
                 users:
                 - bobthemagicpeanut
                 - core-admin
@@ -4540,8 +4540,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -4557,8 +4557,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -4574,8 +4574,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -4609,8 +4609,8 @@ paths:
                   id: s3
                   resource: mlflow-tracker
                   status:
-                    registered: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    registered: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                 - auth_required: true
                   category: serving-platform
                   configuration:
@@ -4629,8 +4629,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -4646,8 +4646,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -4663,8 +4663,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -4698,11 +4698,11 @@ paths:
                   id: s3
                   resource: mlflow-tracker
                   status:
-                    registered: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    registered: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                 status:
-                  registered: "2021-09-08T13:36:34+02:00"
-                  updated: "2021-09-08T13:36:34+02:00"
+                  registered: "2021-11-22T11:19:46+01:00"
+                  updated: "2021-11-22T11:19:46+01:00"
                 version: v10.3.1-prealpha+b10022020
                 zone: kube-cluster-dev-00126
         "404":
@@ -4764,8 +4764,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -4781,8 +4781,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -4798,8 +4798,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -4815,8 +4815,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -4850,8 +4850,8 @@ paths:
                 id: s3
                 resource: mlflow-tracker
                 status:
-                  registered: "2021-09-08T13:36:34+02:00"
-                  updated: "2021-09-08T13:36:34+02:00"
+                  registered: "2021-11-22T11:19:46+01:00"
+                  updated: "2021-11-22T11:19:46+01:00"
               - auth_required: true
                 category: serving-platform
                 configuration:
@@ -4870,8 +4870,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -4887,8 +4887,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -4904,8 +4904,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -4921,8 +4921,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -4956,8 +4956,8 @@ paths:
                 id: s3
                 resource: mlflow-tracker
                 status:
-                  registered: "2021-09-08T13:36:34+02:00"
-                  updated: "2021-09-08T13:36:34+02:00"
+                  registered: "2021-11-22T11:19:46+01:00"
+                  updated: "2021-11-22T11:19:46+01:00"
               - auth_required: true
                 category: serving-platform
                 configuration:
@@ -4976,8 +4976,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -4993,8 +4993,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -5010,8 +5010,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -5027,8 +5027,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -5062,8 +5062,8 @@ paths:
                 id: s3
                 resource: mlflow-tracker
                 status:
-                  registered: "2021-09-08T13:36:34+02:00"
-                  updated: "2021-09-08T13:36:34+02:00"
+                  registered: "2021-11-22T11:19:46+01:00"
+                  updated: "2021-11-22T11:19:46+01:00"
               - auth_required: true
                 category: serving-platform
                 configuration:
@@ -5082,8 +5082,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -5099,8 +5099,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -5116,8 +5116,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -5133,8 +5133,8 @@ paths:
                   scope: project
                   service_id: s3
                   status:
-                    created: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    created: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                   users:
                   - bobthemagicpeanut
                   - core-admin
@@ -5168,11 +5168,11 @@ paths:
                 id: s3
                 resource: mlflow-tracker
                 status:
-                  registered: "2021-09-08T13:36:34+02:00"
-                  updated: "2021-09-08T13:36:34+02:00"
+                  registered: "2021-11-22T11:19:46+01:00"
+                  updated: "2021-11-22T11:19:46+01:00"
               status:
-                registered: "2021-09-08T13:36:34+02:00"
-                updated: "2021-09-08T13:36:34+02:00"
+                registered: "2021-11-22T11:19:46+01:00"
+                updated: "2021-11-22T11:19:46+01:00"
               version: v10.3.1-prealpha+b10022020
               zone: kube-cluster-dev-00126
       responses:
@@ -5208,8 +5208,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -5225,8 +5225,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -5242,8 +5242,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -5277,8 +5277,8 @@ paths:
                   id: s3
                   resource: mlflow-tracker
                   status:
-                    registered: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    registered: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                 - auth_required: true
                   category: serving-platform
                   configuration:
@@ -5297,8 +5297,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -5314,8 +5314,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -5331,8 +5331,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -5366,8 +5366,8 @@ paths:
                   id: s3
                   resource: mlflow-tracker
                   status:
-                    registered: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    registered: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                 - auth_required: true
                   category: serving-platform
                   configuration:
@@ -5386,8 +5386,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -5403,8 +5403,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -5420,8 +5420,8 @@ paths:
                     scope: project
                     service_id: s3
                     status:
-                      created: "2021-09-08T13:36:34+02:00"
-                      updated: "2021-09-08T13:36:34+02:00"
+                      created: "2021-11-22T11:19:46+01:00"
+                      updated: "2021-11-22T11:19:46+01:00"
                     users:
                     - bobthemagicpeanut
                     - core-admin
@@ -5455,11 +5455,11 @@ paths:
                   id: s3
                   resource: mlflow-tracker
                   status:
-                    registered: "2021-09-08T13:36:34+02:00"
-                    updated: "2021-09-08T13:36:34+02:00"
+                    registered: "2021-11-22T11:19:46+01:00"
+                    updated: "2021-11-22T11:19:46+01:00"
                 status:
-                  registered: "2021-09-08T13:36:34+02:00"
-                  updated: "2021-09-08T13:36:34+02:00"
+                  registered: "2021-11-22T11:19:46+01:00"
+                  updated: "2021-11-22T11:19:46+01:00"
                 version: v10.3.1-prealpha+b10022020
                 zone: kube-cluster-dev-00126
         "400":
@@ -8104,6 +8104,14 @@ paths:
                         dockerfile: /project/.fuseml/Dockerfile
                         name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
                       name: model-uri
+                    resources:
+                      limits:
+                        cpu: "2"
+                        memory: 2Gi
+                        nvidia.com/gpu: "1"
+                      requests:
+                        cpu: "1"
+                        memory: 1Gi
                   - env:
                     - name: PATH
                       value: /project
@@ -8168,6 +8176,14 @@ paths:
                         dockerfile: /project/.fuseml/Dockerfile
                         name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
                       name: model-uri
+                    resources:
+                      limits:
+                        cpu: "2"
+                        memory: 2Gi
+                        nvidia.com/gpu: "1"
+                      requests:
+                        cpu: "1"
+                        memory: 1Gi
                   - env:
                     - name: PATH
                       value: /project
@@ -8232,6 +8248,14 @@ paths:
                         dockerfile: /project/.fuseml/Dockerfile
                         name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
                       name: model-uri
+                    resources:
+                      limits:
+                        cpu: "2"
+                        memory: 2Gi
+                        nvidia.com/gpu: "1"
+                      requests:
+                        cpu: "1"
+                        memory: 1Gi
                 - created: "2021-04-09T06:17:25Z"
                   description: This workflow is just trains a model and serve it
                   inputs:
@@ -8322,6 +8346,14 @@ paths:
                         dockerfile: /project/.fuseml/Dockerfile
                         name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
                       name: model-uri
+                    resources:
+                      limits:
+                        cpu: "2"
+                        memory: 2Gi
+                        nvidia.com/gpu: "1"
+                      requests:
+                        cpu: "1"
+                        memory: 1Gi
                   - env:
                     - name: PATH
                       value: /project
@@ -8386,6 +8418,14 @@ paths:
                         dockerfile: /project/.fuseml/Dockerfile
                         name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
                       name: model-uri
+                    resources:
+                      limits:
+                        cpu: "2"
+                        memory: 2Gi
+                        nvidia.com/gpu: "1"
+                      requests:
+                        cpu: "1"
+                        memory: 1Gi
                   - env:
                     - name: PATH
                       value: /project
@@ -8450,6 +8490,14 @@ paths:
                         dockerfile: /project/.fuseml/Dockerfile
                         name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
                       name: model-uri
+                    resources:
+                      limits:
+                        cpu: "2"
+                        memory: 2Gi
+                        nvidia.com/gpu: "1"
+                      requests:
+                        cpu: "1"
+                        memory: 1Gi
                 - created: "2021-04-09T06:17:25Z"
                   description: This workflow is just trains a model and serve it
                   inputs:
@@ -8540,6 +8588,14 @@ paths:
                         dockerfile: /project/.fuseml/Dockerfile
                         name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
                       name: model-uri
+                    resources:
+                      limits:
+                        cpu: "2"
+                        memory: 2Gi
+                        nvidia.com/gpu: "1"
+                      requests:
+                        cpu: "1"
+                        memory: 1Gi
                   - env:
                     - name: PATH
                       value: /project
@@ -8604,6 +8660,14 @@ paths:
                         dockerfile: /project/.fuseml/Dockerfile
                         name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
                       name: model-uri
+                    resources:
+                      limits:
+                        cpu: "2"
+                        memory: 2Gi
+                        nvidia.com/gpu: "1"
+                      requests:
+                        cpu: "1"
+                        memory: 1Gi
                   - env:
                     - name: PATH
                       value: /project
@@ -8668,6 +8732,14 @@ paths:
                         dockerfile: /project/.fuseml/Dockerfile
                         name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
                       name: model-uri
+                    resources:
+                      limits:
+                        cpu: "2"
+                        memory: 2Gi
+                        nvidia.com/gpu: "1"
+                      requests:
+                        cpu: "1"
+                        memory: 1Gi
               example:
               - created: "2021-04-09T06:17:25Z"
                 description: This workflow is just trains a model and serve it
@@ -8759,6 +8831,14 @@ paths:
                       dockerfile: /project/.fuseml/Dockerfile
                       name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
                     name: model-uri
+                  resources:
+                    limits:
+                      cpu: "2"
+                      memory: 2Gi
+                      nvidia.com/gpu: "1"
+                    requests:
+                      cpu: "1"
+                      memory: 1Gi
                 - env:
                   - name: PATH
                     value: /project
@@ -8823,6 +8903,14 @@ paths:
                       dockerfile: /project/.fuseml/Dockerfile
                       name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
                     name: model-uri
+                  resources:
+                    limits:
+                      cpu: "2"
+                      memory: 2Gi
+                      nvidia.com/gpu: "1"
+                    requests:
+                      cpu: "1"
+                      memory: 1Gi
                 - env:
                   - name: PATH
                     value: /project
@@ -8887,6 +8975,14 @@ paths:
                       dockerfile: /project/.fuseml/Dockerfile
                       name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
                     name: model-uri
+                  resources:
+                    limits:
+                      cpu: "2"
+                      memory: 2Gi
+                      nvidia.com/gpu: "1"
+                    requests:
+                      cpu: "1"
+                      memory: 1Gi
               - created: "2021-04-09T06:17:25Z"
                 description: This workflow is just trains a model and serve it
                 inputs:
@@ -8977,6 +9073,14 @@ paths:
                       dockerfile: /project/.fuseml/Dockerfile
                       name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
                     name: model-uri
+                  resources:
+                    limits:
+                      cpu: "2"
+                      memory: 2Gi
+                      nvidia.com/gpu: "1"
+                    requests:
+                      cpu: "1"
+                      memory: 1Gi
                 - env:
                   - name: PATH
                     value: /project
@@ -9041,6 +9145,14 @@ paths:
                       dockerfile: /project/.fuseml/Dockerfile
                       name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
                     name: model-uri
+                  resources:
+                    limits:
+                      cpu: "2"
+                      memory: 2Gi
+                      nvidia.com/gpu: "1"
+                    requests:
+                      cpu: "1"
+                      memory: 1Gi
                 - env:
                   - name: PATH
                     value: /project
@@ -9105,6 +9217,14 @@ paths:
                       dockerfile: /project/.fuseml/Dockerfile
                       name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
                     name: model-uri
+                  resources:
+                    limits:
+                      cpu: "2"
+                      memory: 2Gi
+                      nvidia.com/gpu: "1"
+                    requests:
+                      cpu: "1"
+                      memory: 1Gi
               - created: "2021-04-09T06:17:25Z"
                 description: This workflow is just trains a model and serve it
                 inputs:
@@ -9195,6 +9315,14 @@ paths:
                       dockerfile: /project/.fuseml/Dockerfile
                       name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
                     name: model-uri
+                  resources:
+                    limits:
+                      cpu: "2"
+                      memory: 2Gi
+                      nvidia.com/gpu: "1"
+                    requests:
+                      cpu: "1"
+                      memory: 1Gi
                 - env:
                   - name: PATH
                     value: /project
@@ -9259,6 +9387,14 @@ paths:
                       dockerfile: /project/.fuseml/Dockerfile
                       name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
                     name: model-uri
+                  resources:
+                    limits:
+                      cpu: "2"
+                      memory: 2Gi
+                      nvidia.com/gpu: "1"
+                    requests:
+                      cpu: "1"
+                      memory: 1Gi
                 - env:
                   - name: PATH
                     value: /project
@@ -9323,6 +9459,14 @@ paths:
                       dockerfile: /project/.fuseml/Dockerfile
                       name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
                     name: model-uri
+                  resources:
+                    limits:
+                      cpu: "2"
+                      memory: 2Gi
+                      nvidia.com/gpu: "1"
+                    requests:
+                      cpu: "1"
+                      memory: 1Gi
               - created: "2021-04-09T06:17:25Z"
                 description: This workflow is just trains a model and serve it
                 inputs:
@@ -9413,6 +9557,14 @@ paths:
                       dockerfile: /project/.fuseml/Dockerfile
                       name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
                     name: model-uri
+                  resources:
+                    limits:
+                      cpu: "2"
+                      memory: 2Gi
+                      nvidia.com/gpu: "1"
+                    requests:
+                      cpu: "1"
+                      memory: 1Gi
                 - env:
                   - name: PATH
                     value: /project
@@ -9477,6 +9629,14 @@ paths:
                       dockerfile: /project/.fuseml/Dockerfile
                       name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
                     name: model-uri
+                  resources:
+                    limits:
+                      cpu: "2"
+                      memory: 2Gi
+                      nvidia.com/gpu: "1"
+                    requests:
+                      cpu: "1"
+                      memory: 1Gi
                 - env:
                   - name: PATH
                     value: /project
@@ -9541,6 +9701,14 @@ paths:
                       dockerfile: /project/.fuseml/Dockerfile
                       name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
                     name: model-uri
+                  resources:
+                    limits:
+                      cpu: "2"
+                      memory: 2Gi
+                      nvidia.com/gpu: "1"
+                    requests:
+                      cpu: "1"
+                      memory: 1Gi
     post:
       tags:
       - workflow
@@ -9684,6 +9852,14 @@ paths:
                     dockerfile: /project/.fuseml/Dockerfile
                     name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
                   name: model-uri
+                resources:
+                  limits:
+                    cpu: "2"
+                    memory: 2Gi
+                    nvidia.com/gpu: "1"
+                  requests:
+                    cpu: "1"
+                    memory: 1Gi
               - env:
                 - name: PATH
                   value: /project
@@ -9782,6 +9958,14 @@ paths:
                     dockerfile: /project/.fuseml/Dockerfile
                     name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
                   name: model-uri
+                resources:
+                  limits:
+                    cpu: "2"
+                    memory: 2Gi
+                    nvidia.com/gpu: "1"
+                  requests:
+                    cpu: "1"
+                    memory: 1Gi
               - env:
                 - name: PATH
                   value: /project
@@ -9880,6 +10064,14 @@ paths:
                     dockerfile: /project/.fuseml/Dockerfile
                     name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
                   name: model-uri
+                resources:
+                  limits:
+                    cpu: "2"
+                    memory: 2Gi
+                    nvidia.com/gpu: "1"
+                  requests:
+                    cpu: "1"
+                    memory: 1Gi
       responses:
         "201":
           description: Created response.
@@ -9987,6 +10179,14 @@ paths:
                       dockerfile: /project/.fuseml/Dockerfile
                       name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
                     name: model-uri
+                  resources:
+                    limits:
+                      cpu: "2"
+                      memory: 2Gi
+                      nvidia.com/gpu: "1"
+                    requests:
+                      cpu: "1"
+                      memory: 1Gi
                 - env:
                   - name: PATH
                     value: /project
@@ -10048,6 +10248,14 @@ paths:
                       dockerfile: /project/.fuseml/Dockerfile
                       name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
                     name: model-uri
+                  resources:
+                    limits:
+                      cpu: "2"
+                      memory: 2Gi
+                      nvidia.com/gpu: "1"
+                    requests:
+                      cpu: "1"
+                      memory: 1Gi
                 - env:
                   - name: PATH
                     value: /project
@@ -10109,6 +10317,14 @@ paths:
                       dockerfile: /project/.fuseml/Dockerfile
                       name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
                     name: model-uri
+                  resources:
+                    limits:
+                      cpu: "2"
+                      memory: 2Gi
+                      nvidia.com/gpu: "1"
+                    requests:
+                      cpu: "1"
+                      memory: 1Gi
         "400":
           description: Bad Request response.
           content:
@@ -10284,6 +10500,14 @@ paths:
                       dockerfile: /project/.fuseml/Dockerfile
                       name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
                     name: model-uri
+                  resources:
+                    limits:
+                      cpu: "2"
+                      memory: 2Gi
+                      nvidia.com/gpu: "1"
+                    requests:
+                      cpu: "1"
+                      memory: 1Gi
                 - env:
                   - name: PATH
                     value: /project
@@ -10345,6 +10569,14 @@ paths:
                       dockerfile: /project/.fuseml/Dockerfile
                       name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
                     name: model-uri
+                  resources:
+                    limits:
+                      cpu: "2"
+                      memory: 2Gi
+                      nvidia.com/gpu: "1"
+                    requests:
+                      cpu: "1"
+                      memory: 1Gi
                 - env:
                   - name: PATH
                     value: /project
@@ -10406,6 +10638,14 @@ paths:
                       dockerfile: /project/.fuseml/Dockerfile
                       name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
                     name: model-uri
+                  resources:
+                    limits:
+                      cpu: "2"
+                      memory: 2Gi
+                      nvidia.com/gpu: "1"
+                    requests:
+                      cpu: "1"
+                      memory: 1Gi
                 - env:
                   - name: PATH
                     value: /project
@@ -10467,6 +10707,14 @@ paths:
                       dockerfile: /project/.fuseml/Dockerfile
                       name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
                     name: model-uri
+                  resources:
+                    limits:
+                      cpu: "2"
+                      memory: 2Gi
+                      nvidia.com/gpu: "1"
+                    requests:
+                      cpu: "1"
+                      memory: 1Gi
         "400":
           description: Bad Request response.
           content:
@@ -10755,15 +11003,6 @@ paths:
           type: string
           description: status of the workflow runs to list
           example: Succeeded
-          enum:
-          - ""
-          - Started
-          - Running
-          - Cancelled
-          - Succeeded
-          - Failed
-          - Completed
-          - Timeout
         example: Succeeded
       responses:
         "200":
@@ -11121,8 +11360,8 @@ components:
         - prj-core
         scope: project
         status:
-          created: "2021-09-08T13:36:34+02:00"
-          updated: "2021-09-08T13:36:34+02:00"
+          created: "2021-11-22T11:19:46+01:00"
+          updated: "2021-11-22T11:19:46+01:00"
         users:
         - bobthemagicpeanut
         - core-admin
@@ -11208,8 +11447,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -11225,8 +11464,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -11242,8 +11481,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -11259,8 +11498,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -11328,8 +11567,8 @@ components:
           scope: project
           service_id: s3
           status:
-            created: "2021-09-08T13:36:34+02:00"
-            updated: "2021-09-08T13:36:34+02:00"
+            created: "2021-11-22T11:19:46+01:00"
+            updated: "2021-11-22T11:19:46+01:00"
           users:
           - bobthemagicpeanut
           - core-admin
@@ -11345,8 +11584,8 @@ components:
           scope: project
           service_id: s3
           status:
-            created: "2021-09-08T13:36:34+02:00"
-            updated: "2021-09-08T13:36:34+02:00"
+            created: "2021-11-22T11:19:46+01:00"
+            updated: "2021-11-22T11:19:46+01:00"
           users:
           - bobthemagicpeanut
           - core-admin
@@ -11371,8 +11610,8 @@ components:
         id: s3
         resource: mlflow-tracker
         status:
-          registered: "2021-09-08T13:36:34+02:00"
-          updated: "2021-09-08T13:36:34+02:00"
+          registered: "2021-11-22T11:19:46+01:00"
+          updated: "2021-11-22T11:19:46+01:00"
     Application:
       type: object
       properties:
@@ -11599,8 +11838,8 @@ components:
         scope: project
         service_id: s3
         status:
-          created: "2021-09-08T13:36:34+02:00"
-          updated: "2021-09-08T13:36:34+02:00"
+          created: "2021-11-22T11:19:46+01:00"
+          updated: "2021-11-22T11:19:46+01:00"
         users:
         - bobthemagicpeanut
         - core-admin
@@ -11610,18 +11849,18 @@ components:
         created:
           type: string
           description: The time when the set of credentials was created
-          default: "2021-09-08T13:36:34+02:00"
-          example: "2021-09-08T13:36:34+02:00"
+          default: "2021-11-22T11:19:46+01:00"
+          example: "2021-11-22T11:19:46+01:00"
           format: date-time
         updated:
           type: string
           description: The time when the set of credentials was last updated
-          default: "2021-09-08T13:36:34+02:00"
-          example: "2021-09-08T13:36:34+02:00"
+          default: "2021-11-22T11:19:46+01:00"
+          example: "2021-11-22T11:19:46+01:00"
           format: date-time
       example:
-        created: "2021-09-08T13:36:34+02:00"
-        updated: "2021-09-08T13:36:34+02:00"
+        created: "2021-11-22T11:19:46+01:00"
+        updated: "2021-11-22T11:19:46+01:00"
     ExtensionEndpoint:
       type: object
       properties:
@@ -11720,8 +11959,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -11737,8 +11976,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -11754,8 +11993,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -11844,8 +12083,8 @@ components:
           scope: project
           service_id: s3
           status:
-            created: "2021-09-08T13:36:34+02:00"
-            updated: "2021-09-08T13:36:34+02:00"
+            created: "2021-11-22T11:19:46+01:00"
+            updated: "2021-11-22T11:19:46+01:00"
           users:
           - bobthemagicpeanut
           - core-admin
@@ -11861,8 +12100,8 @@ components:
           scope: project
           service_id: s3
           status:
-            created: "2021-09-08T13:36:34+02:00"
-            updated: "2021-09-08T13:36:34+02:00"
+            created: "2021-11-22T11:19:46+01:00"
+            updated: "2021-11-22T11:19:46+01:00"
           users:
           - bobthemagicpeanut
           - core-admin
@@ -11878,8 +12117,8 @@ components:
           scope: project
           service_id: s3
           status:
-            created: "2021-09-08T13:36:34+02:00"
-            updated: "2021-09-08T13:36:34+02:00"
+            created: "2021-11-22T11:19:46+01:00"
+            updated: "2021-11-22T11:19:46+01:00"
           users:
           - bobthemagicpeanut
           - core-admin
@@ -11921,26 +12160,26 @@ components:
         id: s3
         resource: mlflow-tracker
         status:
-          registered: "2021-09-08T13:36:34+02:00"
-          updated: "2021-09-08T13:36:34+02:00"
+          registered: "2021-11-22T11:19:46+01:00"
+          updated: "2021-11-22T11:19:46+01:00"
     ExtensionStatus:
       type: object
       properties:
         registered:
           type: string
           description: The time when the extension was registered
-          default: "2021-09-08T13:36:34+02:00"
-          example: "2021-09-08T13:36:34+02:00"
+          default: "2021-11-22T11:19:46+01:00"
+          example: "2021-11-22T11:19:46+01:00"
           format: date-time
         updated:
           type: string
           description: The time when the extension was last updated
-          default: "2021-09-08T13:36:34+02:00"
-          example: "2021-09-08T13:36:34+02:00"
+          default: "2021-11-22T11:19:46+01:00"
+          example: "2021-11-22T11:19:46+01:00"
           format: date-time
       example:
-        registered: "2021-09-08T13:36:34+02:00"
-        updated: "2021-09-08T13:36:34+02:00"
+        registered: "2021-11-22T11:19:46+01:00"
+        updated: "2021-11-22T11:19:46+01:00"
     KubernetesResource:
       type: object
       properties:
@@ -12114,8 +12353,8 @@ components:
               scope: project
               service_id: s3
               status:
-                created: "2021-09-08T13:36:34+02:00"
-                updated: "2021-09-08T13:36:34+02:00"
+                created: "2021-11-22T11:19:46+01:00"
+                updated: "2021-11-22T11:19:46+01:00"
               users:
               - bobthemagicpeanut
               - core-admin
@@ -12131,8 +12370,8 @@ components:
               scope: project
               service_id: s3
               status:
-                created: "2021-09-08T13:36:34+02:00"
-                updated: "2021-09-08T13:36:34+02:00"
+                created: "2021-11-22T11:19:46+01:00"
+                updated: "2021-11-22T11:19:46+01:00"
               users:
               - bobthemagicpeanut
               - core-admin
@@ -12148,8 +12387,8 @@ components:
               scope: project
               service_id: s3
               status:
-                created: "2021-09-08T13:36:34+02:00"
-                updated: "2021-09-08T13:36:34+02:00"
+                created: "2021-11-22T11:19:46+01:00"
+                updated: "2021-11-22T11:19:46+01:00"
               users:
               - bobthemagicpeanut
               - core-admin
@@ -12165,8 +12404,8 @@ components:
               scope: project
               service_id: s3
               status:
-                created: "2021-09-08T13:36:34+02:00"
-                updated: "2021-09-08T13:36:34+02:00"
+                created: "2021-11-22T11:19:46+01:00"
+                updated: "2021-11-22T11:19:46+01:00"
               users:
               - bobthemagicpeanut
               - core-admin
@@ -12200,8 +12439,8 @@ components:
             id: s3
             resource: mlflow-tracker
             status:
-              registered: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              registered: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
           - auth_required: true
             category: serving-platform
             configuration:
@@ -12220,8 +12459,8 @@ components:
               scope: project
               service_id: s3
               status:
-                created: "2021-09-08T13:36:34+02:00"
-                updated: "2021-09-08T13:36:34+02:00"
+                created: "2021-11-22T11:19:46+01:00"
+                updated: "2021-11-22T11:19:46+01:00"
               users:
               - bobthemagicpeanut
               - core-admin
@@ -12237,8 +12476,8 @@ components:
               scope: project
               service_id: s3
               status:
-                created: "2021-09-08T13:36:34+02:00"
-                updated: "2021-09-08T13:36:34+02:00"
+                created: "2021-11-22T11:19:46+01:00"
+                updated: "2021-11-22T11:19:46+01:00"
               users:
               - bobthemagicpeanut
               - core-admin
@@ -12254,8 +12493,8 @@ components:
               scope: project
               service_id: s3
               status:
-                created: "2021-09-08T13:36:34+02:00"
-                updated: "2021-09-08T13:36:34+02:00"
+                created: "2021-11-22T11:19:46+01:00"
+                updated: "2021-11-22T11:19:46+01:00"
               users:
               - bobthemagicpeanut
               - core-admin
@@ -12271,8 +12510,8 @@ components:
               scope: project
               service_id: s3
               status:
-                created: "2021-09-08T13:36:34+02:00"
-                updated: "2021-09-08T13:36:34+02:00"
+                created: "2021-11-22T11:19:46+01:00"
+                updated: "2021-11-22T11:19:46+01:00"
               users:
               - bobthemagicpeanut
               - core-admin
@@ -12306,8 +12545,8 @@ components:
             id: s3
             resource: mlflow-tracker
             status:
-              registered: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              registered: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
           - auth_required: true
             category: serving-platform
             configuration:
@@ -12326,8 +12565,8 @@ components:
               scope: project
               service_id: s3
               status:
-                created: "2021-09-08T13:36:34+02:00"
-                updated: "2021-09-08T13:36:34+02:00"
+                created: "2021-11-22T11:19:46+01:00"
+                updated: "2021-11-22T11:19:46+01:00"
               users:
               - bobthemagicpeanut
               - core-admin
@@ -12343,8 +12582,8 @@ components:
               scope: project
               service_id: s3
               status:
-                created: "2021-09-08T13:36:34+02:00"
-                updated: "2021-09-08T13:36:34+02:00"
+                created: "2021-11-22T11:19:46+01:00"
+                updated: "2021-11-22T11:19:46+01:00"
               users:
               - bobthemagicpeanut
               - core-admin
@@ -12360,8 +12599,8 @@ components:
               scope: project
               service_id: s3
               status:
-                created: "2021-09-08T13:36:34+02:00"
-                updated: "2021-09-08T13:36:34+02:00"
+                created: "2021-11-22T11:19:46+01:00"
+                updated: "2021-11-22T11:19:46+01:00"
               users:
               - bobthemagicpeanut
               - core-admin
@@ -12377,8 +12616,8 @@ components:
               scope: project
               service_id: s3
               status:
-                created: "2021-09-08T13:36:34+02:00"
-                updated: "2021-09-08T13:36:34+02:00"
+                created: "2021-11-22T11:19:46+01:00"
+                updated: "2021-11-22T11:19:46+01:00"
               users:
               - bobthemagicpeanut
               - core-admin
@@ -12412,8 +12651,8 @@ components:
             id: s3
             resource: mlflow-tracker
             status:
-              registered: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              registered: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
         status:
           $ref: '#/components/schemas/ExtensionStatus'
         version:
@@ -12459,8 +12698,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -12476,8 +12715,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -12493,8 +12732,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -12510,8 +12749,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -12545,8 +12784,8 @@ components:
           id: s3
           resource: mlflow-tracker
           status:
-            registered: "2021-09-08T13:36:34+02:00"
-            updated: "2021-09-08T13:36:34+02:00"
+            registered: "2021-11-22T11:19:46+01:00"
+            updated: "2021-11-22T11:19:46+01:00"
         - auth_required: true
           category: serving-platform
           configuration:
@@ -12565,8 +12804,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -12582,8 +12821,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -12599,8 +12838,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -12616,8 +12855,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -12651,8 +12890,8 @@ components:
           id: s3
           resource: mlflow-tracker
           status:
-            registered: "2021-09-08T13:36:34+02:00"
-            updated: "2021-09-08T13:36:34+02:00"
+            registered: "2021-11-22T11:19:46+01:00"
+            updated: "2021-11-22T11:19:46+01:00"
         - auth_required: true
           category: serving-platform
           configuration:
@@ -12671,8 +12910,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -12688,8 +12927,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -12705,8 +12944,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -12722,8 +12961,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -12757,8 +12996,8 @@ components:
           id: s3
           resource: mlflow-tracker
           status:
-            registered: "2021-09-08T13:36:34+02:00"
-            updated: "2021-09-08T13:36:34+02:00"
+            registered: "2021-11-22T11:19:46+01:00"
+            updated: "2021-11-22T11:19:46+01:00"
         - auth_required: true
           category: serving-platform
           configuration:
@@ -12777,8 +13016,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -12794,8 +13033,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -12811,8 +13050,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -12828,8 +13067,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -12863,11 +13102,11 @@ components:
           id: s3
           resource: mlflow-tracker
           status:
-            registered: "2021-09-08T13:36:34+02:00"
-            updated: "2021-09-08T13:36:34+02:00"
+            registered: "2021-11-22T11:19:46+01:00"
+            updated: "2021-11-22T11:19:46+01:00"
         status:
-          registered: "2021-09-08T13:36:34+02:00"
-          updated: "2021-09-08T13:36:34+02:00"
+          registered: "2021-11-22T11:19:46+01:00"
+          updated: "2021-11-22T11:19:46+01:00"
         version: v10.3.1-prealpha+b10022020
         zone: kube-cluster-dev-00126
     RegisterResponseBody:
@@ -13418,8 +13657,8 @@ components:
         - prj-core
         scope: project
         status:
-          created: "2021-09-08T13:36:34+02:00"
-          updated: "2021-09-08T13:36:34+02:00"
+          created: "2021-11-22T11:19:46+01:00"
+          updated: "2021-11-22T11:19:46+01:00"
         users:
         - bobthemagicpeanut
         - core-admin
@@ -13502,8 +13741,8 @@ components:
               scope: project
               service_id: s3
               status:
-                created: "2021-09-08T13:36:34+02:00"
-                updated: "2021-09-08T13:36:34+02:00"
+                created: "2021-11-22T11:19:46+01:00"
+                updated: "2021-11-22T11:19:46+01:00"
               users:
               - bobthemagicpeanut
               - core-admin
@@ -13519,8 +13758,8 @@ components:
               scope: project
               service_id: s3
               status:
-                created: "2021-09-08T13:36:34+02:00"
-                updated: "2021-09-08T13:36:34+02:00"
+                created: "2021-11-22T11:19:46+01:00"
+                updated: "2021-11-22T11:19:46+01:00"
               users:
               - bobthemagicpeanut
               - core-admin
@@ -13536,8 +13775,8 @@ components:
               scope: project
               service_id: s3
               status:
-                created: "2021-09-08T13:36:34+02:00"
-                updated: "2021-09-08T13:36:34+02:00"
+                created: "2021-11-22T11:19:46+01:00"
+                updated: "2021-11-22T11:19:46+01:00"
               users:
               - bobthemagicpeanut
               - core-admin
@@ -13553,8 +13792,8 @@ components:
               scope: project
               service_id: s3
               status:
-                created: "2021-09-08T13:36:34+02:00"
-                updated: "2021-09-08T13:36:34+02:00"
+                created: "2021-11-22T11:19:46+01:00"
+                updated: "2021-11-22T11:19:46+01:00"
               users:
               - bobthemagicpeanut
               - core-admin
@@ -13588,8 +13827,8 @@ components:
             id: s3
             resource: mlflow-tracker
             status:
-              registered: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              registered: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
           - auth_required: true
             category: serving-platform
             configuration:
@@ -13608,8 +13847,8 @@ components:
               scope: project
               service_id: s3
               status:
-                created: "2021-09-08T13:36:34+02:00"
-                updated: "2021-09-08T13:36:34+02:00"
+                created: "2021-11-22T11:19:46+01:00"
+                updated: "2021-11-22T11:19:46+01:00"
               users:
               - bobthemagicpeanut
               - core-admin
@@ -13625,8 +13864,8 @@ components:
               scope: project
               service_id: s3
               status:
-                created: "2021-09-08T13:36:34+02:00"
-                updated: "2021-09-08T13:36:34+02:00"
+                created: "2021-11-22T11:19:46+01:00"
+                updated: "2021-11-22T11:19:46+01:00"
               users:
               - bobthemagicpeanut
               - core-admin
@@ -13642,8 +13881,8 @@ components:
               scope: project
               service_id: s3
               status:
-                created: "2021-09-08T13:36:34+02:00"
-                updated: "2021-09-08T13:36:34+02:00"
+                created: "2021-11-22T11:19:46+01:00"
+                updated: "2021-11-22T11:19:46+01:00"
               users:
               - bobthemagicpeanut
               - core-admin
@@ -13659,8 +13898,8 @@ components:
               scope: project
               service_id: s3
               status:
-                created: "2021-09-08T13:36:34+02:00"
-                updated: "2021-09-08T13:36:34+02:00"
+                created: "2021-11-22T11:19:46+01:00"
+                updated: "2021-11-22T11:19:46+01:00"
               users:
               - bobthemagicpeanut
               - core-admin
@@ -13694,8 +13933,8 @@ components:
             id: s3
             resource: mlflow-tracker
             status:
-              registered: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              registered: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
         status:
           $ref: '#/components/schemas/ExtensionStatus'
         version:
@@ -13740,8 +13979,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -13757,8 +13996,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -13774,8 +14013,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -13791,8 +14030,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -13826,8 +14065,8 @@ components:
           id: s3
           resource: mlflow-tracker
           status:
-            registered: "2021-09-08T13:36:34+02:00"
-            updated: "2021-09-08T13:36:34+02:00"
+            registered: "2021-11-22T11:19:46+01:00"
+            updated: "2021-11-22T11:19:46+01:00"
         - auth_required: true
           category: serving-platform
           configuration:
@@ -13846,8 +14085,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -13863,8 +14102,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -13880,8 +14119,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -13897,8 +14136,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -13932,8 +14171,8 @@ components:
           id: s3
           resource: mlflow-tracker
           status:
-            registered: "2021-09-08T13:36:34+02:00"
-            updated: "2021-09-08T13:36:34+02:00"
+            registered: "2021-11-22T11:19:46+01:00"
+            updated: "2021-11-22T11:19:46+01:00"
         - auth_required: true
           category: serving-platform
           configuration:
@@ -13952,8 +14191,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -13969,8 +14208,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -13986,8 +14225,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -14003,8 +14242,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -14038,8 +14277,8 @@ components:
           id: s3
           resource: mlflow-tracker
           status:
-            registered: "2021-09-08T13:36:34+02:00"
-            updated: "2021-09-08T13:36:34+02:00"
+            registered: "2021-11-22T11:19:46+01:00"
+            updated: "2021-11-22T11:19:46+01:00"
         - auth_required: true
           category: serving-platform
           configuration:
@@ -14058,8 +14297,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -14075,8 +14314,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -14092,8 +14331,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -14109,8 +14348,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -14144,11 +14383,11 @@ components:
           id: s3
           resource: mlflow-tracker
           status:
-            registered: "2021-09-08T13:36:34+02:00"
-            updated: "2021-09-08T13:36:34+02:00"
+            registered: "2021-11-22T11:19:46+01:00"
+            updated: "2021-11-22T11:19:46+01:00"
         status:
-          registered: "2021-09-08T13:36:34+02:00"
-          updated: "2021-09-08T13:36:34+02:00"
+          registered: "2021-11-22T11:19:46+01:00"
+          updated: "2021-11-22T11:19:46+01:00"
         version: v10.3.1-prealpha+b10022020
         zone: kube-cluster-dev-00126
     UpdateServiceRequestBody:
@@ -14195,8 +14434,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -14212,8 +14451,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -14229,8 +14468,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -14246,8 +14485,8 @@ components:
             scope: project
             service_id: s3
             status:
-              created: "2021-09-08T13:36:34+02:00"
-              updated: "2021-09-08T13:36:34+02:00"
+              created: "2021-11-22T11:19:46+01:00"
+              updated: "2021-11-22T11:19:46+01:00"
             users:
             - bobthemagicpeanut
             - core-admin
@@ -14324,8 +14563,8 @@ components:
           scope: project
           service_id: s3
           status:
-            created: "2021-09-08T13:36:34+02:00"
-            updated: "2021-09-08T13:36:34+02:00"
+            created: "2021-11-22T11:19:46+01:00"
+            updated: "2021-11-22T11:19:46+01:00"
           users:
           - bobthemagicpeanut
           - core-admin
@@ -14341,8 +14580,8 @@ components:
           scope: project
           service_id: s3
           status:
-            created: "2021-09-08T13:36:34+02:00"
-            updated: "2021-09-08T13:36:34+02:00"
+            created: "2021-11-22T11:19:46+01:00"
+            updated: "2021-11-22T11:19:46+01:00"
           users:
           - bobthemagicpeanut
           - core-admin
@@ -14358,8 +14597,8 @@ components:
           scope: project
           service_id: s3
           status:
-            created: "2021-09-08T13:36:34+02:00"
-            updated: "2021-09-08T13:36:34+02:00"
+            created: "2021-11-22T11:19:46+01:00"
+            updated: "2021-11-22T11:19:46+01:00"
           users:
           - bobthemagicpeanut
           - core-admin
@@ -14375,8 +14614,8 @@ components:
           scope: project
           service_id: s3
           status:
-            created: "2021-09-08T13:36:34+02:00"
-            updated: "2021-09-08T13:36:34+02:00"
+            created: "2021-11-22T11:19:46+01:00"
+            updated: "2021-11-22T11:19:46+01:00"
           users:
           - bobthemagicpeanut
           - core-admin
@@ -14416,8 +14655,8 @@ components:
           url: https://mlflow.10.120.130.140.nip.io
         resource: mlflow-tracker
         status:
-          registered: "2021-09-08T13:36:34+02:00"
-          updated: "2021-09-08T13:36:34+02:00"
+          registered: "2021-11-22T11:19:46+01:00"
+          updated: "2021-11-22T11:19:46+01:00"
     User:
       type: object
       properties:
@@ -14607,6 +14846,14 @@ components:
                 dockerfile: /project/.fuseml/Dockerfile
                 name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
               name: model-uri
+            resources:
+              limits:
+                cpu: "2"
+                memory: 2Gi
+                nvidia.com/gpu: "1"
+              requests:
+                cpu: "1"
+                memory: 1Gi
           - env:
             - name: PATH
               value: /project
@@ -14671,6 +14918,14 @@ components:
                 dockerfile: /project/.fuseml/Dockerfile
                 name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
               name: model-uri
+            resources:
+              limits:
+                cpu: "2"
+                memory: 2Gi
+                nvidia.com/gpu: "1"
+              requests:
+                cpu: "1"
+                memory: 1Gi
           - env:
             - name: PATH
               value: /project
@@ -14735,6 +14990,14 @@ components:
                 dockerfile: /project/.fuseml/Dockerfile
                 name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
               name: model-uri
+            resources:
+              limits:
+                cpu: "2"
+                memory: 2Gi
+                nvidia.com/gpu: "1"
+              requests:
+                cpu: "1"
+                memory: 1Gi
       example:
         created: "2021-04-09T06:17:25Z"
         description: This workflow is just trains a model and serve it
@@ -14838,6 +15101,14 @@ components:
               dockerfile: /project/.fuseml/Dockerfile
               name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
             name: model-uri
+          resources:
+            limits:
+              cpu: "2"
+              memory: 2Gi
+              nvidia.com/gpu: "1"
+            requests:
+              cpu: "1"
+              memory: 1Gi
         - env:
           - name: PATH
             value: /project
@@ -14902,6 +15173,14 @@ components:
               dockerfile: /project/.fuseml/Dockerfile
               name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
             name: model-uri
+          resources:
+            limits:
+              cpu: "2"
+              memory: 2Gi
+              nvidia.com/gpu: "1"
+            requests:
+              cpu: "1"
+              memory: 1Gi
         - env:
           - name: PATH
             value: /project
@@ -14966,6 +15245,14 @@ components:
               dockerfile: /project/.fuseml/Dockerfile
               name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
             name: model-uri
+          resources:
+            limits:
+              cpu: "2"
+              memory: 2Gi
+              nvidia.com/gpu: "1"
+            requests:
+              cpu: "1"
+              memory: 1Gi
       required:
       - name
       - steps
@@ -15168,15 +15455,6 @@ components:
           type: string
           description: The current status of the workflow run
           example: Succeeded
-          enum:
-          - Started
-          - Running
-          - Cancelled
-          - Succeeded
-          - Failed
-          - Completed
-          - Timeout
-          - Unknown
         workflowRef:
           type: string
           description: Reference to the Workflow
@@ -15366,6 +15644,8 @@ components:
               dockerfile: /project/.fuseml/Dockerfile
               name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
             name: model-uri
+        resources:
+          $ref: '#/components/schemas/WorkflowStepResources'
       example:
         env:
         - name: PATH
@@ -15456,6 +15736,14 @@ components:
             dockerfile: /project/.fuseml/Dockerfile
             name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
           name: model-uri
+        resources:
+          limits:
+            cpu: "2"
+            memory: 2Gi
+            nvidia.com/gpu: "1"
+          requests:
+            cpu: "1"
+            memory: 1Gi
       required:
       - name
       - image
@@ -15667,6 +15955,32 @@ components:
         name: registry.fuseml-registry/mlflow-project/mlflow-codeset:0.1
       required:
       - name
+    WorkflowStepResources:
+      type: object
+      properties:
+        limits:
+          type: object
+          description: Resource limits
+          example:
+            cpu: "2"
+            memory: 2Gi
+            nvidia.com/gpu: "1"
+          additionalProperties: true
+        requests:
+          type: object
+          description: Resource requests
+          example:
+            cpu: "1"
+            memory: 1Gi
+          additionalProperties: true
+      example:
+        limits:
+          cpu: "2"
+          memory: 2Gi
+          nvidia.com/gpu: "1"
+        requests:
+          cpu: "1"
+          memory: 1Gi
 tags:
 - name: openapi
   description: The swagger service serves the API swagger definition.
