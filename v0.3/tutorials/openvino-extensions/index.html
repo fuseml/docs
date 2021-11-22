@@ -804,10 +804,10 @@
 <h2 id="openvino-extensions-implementation">OpenVINO Extensions Implementation</h2>
 <p>This section contains some more details regarding the implementation of the OpenVINO FuseML extensions. The actual implementation is already available in the FuseML repositories:</p>
 <ul>
-<li><a href="https://github.com/fuseml/extensions/tree/main/installer/ovms">the FuseML Installer Extension for the OVMS Operator</a></li>
-<li><a href="https://github.com/fuseml/extensions/tree/main/images/inference-services/ovms">the container image implementing the OVMS predictor step</a></li>
-<li><a href="https://github.com/fuseml/extensions/tree/main/images/converters/ovms">the container image implementing the OpenVINO Model Converter step</a></li>
-<li><a href="https://github.com/fuseml/examples/blob/main/workflows/mlflow-ovms-e2e.yaml">example end-to-end workflow definition</a> that trains a TensorFlow/Keras model with MLFlow, then converts and serves it with the workflow steps listed above</li>
+<li><a href="https://github.com/fuseml/extensions/tree/release-0.3/installer/ovms">the FuseML Installer Extension for the OVMS Operator</a></li>
+<li><a href="https://github.com/fuseml/extensions/tree/release-0.3/images/inference-services/ovms">the container image implementing the OVMS predictor step</a></li>
+<li><a href="https://github.com/fuseml/extensions/tree/release-0.3/images/converters/ovms">the container image implementing the OpenVINO Model Converter step</a></li>
+<li><a href="https://github.com/fuseml/examples/blob/release-0.3/workflows/mlflow-ovms-e2e.yaml">example end-to-end workflow definition</a> that trains a TensorFlow/Keras model with MLFlow, then converts and serves it with the workflow steps listed above</li>
 </ul>
 <h3 id="fuseml-installer-extension-for-ovms-operator">FuseML Installer Extension for OVMS Operator</h3>
 <p>The <a href="https://operatorhub.io/operator/ovms-operator">official OVMS operator</a> can only be installed with the <a href="https://olm.operatorframework.io/">Operator Lifecycle Manager (OLM)</a>. However, to keep things simple, this implementation uses a Kustomize deployment that installs the OVMS Kubernetes operator that can be tracked down to <a href="https://github.com/openvinotoolkit/model_server/tree/main/extras/ovms-operator">this repository</a>.</p>
@@ -920,7 +920,7 @@
 <li>one virtual service per OVMS instance, which needs to be created by the OVMS predictor image</li>
 </ul>
 <p>An important aspect of implementing a container image for a FuseML workflow step is controlling what happens during consecutive step invocations, e.g. when the workflow is re-triggered automatically to account for changes in the input codeset(s). OVMS is capable of auto-detecting changes in the model repository and configuration. If an update means that a new model version is added to the model storage, or a new model is added to the model repository (in case of a multiple model scenario) nothing else needs to be done. All other changes require a re-deployment of the OVMS kubernetes resource which will trigger a rolling update or a scale-out/in (when the replica count parameter is changes). For our minimalist implementation, this simply means that the predictor step doesn't need to re-deploy the OVMS server if the contents of the input model change.</p>
-<p>The complete implementation of the container image for the OVMS predictor workflow step can be viewed <a href="https://github.com/fuseml/extensions/tree/main/images/inference-services/ovms">here</a>. Following are some snippets from the Dockerfile and associated scripts:</p>
+<p>The complete implementation of the container image for the OVMS predictor workflow step can be viewed <a href="https://github.com/fuseml/extensions/tree/release-0.3/images/inference-services/ovms">here</a>. Following are some snippets from the Dockerfile and associated scripts:</p>
 <ul>
 <li>the Dockerfile layout of the environment variables accepted as input by the predictor step image, corresponding to FuseML workflow step inputs and S3/AWS credentials:</li>
 </ul>
@@ -978,7 +978,7 @@ cat <span class="s">&lt;&lt; EOF &gt; /opt/openvino/templates/values.yaml</span>
 <span class="s">EOF</span>
 </code></pre></div>
 <ul>
-<li>an example of how a FuseML workflow step registers a FuseML Application object, in this case corresponding to the created OVMS prediction server instance. <code>register_fuseml_app</code> is available as <a href="https://github.com/fuseml/extensions/blob/main/images/inference-services/base/scripts/helpers.sh#L15">a FuseML helper function</a> that can be imported and used in any container image:</li>
+<li>an example of how a FuseML workflow step registers a FuseML Application object, in this case corresponding to the created OVMS prediction server instance. <code>register_fuseml_app</code> is available as <a href="https://github.com/fuseml/extensions/blob/release-0.3/images/inference-services/base/scripts/helpers.sh#L15">a FuseML helper function</a> that can be imported and used in any container image:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="c1"># Now, register the new application within fuseml; use kubectl only to format the output correctly</span>
 ytt -f /opt/openvino/templates/ <span class="p">|</span> kubectl apply -f - --dry-run<span class="o">=</span>client -o json <span class="p">|</span> register_fuseml_app <span class="se">\</span>
