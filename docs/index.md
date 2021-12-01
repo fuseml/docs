@@ -24,7 +24,8 @@ We follow 5 simple principles
 Well, it depends on what you would you like to do:
 
 - if you want to find out more about this project and the problems it aims to solve, proceed to the [About](about.md) section.
-- if you are looking to learn about FuseML capabilites, we suggest to take the [Quick Start](quickstart.md).
+- if you are looking to learn about FuseML capabilities, we suggest to take the [Quick Start](quickstart.md).
+- if you want to learn more about FuseML workflows and available workflow extensions, consult the [Workflows](workflows/workflows.md) section.
 - if you are evaluating becoming a contributor to this project, go straight to [Contributing](CONTRIBUTING.md) section.
 
 ## Demo video
