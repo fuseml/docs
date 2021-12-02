@@ -106,4 +106,4 @@ kubectl get pods -n tekton-pipelines -o wide
 kubectl get pods -n fuseml-core -o wide
 ```
 
-If everything is in running or completed status, you are good to go. Continue on to the [tutorial](tutorials/kserve-basic.md) section and start to have fun with FuseML.
+If everything is in running or completed status, you are good to go. Continue with one of the available tutorials, such as the [MLFlow and KServe basic example](tutorials/kserve-basic.md) and start to have fun with FuseML.

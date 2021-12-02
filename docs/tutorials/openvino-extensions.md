@@ -29,11 +29,13 @@ The FuseML Extension Registry is basically a database storing information about 
 
 Registering AI/ML services and APIs with the FuseML Extension Registry allows them to be discovered, accessed and consumed in FuseML workflows. This approach decouples FuseML workflows from the actual back-ends used to execute individual steps and enables users to configure MLOps workflows that are portable and reusable. The Extension Registry API is flexible enough to allow FuseML admins to register any 3rd party AI/ML tool. In addition, [FuseML Installer Extensions](#fuseml-installer-extensions) can be used not only to install AI/ML tools, but also to automatically register them with the FuseML Extension Registry.
 
-The [Extension Registry](https://github.com/fuseml/fuseml/blob/main/docs/blueprints/003-extension-registry.md) blueprint covers detailed information about this extensibility mechanism.
+The [Extension Registry](../extensions/extension-registry.md) section covers detailed information about this extensibility mechanism.
 
 ### FuseML Workflows
 
-FuseML workflows are automation processes built out of individual, reusable steps, connected together to form a pipeline. Each step is represented by a container image that implements a particular function in the MLOps lifecycle. Workflow steps can also be thought of as integration mechanisms, especially if they connect to 3rd party services and/or act as adapters for 3rd party APIs. FuseML already features [a collection of workflow step container images](https://github.com/fuseml/extensions/tree/main/images) that implement a variety of ML functions, such as training and serving ML models.
+FuseML workflows are automation processes built out of individual, reusable steps, connected together to form a pipeline. Each step is represented by a container image that implements a particular function in the MLOps lifecycle. Workflow steps can also be thought of as integration mechanisms, especially if they connect to 3rd party services and/or act as adapters for 3rd party APIs. FuseML already features [a collection of workflow step container images](https://github.com/fuseml/extensions/tree/main/images) that implement a variety of ML functions, such as training and serving ML models. 
+
+The [FuseML Workflows](../workflows/workflows.md) section covers detailed information about workflows and workflow extensions.
 
 ## OpenVINO Overview
 

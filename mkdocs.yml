@@ -16,6 +16,8 @@ nav:
       - Seldon Core predictor workflow extension: workflows/seldon-core-predictor.md
       - OpenVINO Model Server predictor workflow extension: workflows/ovms-predictor.md
       - OpenVINO Model Server converter workflow extension: workflows/ovms-converter.md
+  - Extensions:
+      - FuseML extension registry: extensions/extension-registry.md
   - Architecture: architecture.md
   - API Reference: api.md
   - CLI Reference: cli.md
