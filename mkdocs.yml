@@ -18,6 +18,7 @@ nav:
       - OpenVINO Model Server converter workflow extension: workflows/ovms-converter.md
   - Extensions:
       - FuseML extension registry: extensions/extension-registry.md
+      - FuseML installer extensions: extensions/installer-extensions.md
   - Architecture: architecture.md
   - API Reference: api.md
   - CLI Reference: cli.md
