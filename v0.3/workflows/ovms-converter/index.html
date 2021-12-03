@@ -8,19 +8,19 @@
       
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.0.3">
     
     
       
-        <title>FuseML Documentation</title>
+        <title>OpenVINO Model Server converter workflow extension - FuseML Documentation</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.62128196.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.62128196.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.9204c3b2.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.9204c3b2.min.css">
         
           
           
@@ -38,11 +38,11 @@
       
     
     
-      <link rel="stylesheet" href="stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.css">
     
-    <script>function __md_scope(e,t,_){return new URL(_||(t===localStorage?".":"."),location).pathname+"."+e}function __md_get(e,t=localStorage,_){return JSON.parse(t.getItem(__md_scope(e,t,_)))}function __md_set(e,t,_=localStorage,o){try{_.setItem(__md_scope(e,_,o),JSON.stringify(t))}catch(e){}}</script>
+    <script>function __md_scope(e,t,_){return new URL(_||(t===localStorage?"../..":"../.."),location).pathname+"."+e}function __md_get(e,t=localStorage,_){return JSON.parse(t.getItem(__md_scope(e,t,_)))}function __md_set(e,t,_=localStorage,o){try{_.setItem(__md_scope(e,_,o),JSON.stringify(t))}catch(e){}}</script>
     
       
 
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#welcome-to-fuseml-fjuzml" class="md-skip">
+        <a href="#openvino-model-server-converter-extension-for-fuseml-workflows" class="md-skip">
           Skip to content
         </a>
       
@@ -86,7 +86,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="FuseML Documentation" class="md-header__button md-logo" aria-label="FuseML Documentation" data-md-component="logo">
+    <a href="../.." title="FuseML Documentation" class="md-header__button md-logo" aria-label="FuseML Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -105,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              OpenVINO Model Server converter workflow extension
             
           </span>
         </div>
@@ -151,7 +151,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="FuseML Documentation" class="md-nav__button md-logo" aria-label="FuseML Documentation" data-md-component="logo">
+    <a href="../.." title="FuseML Documentation" class="md-nav__button md-logo" aria-label="FuseML Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -180,80 +180,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Home
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
         Home
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#open-source-orchestration-for-machine-learning" class="md-nav__link">
-    Open Source Orchestration for Machine Learning
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#where-to-proceed-from-here" class="md-nav__link">
-    Where to proceed from here
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#demo-video" class="md-nav__link">
-    Demo video
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#where-to-find-us" class="md-nav__link">
-    Where to find us
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sponsor-fuseml" class="md-nav__link">
-    Sponsor FuseML
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -266,7 +197,7 @@
   
   
     <li class="md-nav__item">
-      <a href="about/" class="md-nav__link">
+      <a href="../../about/" class="md-nav__link">
         About
       </a>
     </li>
@@ -281,7 +212,7 @@
   
   
     <li class="md-nav__item">
-      <a href="quickstart/" class="md-nav__link">
+      <a href="../../quickstart/" class="md-nav__link">
         Quick Start
       </a>
     </li>
@@ -322,7 +253,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/kserve-basic/" class="md-nav__link">
+      <a href="../../tutorials/kserve-basic/" class="md-nav__link">
         Logistic Regression with MLFlow & KServe
       </a>
     </li>
@@ -336,7 +267,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/seldon-core/" class="md-nav__link">
+      <a href="../../tutorials/seldon-core/" class="md-nav__link">
         Logistic Regression with MLFlow & Seldon-Core
       </a>
     </li>
@@ -350,7 +281,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/kserve-triton-gpu/" class="md-nav__link">
+      <a href="../../tutorials/kserve-triton-gpu/" class="md-nav__link">
         Training & Serving ML Models on GPU with NVIDIA Triton
       </a>
     </li>
@@ -364,7 +295,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/openvino-mlflow/" class="md-nav__link">
+      <a href="../../tutorials/openvino-mlflow/" class="md-nav__link">
         Benchmarking ML Models on Intel CPUs with Intel OpenVINO
       </a>
     </li>
@@ -378,7 +309,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/openvino-extensions/" class="md-nav__link">
+      <a href="../../tutorials/openvino-extensions/" class="md-nav__link">
         FuseML Extension Development Use-Case - OpenVINO
       </a>
     </li>
@@ -398,12 +329,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
       
       
       
@@ -426,7 +359,7 @@
   
   
     <li class="md-nav__item">
-      <a href="workflows/workflows/" class="md-nav__link">
+      <a href="../workflows/" class="md-nav__link">
         FuseML workflows
       </a>
     </li>
@@ -440,7 +373,7 @@
   
   
     <li class="md-nav__item">
-      <a href="workflows/mlflow-builder/" class="md-nav__link">
+      <a href="../mlflow-builder/" class="md-nav__link">
         MLflow builder workflow extension
       </a>
     </li>
@@ -454,7 +387,7 @@
   
   
     <li class="md-nav__item">
-      <a href="workflows/kserve-predictor/" class="md-nav__link">
+      <a href="../kserve-predictor/" class="md-nav__link">
         KServe predictor workflow extension
       </a>
     </li>
@@ -468,7 +401,7 @@
   
   
     <li class="md-nav__item">
-      <a href="workflows/seldon-core-predictor/" class="md-nav__link">
+      <a href="../seldon-core-predictor/" class="md-nav__link">
         Seldon Core predictor workflow extension
       </a>
     </li>
@@ -482,7 +415,7 @@
   
   
     <li class="md-nav__item">
-      <a href="workflows/ovms-predictor/" class="md-nav__link">
+      <a href="../ovms-predictor/" class="md-nav__link">
         OpenVINO Model Server predictor workflow extension
       </a>
     </li>
@@ -494,11 +427,59 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="workflows/ovms-converter/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          OpenVINO Model Server converter workflow extension
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         OpenVINO Model Server converter workflow extension
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-ovms-converter-step" class="md-nav__link">
+    Using the OVMS Converter Step
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -544,7 +525,7 @@
   
   
     <li class="md-nav__item">
-      <a href="extensions/extension-registry/" class="md-nav__link">
+      <a href="../../extensions/extension-registry/" class="md-nav__link">
         FuseML extension registry
       </a>
     </li>
@@ -558,7 +539,7 @@
   
   
     <li class="md-nav__item">
-      <a href="extensions/installer-extensions/" class="md-nav__link">
+      <a href="../../extensions/installer-extensions/" class="md-nav__link">
         FuseML installer extensions
       </a>
     </li>
@@ -580,7 +561,7 @@
   
   
     <li class="md-nav__item">
-      <a href="architecture/" class="md-nav__link">
+      <a href="../../architecture/" class="md-nav__link">
         Architecture
       </a>
     </li>
@@ -595,7 +576,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/" class="md-nav__link">
+      <a href="../../api/" class="md-nav__link">
         API Reference
       </a>
     </li>
@@ -610,7 +591,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cli/" class="md-nav__link">
+      <a href="../../cli/" class="md-nav__link">
         CLI Reference
       </a>
     </li>
@@ -625,7 +606,7 @@
   
   
     <li class="md-nav__item">
-      <a href="CONTRIBUTING/" class="md-nav__link">
+      <a href="../../CONTRIBUTING/" class="md-nav__link">
         Contributing
       </a>
     </li>
@@ -659,36 +640,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#open-source-orchestration-for-machine-learning" class="md-nav__link">
-    Open Source Orchestration for Machine Learning
+  <a href="#overview" class="md-nav__link">
+    Overview
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#where-to-proceed-from-here" class="md-nav__link">
-    Where to proceed from here
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#demo-video" class="md-nav__link">
-    Demo video
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#where-to-find-us" class="md-nav__link">
-    Where to find us
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sponsor-fuseml" class="md-nav__link">
-    Sponsor FuseML
+  <a href="#using-the-ovms-converter-step" class="md-nav__link">
+    Using the OVMS Converter Step
   </a>
   
 </li>
@@ -705,66 +665,34 @@
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/fuseml/docs/edit/main/docs/index.md" title="Edit this page" class="md-content__button md-icon">
+<a href="https://github.com/fuseml/docs/edit/main/docs/workflows/ovms-converter.md" title="Edit this page" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
 
-<h1 id="welcome-to-fuseml-fjuzml">Welcome to FuseML [fju:zɛmɛl]</h1>
-<h2 id="open-source-orchestration-for-machine-learning">Open Source Orchestration for Machine Learning</h2>
-<p>FuseML is an MLOps orchestrator powered by a flexible framework designed for consistent operations and a rich collection of integration formulas (recipes) reflecting real world use cases that help you reduce technical debt and avoid vendor lock-in.</p>
-<p>We follow 5 simple principles</p>
+<h1 id="openvino-model-server-converter-extension-for-fuseml-workflows">OpenVINO Model Server converter extension for FuseML workflows</h1>
+<h2 id="overview">Overview</h2>
+<p>The OVMS converter workflow step can be used to convert input ML models to the IR (Intermediate Representation) format supported by the <a href="https://docs.openvino.ai/latest/openvino_docs_ovms.html">OpenVINO Model Server</a>. It is normally used in combination with the <a href="../ovms-predictor/">OVMS predictor workflow step</a> in FuseML workflows to serve input ML models with the OpenVINO Model Server. The OVMS converter workflow extension is implemented using the <a href="https://docs.openvino.ai/latest/openvino_docs_MO_DG_Deep_Learning_Model_Optimizer_DevGuide.html">OpenVINO Model Optimizer</a>.</p>
+<p>The OVMS converter step expects a model URL to be supplied as input, pointing to the location in a remote model store where the model is stored. The protocols currently supported for the remote artifact store are: </p>
 <ul>
-<li>
-<p><strong>Flexibility</strong> - create and manage dynamic MLOps workflows connecting different AI/ML tools across multiple infrastructure domains</p>
-</li>
-<li>
-<p><strong>Extensibility</strong> - leverage FuseML's set of abstractions and extension mechanisms to add support for your favorite AI/ML tools</p>
-</li>
-<li>
-<p><strong>Composability</strong> - build complex MLOps workflows for your projects out of composable building blocks implementing a wide range of machine learning functions</p>
-</li>
-<li>
-<p><strong>Collaboration</strong> - use MLOps automation and tool integration recipes created in collaboration by all AI/ML team roles - Data Scientists, Data Engineers, and DevOps Engineers</p>
-</li>
-<li>
-<p><strong>GitOps for Machine Learning</strong> - apply the key principles that GitOps is based on, such as versioning and the declarative paradigm to concepts specific to machine learning - e.g. models, datasets, workflows - to provide features such as end-to-end artifact versioning and lineage, tracking, reproducibility and reactive automation</p>
-</li>
+<li>AWS S3 or S3 compatible</li>
+<li>GCS</li>
+<li>plain HTTP/HTTPs remote location</li>
 </ul>
-<p><img src="fuseml-mlops-anim-fade.gif" style="text-align:center;">
-<a href="https://cloud.google.com/solutions/machine-learning/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning#top_of_page">Figure adopted from “MLOps: Continuous delivery and automation pipelines in machine learning”</a></p>
-<h2 id="where-to-proceed-from-here">Where to proceed from here</h2>
-<p>Well, it depends on what you would you like to do:</p>
+<p>The model formats of the input models that the OVMS converter is able to convert into IR format are:</p>
 <ul>
-<li>if you want to find out more about this project and the problems it aims to solve, proceed to the <a href="about/">About</a> section.</li>
-<li>if you are looking to learn about FuseML capabilities, we suggest to take the <a href="quickstart/">Quick Start</a>.</li>
-<li>
-<p>if you want to learn more about FuseML's core concepts, use one of the following resources:</p>
+<li>TensorFlow (saved_model) models</li>
+<li>ONNX models</li>
+</ul>
+<p>The converter performs the following tasks:</p>
 <ul>
-<li>the <a href="workflows/workflows/">Workflows</a> section covers FuseML workflows and available workflow extensions</li>
-<li>the <a href="extensions/extension-registry/">Extension Registry</a> section describes in more detail how FuseML integrates with 3rd party AI/ML services</li>
-<li>the <a href="extensions/installer-extensions/">Installer Extensions</a> section details how FuseML can be used to deploy and manage entire AI/ML tool stacks constructed out of 3rd party AI/ML tools </li>
+<li>downloads the model locally from the remote artifact store.</li>
+<li>if the model is stored in an MLflow remote store and if so instructed, it auto-detects the format of the input model based on the information stored in the MLflow artifact store.</li>
+<li>it converts/optimizes the model using the provided OpenVINO Model Optimizer tools.</li>
+<li>it uploads the converted model to the output remote artifact store.</li>
 </ul>
-</li>
-<li>
-<p>if you are evaluating becoming a contributor to this project, go straight to <a href="CONTRIBUTING/">Contributing</a> section.</p>
-</li>
-</ul>
-<h2 id="demo-video">Demo video</h2>
-<p>No time for reading? Here's a sneak preview of the installation process of FuseML components.</p>
-<div class="video-wrapper">
-<iframe width="760" height="515" src="https://www.youtube.com/embed/MAJhtJU8eCM?controls=0" title="FuseML Installation Experience" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
-
-<h2 id="where-to-find-us">Where to find us</h2>
-<p>The team behind FuseML is reachable through:</p>
-<ul>
-<li><a href="https://github.com/fuseml">Github</a></li>
-<li><a href="https://join.slack.com/t/fuseml/shared_invite/zt-rcs6kepe-rGrMzlj0hrRlalcahWzoWg">Slack</a></li>
-<li><a href="https://www.youtube.com/channel/UCQLoLTikJDDMXvywWd27FBg">YouTube</a></li>
-</ul>
-<h2 id="sponsor-fuseml">Sponsor FuseML</h2>
-<p>We don't accept sponsorship requests right now. We welcome all code contributions instead.</p>
+<h2 id="using-the-ovms-converter-step">Using the OVMS Converter Step</h2>
+<p>TBD</p>
 
               
             </article>
@@ -777,15 +705,30 @@
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
+        
+        <a href="../ovms-predictor/" class="md-footer__link md-footer__link--prev" aria-label="Previous: OpenVINO Model Server predictor workflow extension" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              OpenVINO Model Server predictor workflow extension
+            </div>
+          </div>
+        </a>
+      
       
         
-        <a href="about/" class="md-footer__link md-footer__link--next" aria-label="Next: About" rel="next">
+        <a href="../../extensions/extension-registry/" class="md-footer__link md-footer__link--next" aria-label="Next: FuseML extension registry" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              About
+              FuseML extension registry
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -819,12 +762,12 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": ".", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "assets/javascripts/workers/search.01824240.min.js", "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.01824240.min.js", "version": {"provider": "mike"}}</script>
     
     
-      <script src="assets/javascripts/bundle.e0abf5b0.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e0abf5b0.min.js"></script>
       
-        <script src="javascripts/extra.js"></script>
+        <script src="../../javascripts/extra.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
       
