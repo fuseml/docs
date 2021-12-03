@@ -1,0 +1,960 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.0.3">
+    
+    
+      
+        <title>FuseML installer extensions - FuseML Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.62128196.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.9204c3b2.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4cae4f">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.css">
+    
+    <script>function __md_scope(e,t,_){return new URL(_||(t===localStorage?"../..":"../.."),location).pathname+"."+e}function __md_get(e,t=localStorage,_){return JSON.parse(t.getItem(__md_scope(e,t,_)))}function __md_set(e,t,_=localStorage,o){try{_.setItem(__md_scope(e,_,o),JSON.stringify(t))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="green" data-md-color-accent="cyan">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#installation-of-3rd-party-tools-and-services-with-the-fuseml-installer" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        <aside class="md-banner md-banner--warning">
+          
+        </aside>
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="FuseML Documentation" class="md-header__button md-logo" aria-label="FuseML Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FuseML Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              FuseML installer extensions
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/fuseml/fuseml/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="FuseML Documentation" class="md-nav__button md-logo" aria-label="FuseML Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    FuseML Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/fuseml/fuseml/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/" class="md-nav__link">
+        Quick Start
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Tutorials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tutorials" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/kserve-basic/" class="md-nav__link">
+        Logistic Regression with MLFlow & KServe
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/seldon-core/" class="md-nav__link">
+        Logistic Regression with MLFlow & Seldon-Core
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/kserve-triton-gpu/" class="md-nav__link">
+        Training & Serving ML Models on GPU with NVIDIA Triton
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/openvino-mlflow/" class="md-nav__link">
+        Benchmarking ML Models on Intel CPUs with Intel OpenVINO
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/openvino-extensions/" class="md-nav__link">
+        FuseML Extension Development Use-Case - OpenVINO
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Workflows
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Workflows" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Workflows
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workflows/workflows/" class="md-nav__link">
+        FuseML workflows
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workflows/mlflow-builder/" class="md-nav__link">
+        MLflow builder workflow extension
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workflows/kserve-predictor/" class="md-nav__link">
+        KServe predictor workflow extension
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workflows/seldon-core-predictor/" class="md-nav__link">
+        Seldon Core predictor workflow extension
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workflows/ovms-predictor/" class="md-nav__link">
+        OpenVINO Model Server predictor workflow extension
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workflows/ovms-converter/" class="md-nav__link">
+        OpenVINO Model Server converter workflow extension
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Extensions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Extensions" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Extensions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../extension-registry/" class="md-nav__link">
+        FuseML extension registry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          FuseML installer extensions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        FuseML installer extensions
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation-of-3rd-party-tools-and-services-with-the-fuseml-installer" class="md-nav__link">
+    Installation of 3rd party tools and services with the FuseML installer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installer-extensions" class="md-nav__link">
+    Installer Extensions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installer-extension-repository" class="md-nav__link">
+    Installer Extension Repository
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/" class="md-nav__link">
+        Architecture
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/" class="md-nav__link">
+        API Reference
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/" class="md-nav__link">
+        CLI Reference
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CONTRIBUTING/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation-of-3rd-party-tools-and-services-with-the-fuseml-installer" class="md-nav__link">
+    Installation of 3rd party tools and services with the FuseML installer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installer-extensions" class="md-nav__link">
+    Installer Extensions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installer-extension-repository" class="md-nav__link">
+    Installer Extension Repository
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/fuseml/docs/edit/main/docs/extensions/installer-extensions.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+  <h1>FuseML installer extensions</h1>
+
+<h2 id="installation-of-3rd-party-tools-and-services-with-the-fuseml-installer">Installation of 3rd party tools and services with the FuseML installer</h2>
+<h2 id="overview">Overview</h2>
+<p>The FuseML installer can be used for more than installing FuseML itself. It can also be used to manage the installation of third-party tools and services and their subsequent registration in <a href="../extension-registry/">the FuseML Extension Registry</a>, where they can be referenced and accessed from FuseML workflows.</p>
+<p>The installer makes a clear distinction between basic mandatory components and extensions for 3rd party tools, but at the same time provides the "all-in-one" experience of installing everything in one shot. Furthermore, the installer is flexible in that it can be extended dynamically to cover more third-party tools and services that are not included in the default tool stack maintained by the FuseML team, by defining new <a href="#installer-extensions">Installer Extensions</a> and grouping them under a custom <a href="#installer-extension-repository">Installer Extension Repository</a>.</p>
+<p>The <a href="https://github.com/fuseml/extensions/tree/main/installer">default FuseML Installer Extension Repository</a> includes a variety of AI/ML tools that can be installed through the FuseML installer. The repository is maintained by the FuseML team and is updated regularly.</p>
+<h2 id="installer-extensions">Installer Extensions</h2>
+<p>An installer extension is represented by a <code>description.yaml</code> YAML file that provides a description of the operations that are needed to install and uninstall a third-party application. The installer extensions are designed to be used with cloud-native applications that can be deployed in a Kubernetes cluster, but they can also be used with other types of infrastructures and deployment models.</p>
+<p>The following is an example of an installer extension descriptor defined for KServe:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kserve</span>
+<span class="nt">product</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kserve</span>
+<span class="nt">version</span><span class="p">:</span> <span class="s">&quot;0.7.0&quot;</span>
+<span class="nt">description</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+  <span class="no">Serverless Inferencing on Kubernetes</span>
+<span class="nt">requires</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">knative</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cert-manager</span>
+<span class="nt">install</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">manifest</span>
+    <span class="nt">location</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://github.com/kserve/kserve/releases/download/v0.7.0/kserve.yaml</span>
+    <span class="nt">waitfor</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">namespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kserve</span>
+        <span class="nt">selector</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">control-plane=kserve-controller-manager</span>
+  <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kustomize</span>
+    <span class="nt">location</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kustomize</span>
+    <span class="nt">waitfor</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">namespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kserve</span>
+        <span class="nt">selector</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">app.kubernetes.io/component=kserve-models-web-app</span>
+<span class="nt">uninstall</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kustomize</span>
+    <span class="nt">location</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kustomize</span>
+  <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">manifest</span>
+    <span class="nt">location</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://github.com/kserve/kserve/releases/download/v0.7.0/kserve.yaml</span>
+<span class="nt">services</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">API</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kserve-api</span>
+    <span class="nt">category</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">prediction-serving</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kserve prediction service API</span>
+    <span class="nt">endpoints</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://kubernetes.default.svc</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">internal</span>
+  <span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">UI</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kserve-ui</span>
+    <span class="nt">category</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">UI</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">KServe UI</span>
+<span class="nt">gateways</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kserve-web-app</span>
+    <span class="nt">namespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kserve</span>
+    <span class="nt">servicehost</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kserve-models-web-app</span>
+    <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">80</span>
+<span class="nt">rolerules</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">apigroups</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">serving.kserve.io</span>
+    <span class="nt">resources</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">inferenceservices</span>
+    <span class="nt">verbs</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">get</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">list</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">create</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">patch</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">watch</span>
+</code></pre></div>
+<p>The descriptor specifies a list of installation and un-installation steps, such as Kubernetes manifests and Kustomize files, that have to be executed in order to deploy the application or to subsequently remove it from a Kubernetes cluster. The other fields in the descriptor are used to describe the application, its capabilities and its permission requirements.</p>
+<p>The extension descriptor is broken down into sections and explored piece by piece in the following paragraphs.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kserve</span>
+<span class="nt">product</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kserve</span>
+<span class="nt">version</span><span class="p">:</span> <span class="s">&quot;0.7.0&quot;</span>
+<span class="nt">description</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+  <span class="no">Serverless Inferencing on Kubernetes</span>
+<span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<p>This part is self explanatory. The <code>name</code> field is the extension identifier that along with the <code>product</code>, <code>version</code> and <code>description</code> fields is used to populate the <a href="../extension-registry/#extension-records">Extension Record</a> that FuseML will use to register KServe as an extension in the <a href="../extension-registry/">FuseML Extension Registry</a> after installation.</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+<span class="nt">requires</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">knative</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cert-manager</span>
+<span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<p>Extensions can depend on other extensions. If a description file contains a <code>requires</code> field, the value is expected to be a list of names of other extensions that are considered requirements for the current one. The FuseML installer will take care to install all dependencies in the right order, so they do not need to be explicitly listed on the command line.</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+<span class="nt">install</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">manifest</span>
+    <span class="nt">location</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://github.com/kserve/kserve/releases/download/v0.7.0/kserve.yaml</span>
+    <span class="nt">waitfor</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">namespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kserve</span>
+        <span class="nt">selector</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">control-plane=kserve-controller-manager</span>
+  <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kustomize</span>
+    <span class="nt">location</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kustomize</span>
+    <span class="nt">waitfor</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">namespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kserve</span>
+        <span class="nt">selector</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">app.kubernetes.io/component=kserve-models-web-app</span>
+<span class="nt">uninstall</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kustomize</span>
+    <span class="nt">location</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kustomize</span>
+  <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">manifest</span>
+    <span class="nt">location</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://github.com/kserve/kserve/releases/download/v0.7.0/kserve.yaml</span>
+<span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<p>The <code>install</code> and <code>uninstall</code> sections list the steps necessary to install, configure and uninstall the extension. KServe is installed through a combination of Kubernetes manifests and Kustomize files. The following types of installation mechanisms are currently supported:</p>
+<ul>
+<li><code>helm</code> - helm chart</li>
+<li><code>manifest</code> - plain Kubernetes manifest, to be installed using <code>kubectl</code>. All information is expected to be present in the manifest file.</li>
+<li><code>kustomize</code> - Kustomize deployment. It can be a URL (i.e. one that works as an input for <code>kubectl -k</code>) or an absolute or relative path to a local directory with Kustomize files.</li>
+<li><code>script</code> - manage the installation/uninstallation through shell scripts. Specific <code>install</code> and <code>uninstall</code> actions need to be provided by way of referencing specific shell scripts.</li>
+</ul>
+<p>Location arguments can be configured for every type of step to point to external resources, such as helm charts, Kubernetes manifests, Kustomize directories and shell scripts:</p>
+<ul>
+<li><code>location</code>: could be either a URL or a local path relative to the extension directory. If used together with a helm chart, <code>location</code> needs to point to tarball with the chart.</li>
+<li><code>repo</code>, <code>chart</code> and <code>version</code>: specific to helm charts only. <code>repo</code> is the chart repository from which the chart with <code>chart</code> name and the <code>version</code> version should be installed. To use this combination, the <code>location</code> field must be empty.</li>
+<li><code>values</code>: points to a customized <code>values.yaml</code> file used in combination with a helm chart. Just like <code>location</code>, it can be a URL or a local path.</li>
+</ul>
+<p>Each step can have its own <code>namespace</code> explicitly configured. If omitted, the global <code>namespace</code> attribute is used. If this is also missing or empty, the FuseML installer will not use any namespace during the step operation.</p>
+<p>After the instruction from an installation step is executed, it is sometimes wise to wait until a certain condition is met to make sure the installer may continue to the next step. The <code>waitfor</code> section may be used to indicate a specific condition the installer should wait for. It takes the arguments that could generally be passed to <code>kubectl wait</code> command.
+The currently supported arguments are:</p>
+<ul>
+<li><code>kind</code> (if missing, defaults to <code>pod</code>)</li>
+<li><code>namespace</code></li>
+<li><code>condition</code> (defaults to <code>ready</code>)</li>
+<li><code>timeout</code> (in seconds; defaults to 300)</li>
+<li><code>selector</code>. If the value of <code>selector</code> is <code>all</code>, FuseML will wait for all resources of given <code>kind</code> to reach the indicated <code>condition</code>. Otherwise, the <code>selector</code> value is treated like the value for the <code>--selector</code> option for the <code>kubectl wait</code> command.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+<span class="nt">services</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">API</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kserve-api</span>
+    <span class="nt">category</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">prediction-serving</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kserve prediction service API</span>
+    <span class="nt">endpoints</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://kubernetes.default.svc</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">internal</span>
+  <span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">UI</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kserve-ui</span>
+    <span class="nt">category</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">UI</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">KServe UI</span>
+<span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<p>The <code>services</code> section provides information that is reflected in the generated Extension Descriptor that FuseML will use to register the extension in the <a href="../extension-registry/">FuseML Extension Registry</a>, more specifically in the <code>services</code> field of the Extension Record. For more information about the fields that can be configured in the services section, see <a href="../extension-registry/#extension-records">Extension Descriptor</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code>services</code> field should only be configured for extensions that expose APIs that need to be accessed from the FuseML workflows. Extensions that are not meant to interact with FuseML workflows (e.g. those that are only used as functional dependencies for other extensions) do not need to have this field filled in and will be ignored by FuseML in relation with workflows.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+<span class="nt">gateways</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kserve-web-app</span>
+    <span class="nt">namespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kserve</span>
+    <span class="nt">servicehost</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kserve-models-web-app</span>
+    <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">80</span>
+<span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<p>Some Kubernetes applications such as KServe don't include means of exposing the provided services in their official deployment manifests (e.g. Ingress, Load Balancer or Istio Gateway). When the <code>gateways</code> field is specified in the descriptor, the FuseML installer will also create one Istio gateway corresponding to each entry.</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+<span class="nt">rolerules</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">apigroups</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">serving.kserve.io</span>
+    <span class="nt">resources</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">inferenceservices</span>
+    <span class="nt">verbs</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">get</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">list</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">create</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">patch</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">watch</span>
+</code></pre></div>
+<p>Some third party AI/ML services, like KServe, come in the form of Kubernetes operators that have associated CRD. To have access to these resources, the workflow steps need to have additional permissions granted to them. The <code>rolerules</code> section can be used to provide the list of permissions (Kubernetes roles) that need to be granted to FuseML workflow steps that need to access the extension. The syntax is the same as for the <a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/">Kubernetes Role object</a>, i.e. it is expected to contain ApiGroups, Resources and Verbs values.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All steps in a FuseML workflow are executed in the <code>fuseml-workloads</code> Kubernetes namespace and in the context of the <code>fuseml-workloads</code> service account. For 3rd party tools that are not installed using installer extensions, or that do not include <code>rolerules</code> in the extension descriptor, the admin must manually add the required permissions to the <code>fuseml-workloads</code> service account. FuseML automatically adds the permissions listed in the <code>rolerules</code> section to the mentioned service account.</p>
+</div>
+<p>For more examples of extension descriptors and how to build them, take a look at the <a href="https://github.com/fuseml/extensions/tree/main/installer">Installer Extension Repository maintained by the FuseML team</a></p>
+<h2 id="installer-extension-repository">Installer Extension Repository</h2>
+<p>Installer extensions have to be organized using a particular directory structure to be recognized by the FuseML installer. A FuseML installer extension repository is a directory (local or remote) containing description files of extensions. Each extension has its own subdirectory that matches the extension name. Mandatory component under each extension subdirectory is the <code>description.yaml</code> file.</p>
+<p>Example directory structure:</p>
+<div class="highlight"><pre><span></span><code>extensions
+  - mlflow
+    - description.yaml
+    - values.yaml
+  - knative
+    - description.yaml
+    - install.sh
+    - uninstall.sh
+</code></pre></div>
+<p>The FuseML installer defaults to using the <a href="https://github.com/fuseml/extensions/tree/main/installer">Installer Extension Repository maintained by the FuseML team</a>. To point it to a different location, the optional <code>--extension-repository</code> command line argument can be used.</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../extension-registry/" class="md-footer__link md-footer__link--prev" aria-label="Previous: FuseML extension registry" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              FuseML extension registry
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../architecture/" class="md-footer__link md-footer__link--next" aria-label="Next: Architecture" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Architecture
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2021 FuseML Author(s)
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.01824240.min.js", "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e0abf5b0.min.js"></script>
+      
+        <script src="../../javascripts/extra.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js"></script>
+      
+    
+  </body>
+</html>

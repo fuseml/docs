@@ -1,0 +1,1361 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.0.3">
+    
+    
+      
+        <title>FuseML extension registry - FuseML Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.62128196.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.9204c3b2.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4cae4f">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.css">
+    
+    <script>function __md_scope(e,t,_){return new URL(_||(t===localStorage?"../..":"../.."),location).pathname+"."+e}function __md_get(e,t=localStorage,_){return JSON.parse(t.getItem(__md_scope(e,t,_)))}function __md_set(e,t,_=localStorage,o){try{_.setItem(__md_scope(e,_,o),JSON.stringify(t))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="green" data-md-color-accent="cyan">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#fuseml-extension-registry" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        <aside class="md-banner md-banner--warning">
+          
+        </aside>
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="FuseML Documentation" class="md-header__button md-logo" aria-label="FuseML Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FuseML Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              FuseML extension registry
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/fuseml/fuseml/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="FuseML Documentation" class="md-nav__button md-logo" aria-label="FuseML Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    FuseML Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/fuseml/fuseml/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/" class="md-nav__link">
+        Quick Start
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Tutorials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tutorials" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/kserve-basic/" class="md-nav__link">
+        Logistic Regression with MLFlow & KServe
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/seldon-core/" class="md-nav__link">
+        Logistic Regression with MLFlow & Seldon-Core
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/kserve-triton-gpu/" class="md-nav__link">
+        Training & Serving ML Models on GPU with NVIDIA Triton
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/openvino-mlflow/" class="md-nav__link">
+        Benchmarking ML Models on Intel CPUs with Intel OpenVINO
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/openvino-extensions/" class="md-nav__link">
+        FuseML Extension Development Use-Case - OpenVINO
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Workflows
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Workflows" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Workflows
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workflows/workflows/" class="md-nav__link">
+        FuseML workflows
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workflows/mlflow-builder/" class="md-nav__link">
+        MLflow builder workflow extension
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workflows/kserve-predictor/" class="md-nav__link">
+        KServe predictor workflow extension
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workflows/seldon-core-predictor/" class="md-nav__link">
+        Seldon Core predictor workflow extension
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workflows/ovms-predictor/" class="md-nav__link">
+        OpenVINO Model Server predictor workflow extension
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workflows/ovms-converter/" class="md-nav__link">
+        OpenVINO Model Server converter workflow extension
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Extensions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Extensions" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Extensions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          FuseML extension registry
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        FuseML extension registry
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extension-records" class="md-nav__link">
+    Extension Records
+  </a>
+  
+    <nav class="md-nav" aria-label="Extension Records">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#extension-examples" class="md-nav__link">
+    Extension Examples
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencing-extensions-in-workflows" class="md-nav__link">
+    Referencing Extensions in Workflows
+  </a>
+  
+    <nav class="md-nav" aria-label="Referencing Extensions in Workflows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#extension-selector-examples" class="md-nav__link">
+    Extension Selector Examples
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extension-registry-use-cases" class="md-nav__link">
+    Extension Registry Use Cases
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installer-extensions/" class="md-nav__link">
+        FuseML installer extensions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/" class="md-nav__link">
+        Architecture
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/" class="md-nav__link">
+        API Reference
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/" class="md-nav__link">
+        CLI Reference
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CONTRIBUTING/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extension-records" class="md-nav__link">
+    Extension Records
+  </a>
+  
+    <nav class="md-nav" aria-label="Extension Records">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#extension-examples" class="md-nav__link">
+    Extension Examples
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencing-extensions-in-workflows" class="md-nav__link">
+    Referencing Extensions in Workflows
+  </a>
+  
+    <nav class="md-nav" aria-label="Referencing Extensions in Workflows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#extension-selector-examples" class="md-nav__link">
+    Extension Selector Examples
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extension-registry-use-cases" class="md-nav__link">
+    Extension Registry Use Cases
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/fuseml/docs/edit/main/docs/extensions/extension-registry.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="fuseml-extension-registry">FuseML Extension Registry</h1>
+<h2 id="overview">Overview</h2>
+<p>FuseML maintains a central registry where it keeps information about the available extensions and 3rd party tools that it integrates with. This information can be interactively consumed by users, but more importantly, is available as input for workflows and for other control plane features that we plan to add to FuseML in the future, such as multi-cluster AI/ML resource and service management.</p>
+<p>The immediate application of an extension registry is to provide a place where endpoints, URLs, credentials and other data required to access 3rd party AI/ML tools like data stores, artifact stores, hyperparameter tuning and distributed training tools and prediction service platforms can be stored and accessed by the container images implementing workflow steps.</p>
+<p>The information in the Extension Registry can be populated by end users <a href="../../cli/#extensions">through the CLI</a> or <a href="../../api/">through the REST API</a>. In addition to explicit registration, the FuseML installer automatically handles all registration and de-registration matters for the 3rd party tools and services that are installed through it.</p>
+<p>To understand what information is needed to <em>model and register your own instance of AI/ML tool or service as a FuseML extension</em> and then <em>reference it and access it from FuseML workflows</em>, please proceed to the next sections describing the <a href="#extension-records">Extension Record format</a> and the <a href="#referencing-extensions-in-workflows">workflow extension references</a>.</p>
+<p>To explore more on the use-cases for which the Extension Registry was intended, please refer to the <a href="#extension-registry-use-cases">Extension Registry Use Cases section</a>.</p>
+<h2 id="extension-records">Extension Records</h2>
+<p>The structure of the information captured in the Extension Registry (i.e. the Extension Records) is based on common architectural and deployment patterns and abstractions exhibited by and extracted from a wide range of AI/ML tools and services, but is particularly suited to describe cloud-native applications and services. The Extension Record is represented by a hierarchy of elements (services, endpoints, credentials and configuration) that can be used to model any 3rd party service in a form that can be easily referenced and consumed by FuseML and automated workflows.</p>
+<p>Below is an example of an Extension Record describing an MLFlow server instance deployed in a Kubernetes cluster. In fact, it is the exact Extension Record that is automatically registered when MLFlow is installed using the FuseML installer.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow</span>
+<span class="nt">product</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow</span>
+<span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.20.2</span>
+<span class="nt">description</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+  <span class="no">MLFlow is an open source platform specialized in tracking ML experiments, and packaging and deploying ML models.</span>
+<span class="nt">services</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-tracking</span>
+  <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-tracking</span>
+  <span class="nt">category</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">experiment-tracking</span>
+  <span class="nt">authrequired</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+  <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MLFlow experiment tracking service API and UI</span>
+  <span class="nt">endpoints</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://mlflow.mlflow</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">internal</span>
+    <span class="nt">configuration</span><span class="p">:</span>
+      <span class="nt">MLFLOW_TRACKING_URI</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://mlflow.mlflow</span>
+<span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-store</span>
+  <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">s3</span>
+  <span class="nt">category</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">model-store</span>
+  <span class="nt">authrequired</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MLFlow minio S3 storage back-end</span>
+  <span class="nt">endpoints</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://mlflow-minio.mlflow:9000</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">internal</span>
+    <span class="nt">configuration</span><span class="p">:</span>
+      <span class="nt">MLFLOW_S3_ENDPOINT_URL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://mlflow-minio.mlflow:9000</span>
+  <span class="nt">credentials</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">default-s3-account</span>
+    <span class="nt">default</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="nt">scope</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">global</span>
+    <span class="nt">projects</span><span class="p">:</span> <span class="p p-Indicator">[]</span>
+    <span class="nt">users</span><span class="p">:</span> <span class="p p-Indicator">[]</span>
+    <span class="nt">configuration</span><span class="p">:</span>
+      <span class="nt">AWS_ACCESS_KEY_ID</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;hidden&gt;</span>
+      <span class="nt">AWS_SECRET_ACCESS_KEY</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;hidden&gt;</span>
+</code></pre></div>
+<p>As can be seen from the descriptor, an MLFlow server consists of two services: the experiment tracking service and the artifact store. The experiment tracking service is responsible for tracking and visualizing ML experiments. The artifact store (in our case backed by <a href="https://min.io/">minio - an S3 object store</a>) is the service responsible for storing ML artifacts, such as ML models, datasets and logs. Services have individual endpoints through which they can be accessed. The artifact store in particular requires authentication, which is why credentials are also provided.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In different circumstances, we wouldn't need to include the artifact store back-end as a separate service in the extension descriptor, for example if the MLflow tracking server API would act as a central proxy intermediating uploading and downloading of artifacts. However, in this case, the external clients need to interact directly with the MLflow artifact store back-end to upload/download artifacts, which is why we need to cover it as a standalone service under the same extension.</p>
+</div>
+<p>Next, let's take a closer look at the different sections (elements) that make up an Extension Record and explore their utility:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow</span>
+<span class="nt">product</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow</span>
+<span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.20.2</span>
+<span class="nt">description</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+  <span class="no">MLFlow is an open source platform specialized in tracking ML experiments, and packaging and deploying ML models.</span>
+</code></pre></div>
+<p>An Extension Record is identified by its <code>id</code> and represents a single instance or installation of a framework/platform/service/product developed and released or hosted under a unique name and operated as a single cohesive unit. Different installations of the same product can be grouped together based on the <code>product</code> and <code>version</code> they were installed from. They can also be grouped together based on the the infrastructure domain (i.e. location, region, zone, area or kubernetes cluster) where the extension is running, based on a <code>zone</code> identifier (not depicted here).</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+<span class="nt">services</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-tracking</span>
+  <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-tracking</span>
+  <span class="nt">category</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">experiment-tracking</span>
+  <span class="nt">authrequired</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+  <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MLFlow experiment tracking service API and UI</span>
+  <span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+<span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-store</span>
+  <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">s3</span>
+  <span class="nt">category</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">model-store</span>
+  <span class="nt">authrequired</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MLFlow minio S3 storage back-end</span>
+  <span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<p>Several individual <code>services</code>, that can be consumed separately, can be provided by the same extension. In our example, an MLFlow instance is composed of an experiment tracking service API/UI and an artifact store service. A <code>service</code> is represented by a single exposed API or UI. For extensions implemented as cloud-native applications, a <code>service</code> is the equivalent of a Kubernetes service that is used to expose a public API or UI. <code>Services</code> are also classified into known resource types (e.g. s3, git, ui) and service categories (e.g. model store, feature store, prediction platform), to make it easier to create <em>portable workflows</em>: where a workflow step lists a service type and/or a category as a requirement, and FuseML automatically resolves that to whatever particular service instance is available at runtime. Together with the extension <code>product</code> and <code>version</code>, the resource type and service category can be used to uniquely identify a service or group of services independently of how and where they are deployed.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-tracking</span>
+  <span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+  <span class="nt">endpoints</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://mlflow.mlflow</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">internal</span>
+<span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-store</span>
+  <span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+  <span class="nt">endpoints</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://mlflow-minio.mlflow:9000</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">internal</span>
+</code></pre></div>
+<p>A <code>service</code> is exposed through several individual <code>endpoints</code>. Having a list of <code>endpoints</code> associated with a single <code>service</code> is particularly important for representing Kubernetes services, which can be exposed both internally (cluster IP) and externally (e.g. ingress or load balancer IP). Depending on the consumer location, FuseML can choose the endpoint that is accessible to and closer to the consumer. All <code>endpoints</code> grouped under the same <code>service</code> must be equivalent in the sense that they are backed by the same API and/or protocol. Our example only features internal endpoints; this implies that the APIs can only be consumed by automated FuseML workflows that are running in the same Kubernetes cluster as the MLflow server instance.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
+<span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+<span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-store</span>
+  <span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+  <span class="nt">credentials</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">default-s3-account</span>
+    <span class="nt">default</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="nt">scope</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">global</span>
+    <span class="nt">projects</span><span class="p">:</span> <span class="p p-Indicator">[]</span>
+    <span class="nt">users</span><span class="p">:</span> <span class="p p-Indicator">[]</span>
+    <span class="nt">configuration</span><span class="p">:</span>
+      <span class="nt">AWS_ACCESS_KEY_ID</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;hidden&gt;</span>
+      <span class="nt">AWS_SECRET_ACCESS_KEY</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;hidden&gt;</span>
+</code></pre></div>
+<p>A <code>service</code> can be accessed using one of several sets of <code>credentials</code>. A set of <code>credentials</code> can be generally used to embed information pertaining to the authentication and authorization features supported by a service. This element allows administrators and operators of 3rd party tools integrated with FuseML to configure different accounts and credentials (tokens, certificates, passwords) to be associated with different FuseML organization entities (users, projects, groups etc.). In our MLflow case, all clients, FuseML workflows included, need S3 credentials to be able to upload/download artifacts from the S3 artifact store.</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+<span class="nt">services</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-tracking</span>
+  <span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+  <span class="nt">endpoints</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://mlflow.mlflow</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">internal</span>
+    <span class="nt">configuration</span><span class="p">:</span>
+      <span class="nt">MLFLOW_TRACKING_URI</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://mlflow.mlflow</span>
+<span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-store</span>
+  <span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+  <span class="nt">endpoints</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://mlflow-minio.mlflow:9000</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">internal</span>
+    <span class="nt">configuration</span><span class="p">:</span>
+      <span class="nt">MLFLOW_S3_ENDPOINT_URL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://mlflow-minio.mlflow:9000</span>
+  <span class="nt">credentials</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">default-s3-account</span>
+    <span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+    <span class="nt">configuration</span><span class="p">:</span>
+      <span class="nt">AWS_ACCESS_KEY_ID</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;hidden&gt;</span>
+      <span class="nt">AWS_SECRET_ACCESS_KEY</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;hidden&gt;</span>
+</code></pre></div>
+<p><code>Configuration</code> elements can be present under the top level as well as the <code>services</code>, <code>endpoints</code> and <code>credentials</code> elements and represent opaque, service specific configuration data that the consumers need in order to access a service interface. <code>Configuration</code> elements can be used to encode any information relevant for service clients: accounts and credentials, information describing the service or particular configuration parameters that describe how the service should be used. For example, if endpoints are SSL secured, custom certificates (e.g. self-signed CA certificates or client certificates) might be needed to access them and this should be included in the endpoint configuration. The information encoded in a <code>configuration</code> element is treated as sensitive information (stored securely and not exposed through the API) when present under <code>credentials</code>. These are the equivalent of Kubernetes configmaps (or secrets, when under <code>credentials</code>).</p>
+<h3 id="extension-examples">Extension Examples</h3>
+<p>This section contains more Extension Record examples, featuring some common configurations and scenarios.</p>
+<ol>
+<li>
+<p>an MLFlow instance deployed locally alongside FuseML and globally accessible. This is similar to the example analyzed in the previous section, but also includes external endpoints:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-0001</span>
+<span class="nt">product</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow</span>
+<span class="nt">version</span><span class="p">:</span> <span class="s">&quot;1.19.0&quot;</span>
+<span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MLFlow experiment tracking and artifact store</span>
+<span class="nt">zone</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cluster-alpha</span>
+<span class="nt">services</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-tracking</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-tracking</span>
+    <span class="nt">category</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">experiment-tracking</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MLFlow experiment tracking service API and UI</span>
+    <span class="nt">endpoints</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://mlflow.mlflow</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">internal</span>
+        <span class="nt">configuration</span><span class="p">:</span>
+          <span class="nt">MLFLOW_TRACKING_URI</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://mlflow.mlflow</span>
+      <span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://mlflow.10.110.120.130.nip.io</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">external</span>
+        <span class="nt">configuration</span><span class="p">:</span>
+          <span class="nt">MLFLOW_TRACKING_URI</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://mlflow.10.110.120.130.nip.io</span>
+  <span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-store</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">s3</span>
+    <span class="nt">category</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">model-store</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MLFlow minio S3 storage back-end</span>
+    <span class="nt">credentials</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">default-s3-account</span>
+        <span class="nt">scope</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">global</span>
+        <span class="nt">configuration</span><span class="p">:</span>
+          <span class="nt">AWS_ACCESS_KEY_ID</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">24oT0SfbJPEu6kUbUKsH</span>
+          <span class="nt">AWS_SECRET_ACCESS_KEY</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cMGiZff8KqS5xWQ4eagRujh1tDcbQyRP0bEJSBOf</span>
+    <span class="nt">endpoints</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://mlflow-minio.mlflow:9000</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">internal</span>
+        <span class="nt">configuration</span><span class="p">:</span>
+          <span class="nt">MLFLOW_S3_ENDPOINT_URL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://mlflow-minio.mlflow:9000</span>
+      <span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://minio.10.110.120.130.nip.io</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">external</span>
+        <span class="nt">configuration</span><span class="p">:</span>
+          <span class="nt">MLFLOW_S3_ENDPOINT_URL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://minio.10.110.120.130.nip.io</span>
+</code></pre></div>
+</li>
+<li>
+<p>example showing that the minio service deployed as a sub-component of the previous MLFlow instance can also be registered as a generic minio/S3 service, although this is not recommended, because even though the S3 service can be accessed and used independently of the parent MLflow tracking server, the way that artifact store data is organized and stored in the S3 back-end is specific to MLFlow and should be discoverable as such:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-model-store-0001</span>
+<span class="nt">product</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">minio</span>
+<span class="nt">version</span><span class="p">:</span> <span class="s">&quot;4.1.3&quot;</span>
+<span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Minio S3 storage service</span>
+<span class="nt">zone</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cluster-alpha</span>
+<span class="nt">services</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">s3</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">s3</span>
+    <span class="nt">category</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object-storage</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MLFlow minio S3 storage back-end</span>
+    <span class="nt">credentials</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">default</span>
+        <span class="nt">scope</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">global</span>
+        <span class="nt">configuration</span><span class="p">:</span>
+          <span class="nt">AWS_ACCESS_KEY_ID</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">24oT0SfbJPEu6kUbUKsH</span>
+          <span class="nt">AWS_SECRET_ACCESS_KEY</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cMGiZff8KqS5xWQ4eagRujh1tDcbQyRP0bEJSBOf</span>
+    <span class="nt">endpoints</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://mlflow-minio.mlflow:9000</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">internal</span>
+      <span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://mlflow.10.110.120.130.nip.io</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">external</span>
+</code></pre></div>
+</li>
+<li>
+<p>example of an extension record for a 3rd party Gitea instance running in a zone other than FuseML. A dedicated <code>fuseml-admin</code> Gitea user was configured explicitly for FuseML and the credentials are provided in the extension record: </p>
+<div class="highlight"><pre><span></span><code><span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gitea-devel-rd</span>
+<span class="nt">product</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gitea</span>
+<span class="nt">version</span><span class="p">:</span> <span class="s">&quot;1.14.3&quot;</span>
+<span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Gitea version control server running in the R&amp;D cloud</span>
+<span class="nt">zone</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">rd-cloud</span>
+<span class="nt">services</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">git_https</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">git+https</span>
+    <span class="nt">category</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">VCS</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Gitea git/http API</span>
+    <span class="nt">endpoints</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://gitea.rd-cloud.mydomain.org</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">external</span>
+    <span class="nt">credentials</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">admin</span>
+        <span class="nt">scope</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">global</span>
+        <span class="nt">configuration</span><span class="p">:</span>
+          <span class="nt">username</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">fuseml-admin</span>
+          <span class="nt">password</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8KqS5xWQ4eagRu</span>
+</code></pre></div>
+</li>
+<li>
+<p>example showing two different extension records, instances of different products, that provide the same type of resource/API. FuseML reusable workflows can reference any of these extension instances with a <code>resource: s3</code> selector and FuseML will connect them at runtime to the one that is available in the zone where they're running:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">minio-s3-storage</span>
+<span class="nt">product</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">minio</span>
+<span class="nt">version</span><span class="p">:</span> <span class="s">&quot;4.1.3&quot;</span>
+<span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Minio S3 storage services</span>
+<span class="nt">zone</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">development-cluster</span>
+<span class="nt">services</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">s3</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">s3</span>
+    <span class="nt">category</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object-storage</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Minio S3 storage deployed in the development cluster</span>
+    <span class="nt">credentials</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">local-minio</span>
+        <span class="nt">scope</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">global</span>
+        <span class="nt">configuration</span><span class="p">:</span>
+          <span class="nt">AWS_ACCESS_KEY_ID</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">24oT0SfbJPEu6kUbUKsH</span>
+          <span class="nt">AWS_SECRET_ACCESS_KEY</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cMGiZff8KqS5xWQ4eagRujh1tDcbQyRP0bEJSBOf</span>
+    <span class="nt">endpoints</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://minio.minio:9000</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">internal</span>
+      <span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://minio.10.110.120.130.nip.io</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">external</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">aws-object-storage</span>
+<span class="nt">product</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">aws-s3</span>
+<span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS cloud object storage</span>
+<span class="nt">zone</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">eu-central-1</span>
+<span class="nt">services</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">aws</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">s3</span>
+    <span class="nt">category</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object-storage</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS S3 object storage</span>
+    <span class="nt">credentials</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">aws</span>
+        <span class="nt">scope</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">global</span>
+        <span class="nt">configuration</span><span class="p">:</span>
+          <span class="nt">AWS_ACCESS_KEY_ID</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sWRS24oT0SfbJPEu6kU3EWf</span>
+          <span class="nt">AWS_SECRET_ACCESS_KEY</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">abl4SDcMGiZff8KqS5xWQ4eagRujh1tDcbQyRP0s</span>
+    <span class="nt">endpoints</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://s3.eu-central-1.amazonaws.com</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">external</span>
+</code></pre></div>
+</li>
+<li>
+<p>this next extension record shows KServe as an example of a Kubernetes controller running in the same cluster as FuseML. No credentials need to be configured, since the FuseML workflows are running in the same cluster and will be able to access the KServe API through the special Kubernetes service account configured by FuseML and in the context of which all workflow containers are running. The extension record also shows how the KServe UI is exposed as a second external service.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The FuseML installer takes care of setting up the proper roles and permissions for the Kubernetes service account to access the KServe API, only if KServe is installed through the FuseML installer. Otherwise, the FuseML admin needs to explicitly configure additional roles and permissions for the <code>fuseml-workloads/fuseml-workloads</code> Kubernetes service account to allow the workflow containers to access the KServe API. </p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kserve-local</span>
+<span class="nt">product</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kserve</span>
+<span class="nt">version</span><span class="p">:</span> <span class="s">&quot;0.7.0&quot;</span>
+<span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">KServe prediction service platform running in the local cluster</span>
+<span class="nt">zone</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cluster.local</span>
+<span class="nt">services</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">API</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kfserve-api</span>
+    <span class="nt">category</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">prediction-serving</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">KServe prediction service API</span>
+    <span class="nt">endpoints</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://kubernetes.default.svc</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">internal</span>
+  <span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">UI</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kserve-ui</span>
+    <span class="nt">category</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">UI</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">KServe prediction platform UI</span>
+    <span class="nt">endpoints</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://kserve.10.120.130.140.nip.io/</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">external</span>
+</code></pre></div>
+</li>
+<li>
+<p>this extension record shows Seldon Core as an example of a Kubernetes service running in a cluster different than the one where FuseML is located and where workflows are executed. In this case, Kubernetes credentials need to be explicitly provided with the extension record to give the workflows access to the cluster API. The admin also decided to be more restrictive about how this remote cluster is used by FuseML and to configure explicit project-scope and user-scope credentials that only allow workflows running in the context of the FuseML projects <code>alpha</code> and <code>beta</code> to access it.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">seldon-core-production</span>
+<span class="nt">product</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">seldon</span>
+<span class="nt">version</span><span class="p">:</span> <span class="s">&quot;1.11.0&quot;</span>
+<span class="nt">zone</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">production-cluster-001</span>
+<span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Seldon Core inference serving platform running in production cluster</span>
+<span class="nt">services</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">API</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">seldon-core-api</span>
+    <span class="nt">category</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">prediction-serving</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Seldon Core prediction serving platform API</span>
+    <span class="nt">credentials</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">project-alpha</span>
+        <span class="nt">scope</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">project</span>
+        <span class="nt">projects</span><span class="p">:</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">alpha</span>
+        <span class="nt">configuration</span><span class="p">:</span>
+          <span class="nt">CLIENT_CERT</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">LS0tLS1CRUdJTiBDRVJUSUZJQ0FU[...]RS0tLS0tCk1JSUM4akNDQNBVEUtLS0tLQo=</span>
+          <span class="nt">CLIENT_KEY</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cMGiZff8KqS5xW[...]Q4eagRujh1tDcbQyRP0bEJSBOf</span>
+          <span class="nt">CLUSTER_CERT_AUTH</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">VsSCsdfLS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0[...]tLS0tCk1anF1TT0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=</span>
+      <span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">user-alainturing</span>
+        <span class="nt">scope</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">user</span>
+        <span class="nt">projects</span><span class="p">:</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">alpha</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">beta</span>
+        <span class="nt">users</span><span class="p">:</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">alainturing</span>
+        <span class="nt">configuration</span><span class="p">:</span>
+          <span class="nt">CLIENT_CERT</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">GHLS0t1CRUdJTiBDRVJUSUZJQ0F[...]URS0tLS0tCk1JSUM4akNDQWRxZ0F3BVEUtLS0tLQo=</span>
+          <span class="nt">CLIENT_KEY</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">TyGiZff8KqS5xWQ4eag[...]Rujh1tDcbQyRP0bEJSBOf</span>
+          <span class="nt">CLUSTER_CERT_AUTH</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">VsSCsdfLS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0[...]tLS0tCk1anF1TT0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=</span>
+    <span class="nt">endpoints</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://production-cluster-xasf.example.com:6443</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">external</span>
+    <span class="nt">configuration</span><span class="p">:</span>
+      <span class="nt">INSECURE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+      <span class="nt">namespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">prj_hys568</span>
+</code></pre></div>
+</li>
+</ol>
+<h2 id="referencing-extensions-in-workflows">Referencing Extensions in Workflows</h2>
+<p>FuseML workflows can reference extensions in the same way as other resources. An extension selector can be included in the definition of a workflow step to indicate the type and/or capabilities of one or more external services that the workflow step needs to interact with, such as a data store, an experiment tracking tool, an artifact store, or any other type of machine learning service that implements a function in the MLOps lifecycle. FuseML automatically connects the workflow steps to their required external services based on the information it finds in the extension selectors and the extension records that are available in the Extension Registry. </p>
+<p>The extension selector that can be specified for a workflow step has the following syntax:</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+  <span class="nt">steps</span><span class="p">:</span>
+  <span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;step-name&gt;</span>
+      <span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+      <span class="nt">extensions</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;extension-selector-name&gt;</span>
+          <span class="nt">extension_id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;extension-id&gt;</span>
+          <span class="nt">service_id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;service-id&gt;</span>
+          <span class="nt">zone</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;extension-zone&gt;</span>
+          <span class="nt">product</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;extension-product&gt;</span>
+          <span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;extension-version-or-semantic-version-constraint&gt;</span>
+          <span class="nt">service_category</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;service-category&gt;</span>
+          <span class="nt">service_resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;service-resource&gt;</span>
+</code></pre></div>
+<p>FuseML users have a wide range of possibilities when it comes to referencing extensions in their workflows. A workflow step can be configured to request a particular service instance by defining a very strict extension selector, one that identifies the service instance explicitly by including its <code>extension_id</code> and <code>service_id</code>. This is the most restrictive way to reference an extension in a workflow and results in the least flexibility.</p>
+<p>For more flexible and portable workflows, it is recommended to identify extensions and services by their product or the category of service and/or resource that they provide. This can be done by setting one or more of the fields <code>product</code>, <code>version</code>, <code>service_category</code> and <code>service_resource</code> in the extension selector. This approach creates workflows that are reusable and portable across different deployments, infrastructure zones and even products.</p>
+<p>When a workflow is executed, FuseML maps all the <code>configuration</code> values gathered from the extension records that match the configured selectors and converts them into environment variables that are injected into the containers corresponding to each step. It is up the implementation of individual workflow steps to interpret the values of these environment variables and to use them to access the external services that they need to interact with. Furthermore, when the environment variables extracted from extension records don't map to what is expected by a workflow step container, the workflow can be configured to explicitly map these values to something else, as depicted in one of the examples in the next section.</p>
+<h3 id="extension-selector-examples">Extension Selector Examples</h3>
+<p>This section contains examples of extension selectors that can be used in workflows, featuring some common configurations and scenarios.</p>
+<ol>
+<li>
+<p>explicitly referencing a particular service instance by its <code>extension_id</code> and <code>service_id</code> in a workflow step:</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+<span class="nt">steps</span><span class="p">:</span>
+  <span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">trainer</span>
+    <span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+    <span class="nt">extensions</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">experiment-tracking</span>
+        <span class="nt">extension_id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-0001</span>
+        <span class="nt">service_id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-tracking</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">artifact-store</span>
+        <span class="nt">extension_id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-0001</span>
+        <span class="nt">service_id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-store</span>
+</code></pre></div>
+<p>Provided that the Extension Registry contains the MLflow extension record featured in the one of the extension records example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-0001</span>
+<span class="nt">product</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow</span>
+<span class="nt">version</span><span class="p">:</span> <span class="s">&quot;1.19.0&quot;</span>
+<span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MLFlow experiment tracking and artifact store</span>
+<span class="nt">zone</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cluster-alpha</span>
+<span class="nt">services</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-tracking</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-tracking</span>
+    <span class="nt">category</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">experiment-tracking</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MLFlow experiment tracking service API and UI</span>
+    <span class="nt">endpoints</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://mlflow.mlflow</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">internal</span>
+        <span class="nt">configuration</span><span class="p">:</span>
+          <span class="nt">MLFLOW_TRACKING_URI</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://mlflow.mlflow</span>
+      <span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://mlflow.10.110.120.130.nip.io</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">external</span>
+        <span class="nt">configuration</span><span class="p">:</span>
+          <span class="nt">MLFLOW_TRACKING_URI</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://mlflow.10.110.120.130.nip.io</span>
+  <span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-store</span>
+    <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">s3</span>
+    <span class="nt">category</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">model-store</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MLFlow minio S3 storage back-end</span>
+    <span class="nt">credentials</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">default-s3-account</span>
+        <span class="nt">scope</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">global</span>
+        <span class="nt">configuration</span><span class="p">:</span>
+          <span class="nt">AWS_ACCESS_KEY_ID</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">24oT0SfbJPEu6kUbUKsH</span>
+          <span class="nt">AWS_SECRET_ACCESS_KEY</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cMGiZff8KqS5xWQ4eagRujh1tDcbQyRP0bEJSBOf</span>
+    <span class="nt">endpoints</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://mlflow-minio.mlflow:9000</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">internal</span>
+        <span class="nt">configuration</span><span class="p">:</span>
+          <span class="nt">MLFLOW_S3_ENDPOINT_URL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://mlflow-minio.mlflow:9000</span>
+      <span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://minio.10.110.120.130.nip.io</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">external</span>
+        <span class="nt">configuration</span><span class="p">:</span>
+          <span class="nt">MLFLOW_S3_ENDPOINT_URL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://minio.10.110.120.130.nip.io</span>
+</code></pre></div>
+<p>, FuseML will resolve the extension selector to this extension record and its internal endpoints. The <code>configuration</code> values of the extension record will be mapped to the following implicit environment variables that passed to the container:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">MLFLOW_TRACKING_URI</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://mlflow.mlflow</span>
+<span class="nt">MLFLOW_S3_ENDPOINT_URL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://mlflow-minio.mlflow:9000</span>
+<span class="nt">AWS_ACCESS_KEY_ID</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">24oT0SfbJPEu6kUbUKsH</span>
+<span class="nt">AWS_SECRET_ACCESS_KEY</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cMGiZff8KqS5xWQ4eagRujh1tDcbQyRP0bEJSBOf</span>
+</code></pre></div>
+</li>
+<li>
+<p>referencing a service independently of running instance, by using the product and service resource identifiers and including a version specifier to ensure compatibility:</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+<span class="nt">steps</span><span class="p">:</span>
+  <span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">predictor</span>
+    <span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+    <span class="nt">extensions</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kserve</span>
+        <span class="nt">product</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kserve</span>
+        <span class="nt">service_resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kserve-api</span>
+        <span class="nt">version</span><span class="p">:</span> <span class="s">&quot;~1.10.0&quot;</span>
+</code></pre></div>
+</li>
+<li>
+<p>example of a minimal reference, specifying only the resource type</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+<span class="nt">steps</span><span class="p">:</span>
+  <span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">trainer</span>
+    <span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+    <span class="nt">extensions</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">experiment-tracking</span>
+        <span class="nt">service_resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-tracking</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">artifact-store</span>
+        <span class="nt">service_resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">s3</span>
+</code></pre></div>
+</li>
+<li>
+<p>this workflow step explicitly uses FuseML workflow expressions to map new environment variable names to the configuration entries from the extension record instead of relying on the default ones extracted from the extension record. It also accesses other fields in the extension record to perform additional actions:</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+<span class="nt">steps</span><span class="p">:</span>
+  <span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">trainer</span>
+    <span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+    <span class="nt">extensions</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">experiment-tracking</span>
+        <span class="nt">product</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow</span>
+        <span class="nt">service_resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-tracking</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">artifact-store</span>
+        <span class="nt">product</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow</span>
+        <span class="nt">service_resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">s3</span>
+    <span class="nt">env</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">S3_ACCESS_KEY_ID</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="s">&#39;{{</span><span class="nv"> </span><span class="s">extension.artifact-store.cfg.AWS_ACCESS_KEY_ID</span><span class="nv"> </span><span class="s">}}&#39;</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">S3_SECRET_ACCESS_KEY</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="s">&#39;{{</span><span class="nv"> </span><span class="s">extension.artifact-store.cfg.AWS_SECRET_ACCESS_KEY</span><span class="nv"> </span><span class="s">}}&#39;</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MLFLOW_TRACKER_URL</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="s">&#39;{{</span><span class="nv"> </span><span class="s">extension.experiment-tracking.url</span><span class="nv"> </span><span class="s">}}&#39;</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MLFLOW_TRACKER_VERSION</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="s">&#39;{{</span><span class="nv"> </span><span class="s">extension.experiment-tracking.version</span><span class="nv"> </span><span class="s">}}&#39;</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MLFLOW_TRACKER_ZONE</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="s">&#39;{{</span><span class="nv"> </span><span class="s">extension.experiment-tracking.zone</span><span class="nv"> </span><span class="s">}}&#39;</span>
+</code></pre></div>
+</li>
+<li>
+<p>a similar approach is to use the FuseML workflow expressions to expand fields in the extension record and use them as values for workflow step inputs:</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+<span class="nt">steps</span><span class="p">:</span>
+  <span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">trainer</span>
+    <span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+    <span class="nt">inputs</span><span class="p">:</span>
+      <span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">s3_access_key</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="s">&#39;{{</span><span class="nv"> </span><span class="s">extension.artifact-store.cfg.AWS_ACCESS_KEY_ID</span><span class="nv"> </span><span class="s">}}&#39;</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">s3_secret_access_key</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="s">&#39;{{</span><span class="nv"> </span><span class="s">extension.artifact-store.cfg.AWS_SECRET_ACCESS_KEY</span><span class="nv"> </span><span class="s">}}&#39;</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">s3_endpoint_url</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="s">&#39;{{</span><span class="nv"> </span><span class="s">extension.artifact-store.url</span><span class="nv"> </span><span class="s">}}&#39;</span>
+    <span class="nt">extensions</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">artifact-store</span>
+        <span class="nt">service_resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">s3</span>
+</code></pre></div>
+</li>
+</ol>
+<h2 id="extension-registry-use-cases">Extension Registry Use Cases</h2>
+<p>The extension registry targets some of the following use-cases:</p>
+<ol>
+<li>
+<p>as an Ops engineer (MLOps/DevOps/ITOps), I need a way to configure my FuseML instance with the parameters required to dynamically integrate with 3rd party AI/ML tools (e.g. URLs, endpoints, credentials, other tool specific configuration attributes). For non-production environments, this requirement can also come from ML Engineers or even Data Scientists that are looking to quickly set up FuseML for experimentation purposes.</p>
+<p>Examples:</p>
+<ul>
+<li>Data Scientist: I have an MLFlow tracking service already set up by me that I use for my ML experiments and I want to reuse it for FuseML automated workflows. I will configure FuseML with the information it needs to access the MLFlow tracking service (the tracker service URL and the hostname, username and keys for the storage backend). The information is stored in a central registry where FuseML workflows can access it.</li>
+<li>Data Scientist: I'm using my Google cloud storage account to store datasets or ML models that I use in my local experiments. I want my FuseML automated workflows to upload/download artifacts using that same storage account, but I don't want to expose my credentials in the workflow definition or in the code I'm pushing to FuseML. I'll store those credentials in the FuseML extension registry and access them from my FuseML workflow steps.</li>
+<li>Ops engineer: I have an S3 storage service set up for my organization and I want to use that as a storage backend for FuseML artifacts (e.g. models, datasets).
+I will manage buckets, accounts and credentials and add them as extension records in the FuseML extension registry. ML engineers and DSs can then write FuseML workflows that have access to the S3 storage service without having to deal with these operational details.</li>
+</ul>
+</li>
+<li>
+<p>as a ML engineer or Data Scientist, I need a list of the 3rd party tools that my FuseML instance is integrated with, to help me make decisions about how I implement and run my ML experiments and how I design my FuseML workflows</p>
+</li>
+<li>
+<p>as a ML engineer or Data Scientist, I want to design FuseML workflows consisting of steps that interact with my AI/ML tool stack of choice, independently of how those tools are deployed. This makes my workflows generic and reusable:</p>
+<ul>
+<li>FuseML workflow definitions don't need to be updated when there are changes in the configuration of the 3rd party tools (e.g. upgrade, migration) or in the way they are integrated with FuseML (e.g. change of accounts, change in access permissions or credentials)</li>
+<li>configuring and integrating the tools with FuseML and configuring the FuseML workflows are independent operations and can be done by different roles requiring minimum interaction</li>
+<li>a FuseML workflow, once defined, can be executed across multiple FuseML instances and 3rd party tools deployment configurations, as long as the same set of tools are involved</li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li>Data Scientist: I'm writing a FuseML workflow to automate the end-to-end lifecycle of my ML model. I wrote my ML code using MLFlow during the experimentation phase so I want to also use MLFlow as a tracking service and model store for my workflow. I also want to use Seldon Core as an inference service platform. These tools (MLFlow and Seldon Core) have already been installed by DevOps and set up as entries in the FuseML extension registry. All I need to do is specify in the definition of my FuseML workflows which step requires which extension, and the FuseML orchestrator will automatically make that information available to the container images implementing those steps. This way, I don't need to concern myself with endpoints, accounts or credentials.</li>
+<li>Ops engineer: I need to migrate the on-prem S3 storage service used by my organization to a new location. I'm also using this storage service for a range of FuseML service instances in use by various AI/ML teams. All I need to do to re-configure the FuseML services is to update the entries I previously configured in their extension registries to point to the new URL. Future workflow executions will automatically pick-up the new values.</li>
+<li>ML engineer: I'm using a staged approach to automating the deployment of my ML model in production. I have a development environment, a staging/testing environment and a production environment. I can write a complex FuseML workflow that I can reuse across these environments with minimal changes. The workflow definition is independent of how the 3rd party tools are deployed and set up for access by FuseML in these environments.</li>
+</ul>
+</li>
+</ol>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../workflows/ovms-converter/" class="md-footer__link md-footer__link--prev" aria-label="Previous: OpenVINO Model Server converter workflow extension" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              OpenVINO Model Server converter workflow extension
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../installer-extensions/" class="md-footer__link md-footer__link--next" aria-label="Next: FuseML installer extensions" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              FuseML installer extensions
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2021 FuseML Author(s)
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.01824240.min.js", "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e0abf5b0.min.js"></script>
+      
+        <script src="../../javascripts/extra.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js"></script>
+      
+    
+  </body>
+</html>

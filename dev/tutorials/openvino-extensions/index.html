@@ -606,6 +606,68 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Extensions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Extensions" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Extensions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extensions/extension-registry/" class="md-nav__link">
+        FuseML extension registry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extensions/installer-extensions/" class="md-nav__link">
+        FuseML installer extensions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../architecture/" class="md-nav__link">
         Architecture
@@ -839,13 +901,14 @@
 <h3 id="fuseml-installer-extensions">FuseML Installer Extensions</h3>
 <p>The FuseML installer can be tasked with installing more than just the FuseML core components. It can also be used to simplify the deployment of 3rd party AI/ML services that support Kubernetes as a target platform. Writing a FuseML Installer Extension is as simple as creating a YAML file describing installation steps such as helm charts, kubernetes manifests, kustomize targets or even plain bash scripts.</p>
 <p>With FuseML Installer Extensions, users can build installation shortcuts to quickly deploy their own AI/ML tool stack, or reuse one or more of the AI/ML tools already featured in the default <a href="https://github.com/fuseml/extensions/tree/main/installer">FuseML Installer Extension Repository</a>, including but not limited to: MLFlow, KServe and Seldon Core.</p>
-<p>The <a href="https://github.com/fuseml/fuseml/blob/main/docs/blueprints/001-installation-of-extensions.md">Installation of ML Extensions</a> blueprint has detailed information about this feature and how it can be used to extend the installer to cover additional AI/ML tools and services.</p>
+<p>The <a href="../../extensions/installer-extensions/">Installer Extensions</a> section contains detailed information about this extensibility feature and how it can be used to extend the installer to cover additional AI/ML tools and services.</p>
 <h3 id="fuseml-extension-registry">FuseML Extension Registry</h3>
 <p>The FuseML Extension Registry is basically a database storing information about external AI/ML services and APIs that can be consumed in FuseML workflows. Specifically, each entry in the Extension Registry represents a particular instance of an external AI/ML service or API, and contains information about how it can be accessed (e.g. URLs, endpoints, client configuration and credentials) as well as what specialized roles it can play in the MLOps reference architecture (e.g. data store, model store, prediction platform, experiment tracking, distributed model training etc.).</p>
 <p>Registering AI/ML services and APIs with the FuseML Extension Registry allows them to be discovered, accessed and consumed in FuseML workflows. This approach decouples FuseML workflows from the actual back-ends used to execute individual steps and enables users to configure MLOps workflows that are portable and reusable. The Extension Registry API is flexible enough to allow FuseML admins to register any 3rd party AI/ML tool. In addition, <a href="#fuseml-installer-extensions">FuseML Installer Extensions</a> can be used not only to install AI/ML tools, but also to automatically register them with the FuseML Extension Registry.</p>
-<p>The <a href="https://github.com/fuseml/fuseml/blob/main/docs/blueprints/003-extension-registry.md">Extension Registry</a> blueprint covers detailed information about this extensibility mechanism.</p>
+<p>The <a href="../../extensions/extension-registry/">Extension Registry</a> section covers detailed information about this extensibility mechanism.</p>
 <h3 id="fuseml-workflows">FuseML Workflows</h3>
-<p>FuseML workflows are automation processes built out of individual, reusable steps, connected together to form a pipeline. Each step is represented by a container image that implements a particular function in the MLOps lifecycle. Workflow steps can also be thought of as integration mechanisms, especially if they connect to 3rd party services and/or act as adapters for 3rd party APIs. FuseML already features <a href="https://github.com/fuseml/extensions/tree/main/images">a collection of workflow step container images</a> that implement a variety of ML functions, such as training and serving ML models.</p>
+<p>FuseML workflows are automation processes built out of individual, reusable steps, connected together to form a pipeline. Each step is represented by a container image that implements a particular function in the MLOps lifecycle. Workflow steps can also be thought of as integration mechanisms, especially if they connect to 3rd party services and/or act as adapters for 3rd party APIs. FuseML already features <a href="https://github.com/fuseml/extensions/tree/main/images">a collection of workflow step container images</a> that implement a variety of ML functions, such as training and serving ML models. </p>
+<p>The <a href="../../workflows/workflows/">FuseML Workflows</a> section covers detailed information about workflows and workflow extensions.</p>
 <h2 id="openvino-overview">OpenVINO Overview</h2>
 <p>OpenVINO consists of the following high level conceptual components that are of interest from an MLOps perspective:</p>
 <ul>
