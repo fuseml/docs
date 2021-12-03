@@ -21,8 +21,7 @@ The FuseML installer can be tasked with installing more than just the FuseML cor
 
 With FuseML Installer Extensions, users can build installation shortcuts to quickly deploy their own AI/ML tool stack, or reuse one or more of the AI/ML tools already featured in the default [FuseML Installer Extension Repository](https://github.com/fuseml/extensions/tree/main/installer), including but not limited to: MLFlow, KServe and Seldon Core.
 
-The [Installation of ML Extensions](https://github.com/fuseml/fuseml/blob/main/docs/blueprints/001-installation-of-extensions.md) blueprint has detailed information about this feature and how it can be used to extend the installer to cover additional AI/ML tools and services.
-
+The [Installer Extensions](../extensions/installer-extensions.md) section contains detailed information about this extensibility feature and how it can be used to extend the installer to cover additional AI/ML tools and services.
 ### FuseML Extension Registry
 
 The FuseML Extension Registry is basically a database storing information about external AI/ML services and APIs that can be consumed in FuseML workflows. Specifically, each entry in the Extension Registry represents a particular instance of an external AI/ML service or API, and contains information about how it can be accessed (e.g. URLs, endpoints, client configuration and credentials) as well as what specialized roles it can play in the MLOps reference architecture (e.g. data store, model store, prediction platform, experiment tracking, distributed model training etc.).

@@ -14,7 +14,7 @@ To explore more on the use-cases for which the Extension Registry was intended, 
 
 ## Extension Records
 
-The structure of the information captured in the Extension Registry (i.e. the Extension Records) is based on common architectural and deployment patterns and abstractions exhibited by and extracted from a wide range of AI/ML tools and services, but is particularly suitable to describe cloud-native applications and services. The Extension Record is represented by a hierarchy of elements (services, endpoints, credentials and configuration) that can be used to model any 3rd party service in a form that can be easily referenced and consumed by FuseML and automated workflows.
+The structure of the information captured in the Extension Registry (i.e. the Extension Records) is based on common architectural and deployment patterns and abstractions exhibited by and extracted from a wide range of AI/ML tools and services, but is particularly suited to describe cloud-native applications and services. The Extension Record is represented by a hierarchy of elements (services, endpoints, credentials and configuration) that can be used to model any 3rd party service in a form that can be easily referenced and consumed by FuseML and automated workflows.
 
 Below is an example of an Extension Record describing an MLFlow server instance deployed in a Kubernetes cluster. In fact, it is the exact Extension Record that is automatically registered when MLFlow is installed using the FuseML installer.
 
