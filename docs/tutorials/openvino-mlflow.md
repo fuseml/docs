@@ -72,7 +72,7 @@ $ fuseml-installer install
 
 Configuration...
   🧭  system_domain: 
-  🧭  extensions_repository: https://raw.githubusercontent.com/fuseml/extensions/main/installer/
+  🧭  extensions_repository: https://raw.githubusercontent.com/fuseml/extensions/release-0.3/installer/
   🧭  force_reinstall: false
 
 🚢 Deploying Istio.....
@@ -206,7 +206,7 @@ $ fuseml extension list
 We will be training a
 [Convolutional Neural Network (CNN)](https://developers.google.com/machine-learning/glossary/#convolutional_neural_network)
 to classify [CIFAR-10 images](https://www.cs.toronto.edu/~kriz/cifar.html) using the Keras Sequential API.
-The complete original code for the model training is available [here](https://github.com/fuseml/examples/tree/main/codesets/mlflow/keras). The code we're using in this tutorial is a modified version of the original: the model architecture has been slightly changed, to make the model converge faster and to yield better results, based on recommendations from [this Machine Learning Mastery article](https://machinelearningmastery.com/how-to-develop-a-cnn-from-scratch-for-cifar-10-photo-classification/).
+The complete original code for the model training is available [here](https://github.com/fuseml/examples/tree/release-0.3/codesets/mlflow/keras). The code we're using in this tutorial is a modified version of the original: the model architecture has been slightly changed, to make the model converge faster and to yield better results, based on recommendations from [this Machine Learning Mastery article](https://machinelearningmastery.com/how-to-develop-a-cnn-from-scratch-for-cifar-10-photo-classification/).
 
 ### Training & Serving using FuseML
 

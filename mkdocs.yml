@@ -9,6 +9,16 @@ nav:
       - Training & Serving ML Models on GPU with NVIDIA Triton: tutorials/kserve-triton-gpu.md
       - Benchmarking ML Models on Intel CPUs with Intel OpenVINO: tutorials/openvino-mlflow.md
       - FuseML Extension Development Use-Case - OpenVINO: tutorials/openvino-extensions.md
+  - Workflows:
+      - FuseML workflows: workflows/workflows.md
+      - MLflow builder workflow extension: workflows/mlflow-builder.md
+      - KServe predictor workflow extension: workflows/kserve-predictor.md
+      - Seldon Core predictor workflow extension: workflows/seldon-core-predictor.md
+      - OpenVINO Model Server predictor workflow extension: workflows/ovms-predictor.md
+      - OpenVINO Model Server converter workflow extension: workflows/ovms-converter.md
+  - Extensions:
+      - FuseML extension registry: extensions/extension-registry.md
+      - FuseML installer extensions: extensions/installer-extensions.md
   - Architecture: architecture.md
   - API Reference: api.md
   - CLI Reference: cli.md
