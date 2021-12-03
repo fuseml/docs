@@ -39,7 +39,7 @@ export FUSEML_SERVER_URL=http://$(kubectl get VirtualService -n fuseml-core fuse
 ## 3. Fetch the FuseML examples code
 
 ```bash
-git clone --depth 1 -b release-0.3 https://github.com/fuseml/examples.git
+git clone --depth 1 -b main https://github.com/fuseml/examples.git
 cd examples
 ```
 
