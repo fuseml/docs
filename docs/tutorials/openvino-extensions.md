@@ -32,7 +32,7 @@ The [Extension Registry](../extensions/extension-registry.md) section covers det
 
 ### FuseML Workflows
 
-FuseML workflows are automation processes built out of individual, reusable steps, connected together to form a pipeline. Each step is represented by a container image that implements a particular function in the MLOps lifecycle. Workflow steps can also be thought of as integration mechanisms, especially if they connect to 3rd party services and/or act as adapters for 3rd party APIs. FuseML already features [a collection of workflow step container images](https://github.com/fuseml/extensions/tree/main/images) that implement a variety of ML functions, such as training and serving ML models. 
+FuseML workflows are automation processes built out of individual, reusable steps, connected together to form a pipeline. Each step is represented by a container image that implements a particular function in the MLOps lifecycle. Workflow steps can also be thought of as integration mechanisms, especially if they connect to 3rd party services and/or act as adapters for 3rd party APIs. FuseML already features [a collection of workflow step container images](https://github.com/fuseml/extensions/tree/release-0.3/images) that implement a variety of ML functions, such as training and serving ML models. 
 
 The [FuseML Workflows](../workflows/workflows.md) section covers detailed information about workflows and workflow extensions.
 

@@ -6,7 +6,7 @@ The FuseML installer can be used for more than installing FuseML itself. It can 
 
 The installer makes a clear distinction between basic mandatory components and extensions for 3rd party tools, but at the same time provides the "all-in-one" experience of installing everything in one shot. Furthermore, the installer is flexible in that it can be extended dynamically to cover more third-party tools and services that are not included in the default tool stack maintained by the FuseML team, by defining new [Installer Extensions](#installer-extensions) and grouping them under a custom [Installer Extension Repository](#installer-extension-repository).
 
-The [default FuseML Installer Extension Repository](https://github.com/fuseml/extensions/tree/main/installer) includes a variety of AI/ML tools that can be installed through the FuseML installer. The repository is maintained by the FuseML team and is updated regularly.
+The [default FuseML Installer Extension Repository](https://github.com/fuseml/extensions/tree/release-0.3/installer) includes a variety of AI/ML tools that can be installed through the FuseML installer. The repository is maintained by the FuseML team and is updated regularly.
 
 ## Installer Extensions
 
@@ -195,7 +195,7 @@ Some third party AI/ML services, like KServe, come in the form of Kubernetes ope
 
     All steps in a FuseML workflow are executed in the `fuseml-workloads` Kubernetes namespace and in the context of the `fuseml-workloads` service account. For 3rd party tools that are not installed using installer extensions, or that do not include `rolerules` in the extension descriptor, the admin must manually add the required permissions to the `fuseml-workloads` service account. FuseML automatically adds the permissions listed in the `rolerules` section to the mentioned service account.
 
-For more examples of extension descriptors and how to build them, take a look at the [Installer Extension Repository maintained by the FuseML team](https://github.com/fuseml/extensions/tree/main/installer)
+For more examples of extension descriptors and how to build them, take a look at the [Installer Extension Repository maintained by the FuseML team](https://github.com/fuseml/extensions/tree/release-0.3/installer)
 
 ## Installer Extension Repository
 
@@ -214,7 +214,7 @@ extensions
     - uninstall.sh
 ```
 
-The FuseML installer defaults to using the [Installer Extension Repository maintained by the FuseML team](https://github.com/fuseml/extensions/tree/main/installer). To point it to a different location, the optional `--extension-repository` command line argument can be used.
+The FuseML installer defaults to using the [Installer Extension Repository maintained by the FuseML team](https://github.com/fuseml/extensions/tree/release-0.3/installer). To point it to a different location, the optional `--extension-repository` command line argument can be used.
 
 
 

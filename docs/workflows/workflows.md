@@ -4,7 +4,7 @@ FuseML workflows are automation processes built out of individual, reusable step
 
 Workflow steps can also be thought of as integration mechanisms, especially if they connect to 3rd party services and/or act as adapters for 3rd party APIs. FuseML already features [a collection of workflow step container images](#fuseml-workflow-extensions) that implement a variety of ML functions, such as training and serving ML models.
 
-FuseML workflows are configured using a declarative YAML syntax. The following is a simple example of a workflow that trains a model and then serves it. More workflow examples can be found in the [FuseML examples repository](https://github.com/fuseml/examples/tree/main/workflows).
+FuseML workflows are configured using a declarative YAML syntax. The following is a simple example of a workflow that trains a model and then serves it. More workflow examples can be found in the [FuseML examples repository](https://github.com/fuseml/examples/tree/release-0.3/workflows).
 
 
 ```yaml
@@ -186,7 +186,7 @@ The third and final step in the workflow is responsible for creating a KServe pr
 
 ## FuseML Workflow Extensions
 
-A set of container images implementing various workflow extensions are maintained by the FuseML team. If you are interested in using a specific workflow extension, you can find the container image implementing it in the [FuseML extensions repository](https://github.com/fuseml/extensions/tree/main/images). They can be used in FuseML workflows to easily integrate with 3rd party tools and services providing features like ML experiment tracking, artifact storage, prediction services, and more: 
+A set of container images implementing various workflow extensions are maintained by the FuseML team. If you are interested in using a specific workflow extension, you can find the container image implementing it in the [FuseML extensions repository](https://github.com/fuseml/extensions/tree/release-0.3/images). They can be used in FuseML workflows to easily integrate with 3rd party tools and services providing features like ML experiment tracking, artifact storage, prediction services, and more: 
 
 - [MLFlow builder](mlflow-builder.md) - builds python runtime environment container images for codesets that are structured according to the [MLFlow Project format](https://www.mlflow.org/docs/latest/projects.html).
 - [KServe predictor](kserve-predictor.md) - deploys models using the [KServe inference platform](https://kserve.github.io/website/).
