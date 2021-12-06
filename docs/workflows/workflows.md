@@ -27,7 +27,7 @@ outputs:
     type: string
 steps:
   - name: builder
-    image: ghcr.io/fuseml/mlflow-builder:v0.3.0
+    image: ghcr.io/fuseml/mlflow-builder:latest
     inputs:
       - name: mlflow-codeset
         codeset:
@@ -52,7 +52,7 @@ steps:
         product: mlflow
         service_resource: s3
   - name: predictor
-    image: ghcr.io/fuseml/kserve-predictor:v0.3.0
+    image: ghcr.io/fuseml/kserve-predictor:latest
     inputs:
       - name: model
         value: "{{ steps.trainer.outputs.mlflow-model-url }}"
@@ -110,7 +110,7 @@ The inputs, parameters and outputs declared globally are available to all steps 
 ```yaml
 steps:
   - name: builder
-    image: ghcr.io/fuseml/mlflow-builder:v0.3.0
+    image: ghcr.io/fuseml/mlflow-builder:latest
     inputs:
       - name: mlflow-codeset
         codeset:
@@ -158,7 +158,7 @@ The second step in the workflow is responsible for executing the ML code in the 
 
 ```yaml
   - name: predictor
-    image: ghcr.io/fuseml/kserve-predictor:v0.3.0
+    image: ghcr.io/fuseml/kserve-predictor:latest
     inputs:
       - name: model
         value: "{{ steps.trainer.outputs.mlflow-model-url }}"

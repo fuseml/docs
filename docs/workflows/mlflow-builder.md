@@ -35,6 +35,15 @@ The MLflow builder workflow step leverages the MLflow Project conventions to aut
 
 The MLflow builder has a single output: the container registry repository and the image tag where the built MLflow environment container image is stored. This output can be used in subsequent workflow steps to run the MLflow code from the same codeset as the one used as input. The most common use for the resulted container image is executing code that trains and validates ML models. For this reason, the output container image is often referred to as a "trainer" workflow step.
 
+The Dockerfile and associated scripts that implement the MLflow builder container image are available in the [FuseML extensions repository](https://github.com/fuseml/extensions/tree/main/images/builders/mlflow).
+
+The MLflow builder is featured in a number of FuseML tutorials, such as:
+
+- [Logistic Regression with MLFlow & KServe](../tutorials/kserve-basic.md)
+- [Logistic Regression with MLFlow & Seldon-Core](../tutorials/seldon-core.md)
+- [Training & Serving ML Models on GPU with NVIDIA Triton](../tutorials/kserve-triton-gpu.md)
+- [Benchmarking ML Models on Intel CPUs with Intel OpenVINO](../tutorials/openvino-mlflow.md)
+
 ## Using the MLflow Builder Step
 
 Here is an example of a FuseML workflow that builds an MLflow runtime environment container image out of an MLflow compatible codeset and returns the location where it's stored in the internal FuseML container registry:
@@ -91,7 +100,7 @@ The MLflow runtime workflow step can also take in additional environment variabl
 
 !!! note
 
-    Some of these environment variables contain sensitive data, such as keys and passwords and should not be explicitly configured as workflow step env vars. Instead, they should be configured in the FuseML Extension Registry and only referenced in the FuseML workflows as extension requirements.
+    Some of these environment variables contain sensitive data, such as keys and passwords and should not be explicitly configured as workflow step env vars. Instead, they should be registered in the [FuseML Extension Registry](../extensions/extension-registry.md) and only referenced in the FuseML workflows as [extension requirements](../extensions/extension-registry.md#referencing-extensions-in-workflows).
 
 - `MLFLOW_TRACKING_URI` - the URL of a remote MLflow tracking server to use.
 - `MLFLOW_TRACKING_USERNAME` and `MLFLOW_TRACKING_PASSWORD` - username and password to use with HTTP Basic authentication to authenticate with the remote MLflow tracking server.
@@ -144,5 +153,5 @@ steps:
 
 Note how the `builder` step output is referenced as the image value for the `trainer` step and how both steps use the same `mlflow-codeset` codeset as input. The builder workflow step creates the MLflow environment container image and the trainer step uses it to execute the MLflow code and train the ML model.
 
-Also observe how the `mlflow-tracking` and `mlflow-store` extensions are used in the `trainer` step to reference an MLflow tracking server and an artifact store backend configured in the FuseML Extension Registry. This avoids having to configure credentials and other environment variables explicitly in the FuseML workflow. The FuseML workflow engine automatically resolves these references to matching records available in the FuseML Extension Registry and passes the configuration entries in the extension records as environment variables to the workflow step container (i.e. variables like `MLFLOW_TRACKING_URI` , `MLFLOW_S3_ENDPOINT_URL`, `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`).
+Also observe how the `mlflow-tracking` and `mlflow-store` extensions are used in the `trainer` step to reference an MLflow tracking server and an artifact store backend configured in the [FuseML Extension Registry](../extensions/extension-registry.md). This avoids having to configure credentials and other environment variables explicitly in the FuseML workflow. The FuseML workflow engine automatically resolves these references to matching records available in the FuseML Extension Registry and passes the configuration entries in the extension records as environment variables to the workflow step container (i.e. variables like `MLFLOW_TRACKING_URI` , `MLFLOW_S3_ENDPOINT_URL`, `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`).
 
