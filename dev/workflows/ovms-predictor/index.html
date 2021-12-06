@@ -9,7 +9,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.0.3">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.0.4">
     
     
       
@@ -17,7 +17,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.62128196.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2a4617e2.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.9204c3b2.min.css">
@@ -673,19 +673,96 @@
 <h1 id="openvino-model-server-predictor-extension-for-fuseml-workflows">OpenVINO Model Server predictor extension for FuseML workflows</h1>
 <h2 id="overview">Overview</h2>
 <p>The OVMS predictor workflow step can be used to create and manage <a href="https://docs.openvino.ai/latest/openvino_docs_ovms.html">OpenVINO Model Server inference servers</a> to serve input ML models as part of the execution of FuseML workflows. The OVMS predictor only accepts models in IR (Intermediate Representation) format as input. The <a href="../ovms-converter/">OVMS converter</a> workflow extension can be used to convert models to IR format.</p>
-<p>The KServe predictor step expects a model URL to be supplied as input, pointing to the location in a remote model store where the model is stored. The protocols supported for the remote artifact store are the same as <a href="https://github.com/openvinotoolkit/model_server/tree/v2021.3/deploy#model-repository">those supported by the OVMS implementation</a>: </p>
+<p>The OVMS predictor step expects a model URL to be supplied as input, pointing to the location in a remote artifact store where the model is stored. The protocols supported for the remote artifact store are the same as <a href="https://github.com/openvinotoolkit/model_server/tree/v2021.3/deploy#model-repository">those supported by the OVMS implementation</a>: </p>
 <ul>
 <li>AWS S3 or S3 compatible</li>
-<li>GCS</li>
-<li>Azure Blob Storage</li>
+<li>GCS (authentication credentials not supported)</li>
+<li>Azure Blob Storage (authentication credentials not supported)</li>
 </ul>
 <p>The predictor performs the following tasks:</p>
 <ul>
 <li>it creates an OVMS prediction service instance to serve the model, and an Istio virtualservice that exposes the prediction service</li>
 <li>it registers the OVMS prediction service with FuseML as an Application object. Information about the Application, such as the type and exposed inference URL can be retrieved at any time using the FuseML API and CLI.</li>
 </ul>
+<p>The OVMS predictor has a single output: the URL where the prediction service can be accessed to process inference requests.</p>
+<p>The Dockerfile and associated scripts that implement the OVMS predictor container image are available in the <a href="https://github.com/fuseml/extensions/tree/main/images/inference-services/ovms">FuseML extensions repository</a>.</p>
+<p>The OVMS predictor is featured in a number of FuseML tutorials, such as:</p>
+<ul>
+<li><a href="../../tutorials/openvino-mlflow/">Benchmarking ML Models on Intel CPUs with Intel OpenVINO</a></li>
+<li><a href="../../tutorials/openvino-extensions/">FuseML Extension Development Use-Case - OpenVINO</a></li>
+</ul>
 <h2 id="using-the-ovms-predictor-step">Using the OVMS Predictor Step</h2>
-<p>TBD</p>
+<p>The workflow example below shows how to create a FuseML workflow that uses the OVMS predictor step to serve a model from a remote artifact store. The model is already in IR (Intermediate Representation) format. For models that are not in IR format, the <a href="../ovms-converter/">OVMS converter step</a> can be used as part of the same workflow to convert the model before it is served with OVMS.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ovms-workflow</span>
+<span class="nt">description</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+  <span class="no">Workflow that takes in a URL containing one of more OVMS models in IR format</span>
+  <span class="no">then uses OVMS to deploy a prediction service that can be used to run predictions</span>
+  <span class="no">against the model.</span>
+<span class="nt">inputs</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">model</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">URL where an IR model is stored</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+    <span class="nt">default</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gs://ovms-public-eu/resnet50-binary</span>
+<span class="nt">outputs</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">prediction-url</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="s">&quot;The</span><span class="nv"> </span><span class="s">URL</span><span class="nv"> </span><span class="s">where</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">exposed</span><span class="nv"> </span><span class="s">prediction</span><span class="nv"> </span><span class="s">service</span><span class="nv"> </span><span class="s">endpoint</span><span class="nv"> </span><span class="s">can</span><span class="nv"> </span><span class="s">be</span><span class="nv"> </span><span class="s">contacted</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">run</span><span class="nv"> </span><span class="s">predictions.&quot;</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="nt">steps</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ovms-predictor</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ghcr.io/fuseml/ovms-predictor:latest</span>
+    <span class="nt">inputs</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">model</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="s">&#39;{{</span><span class="nv"> </span><span class="s">inputs.model</span><span class="nv"> </span><span class="s">}}&#39;</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">app_name</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">resnet50-ovms</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">resources</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="s">&#39;{&quot;requests&quot;:</span><span class="nv"> </span><span class="s">{&quot;cpu&quot;:</span><span class="nv"> </span><span class="s">1}}&#39;</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">verbose</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="nt">outputs</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">prediction-url</span>
+    <span class="nt">extensions</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ovms-operator</span>
+        <span class="nt">service_resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ovms-operator</span>
+</code></pre></div>
+<p>Aside from the mandatory <code>model</code> input parameter that needs to be a URL pointing to the location of a trained ML model in IR format saved in an artifact store, the OVMS predictor workflow step also accepts the following optional input parameters that can be used to customize how the prediction service is created and updated:</p>
+<ul>
+<li><code>model_name</code>: the name used to identify the model in the OVMS prediction API (default value is: <code>default</code>)</li>
+<li><code>ovms_image_tag</code>: the version of the OVMS container image to use (default value is: <code>2021.4.1</code>)</li>
+<li><code>loglevel</code>, <code>nireq</code>, <code>plugin_config</code>, <code>batch_size</code>, <code>shape</code>, <code>target_device</code> and <code>layout</code> are parameters that are mapped to the corresponding OVMS deployment parameters. See the <a href="https://github.com/openvinotoolkit/model_server/tree/main/deploy#helm-options-references">OVMS documentation</a> for a description of these parameters.</li>
+<li><code>replicas</code>: number of replicas for the OVMS prediction service</li>
+<li><code>resources</code>: can be used to configure Kubernetes resource requests and limits for the OVMS prediction service</li>
+<li><code>prediction_type</code>: determines <a href="https://www.tensorflow.org/tfx/serving/api_rest#classify_and_regress_api">the type of TensorFlow Serving prediction requests</a> that the returned prediction URL is made for: <code>classify</code>, <code>regress</code> or <code>predict</code>. The default value is <code>predict</code>.</li>
+<li>
+<p><code>app_name</code>: use this to explicitly set the name of the FuseML application used to represent the OVMS prediction service. Its value also determines the prediction URL as well as the names of the Kubernetes resources created by the OVMS predictor. If not set explicitly, the application name is constructed by combining the workflow name with the name of an input codeset name and project, if one is provided as input. In the absence of an input codeset, the application name is generated by concatenating the workflow name with a randomly generated string.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Choosing a value for the <code>app_name</code> parameter should be done with care, as it is used to uniquely identify a FuseML application and its associated Kubernetes resources (i.e. the name of the OVMS prediction service, prediction URL etc.). It can lead to a situation where the same OVMS prediction service is managed by more than one FuseML workflows. In this case, the results can be unpredictable, because multiple workflows will compete over managing the same application.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If an <code>app_name</code> value is not provided and the predictor step doesn't receive an input codeset, the generated application name will be random, which means that every workflow run will create a new application and prediction service. This should be avoided, as it easily lead to resource exhaustion.</p>
+</div>
+</li>
+<li>
+<p><code>resources_limits</code> - use to set the Kubernetes resource limits to allocate hardware resources to the prediction service. E.g:</p>
+<div class="highlight"><pre><span></span><code>     <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">resources_limits</span>
+       <span class="nt">value</span><span class="p">:</span> <span class="s">&#39;{nvidia.com/gpu:</span><span class="nv"> </span><span class="s">1}&#39;</span>
+</code></pre></div>
+</li>
+<li>
+<p><code>verbose</code> - set to <code>true</code> to enable verbose logging in the predictor workflow step (default is <code>false</code>).</p>
+</li>
+</ul>
+<p>The OVMS runtime workflow step can also take in some environment variables that are used to configure the credentials of the remote artifact store where the input ML model is stored:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some of these environment variables contain sensitive data, such as keys and passwords and should not be explicitly configured as workflow step env vars. Instead, they should be registered in the <a href="../../extensions/extension-registry/">FuseML Extension Registry</a> and only referenced in the FuseML workflows as <a href="../../extensions/extension-registry/#referencing-extensions-in-workflows">extension requirements</a>.</p>
+</div>
+<ul>
+<li><code>S3_ENDPOINT</code> - required when the ML model is stored in a custom S3 compatible artifact store such as minio</li>
+<li><code>AWS_ACCESS_KEY_ID</code> and <code>AWS_SECRET_ACCESS_KEY</code> - credentials for the AWS S3 and S3-compatible artifact store</li>
+</ul>
 
               
             </article>
@@ -755,10 +832,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.01824240.min.js", "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.ca141e46.min.js", "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.e0abf5b0.min.js"></script>
+      <script src="../../assets/javascripts/bundle.6baa0517.min.js"></script>
       
         <script src="../../javascripts/extra.js"></script>
       

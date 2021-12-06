@@ -9,7 +9,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.0.3">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.0.4">
     
     
       
@@ -17,7 +17,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.62128196.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2a4617e2.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.9204c3b2.min.css">
@@ -682,13 +682,128 @@
 <p>The predictor performs the following tasks:</p>
 <ul>
 <li>downloads the model locally from the MLflow artifact store</li>
-<li>if so instructed, it auto-detects the model format based on the information stored in the MLflow artifact store and decides which KServe predictor engine to use for it. Otherwise, it validates the model format against the type of predictor engine specified as input.</li>
+<li>if so instructed (i.e. the <code>predictor</code> input parameter is omitted or explicitly set to <code>auto</code>), it auto-detects the model format based on the information stored in the MLflow artifact store and decides which KServe predictor engine to use for it. Otherwise, it validates the model format against the type of predictor engine specified as input.</li>
 <li>it performs some minor conversion tasks required to adapt the input MLflow model directory layout to the one required by KServe</li>
+<li>it uploads the converted model to the same artifact store as the original model, in a different location (the converted model is stored in a subdirectory of the original model's location)</li>
 <li>it creates a KServe prediction service to serve the model</li>
-<li>finally, it registers the KServe prediction service with FuseML as an Application object. Information about the Application, such as the type and exposed inference URL can be retrieved at any time using the FuseML API and CLI.</li>
+<li>finally, it registers the KServe prediction service with FuseML as an Application object. Information about the Application, such as the type and exposed inference URL can be retrieved <a href="../../cli/#applications">through the FuseML CLI</a> or <a href="../../api/">through the REST API</a>.</li>
+</ul>
+<p>The KServe predictor has a single output: the URL where the prediction service can be accessed to process inference requests.</p>
+<p>The Dockerfile and associated scripts that implement the KServe predictor container image are available in the <a href="https://github.com/fuseml/extensions/tree/main/images/inference-services/kserve">FuseML extensions repository</a>.</p>
+<p>The KServe predictor is featured in a number of FuseML tutorials, such as:</p>
+<ul>
+<li><a href="../../tutorials/kserve-basic/">Logistic Regression with MLFlow &amp; KServe</a></li>
+<li><a href="../../tutorials/kserve-triton-gpu/">Training &amp; Serving ML Models on GPU with NVIDIA Triton</a></li>
+<li><a href="../../tutorials/openvino-mlflow/">Benchmarking ML Models on Intel CPUs with Intel OpenVINO</a></li>
 </ul>
 <h2 id="using-the-kserve-predictor-step">Using the KServe Predictor Step</h2>
-<p>TBD</p>
+<p>The recommended way to use the KServe predictor step in a FuseML workflow is to have an MLflow trainer step part of the same workflow and to reference its output model as input to the KServe predictor, as shown in the example below.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-e2e</span>
+<span class="nt">description</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+  <span class="no">End-to-end pipeline template that takes in an MLFlow compatible codeset,</span>
+  <span class="no">runs the MLFlow project to train a model, then creates a KServe prediction</span>
+  <span class="no">service that can be used to run predictions against the model.</span>
+<span class="nt">inputs</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-codeset</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">an MLFlow compatible codeset</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">codeset</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">predictor</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">type of predictor engine</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+    <span class="nt">default</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">auto</span>
+<span class="nt">outputs</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">prediction-url</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="s">&quot;The</span><span class="nv"> </span><span class="s">URL</span><span class="nv"> </span><span class="s">where</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">exposed</span><span class="nv"> </span><span class="s">prediction</span><span class="nv"> </span><span class="s">service</span><span class="nv"> </span><span class="s">endpoint</span><span class="nv"> </span><span class="s">can</span><span class="nv"> </span><span class="s">be</span><span class="nv"> </span><span class="s">contacted</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">run</span><span class="nv"> </span><span class="s">predictions.&quot;</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="nt">steps</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">builder</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ghcr.io/fuseml/mlflow-builder:latest</span>
+    <span class="nt">inputs</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-codeset</span>
+        <span class="nt">codeset</span><span class="p">:</span>
+          <span class="nt">name</span><span class="p">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inputs.mlflow-codeset</span><span class="nv"> </span><span class="s">}}&quot;</span>
+          <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/project</span>
+    <span class="nt">outputs</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">image</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">trainer</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">steps.builder.outputs.image</span><span class="nv"> </span><span class="s">}}&quot;</span>
+    <span class="nt">inputs</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-codeset</span>
+        <span class="nt">codeset</span><span class="p">:</span>
+          <span class="nt">name</span><span class="p">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inputs.mlflow-codeset</span><span class="nv"> </span><span class="s">}}&quot;</span>
+          <span class="nt">path</span><span class="p">:</span> <span class="s">&quot;/project&quot;</span>
+    <span class="nt">outputs</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-model-url</span>
+    <span class="nt">extensions</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-tracking</span>
+        <span class="nt">product</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow</span>
+        <span class="nt">service_resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-tracking</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-store</span>
+        <span class="nt">product</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow</span>
+        <span class="nt">service_resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">s3</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">predictor</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ghcr.io/fuseml/kserve-predictor:latest</span>
+    <span class="nt">inputs</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">model</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">steps.trainer.outputs.mlflow-model-url</span><span class="nv"> </span><span class="s">}}&quot;</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">predictor</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inputs.predictor</span><span class="nv"> </span><span class="s">}}&quot;</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">app_name</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inputs.mlflow-codeset.name</span><span class="nv"> </span><span class="s">}}-{{</span><span class="nv"> </span><span class="s">inputs.mlflow-codeset.project</span><span class="nv"> </span><span class="s">}}&quot;</span>
+    <span class="nt">outputs</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">prediction-url</span>
+    <span class="nt">extensions</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-s3-store</span>
+        <span class="nt">product</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow</span>
+        <span class="nt">service_resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">s3</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kserve</span>
+        <span class="nt">service_resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kserve-api</span>
+</code></pre></div>
+<p>Aside from the mandatory input <code>model</code> parameter that needs to be a URL pointing to the location of a trained ML model saved in an MLflow artifact store, the KServe predictor workflow step also accepts the following optional input parameters that can be used to customize how the prediction service is created and updated:</p>
+<ul>
+<li>
+<p><code>predictor</code>: this can be used to configure the type of KServe predictor engine used for the prediction service. This can take the following values:</p>
+<ul>
+<li><code>auto</code> (default): when this value is used, the KServe predictor will automatically detect the type of model from the MLflow metadata present in the artifact store and use the appropriate predictor engine: TensorFlow Serving for TensorFlow models, the scikit-learn predictor for scikit-learn pickled models and the Triton back-end for Keras and ONNX models</li>
+<li><code>tensorflow</code>: use to serve models with the TensorFlow Serving engine. Only works with models trained with TensorFlow or Keras and saved using the TensorFlow saved_model model format.</li>
+<li><code>sklearn</code>: use to serve models trained with scikit-learn and saved in the sklearn pickled model format</li>
+<li><code>triton</code>: use the NVidia Triton prediction back-end. Works with models trained with TensorFlow or Keras and saved using the TensorFlow saved_model format and with models in ONNX format.</li>
+</ul>
+</li>
+<li>
+<p><code>app_name</code>: use this to explicitly set the name of the FuseML application used to represent the KServe prediction service. Its value also determines the prediction URL as well as the names of the Kubernetes resources created by the KServe predictor. Our example uses an expression to dynamically set the <code>app_name</code> parameter to the name and project of the MLflow codeset used as workflow input. If not set, the application name is constructed by combining the workflow name with the name of an input codeset name and project, if one is provided as input. In the absence of an input codeset, the application name is generated by concatenating the workflow name with a randomly generated string.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Choosing a value for the <code>app_name</code> parameter should be done with care, as it is used to uniquely identify a FuseML application and its associated Kubernetes resources (i.e. the name of the KServe prediction service, prediction URL etc.). It can lead to a situation where the same KServe prediction service is managed by more than one FuseML workflows. In this case, the results can be unpredictable, because multiple workflows will compete over managing the same application.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If an <code>app_name</code> value is not provided and the predictor step doesn't receive an input codeset, the generated application name will be random, which means that every workflow run will create a new application and prediction service. This should be avoided, as it easily lead to resource exhaustion.</p>
+</div>
+</li>
+<li>
+<p><code>runtime_version</code> - use to explicitly set the version of the KServe runtime (i.e. predictor container image) for the prediction service. If not set, the runtime version is automatically determined from the information available in the MLflow model store for some model formats (e.g. the TensorFlow Serving runtime version is set to match the tensorflow library version).</p>
+</li>
+<li>
+<p><code>resources_limits</code> - use to set the Kubernetes resource limits to allocate hardware resources to the prediction service. E.g:</p>
+<div class="highlight"><pre><span></span><code>     <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">resources_limits</span>
+       <span class="nt">value</span><span class="p">:</span> <span class="s">&#39;{nvidia.com/gpu:</span><span class="nv"> </span><span class="s">1}&#39;</span>
+</code></pre></div>
+</li>
+<li>
+<p><code>verbose</code> - set to <code>true</code> to enable verbose logging in the predictor workflow step (default is <code>false</code>).</p>
+</li>
+</ul>
+<p>The KServe runtime workflow step can also take in some environment variables that are used to configure the credentials of the remote MLflow artifact store where the input ML model is stored:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some of these environment variables contain sensitive data, such as keys and passwords and should not be explicitly configured as workflow step env vars. Instead, they should be registered in the <a href="../../extensions/extension-registry/">FuseML Extension Registry</a> and only referenced in the FuseML workflows as <a href="../../extensions/extension-registry/#referencing-extensions-in-workflows">extension requirements</a>.</p>
+</div>
+<ul>
+<li><code>MLFLOW_S3_ENDPOINT_URL</code> - required when the ML model is stored in a custom S3 compatible artifact store such as minio</li>
+<li><code>AWS_ACCESS_KEY_ID</code> and <code>AWS_SECRET_ACCESS_KEY</code> - credentials for the AWS S3 and S3-compatible artifact store</li>
+</ul>
+<p>Observe how the <code>mlflow-s3-store</code> extension requirement is used in the <code>predictor</code> step to reference an MLflow artifact store backend registered in the <a href="../../extensions/extension-registry/">FuseML Extension Registry</a>. This avoids having to configure credentials and other environment variables explicitly in the FuseML workflow. The FuseML workflow engine automatically resolves these references to matching records available in the FuseML Extension Registry and passes the configuration entries in the extension records as environment variables to the workflow step container (i.e. variables like <code>MLFLOW_S3_ENDPOINT_URL</code>, <code>AWS_ACCESS_KEY_ID</code> and <code>AWS_SECRET_ACCESS_KEY</code>).</p>
 
               
             </article>
@@ -758,10 +873,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.01824240.min.js", "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.ca141e46.min.js", "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.e0abf5b0.min.js"></script>
+      <script src="../../assets/javascripts/bundle.6baa0517.min.js"></script>
       
         <script src="../../javascripts/extra.js"></script>
       

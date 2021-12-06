@@ -9,7 +9,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.0.3">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.0.4">
     
     
       
@@ -17,7 +17,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.62128196.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2a4617e2.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.9204c3b2.min.css">
@@ -689,10 +689,72 @@
 <li>downloads the model locally from the remote artifact store.</li>
 <li>if the model is stored in an MLflow remote store and if so instructed, it auto-detects the format of the input model based on the information stored in the MLflow artifact store.</li>
 <li>it converts/optimizes the model using the provided OpenVINO Model Optimizer tools.</li>
-<li>it uploads the converted model to the output remote artifact store.</li>
+<li>it uploads the converted model to an artifact store. It can be the same artifact store as the original model, or a different one.</li>
+</ul>
+<p>The OVMS converter has a single output: the URL where the converted ML model is stored.</p>
+<p>The Dockerfile and associated scripts that implement the OVMS converter container image are available in the <a href="https://github.com/fuseml/extensions/tree/main/images/converters/ovms">FuseML extensions repository</a>.</p>
+<p>The OVMS converter is featured in a number of FuseML tutorials, such as:</p>
+<ul>
+<li><a href="../../tutorials/openvino-mlflow/">Benchmarking ML Models on Intel CPUs with Intel OpenVINO</a></li>
+<li><a href="../../tutorials/openvino-extensions/">FuseML Extension Development Use-Case - OpenVINO</a></li>
 </ul>
 <h2 id="using-the-ovms-converter-step">Using the OVMS Converter Step</h2>
-<p>TBD</p>
+<p>The following is a step in a FuseML workflow that is used to convert a model stored in an MLFlow artifact store to the IR format supported by the OpenVINO Model Server.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">steps</span><span class="p">:</span>
+  <span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">converter</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ghcr.io/fuseml/ovms-converter:latest</span>
+    <span class="nt">inputs</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">input_model</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="s">&#39;{{</span><span class="nv"> </span><span class="s">steps.trainer.outputs.mlflow-model-url</span><span class="nv"> </span><span class="s">}}&#39;</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">output_model</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="s">&#39;{{</span><span class="nv"> </span><span class="s">steps.trainer.outputs.mlflow-model-url</span><span class="nv"> </span><span class="s">}}/ovms&#39;</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">input_format</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="s">&#39;{{</span><span class="nv"> </span><span class="s">inputs.model-format</span><span class="nv"> </span><span class="s">}}&#39;</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">batch</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span> <span class="c1"># OpenVINO cannot work with undefined input dimensions</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">extra_args</span>
+        <span class="c1"># Disabling the implicit transpose transformation allows the input model shape</span>
+        <span class="c1"># to be consistent with those used by other serving platforms</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="s">&quot;--disable_nhwc_to_nchw&quot;</span>
+    <span class="nt">outputs</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ovms-model-url</span>
+    <span class="nt">extensions</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow-store</span>
+        <span class="nt">product</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mlflow</span>
+        <span class="nt">service_resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">s3</span>
+    <span class="nt">env</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">S3_ENDPOINT</span>
+        <span class="nt">value</span><span class="p">:</span> <span class="s">&#39;{{</span><span class="nv"> </span><span class="s">extensions.mlflow-store.cfg.MLFLOW_S3_ENDPOINT_URL</span><span class="nv"> </span><span class="s">}}&#39;</span>
+  <span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<p>Aside from the mandatory input <code>input_model</code> parameter that needs to be a URL pointing to the location of a trained ML model saved in a remote artifact store or object storage service, the OVMS converter workflow step also accepts the following optional input parameters that can be used to customize how the input ML model is converted and stored:</p>
+<ul>
+<li>
+<p><code>input_format</code>: specifies the format for the input ML model. This can take the following values:</p>
+<ul>
+<li>if set to <code>auto</code> (default), the OVMS converter expects the model to be stored in an MLflow artifact store. It will attempt to automatically detect the model format from the MLflow metadata present in the artifact store.</li>
+<li><code>tensorflow.saved_model</code>: TensorFlow saved_model model format.</li>
+<li><code>onnx</code>: ONNX model format</li>
+</ul>
+</li>
+<li>
+<p><code>input_shape</code>, <code>scale</code>, <code>reverse_input_channels</code>, <code>log_level</code>, <code>input</code>, <code>output</code>, <code>mean_values</code>, <code>scale_values</code>, <code>data_type</code>, <code>batch</code> and <code>static_shape</code> correspond to <a href="https://docs.openvino.ai/latest/openvino_docs_MO_DG_prepare_model_convert_model_Converting_Model.html#general-conversion-parameters">OpenVINO Model Optimizer generic conversion parameters</a> that can be configured to customize the conversion process.</p>
+</li>
+<li><code>extra_args</code>: additional command line arguments that are passed to the OpenVINO Model Optimizer utility.</li>
+</ul>
+<p>The OVMS converter workflow step can also take in some environment variables that are used to configure the credentials of the remote artifact store(s) where the input and output ML models are stored:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some of these environment variables contain sensitive data, such as keys and passwords and should not be explicitly configured as workflow step env vars. Instead, they should be registered in the <a href="../../extensions/extension-registry/">FuseML Extension Registry</a> and only referenced in the FuseML workflows as <a href="../../extensions/extension-registry/#referencing-extensions-in-workflows">extension requirements</a>.</p>
+</div>
+<ul>
+<li><code>S3_ENDPOINT</code> - required when the ML model is stored in a custom S3 compatible artifact store such as minio</li>
+<li><code>AWS_ACCESS_KEY_ID</code> and <code>AWS_SECRET_ACCESS_KEY</code> - credentials for the AWS S3 and S3-compatible artifact store</li>
+<li><code>OUTPUT_S3_ENDPOINT</code> - required when the output ML model must be uploaded in an S3 artifact store that is different from the input artifact store</li>
+<li><code>OUTPUT_AWS_ACCESS_KEY_ID</code> and <code>OUTPUT_AWS_SECRET_ACCESS_KEY</code> - credentials for the S3 output artifact store, when different than the input artifact store</li>
+</ul>
+<p>Observe how the <code>s3-storage</code> extension is used in the <code>converter</code> step to reference an MLflow artifact store backend registered in the <a href="../../extensions/extension-registry/">FuseML Extension Registry</a>. This avoids having to configure credentials and other environment variables explicitly in the FuseML workflow. The FuseML workflow engine automatically resolves these references to matching records available in the FuseML Extension Registry and passes the configuration entries in the extension records as environment variables to the workflow step container (i.e. variables like <code>AWS_ACCESS_KEY_ID</code> and <code>AWS_SECRET_ACCESS_KEY</code>). Other environment variables need to be explicitly mapped to the workflow step container using the <code>env</code> parameter (i.e. <code>MLFLOW_S3_ENDPOINT_URL</code> is mapped to <code>S3_ENDPOINT</code>).</p>
 
               
             </article>
@@ -762,10 +824,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.01824240.min.js", "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.ca141e46.min.js", "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.e0abf5b0.min.js"></script>
+      <script src="../../assets/javascripts/bundle.6baa0517.min.js"></script>
       
         <script src="../../javascripts/extra.js"></script>
       

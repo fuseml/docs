@@ -9,7 +9,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.0.3">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.0.4">
     
     
       
@@ -17,7 +17,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.62128196.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2a4617e2.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.9204c3b2.min.css">
@@ -715,6 +715,14 @@
 </li>
 </ul>
 <p>The MLflow builder has a single output: the container registry repository and the image tag where the built MLflow environment container image is stored. This output can be used in subsequent workflow steps to run the MLflow code from the same codeset as the one used as input. The most common use for the resulted container image is executing code that trains and validates ML models. For this reason, the output container image is often referred to as a "trainer" workflow step.</p>
+<p>The Dockerfile and associated scripts that implement the MLflow builder container image are available in the <a href="https://github.com/fuseml/extensions/tree/main/images/builders/mlflow">FuseML extensions repository</a>.</p>
+<p>The MLflow builder is featured in a number of FuseML tutorials, such as:</p>
+<ul>
+<li><a href="../../tutorials/kserve-basic/">Logistic Regression with MLFlow &amp; KServe</a></li>
+<li><a href="../../tutorials/seldon-core/">Logistic Regression with MLFlow &amp; Seldon-Core</a></li>
+<li><a href="../../tutorials/kserve-triton-gpu/">Training &amp; Serving ML Models on GPU with NVIDIA Triton</a></li>
+<li><a href="../../tutorials/openvino-mlflow/">Benchmarking ML Models on Intel CPUs with Intel OpenVINO</a></li>
+</ul>
 <h2 id="using-the-mlflow-builder-step">Using the MLflow Builder Step</h2>
 <p>Here is an example of a FuseML workflow that builds an MLflow runtime environment container image out of an MLflow compatible codeset and returns the location where it's stored in the internal FuseML container registry:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">build_mlflow_env</span>
@@ -763,7 +771,7 @@
 <p>The MLflow runtime workflow step can also take in additional environment variables that are passed transparently to the MLflow runtime and used to configure how the MLflow runtime can access a remote MLflow tracking server and artifact store. For more information on what variables are available and how they can be used, please refer to the <a href="https://www.mlflow.org/docs/latest/tracking.html#logging-to-a-tracking-server">relevant section in the official MLflow documentation</a>. Only a subset of the available variables are listed here:</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Some of these environment variables contain sensitive data, such as keys and passwords and should not be explicitly configured as workflow step env vars. Instead, they should be configured in the FuseML Extension Registry and only referenced in the FuseML workflows as extension requirements.</p>
+<p>Some of these environment variables contain sensitive data, such as keys and passwords and should not be explicitly configured as workflow step env vars. Instead, they should be registered in the <a href="../../extensions/extension-registry/">FuseML Extension Registry</a> and only referenced in the FuseML workflows as <a href="../../extensions/extension-registry/#referencing-extensions-in-workflows">extension requirements</a>.</p>
 </div>
 <ul>
 <li><code>MLFLOW_TRACKING_URI</code> - the URL of a remote MLflow tracking server to use.</li>
@@ -813,7 +821,7 @@
         <span class="nt">service_resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">s3</span>
 </code></pre></div>
 <p>Note how the <code>builder</code> step output is referenced as the image value for the <code>trainer</code> step and how both steps use the same <code>mlflow-codeset</code> codeset as input. The builder workflow step creates the MLflow environment container image and the trainer step uses it to execute the MLflow code and train the ML model.</p>
-<p>Also observe how the <code>mlflow-tracking</code> and <code>mlflow-store</code> extensions are used in the <code>trainer</code> step to reference an MLflow tracking server and an artifact store backend configured in the FuseML Extension Registry. This avoids having to configure credentials and other environment variables explicitly in the FuseML workflow. The FuseML workflow engine automatically resolves these references to matching records available in the FuseML Extension Registry and passes the configuration entries in the extension records as environment variables to the workflow step container (i.e. variables like <code>MLFLOW_TRACKING_URI</code> , <code>MLFLOW_S3_ENDPOINT_URL</code>, <code>AWS_ACCESS_KEY_ID</code> and <code>AWS_SECRET_ACCESS_KEY</code>).</p>
+<p>Also observe how the <code>mlflow-tracking</code> and <code>mlflow-store</code> extensions are used in the <code>trainer</code> step to reference an MLflow tracking server and an artifact store backend configured in the <a href="../../extensions/extension-registry/">FuseML Extension Registry</a>. This avoids having to configure credentials and other environment variables explicitly in the FuseML workflow. The FuseML workflow engine automatically resolves these references to matching records available in the FuseML Extension Registry and passes the configuration entries in the extension records as environment variables to the workflow step container (i.e. variables like <code>MLFLOW_TRACKING_URI</code> , <code>MLFLOW_S3_ENDPOINT_URL</code>, <code>AWS_ACCESS_KEY_ID</code> and <code>AWS_SECRET_ACCESS_KEY</code>).</p>
 
               
             </article>
@@ -883,10 +891,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.01824240.min.js", "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.ca141e46.min.js", "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.e0abf5b0.min.js"></script>
+      <script src="../../assets/javascripts/bundle.6baa0517.min.js"></script>
       
         <script src="../../javascripts/extra.js"></script>
       
