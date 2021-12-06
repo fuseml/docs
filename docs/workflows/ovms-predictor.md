@@ -17,7 +17,7 @@ The predictor performs the following tasks:
 
 The OVMS predictor has a single output: the URL where the prediction service can be accessed to process inference requests.
 
-The Dockerfile and associated scripts that implement the OVMS predictor container image are available in the [FuseML extensions repository](https://github.com/fuseml/extensions/tree/main/images/inference-services/ovms).
+The Dockerfile and associated scripts that implement the OVMS predictor container image are available in the [FuseML extensions repository](https://github.com/fuseml/extensions/tree/release-0.3/images/inference-services/ovms).
 
 The OVMS predictor is featured in a number of FuseML tutorials, such as:
 
@@ -45,7 +45,7 @@ outputs:
     type: string
 steps:
   - name: ovms-predictor
-    image: ghcr.io/fuseml/ovms-predictor:latest
+    image: ghcr.io/fuseml/ovms-predictor:v0.3.0
     inputs:
       - name: model
         value: '{{ inputs.model }}'

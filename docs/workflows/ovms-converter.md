@@ -24,7 +24,7 @@ The converter performs the following tasks:
 
 The OVMS converter has a single output: the URL where the converted ML model is stored.
 
-The Dockerfile and associated scripts that implement the OVMS converter container image are available in the [FuseML extensions repository](https://github.com/fuseml/extensions/tree/main/images/converters/ovms).
+The Dockerfile and associated scripts that implement the OVMS converter container image are available in the [FuseML extensions repository](https://github.com/fuseml/extensions/tree/release-0.3/images/converters/ovms).
 
 The OVMS converter is featured in a number of FuseML tutorials, such as:
 
@@ -39,7 +39,7 @@ The following is a step in a FuseML workflow that is used to convert a model sto
 steps:
   [...]
   - name: converter
-    image: ghcr.io/fuseml/ovms-converter:latest
+    image: ghcr.io/fuseml/ovms-converter:v0.3.0
     inputs:
       - name: input_model
         value: '{{ steps.trainer.outputs.mlflow-model-url }}'

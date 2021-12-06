@@ -35,7 +35,7 @@ The MLflow builder workflow step leverages the MLflow Project conventions to aut
 
 The MLflow builder has a single output: the container registry repository and the image tag where the built MLflow environment container image is stored. This output can be used in subsequent workflow steps to run the MLflow code from the same codeset as the one used as input. The most common use for the resulted container image is executing code that trains and validates ML models. For this reason, the output container image is often referred to as a "trainer" workflow step.
 
-The Dockerfile and associated scripts that implement the MLflow builder container image are available in the [FuseML extensions repository](https://github.com/fuseml/extensions/tree/main/images/builders/mlflow).
+The Dockerfile and associated scripts that implement the MLflow builder container image are available in the [FuseML extensions repository](https://github.com/fuseml/extensions/tree/release-0.3/images/builders/mlflow).
 
 The MLflow builder is featured in a number of FuseML tutorials, such as:
 
@@ -63,7 +63,7 @@ outputs:
     type: string
 steps:
   - name: builder
-    image: ghcr.io/fuseml/mlflow-builder:latest
+    image: ghcr.io/fuseml/mlflow-builder:v0.3.0
     inputs:
       - name: mlflow-codeset
         codeset:
@@ -125,7 +125,7 @@ outputs:
     type: string
 steps:
   - name: builder
-    image: ghcr.io/fuseml/mlflow-builder:latest
+    image: ghcr.io/fuseml/mlflow-builder:v0.3.0
     inputs:
       - name: mlflow-codeset
         codeset:

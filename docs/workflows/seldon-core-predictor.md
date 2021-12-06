@@ -21,7 +21,7 @@ The predictor performs the following tasks:
 
 The Seldon Core predictor has a single output: the URL where the prediction service can be accessed to process inference requests.
 
-The Dockerfile and associated scripts that implement the Seldon Core predictor container image are available in the [FuseML extensions repository](https://github.com/fuseml/extensions/tree/main/images/inference-services/seldon-core).
+The Dockerfile and associated scripts that implement the Seldon Core predictor container image are available in the [FuseML extensions repository](https://github.com/fuseml/extensions/tree/release-0.3/images/inference-services/seldon-core).
 
 The Seldon Core predictor is featured in a number of FuseML tutorials, such as:
 
@@ -52,7 +52,7 @@ outputs:
     type: string
 steps:
   - name: builder
-    image: ghcr.io/fuseml/mlflow-builder:latest
+    image: ghcr.io/fuseml/mlflow-builder:v0.3.0
     inputs:
       - name: mlflow-codeset
         codeset:
@@ -77,7 +77,7 @@ steps:
         product: mlflow
         service_resource: s3
   - name: predictor
-    image: ghcr.io/fuseml/seldon-core-predictor:latest
+    image: ghcr.io/fuseml/seldon-core-predictor:v0.3.0
     inputs:
       - name: model
         value: '{{ steps.trainer.outputs.mlflow-model-url }}'
