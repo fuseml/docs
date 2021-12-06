@@ -257,7 +257,7 @@ outputs:
     type: string
 steps:
   - name: builder
-    image: ghcr.io/fuseml/mlflow-builder:latest
+    image: ghcr.io/fuseml/mlflow-builder:v0.3.0
     inputs:
       - name: mlflow-codeset
         codeset:
@@ -282,7 +282,7 @@ steps:
         product: mlflow
         service_resource: s3
   - name: predictor
-    image: ghcr.io/fuseml/kserve-predictor:latest
+    image: ghcr.io/fuseml/kserve-predictor:v0.3.0
     inputs:
       - name: model
         value: "{{ steps.trainer.outputs.mlflow-model-url }}"

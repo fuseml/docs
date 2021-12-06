@@ -19,7 +19,7 @@ FuseML currently supports three major extension mechanisms that facilitate the i
 
 The FuseML installer can be tasked with installing more than just the FuseML core components. It can also be used to simplify the deployment of 3rd party AI/ML services that support Kubernetes as a target platform. Writing a FuseML Installer Extension is as simple as creating a YAML file describing installation steps such as helm charts, kubernetes manifests, kustomize targets or even plain bash scripts.
 
-With FuseML Installer Extensions, users can build installation shortcuts to quickly deploy their own AI/ML tool stack, or reuse one or more of the AI/ML tools already featured in the default [FuseML Installer Extension Repository](https://github.com/fuseml/extensions/tree/main/installer), including but not limited to: MLFlow, KServe and Seldon Core.
+With FuseML Installer Extensions, users can build installation shortcuts to quickly deploy their own AI/ML tool stack, or reuse one or more of the AI/ML tools already featured in the default [FuseML Installer Extension Repository](https://github.com/fuseml/extensions/tree/release-0.3/installer), including but not limited to: MLFlow, KServe and Seldon Core.
 
 The [Installer Extensions](../extensions/installer-extensions.md) section contains detailed information about this extensibility feature and how it can be used to extend the installer to cover additional AI/ML tools and services.
 ### FuseML Extension Registry
